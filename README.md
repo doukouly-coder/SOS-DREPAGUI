@@ -78,7 +78,7 @@ outils/wordpress/deployer-local.sh <racine-wordpress> <url-du-site>
 ```
 
 Recette : `porte2.mjs` (éditeur), `porte3.mjs` (rendu et formulaires, déconnecté), `porte5.mjs`
-(éditeur fidèle au site), dans `outils/wordpress/`.
+(éditeur fidèle au site) et `recette-admin.mjs` (tableau de bord, demandes), dans `outils/wordpress/`.
 
 ### Ce que fait réellement le site
 
