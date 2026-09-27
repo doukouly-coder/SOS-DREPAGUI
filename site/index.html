@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HEMATO GUI — Hématologie en Guinée : drépanocytose, hémophilie, cancers du sang, hémostase</title>
+<meta name="description" content="HEMATO GUI, plateforme d’hématologie pour la Guinée et l’Afrique francophone : information fiable sur les maladies du sang, prise de rendez-vous avec un spécialiste à Conakry, outils et formations pour les professionnels, eBooks.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/polices.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalOrganization",
+  "name": "HEMATO GUI",
+  "slogan": "Informer, former et traiter les maladies hématologiques",
+  "medicalSpecialty": "Hematologic",
+  "telephone": "+224628733143",
+  "address": { "@type": "PostalAddress", "addressLocality": "Conakry", "addressCountry": "GN" },
+  "areaServed": ["Guinée", "Afrique francophone"],
+  "availableLanguage": "fr"
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-calendrier" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-fermer" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-patient" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-stetho" viewBox="0 0 24 24"><path d="M5 3v5a4 4 0 0 0 8 0V3"/><path d="M9 12v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></symbol>
+    <symbol id="i-livre" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></symbol>
+    <symbol id="i-urgence" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+    <symbol id="i-fiche" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-telecharger" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-conseil" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-journal" viewBox="0 0 24 24"><path d="M4 5h12v14a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2V5z"/><path d="M16 9h4v10a2 2 0 0 1-2 2M8 9h4M8 13h4M8 17h2"/></symbol>
+    <symbol id="i-consult" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-5 4v-4H6a2 2 0 0 1-2-2V6z"/><path d="M12 7.5v6M9 10.5h6"/></symbol>
+    <symbol id="i-compte" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 10h3M15 13.5h3"/></symbol>
+    <symbol id="i-recherche" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></symbol>
+    <symbol id="i-bouclier" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-cadenas" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-nfs" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5L4.8 18.3A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.7L14 9.5V3"/><path d="M7.5 15h9"/></symbol>
+    <symbol id="i-graphe" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+    <symbol id="i-goutte" viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></symbol>
+    <symbol id="i-score" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></symbol>
+    <symbol id="i-coag" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21M3 12h5.8M15.2 12H21M5.6 5.6l4.1 4.1M14.3 14.3l4.1 4.1M18.4 5.6l-4.1 4.1M9.7 14.3l-4.1 4.1"/></symbol>
+    <symbol id="i-couches" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-lieu" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></symbol>
+  </defs>
+</svg>
+
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<!-- ============ EN-TÊTE ============ -->
+<header class="entete">
+  <div class="wrap entete-rangee">
+    <!-- Emplacement du logo officiel HEMATO GUI (fichier à fournir) : ne pas recréer le logo -->
+    <a class="marque" href="index.html" aria-label="HEMATO GUI — accueil"><span class="marque-nom">HEMATO GUI</span></a>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="#domaines">Hématologie</a>
+      <a href="#patients">Patients</a>
+      <a href="#pro">Professionnels</a>
+      <a href="#ebooks">eBooks</a>
+      <a href="#actualites">Actualités</a>
+      <a href="#pied">À propos</a>
+      <a href="#pied">Contact</a>
+    </nav>
+
+    <div class="entete-actions">
+      <a class="wa-icone" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." aria-label="Écrire à HEMATO GUI sur WhatsApp" target="_blank" rel="noopener">
+        <svg><use href="#i-whatsapp"/></svg>
+      </a>
+      <a class="btn btn-rouge btn-petit" href="#rendez-vous"><span class="court">Rendez-vous</span><span class="long">Prendre rendez-vous</span></a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="panneau-menu">
+        <svg class="ico-ouvrir"><use href="#i-menu"/></svg><svg class="ico-fermer"><use href="#i-fermer"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="panneau-menu" id="panneau-menu">
+  <nav class="wrap panneau-liens" aria-label="Navigation mobile">
+    <a href="index.html" aria-current="page">Accueil</a>
+    <a href="#domaines">Hématologie</a>
+    <a href="#patients">Patients</a>
+    <a href="#pro">Professionnels</a>
+    <a href="#ebooks">eBooks</a>
+    <a href="#actualites">Actualités</a>
+    <a href="#pied">À propos</a>
+    <a href="#pied">Contact</a>
+  </nav>
+  <div class="wrap panneau-boutons">
+    <a class="btn btn-rouge btn-grand" href="#rendez-vous"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a>
+    <a class="btn btn-contour btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  </div>
+</div>
+
+<main id="contenu">
+
+<!-- ============ HÉROS ============ -->
+<section class="hero">
+  <div class="wrap hero-texte">
+    <p class="pastille"><span class="point"></span><span>Plateforme d’hématologie<span class="long"> · Guinée &amp; Afrique francophone</span></span></p>
+    <h1 class="titre-hero">Votre santé du sang mérite une <em>expertise spécialisée.</em></h1>
+    <p class="chapeau-hero">HEMATO GUI — Informer, former et contribuer à une meilleure prise en charge des maladies du sang.</p>
+    <div class="boutons">
+      <a class="btn btn-rouge btn-grand" href="#rendez-vous"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a>
+      <a class="btn btn-contour btn-grand" href="#domaines">Découvrir nos ressources</a>
+    </div>
+  </div>
+
+  <div class="hero-scene">
+    <div class="lentille" aria-hidden="true"><span class="lentille-echelle">× 4 000</span></div>
+    <img class="calque calque-arriere" src="assets/img/rendus/hero-arriere.webp" alt="" aria-hidden="true">
+    <img class="calque calque-milieu" src="assets/img/rendus/hero-milieu.webp" alt="Illustration 3D de globules rouges, d’un globule blanc et de plaquettes sanguines">
+    <img class="bulle bulle-gauche" src="assets/img/rendus/globule-seul.webp" alt="" aria-hidden="true">
+    <img class="bulle bulle-droite" src="assets/img/rendus/globule-profil.webp" alt="" aria-hidden="true">
+
+    <div class="verre verre-hb" aria-hidden="true">
+      <p class="verre-label">Hémoglobine</p>
+      <p class="verre-valeur">13,2 <small>g/dL</small></p>
+      <div class="jauge" style="--debut:30%;--fin:25%;--val:52%"><i></i></div>
+      <p class="verre-note"><svg><use href="#i-check"/></svg>Dans les valeurs de référence</p>
+    </div>
+    <div class="verre verre-rdv" aria-hidden="true">
+      <span class="verre-ico"><svg><use href="#i-calendrier"/></svg></span>
+      <div>
+        <p class="verre-label">Rendez-vous confirmé</p>
+        <p class="verre-titre">Consultation drépanocytose</p>
+        <p class="verre-note">Mer. 14 oct. · 10 h 30</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="wrap acces" aria-label="Accès rapides">
+    <div class="acces-grille">
+      <a class="acces-item" href="#patients">
+        <span class="acces-ico"><svg><use href="#i-patient"/></svg></span>
+        <span><strong>Je suis patient</strong><small>Comprendre, consulter, être suivi</small></span>
+        <svg class="acces-fleche"><use href="#i-fleche"/></svg>
+      </a>
+      <a class="acces-item" href="#pro">
+        <span class="acces-ico"><svg><use href="#i-stetho"/></svg></span>
+        <span><strong>Je suis professionnel de santé</strong><small>Outils, protocoles, formations</small></span>
+        <svg class="acces-fleche"><use href="#i-fleche"/></svg>
+      </a>
+      <a class="acces-item" href="#ebooks">
+        <span class="acces-ico"><svg><use href="#i-livre"/></svg></span>
+        <span><strong>eBooks</strong><small>Guides gratuits et payants</small></span>
+        <svg class="acces-fleche"><use href="#i-fleche"/></svg>
+      </a>
+      <a class="acces-item acces-urgence" href="#urgence">
+        <span class="acces-ico"><svg><use href="#i-urgence"/></svg></span>
+        <span><strong>Urgence</strong><small>Quand consulter sans attendre ?</small></span>
+        <svg class="acces-fleche"><use href="#i-fleche"/></svg>
+      </a>
+    </div>
+  </nav>
+</section>
+
+<!-- ============ DOMAINES D'EXPERTISE ============ -->
+<section class="domaines" id="domaines">
+  <div class="wrap">
+    <header class="tete">
+      <p class="surtitre">Hématologie</p>
+      <h2>Nos domaines d’expertise</h2>
+      <p class="chapeau">Des fiches claires pour comprendre, des spécialistes pour vous accompagner.</p>
+    </header>
+
+    <div class="bento">
+      <a class="carte-domaine domaine-drepano" href="drepanocytose.html">
+        <p class="domaine-tag">Priorité de santé publique</p>
+        <h3>Drépanocytose</h3>
+        <p class="domaine-texte">La maladie génétique la plus fréquente en Afrique. Crises, prévention, suivi de l’enfant et de la grossesse, traitements.</p>
+        <ul class="domaine-sujets">
+          <li>Crises vaso-occlusives</li><li>Dépistage néonatal</li><li>Hydroxyurée</li><li>Grossesse</li>
+        </ul>
+        <span class="lien-fleche">Découvrir la fiche<svg><use href="#i-fleche"/></svg></span>
+        <img src="assets/img/rendus/drepanocytose.webp" alt="Drépanocyte en forme de faucille à côté de globules rouges normaux">
+      </a>
+
+      <a class="carte-domaine" href="hemophilie.html">
+        <h3>Hémophilie et maladies hémorragiques</h3>
+        <p class="domaine-texte">Hémophilie A et B, maladie de Willebrand : reconnaître un saignement et agir vite.</p>
+        <span class="lien-fleche">Découvrir<svg><use href="#i-fleche"/></svg></span>
+        <img src="assets/img/rendus/hemophilie.webp" alt="Goutte de sang en 3D">
+      </a>
+
+      <a class="carte-domaine" href="cancers-du-sang.html">
+        <h3>Cancers du sang</h3>
+        <p class="domaine-texte">Leucémies, lymphomes, myélome : signes d’alerte, examens, traitements.</p>
+        <span class="lien-fleche">Découvrir<svg><use href="#i-fleche"/></svg></span>
+        <img src="assets/img/rendus/cancers.webp" alt="Globule blanc entouré de globules rouges">
+      </a>
+
+      <a class="carte-domaine" href="hemostase.html">
+        <h3>Hémostase et thrombose</h3>
+        <p class="domaine-texte">Bilan de coagulation, thromboses, anticoagulants : comprendre et prévenir.</p>
+        <span class="lien-fleche">Découvrir<svg><use href="#i-fleche"/></svg></span>
+        <img src="assets/img/rendus/hemostase.webp" alt="Réseau de fibrine retenant un globule rouge et des plaquettes">
+      </a>
+
+      <a class="carte-domaine" href="diagnostic.html">
+        <h3>Diagnostic et exploration hématologique</h3>
+        <p class="domaine-texte">NFS, frottis, myélogramme, électrophorèse : à quoi servent vos examens.</p>
+        <span class="lien-fleche">Découvrir<svg><use href="#i-fleche"/></svg></span>
+        <img src="assets/img/rendus/diagnostic.webp" alt="Double hélice d’ADN">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPACE PATIENT ============ -->
+<section class="patients" id="patients">
+  <div class="wrap patients-grille">
+    <div class="patients-texte">
+      <p class="surtitre">Je suis patient</p>
+      <h2>Un parcours simple, du premier symptôme au suivi.</h2>
+      <p class="chapeau">Tout ce dont vous avez besoin, au même endroit — et d’abord sur votre téléphone.</p>
+
+      <ol class="parcours">
+        <li><h3>Je choisis mon problème</h3><p>Drépanocytose, saignements, anémie, résultats d’analyse…</p></li>
+        <li><h3>Je découvre les informations essentielles</h3><p>Des fiches claires, relues par des spécialistes.</p></li>
+        <li><h3>Je prends rendez-vous</h3><p>En ligne en quelques clics, ou directement sur WhatsApp.</p></li>
+        <li><h3>Je reçois une confirmation</h3><p>À l’écran, puis par notification.</p></li>
+        <li><h3>Je suis mon parcours médical</h3><p>Rendez-vous, documents et conseils réunis dans mon compte.</p></li>
+      </ol>
+
+      <div class="boutons boutons-gauche">
+        <a class="btn btn-rouge btn-grand" href="#rendez-vous"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a>
+        <a class="btn btn-contour btn-grand" href="compte.html">Créer mon compte patient</a>
+      </div>
+    </div>
+
+    <div class="patients-visuel">
+      <img class="patients-globule" src="assets/img/rendus/globule-seul.webp" alt="" aria-hidden="true">
+      <div class="telephone">
+        <div class="ecran">
+          <p class="ecran-barre"><span>9:41</span><span class="ecran-signal"></span></p>
+          <p class="ecran-etape">Étape 2 sur 5</p>
+          <div class="ecran-progression"><i></i></div>
+          <p class="ecran-titre">Prendre rendez-vous</p>
+
+          <p class="ecran-label">Consultation</p>
+          <div class="puces" data-groupe="consultation">
+            <span class="puce">Hématologie</span>
+            <span class="puce est-actif">Drépanocytose</span>
+            <span class="puce">Hémophilie</span>
+            <span class="puce">Hémostase</span>
+            <span class="puce">Cancer du sang</span>
+            <span class="puce">Avis spécialisé</span>
+          </div>
+
+          <p class="ecran-label">Octobre 2026</p>
+          <div class="jours" data-groupe="jour">
+            <span class="jour"><small>Lun</small>12</span>
+            <span class="jour"><small>Mar</small>13</span>
+            <span class="jour est-actif"><small>Mer</small>14</span>
+            <span class="jour"><small>Jeu</small>15</span>
+            <span class="jour"><small>Ven</small>16</span>
+          </div>
+
+          <p class="ecran-label">Heure</p>
+          <div class="heures" data-groupe="heure">
+            <span class="heure">08:30</span>
+            <span class="heure est-pris">09:00</span>
+            <span class="heure est-actif">10:30</span>
+            <span class="heure">11:00</span>
+            <span class="heure">14:00</span>
+            <span class="heure">15:30</span>
+          </div>
+
+          <span class="ecran-bouton">Continuer</span>
+        </div>
+      </div>
+      <div class="notification" aria-hidden="true">
+        <span class="notification-ico"><svg><use href="#i-check"/></svg></span>
+        <div>
+          <p class="notification-titre">Rendez-vous confirmé</p>
+          <p>Mer. 14 oct. à 10 h 30 · rappel la veille</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="services" aria-label="Services pour les patients">
+      <li><a href="#rendez-vous"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a></li>
+      <li><a href="#rendez-vous"><svg><use href="#i-consult"/></svg>Demander une consultation</a></li>
+      <li><a href="#domaines"><svg><use href="#i-fiche"/></svg>Fiches médicales</a></li>
+      <li><a href="#"><svg><use href="#i-telecharger"/></svg>Documents à télécharger</a></li>
+      <li><a href="#"><svg><use href="#i-conseil"/></svg>Conseils éducatifs</a></li>
+      <li><a href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Contacter sur WhatsApp</a></li>
+      <li><a href="#actualites"><svg><use href="#i-journal"/></svg>Actualités</a></li>
+      <li><a href="#ebooks"><svg><use href="#i-livre"/></svg>eBooks</a></li>
+      <li><a href="compte.html"><svg><use href="#i-compte"/></svg>Créer un compte patient</a></li>
+    </ul>
+
+    <p class="avertissement" id="urgence"><svg><use href="#i-info"/></svg><span>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</span></p>
+  </div>
+</section>
+
+<!-- ============ ESPACE PROFESSIONNEL ============ -->
+<section class="pro" id="pro">
+  <div class="wrap pro-grille">
+    <div class="pro-texte">
+      <p class="surtitre">Espace professionnel</p>
+      <h2>Hématologie pratique, pour les soignants.</h2>
+      <p class="chapeau">Protocoles, référentiels, cas cliniques, webinaires et outils d’aide à la décision, dans un espace sécurisé réservé aux professionnels de santé.</p>
+
+      <form class="recherche" role="search" onsubmit="return false">
+        <svg><use href="#i-recherche"/></svg>
+        <label class="sr" for="q">Rechercher dans la bibliothèque Hématologie pratique</label>
+        <input id="q" type="search" placeholder="Maladie, examen, traitement…">
+        <button type="submit" aria-label="Rechercher"><svg><use href="#i-fleche"/></svg></button>
+      </form>
+      <div class="filtres" aria-label="Filtres de recherche">
+        <span class="filtre est-actif">Maladie</span><span class="filtre">Examen</span><span class="filtre">Traitement</span><span class="filtre">Âge</span><span class="filtre">Urgence</span><span class="filtre">Spécialité</span>
+      </div>
+
+      <div class="boutons boutons-gauche">
+        <a class="btn btn-rouge btn-grand" href="espace-pro.html">Accéder à l’espace pro</a>
+        <a class="btn btn-clair btn-grand" href="espace-pro.html#inscription">Demander un accès</a>
+      </div>
+      <p class="pro-securite"><svg><use href="#i-bouclier"/></svg>Accès vérifié, réservé aux professionnels de santé</p>
+    </div>
+
+    <div class="pro-visuel">
+      <img class="pro-cellule" src="assets/img/rendus/cancers.webp" alt="" aria-hidden="true">
+      <div class="outil-nfs">
+        <div class="outil-tete">
+          <p><span class="outil-type">Outil</span>Interprétation de la NFS</p>
+          <span class="outil-exemple">Exemple</span>
+        </div>
+        <div class="nfs-ligne">
+          <p class="nfs-nom">Hémoglobine<small>réf. 12 – 16 g/dL</small></p>
+          <p class="nfs-val">9,1 <small>g/dL</small></p>
+          <div class="jauge" style="--debut:40%;--fin:20%;--val:22%"><i></i></div>
+          <span class="statut statut-alerte">Bas</span>
+        </div>
+        <div class="nfs-ligne">
+          <p class="nfs-nom">VGM<small>réf. 80 – 100 fL</small></p>
+          <p class="nfs-val">71 <small>fL</small></p>
+          <div class="jauge" style="--debut:40%;--fin:20%;--val:25%"><i></i></div>
+          <span class="statut statut-alerte">Bas</span>
+        </div>
+        <div class="nfs-ligne">
+          <p class="nfs-nom">Leucocytes<small>réf. 4 – 10 G/L</small></p>
+          <p class="nfs-val">6,4 <small>G/L</small></p>
+          <div class="jauge" style="--debut:28%;--fin:30%;--val:52%"><i></i></div>
+          <span class="statut">Normal</span>
+        </div>
+        <div class="nfs-ligne">
+          <p class="nfs-nom">Plaquettes<small>réf. 150 – 400 G/L</small></p>
+          <p class="nfs-val">412 <small>G/L</small></p>
+          <div class="jauge" style="--debut:25%;--fin:28%;--val:74%"><i></i></div>
+          <span class="statut statut-alerte">Élevé</span>
+        </div>
+        <div class="orientation">
+          <p class="orientation-titre">Orientation</p>
+          <p>Anémie microcytaire avec thrombocytose réactive. À explorer : ferritine et bilan martial, puis électrophorèse de l’hémoglobine.</p>
+        </div>
+        <p class="outil-mention"><svg><use href="#i-info"/></svg>Outil d’aide : il ne remplace jamais le jugement clinique.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="outils" aria-label="Outils hématologiques">
+      <li><svg><use href="#i-nfs"/></svg><h3>Interprétation de la NFS</h3><p>Lecture guidée, seuils par âge et par sexe.</p></li>
+      <li><svg><use href="#i-graphe"/></svg><h3>Formule leucocytaire</h3><p>Valeurs absolues à partir des pourcentages.</p></li>
+      <li><svg><use href="#i-goutte"/></svg><h3>Clairance de la créatinine</h3><p>Cockcroft-Gault et CKD-EPI.</p></li>
+      <li><svg><use href="#i-score"/></svg><h3>Scores IPSS-R / IPSS-M</h3><p>Stratification des syndromes myélodysplasiques.</p></li>
+      <li><svg><use href="#i-coag"/></svg><h3>Bilan d’hémostase</h3><p>TP/INR, TCA, fibrinogène : aide à l’interprétation.</p></li>
+      <li><svg><use href="#i-couches"/></svg><h3>Protocoles et algorithmes</h3><p>Bibliothèque de protocoles et d’arbres diagnostiques.</p></li>
+    </ul>
+    <p class="pro-aussi">Et aussi : cas cliniques · conférences et webinaires · formations certifiantes · quiz · documents PDF</p>
+  </div>
+</section>
+
+<!-- ============ EBOOKS ============ -->
+<section class="ebooks" id="ebooks">
+  <div class="wrap">
+    <header class="etagere-tete">
+      <div>
+        <p class="surtitre">eBooks</p>
+        <h2>La bibliothèque HEMATO GUI.</h2>
+        <p class="chapeau">Des guides écrits pour la Guinée et l’Afrique francophone, gratuits ou payants, à lire sur mobile.</p>
+      </div>
+      <a class="lien-fleche" href="ebooks.html">Voir tous les eBooks<svg><use href="#i-fleche"/></svg></a>
+    </header>
+
+    <div class="categories" aria-label="Catégories d’eBooks">
+      <a class="categorie est-actif" href="ebooks.html">Tous</a>
+      <a class="categorie" href="#">Hémogramme</a>
+      <a class="categorie" href="#">Hémostase</a>
+      <a class="categorie" href="#">Drépanocytose</a>
+      <a class="categorie" href="#">Hémophilie</a>
+      <a class="categorie" href="#">Cancers du sang</a>
+      <a class="categorie" href="#">Transfusion</a>
+      <a class="categorie" href="#">Cas cliniques</a>
+      <a class="categorie" href="#">Guides pratiques</a>
+    </div>
+
+    <div class="livres">
+      <article class="livre">
+        <a class="couverture" href="#"><img src="assets/img/ebooks/drepanocytose-guide-familles.jpg" alt="Couverture : Drépanocytose, le guide des familles" loading="lazy"></a>
+        <p class="livre-cat">Drépanocytose · Grand public</p>
+        <h3>Le guide des familles</h3>
+        <p class="livre-info">Collectif HEMATO GUI · 48 pages</p>
+        <div class="livre-pied">
+          <p class="prix prix-gratuit">Gratuit</p>
+          <a class="btn btn-noir btn-petit" href="#">Télécharger</a>
+        </div>
+      </article>
+      <article class="livre">
+        <a class="couverture" href="#"><img src="assets/img/ebooks/hemogramme-nfs.jpg" alt="Couverture : Hémogramme, lire et interpréter la NFS" loading="lazy"></a>
+        <p class="livre-cat">Hémogramme · Intermédiaire</p>
+        <h3>Lire et interpréter la NFS</h3>
+        <p class="livre-info">Collectif HEMATO GUI · 86 pages</p>
+        <div class="livre-pied">
+          <p class="prix">60 000 GNF</p>
+          <a class="btn btn-rouge btn-petit" href="#">Acheter</a>
+        </div>
+        <a class="apercu" href="#">Aperçu gratuit</a>
+      </article>
+      <article class="livre">
+        <a class="couverture" href="#"><img src="assets/img/ebooks/hemostase-bilan-decision.jpg" alt="Couverture : Hémostase, du bilan à la décision" loading="lazy"></a>
+        <p class="livre-cat">Hémostase · Avancé</p>
+        <h3>Du bilan à la décision</h3>
+        <p class="livre-info">Collectif HEMATO GUI · 124 pages</p>
+        <div class="livre-pied">
+          <p class="prix">95 000 GNF</p>
+          <a class="btn btn-rouge btn-petit" href="#">Acheter</a>
+        </div>
+        <a class="apercu" href="#">Aperçu gratuit</a>
+      </article>
+      <article class="livre">
+        <a class="couverture" href="#"><img src="assets/img/ebooks/hemophilie-quotidien.jpg" alt="Couverture : Hémophilie, vivre et agir au quotidien" loading="lazy"></a>
+        <p class="livre-cat">Hémophilie · Grand public</p>
+        <h3>Vivre et agir au quotidien</h3>
+        <p class="livre-info">Collectif HEMATO GUI · 40 pages</p>
+        <div class="livre-pied">
+          <p class="prix prix-gratuit">Gratuit</p>
+          <a class="btn btn-noir btn-petit" href="#">Télécharger</a>
+        </div>
+      </article>
+    </div>
+
+    <ul class="garanties">
+      <li><svg><use href="#i-cadenas"/></svg>Paiement sécurisé</li>
+      <li><svg><use href="#i-telecharger"/></svg>Téléchargement sécurisé</li>
+      <li><svg><use href="#i-livre"/></svg>Bibliothèque personnelle</li>
+      <li><svg><use href="#i-mobile"/></svg>Mobile Money (Orange Money, MTN MoMo) : intégration prévue</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SEPTEMBRE ROUGE ============ -->
+<section class="septembre" id="septembre-rouge">
+  <div class="wrap septembre-grille">
+    <div class="septembre-texte">
+      <p class="surtitre-clair">Campagne · en cours</p>
+      <h2>Septembre Rouge</h2>
+      <p class="chapeau">Un mois pour parler des maladies du sang : dépistage, don de sang et accompagnement des familles, partout en Guinée.</p>
+      <a class="btn btn-blanc btn-grand" href="#">Découvrir le programme<svg><use href="#i-fleche"/></svg></a>
+    </div>
+    <ul class="campagnes">
+      <li class="campagne est-actif"><p class="campagne-date">Septembre</p><p>Mois de sensibilisation aux cancers du sang</p></li>
+      <li class="campagne"><p class="campagne-date">19 juin</p><p>Journée mondiale de la drépanocytose</p></li>
+      <li class="campagne"><p class="campagne-date">17 avril</p><p>Journée mondiale de l’hémophilie</p></li>
+      <li class="campagne"><p class="campagne-date">14 juin</p><p>Journée mondiale du don de sang</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ACTUALITÉS ============ -->
+<section class="actus" id="actualites">
+  <div class="wrap">
+    <header class="tete">
+      <p class="surtitre">Actualités</p>
+      <h2>Actualités HEMATO GUI</h2>
+    </header>
+    <div class="categories categories-centre" aria-label="Catégories d’actualités">
+      <a class="categorie est-actif" href="#">Toutes</a>
+      <a class="categorie" href="#">Actualités médicales</a>
+      <a class="categorie" href="#">Recherche</a>
+      <a class="categorie" href="#">Congrès</a>
+      <a class="categorie" href="#">Recommandations</a>
+      <a class="categorie" href="#">Sensibilisation</a>
+      <a class="categorie" href="#">Campagnes</a>
+      <a class="categorie" href="#">Événements</a>
+    </div>
+
+    <div class="actus-grille">
+      <a class="article article-une" href="#">
+        <div class="article-visuel"><img src="assets/img/rendus/drepanocytose.webp" alt="" loading="lazy"></div>
+        <div class="article-corps">
+          <p class="article-meta"><strong>Sensibilisation</strong><span>22 septembre 2026</span></p>
+          <h3>Dépistage néonatal de la drépanocytose : pourquoi il change tout</h3>
+          <p>Un diagnostic dès la naissance permet de prévenir les infections graves et d’organiser le suivi avant les premières crises.</p>
+        </div>
+      </a>
+      <a class="article" href="#">
+        <div class="article-visuel"><img src="assets/img/rendus/hemostase.webp" alt="" loading="lazy"></div>
+        <div class="article-corps">
+          <p class="article-meta"><strong>Recommandations</strong><span>15 septembre 2026</span></p>
+          <h3>Anticoagulants oraux : cinq règles pour un traitement en sécurité</h3>
+        </div>
+      </a>
+      <a class="article" href="#">
+        <div class="article-visuel"><img src="assets/img/rendus/trio.webp" alt="" loading="lazy"></div>
+        <div class="article-corps">
+          <p class="article-meta"><strong>Événements</strong><span>1<sup>er</sup> septembre 2026</span></p>
+          <h3>Septembre Rouge 2026 : le programme des journées de sensibilisation</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RENDEZ-VOUS ============ -->
+<section class="rdv" id="rendez-vous">
+  <div class="wrap">
+    <div class="rdv-carte">
+      <div class="rdv-texte">
+        <p class="surtitre">Prise de rendez-vous</p>
+        <h2>Consulter un spécialiste, en cinq étapes.</h2>
+        <ol class="etapes">
+          <li>Consultation</li><li>Date</li><li>Heure</li><li>Coordonnées</li><li>Confirmation</li>
+        </ol>
+        <div class="types">
+          <a href="#">Consultation d’hématologie</a>
+          <a href="#">Drépanocytose</a>
+          <a href="#">Hémophilie</a>
+          <a href="#">Hémostase</a>
+          <a href="#">Cancer du sang</a>
+          <a href="#">Avis spécialisé</a>
+        </div>
+        <div class="boutons boutons-gauche">
+          <a class="btn btn-rouge btn-grand" href="rendez-vous.html"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a>
+          <a class="btn btn-contour btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>+224 628 73 31 43</a>
+        </div>
+      </div>
+      <img class="rdv-globule" src="assets/img/rendus/globule-seul.webp" alt="" aria-hidden="true">
+      <div class="rdv-message" aria-hidden="true">
+        <p class="rdv-message-tete"><span class="rdv-message-ico"><svg><use href="#i-whatsapp"/></svg></span>HEMATO GUI<small>WhatsApp</small></p>
+        <p class="rdv-bulle">Bonjour HEMATO GUI, je souhaite obtenir des informations concernant une consultation d’hématologie.</p>
+        <p class="rdv-message-note">Message pré-rempli · un seul geste</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIED DE PAGE ============ -->
+<footer class="pied" id="pied">
+  <div class="wrap">
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <p class="marque-nom">HEMATO GUI</p>
+        <p class="slogan">Informer, former et traiter les maladies hématologiques</p>
+        <p class="devise">Confiance et espoir</p>
+      </div>
+      <div class="pied-contact">
+        <a class="btn btn-rouge btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Écrire sur WhatsApp</a>
+        <p><svg><use href="#i-lieu"/></svg>Conakry, Guinée</p>
+      </div>
+    </div>
+
+    <div class="pied-colonnes">
+      <nav aria-label="Hématologie">
+        <p class="pied-titre">Hématologie</p>
+        <a href="drepanocytose.html">Drépanocytose</a><a href="hemophilie.html">Hémophilie</a><a href="cancers-du-sang.html">Cancers du sang</a><a href="hemostase.html">Hémostase</a><a href="diagnostic.html">Diagnostic</a><a href="outils.html">Outils hématologiques</a>
+      </nav>
+      <nav aria-label="Patients">
+        <p class="pied-titre">Patients</p>
+        <a href="rendez-vous.html">Prendre rendez-vous</a><a href="#">Fiches médicales</a><a href="#">Documents</a><a href="compte.html">Compte patient</a><a href="#">Questions fréquentes</a>
+      </nav>
+      <nav aria-label="Professionnels">
+        <p class="pied-titre">Professionnels</p>
+        <a href="espace-pro.html">Espace professionnel</a><a href="#">Protocoles</a><a href="#">Formations</a><a href="#">Webinaires</a><a href="ebooks.html">eBooks professionnels</a>
+      </nav>
+      <nav aria-label="HEMATO GUI">
+        <p class="pied-titre">HEMATO GUI</p>
+        <a href="#">À propos</a><a href="#actualites">Actualités</a><a href="#septembre-rouge">Septembre Rouge</a><a href="#">Contact</a>
+      </nav>
+    </div>
+
+    <div class="pied-bas">
+      <p>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
+      <p class="pied-legal"><span>© 2026 HEMATO GUI</span><a href="#">Mentions légales</a><a href="#">Confidentialité</a><a href="#">Données de santé</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-flottant" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener" aria-label="Écrire à HEMATO GUI sur WhatsApp">
+  <svg><use href="#i-whatsapp"/></svg><span class="wa-bulle">Une question ? Écrivez-nous</span>
+</a>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

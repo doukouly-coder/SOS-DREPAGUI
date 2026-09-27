@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Couvertures eBooks — HEMATO GUI</title>
+<link href="../../site/assets/css/polices.css" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#ddd;font-family:Inter,system-ui,sans-serif;padding:20px;display:flex;flex-wrap:wrap;gap:20px}
+.couv{width:600px;height:840px;position:relative;overflow:hidden;padding:56px 52px;display:flex;flex-direction:column}
+.couv::before{content:"";position:absolute;inset:0 auto 0 0;width:22px;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0) 70%,rgba(255,255,255,.12));z-index:3}
+.coll{font-size:15px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.coll span:last-child{font-weight:500;letter-spacing:.08em;opacity:.7}
+.cat{margin-top:64px;font-size:17px;font-weight:600;letter-spacing:.02em}
+h1{font-size:64px;line-height:1;letter-spacing:-.045em;font-weight:750;margin-top:14px;font-variation-settings:"opsz" 32}
+.sous{font-size:22px;line-height:1.3;margin-top:22px;max-width:420px;font-weight:450}
+.couv img{position:absolute;z-index:1}
+.bas{margin-top:auto;position:relative;z-index:2;font-size:15px;font-weight:600;letter-spacing:.04em}
+/* 1 — Hémogramme : blanc */
+.c1{background:#fff;color:#1D1D1F}.c1 .cat,.c1 h1 em{color:#C8102E}.c1 h1 em{font-style:normal}
+.c1 img{width:640px;right:-150px;bottom:-150px}
+/* 2 — Drépanocytose : rouge */
+.c2{background:#C8102E;color:#fff}.c2{background:radial-gradient(120% 80% at 80% 90%,#e0203e 0,#C8102E 45%,#a50d26 100%)}.c2 img{width:600px;right:-90px;bottom:-110px;filter:drop-shadow(0 30px 40px rgba(60,0,10,.45)) brightness(1.08)}
+/* 3 — Hémostase : encre */
+.c3{background:#1D1D1F;color:#fff}.c3 .cat{color:#ff5a6e}.c3 img{width:640px;right:-170px;bottom:-240px}
+/* 4 — Hémophilie : gris */
+.c4{background:#F5F5F7;color:#1D1D1F}.c4 .cat{color:#C8102E}.c4 img{width:660px;right:-150px;bottom:-170px}
+</style></head><body>
+<div class="couv c1" id="c1"><div class="coll"><span>HEMATO GUI</span><span>Guide pratique</span></div>
+<p class="cat">Hémogramme</p><h1>Lire et interpréter la <em>NFS</em></h1><p class="sous">Méthode pas à pas, valeurs de référence et cas commentés.</p>
+<img src="../rendus-3d/png/trio.png" alt=""><p class="bas">Niveau intermédiaire</p></div>
+<div class="couv c2" id="c2"><div class="coll"><span>HEMATO GUI</span><span>Grand public</span></div>
+<p class="cat">Drépanocytose</p><h1>Le guide des familles</h1><p class="sous">Comprendre la maladie, prévenir les crises, accompagner l’enfant.</p>
+<img src="../rendus-3d/png/drepanocytose.png" alt=""><p class="bas">Édition 2026</p></div>
+<div class="couv c3" id="c3"><div class="coll"><span>HEMATO GUI</span><span>Professionnels</span></div>
+<p class="cat">Hémostase</p><h1>Du bilan à la décision</h1><p class="sous">TP, TCA, fibrinogène, D-dimères : interpréter et orienter.</p>
+<img src="../rendus-3d/png/hemostase.png" alt=""><p class="bas">Niveau avancé</p></div>
+<div class="couv c4" id="c4"><div class="coll"><span>HEMATO GUI</span><span>Grand public</span></div>
+<p class="cat">Hémophilie</p><h1>Vivre et agir au quotidien</h1><p class="sous">Reconnaître un saignement, protéger ses articulations, réagir vite.</p>
+<img src="../rendus-3d/png/hemophilie.png" alt=""><p class="bas">Édition 2026</p></div>
+</body></html>

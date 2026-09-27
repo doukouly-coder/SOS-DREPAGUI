@@ -11,3 +11,4 @@ bundle/
 # Système
 .DS_Store
 node_modules/
+outils/rendus-3d/png/
