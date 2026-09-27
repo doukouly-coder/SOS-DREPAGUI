@@ -11,11 +11,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from blocs import convertir, sans_commentaires, gabarits, nom_gabarit, ErreurBloc
+from blocs import convertir, sans_commentaires, gabarits, nom_gabarit, liens_wordpress, ErreurBloc
 
 RACINE = Path(__file__).resolve().parent.parent / 'site'
 CONTENU_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'contenu'
 GABARITS_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'extension' / 'hemato-gui' / 'gabarits'
+PARTIES_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'theme' / 'hemato-gui' / 'parts'
 SRC = RACINE / 'src'
 PARTIES = SRC / 'parties'
 
@@ -32,11 +33,6 @@ JSONLD = '''<script type="application/ld+json">
   "availableLanguage": "fr"
 }
 </script>
-'''
-
-WA_FLOTTANT = '''<a class="wa-flottant" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener" aria-label="Écrire à HEMATO GUI sur WhatsApp">
-  <svg><use href="#i-whatsapp"/></svg><span class="wa-bulle">Une question ? Écrivez-nous</span>
-</a>
 '''
 
 
@@ -113,15 +109,25 @@ def assembler(source):
         page = f'{tete}\n{corps}\n<script src="assets/js/app.js" defer></script>\n{scripts}</body>\n</html>\n'
     else:
         entete = activer_nav((PARTIES / 'entete.html').read_text(encoding='utf-8'), meta.get('nav'))
-        pied = (PARTIES / 'pied.html').read_text(encoding='utf-8')
+        pied = PIED_MAQUETTE
         scripts = ''.join(f'<script src="{js}" defer></script>\n' for js in meta.get('scripts', []))
-        page = (f'{tete}\n{entete}\n<main id="contenu">\n{corps}\n</main>\n\n{pied}\n{WA_FLOTTANT}\n'
+        page = (f'{tete}\n{entete}\n<main id="contenu">\n{corps}\n</main>\n\n{pied}\n'
                 f'<script src="assets/js/app.js" defer></script>\n{scripts}</body>\n</html>\n')
     page = re.sub(r'\n{3,}', '\n\n', page)
     (RACINE / source.name).write_text(espaces_insecables(page), encoding='utf-8')
     return source.name
 
 
+def construire_pied():
+    """Le pied de page est écrit une fois, en dialecte blocs : partie de thème WordPress
+    (liens en permaliens) et maquette (même HTML, sans les délimiteurs de blocs)."""
+    source = (PARTIES / 'pied.html').read_text(encoding='utf-8')
+    PARTIES_WP.mkdir(parents=True, exist_ok=True)
+    (PARTIES_WP / 'footer.html').write_text(espaces_insecables(convertir(source, liens=liens_wordpress('/'))), encoding='utf-8')
+    return '<footer class="wp-block-template-part">\n' + sans_commentaires(convertir(source, maquette=True)) + '</footer>\n'
+
+
 if __name__ == '__main__':
+    PIED_MAQUETTE = construire_pied()
     for src in sorted((SRC / 'pages').glob('*.html')):
         print('assemblé :', assembler(src))

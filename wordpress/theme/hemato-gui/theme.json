@@ -1,0 +1,187 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": false,
+    "useRootPaddingAwareAlignments": false,
+    "layout": {
+      "contentSize": "1240px",
+      "wideSize": "1240px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "custom": false,
+      "customGradient": false,
+      "palette": [
+        {
+          "slug": "rouge",
+          "color": "#C8102E",
+          "name": "Rouge HEMATO GUI"
+        },
+        {
+          "slug": "encre",
+          "color": "#1D1D1F",
+          "name": "Encre"
+        },
+        {
+          "slug": "graphite",
+          "color": "#6E6E73",
+          "name": "Graphite"
+        },
+        {
+          "slug": "gris",
+          "color": "#F5F5F7",
+          "name": "Gris clair"
+        },
+        {
+          "slug": "trait",
+          "color": "#E4E4E9",
+          "name": "Filet"
+        },
+        {
+          "slug": "blanc",
+          "color": "#FFFFFF",
+          "name": "Blanc"
+        },
+        {
+          "slug": "vert-wa",
+          "color": "#25D366",
+          "name": "Vert WhatsApp"
+        }
+      ]
+    },
+    "typography": {
+      "fluid": false,
+      "customFontSize": false,
+      "defaultFontSizes": false,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "slug": "inter",
+          "name": "Inter",
+          "fontFamily": "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/inter-latin-opsz-normal.woff2"
+              ],
+              "unicodeRange": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD"
+            },
+            {
+              "fontFamily": "Inter",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/inter-latin-ext-opsz-normal.woff2"
+              ],
+              "unicodeRange": "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF"
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "petit",
+          "name": "Petit",
+          "size": "14px"
+        },
+        {
+          "slug": "normal",
+          "name": "Normal",
+          "size": "17px"
+        },
+        {
+          "slug": "grand",
+          "name": "Grand",
+          "size": "21px"
+        }
+      ]
+    },
+    "spacing": {
+      "blockGap": null,
+      "margin": false,
+      "padding": false,
+      "customSpacingSize": false,
+      "defaultSpacingSizes": false,
+      "units": [
+        "px",
+        "%"
+      ]
+    },
+    "border": {
+      "radius": false,
+      "color": false,
+      "style": false,
+      "width": false
+    },
+    "shadow": {
+      "defaultPresets": false
+    }
+  },
+  "styles": {
+    "spacing": {
+      "padding": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
+    },
+    "color": {
+      "background": "var(--wp--preset--color--blanc)",
+      "text": "var(--wp--preset--color--encre)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--inter)",
+      "fontSize": "17px",
+      "lineHeight": "1.55"
+    },
+    "elements": {
+      "link": {
+        "color": {
+          "text": "inherit"
+        },
+        "typography": {
+          "textDecoration": "none"
+        }
+      },
+      "button": {
+        "color": {
+          "text": "inherit",
+          "background": "transparent"
+        },
+        "spacing": {
+          "padding": "0"
+        },
+        "border": {
+          "width": "0"
+        },
+        "typography": {
+          "fontSize": "inherit",
+          "fontFamily": "inherit",
+          "lineHeight": "inherit",
+          "textDecoration": "none"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "En-tête",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Pied de page",
+      "area": "footer"
+    }
+  ]
+}

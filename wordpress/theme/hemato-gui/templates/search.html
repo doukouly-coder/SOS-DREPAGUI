@@ -1,0 +1,29 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"default"}} -->
+<main id="contenu" class="wp-block-group"><!-- wp:group {"tagName":"section","className":"section liste-articles","layout":{"type":"default"}} -->
+<section class="wp-block-group section liste-articles"><!-- wp:group {"className":"wrap","layout":{"type":"default"}} -->
+<div class="wp-block-group wrap"><!-- wp:query-title {"type":"search","className":"titre-page"} /-->
+
+<!-- wp:search {"label":"Rechercher sur le site","showLabel":false,"placeholder":"Maladie, examen, traitement…","buttonText":"Rechercher","buttonPosition":"button-inside","buttonUseIcon":true,"className":"recherche recherche-claire"} /-->
+
+<!-- wp:query {"queryId":2,"query":{"perPage":20,"pages":0,"offset":0,"postType":"page","order":"desc","orderBy":"relevance","inherit":true},"className":"resultats","layout":{"type":"default"}} -->
+<div class="wp-block-query resultats"><!-- wp:post-template {"className":"resultats-liste","layout":{"type":"default"}} -->
+<!-- wp:group {"className":"resultat carte-lien","layout":{"type":"default"}} -->
+<div class="wp-block-group resultat carte-lien"><!-- wp:post-title {"level":3,"isLink":true,"className":"lien-etire"} /-->
+
+<!-- wp:post-excerpt {"excerptLength":24} /--></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"className":"chapeau"} -->
+<p class="chapeau">Aucun résultat. Essayez un autre mot, ou écrivez-nous sur WhatsApp.</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></section>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

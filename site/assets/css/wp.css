@@ -1,0 +1,119 @@
+/* ==========================================================================
+   HEMATO GUI — ajustements propres à WordPress (chargé après styles.css et pages.css).
+   La maquette n'en a pas besoin : ici vivent seulement les règles qui habillent
+   les blocs dynamiques (navigation, titre du site) et neutralisent les styles
+   par défaut de la bibliothèque de blocs.
+   ========================================================================== */
+
+/* Espacement automatique : coupé à la source (theme.json, settings.spacing.blockGap = null,
+   WordPress ne génère alors aucune règle de marge de mise en page). Pas de filet CSS en plus :
+   il écraserait les marges par défaut sur lesquelles la maquette validée s'appuie (h4). */
+.wp-site-blocks > *{margin-block:0}
+.wp-block-buttons > .wp-block-button{margin:0}
+.wp-block-button__link{word-break:normal}
+
+/* --- Titre du site : emplacement du logo officiel (à fournir) --- */
+.entete .wp-block-site-title{font-size:18px;line-height:1.55}
+
+/* --- Navigation principale (bloc core/navigation) --- */
+.entete-rangee > .wp-block-navigation{order:3;margin:0 0 0 -8px}
+.entete .wp-block-navigation__responsive-container-open{display:grid!important;place-items:center;width:44px;height:44px;padding:0;color:var(--encre)}
+.entete .wp-block-navigation__responsive-container-open svg,.entete .wp-block-navigation__responsive-container-close svg{display:none}
+.entete .wp-block-navigation__responsive-container-open::before,.entete .wp-block-navigation__responsive-container-close::before{content:"";width:24px;height:24px;background:currentColor;
+  -webkit-mask:var(--ico-menu) center/contain no-repeat;mask:var(--ico-menu) center/contain no-repeat}
+.entete .wp-block-navigation__responsive-container-close::before{-webkit-mask-image:var(--ico-fermer);mask-image:var(--ico-fermer)}
+.entete .wp-block-navigation__responsive-container:not(.is-menu-open){display:none!important}
+
+@media (min-width:1200px){
+  .entete-rangee > .wp-block-navigation{order:0;margin-inline:auto}
+  .entete .wp-block-navigation__responsive-container-open{display:none!important}
+  .entete .wp-block-navigation__responsive-container:not(.is-menu-open){display:block!important;position:static;background:none}
+  .entete .wp-block-navigation__container{gap:clamp(18px,1.9vw,28px)}
+  .entete-rangee > .wp-block-navigation{margin-left:auto}
+  .entete .menu .wp-block-navigation-item__content{font-size:14.5px;font-weight:500;line-height:1.55;color:rgba(29,29,31,.8);position:relative;padding-block:6px;transition:color .2s}
+  .entete .menu .wp-block-navigation-item__content:hover,
+  .entete .menu .current-menu-item > .wp-block-navigation-item__content,
+  .entete .menu .wp-block-navigation-submenu:has(.current-menu-item) > .wp-block-navigation-item__content{color:var(--encre)}
+  .entete .wp-block-navigation__container > .current-menu-item > .wp-block-navigation-item__content::after,
+  .entete .wp-block-navigation__container > .wp-block-navigation-submenu:has(.current-menu-item) > .wp-block-navigation-item__content::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;border-radius:2px;background:var(--rouge)}
+  .entete .wp-block-navigation__container > .wp-block-navigation-submenu:has(.current-menu-item) > .wp-block-navigation-item__content::after{right:-18px}
+  .entete .wp-block-navigation__submenu-icon{width:14px;height:14px;margin-left:4px;padding:0;color:rgba(29,29,31,.8);transition:transform .25s}
+  .entete .wp-block-navigation__submenu-icon svg{display:none}
+  .entete .wp-block-navigation__submenu-icon::before{content:"";display:block;width:14px;height:14px;background:currentColor;-webkit-mask:var(--ico-chevron) center/contain no-repeat;mask:var(--ico-chevron) center/contain no-repeat}
+  .entete .has-child:hover > .wp-block-navigation__submenu-icon,
+  .entete .has-child:focus-within > .wp-block-navigation__submenu-icon{transform:rotate(180deg)}
+  /* sous-menu en panneau à deux colonnes, comme la maquette */
+  .entete .wp-block-navigation .has-child .wp-block-navigation__submenu-container{left:-24px;top:calc(100% + 14px);width:560px!important;min-width:0!important;height:auto!important;
+    display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:10px;background:#fff;border:1px solid var(--trait);border-radius:22px;box-shadow:var(--ombre-forte);
+    transform:translateY(-6px);transition:opacity .2s,transform .2s,visibility .2s}
+  .entete .wp-block-navigation .has-child .wp-block-navigation__submenu-container::before{content:"";position:absolute;inset:-16px 0 auto;height:16px}
+  .entete .wp-block-navigation .has-child:hover > .wp-block-navigation__submenu-container,
+  .entete .wp-block-navigation .has-child:focus-within > .wp-block-navigation__submenu-container{transform:none}
+  .entete .menu.wp-block-navigation .has-child .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content{display:block;padding:12px 14px!important;border-radius:14px;color:var(--encre)!important;transition:background-color .2s}
+  .entete .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover{background:var(--gris)}
+  .entete .wp-block-navigation__submenu-container .wp-block-navigation-item__content::after{content:none!important}
+  .entete .wp-block-navigation__submenu-container .wp-block-navigation-item__label{display:block;font-size:15px;font-weight:650}
+  .entete .wp-block-navigation__submenu-container .wp-block-navigation-item__description{display:block;font-size:13px;font-weight:500;color:var(--graphite);margin-top:1px}
+  .entete .wp-block-navigation .wp-block-buttons{display:none}
+}
+
+/* --- Panneau mobile : le calque du bloc, habillé comme le panneau de la maquette --- */
+:root.has-modal-open .entete{-webkit-backdrop-filter:none;backdrop-filter:none;background:#fff}
+:root.has-modal-open .entete .wp-block-navigation__responsive-container-open{visibility:hidden}
+.entete .wp-block-navigation__responsive-container.is-menu-open{position:fixed;inset:var(--entete) 0 0;z-index:49;padding:18px 0 28px;
+  background-color:#fff!important;color:var(--encre)!important;overflow-y:auto;animation:none}
+.entete .is-menu-open .wp-block-navigation__responsive-close{max-width:none;width:100%}
+.entete .is-menu-open .wp-block-navigation__responsive-dialog{margin:0!important;min-height:100%;display:flex;flex-direction:column}
+.entete .is-menu-open .wp-block-navigation__responsive-container-close{position:fixed;top:calc((var(--entete) - 44px) / 2);right:20px;z-index:51;
+  width:44px;height:44px;display:grid;place-items:center;padding:0;color:var(--encre)}
+.entete .is-menu-open .wp-block-navigation__responsive-container-content{padding:0 20px!important;display:flex;flex-direction:column;align-items:stretch!important;gap:0!important;flex:1;
+  width:100%;max-width:1240px;margin-inline:auto}
+.entete .is-menu-open .wp-block-navigation__container{display:flex;flex-direction:column;align-items:stretch!important;gap:0!important}
+.entete .is-menu-open .wp-block-navigation-item{display:block!important}
+.entete .is-menu-open .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content{display:block;font-size:28px;font-weight:680;letter-spacing:-.03em;line-height:1.55;padding:12px 0!important;border-bottom:1px solid var(--trait)}
+.entete .is-menu-open .wp-block-navigation__container > .current-menu-item > .wp-block-navigation-item__content,
+.entete .is-menu-open .wp-block-navigation__container > .wp-block-navigation-submenu:has(.current-menu-item) > .wp-block-navigation-item__content{color:var(--rouge)}
+.entete .is-menu-open .wp-block-navigation__submenu-icon{display:none!important}
+.entete .is-menu-open .wp-block-navigation__submenu-container{display:grid!important;grid-template-columns:1fr 1fr;gap:0 16px!important;padding:6px 0 12px!important;border-bottom:1px solid var(--trait)!important;
+  position:static!important;opacity:1!important;visibility:visible!important;width:auto!important;height:auto!important;background:none!important;border:0}
+.entete .is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item__content{font-size:17px;font-weight:550;letter-spacing:-.01em;line-height:1.55;padding:8px 0!important;color:var(--graphite)}
+.entete .is-menu-open .wp-block-navigation-item__description{display:none}
+.entete .is-menu-open .wp-block-navigation .wp-block-buttons,
+.entete .is-menu-open .wp-block-buttons{display:grid!important;gap:10px;margin-top:auto!important;padding-top:28px}
+.entete .is-menu-open .wp-block-buttons > .wp-block-button{width:100%}
+.entete .is-menu-open .wp-block-buttons .wp-block-button__link{width:100%}
+@media (min-width:768px){
+  .entete .is-menu-open .wp-block-navigation__responsive-container-content{padding:0 32px!important}
+  .entete .is-menu-open .wp-block-navigation__responsive-container-close{right:32px}
+}
+
+/* --- Gabarits d'articles et de recherche --- */
+.liste-articles,.article-seul{padding-top:calc(var(--entete) + 56px)}
+.liste-articles .titre-page,.article-seul .titre-page{margin-bottom:28px}
+.actus-liste-requete .actus-liste{display:grid;gap:16px;list-style:none;margin:0;padding:0}
+@media (min-width:700px){.actus-liste-requete .actus-liste{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.actus-liste-requete .actus-liste{grid-template-columns:repeat(4,1fr)}}
+.article-visuel.wp-block-post-featured-image img{position:static;width:100%;height:100%;object-fit:cover;translate:none}
+.article-texte{max-width:70ch;margin-top:28px;font-size:18px;line-height:1.65}
+.article-texte > * + *{margin-top:1em}
+.resultats-liste{display:grid;gap:10px;list-style:none;margin:32px 0 0;padding:0}
+.resultat{padding:20px 22px;border-radius:22px;background:var(--gris)}
+.resultat h3{font-size:19px;letter-spacing:-.02em}
+.resultat .wp-block-post-excerpt__excerpt{margin-top:6px;font-size:15px;color:var(--graphite)}
+.pagination{display:flex;gap:10px;margin-top:32px;font-weight:600}
+
+/* --- Retours des formulaires de l'extension --- */
+.formulaire-retour{margin:0 0 16px;padding:12px 16px;border-radius:14px;background:rgba(37,211,102,.12);color:var(--encre);font-size:14.5px;line-height:1.5}
+.formulaire-retour-erreur{background:rgba(200,16,46,.08);color:var(--rouge-fonce)}
+.contact-formulaire .formulaire-retour{margin-bottom:20px}
+
+/* --- Carte « compte connecté » (espace patient / pro) --- */
+.connexion-compte{display:grid;gap:12px;align-content:start}
+.connexion-compte .surtitre{margin:0}
+.connexion-bonjour{font-size:clamp(26px,2.6vw,32px);font-weight:730;letter-spacing:-.03em;line-height:1.15}
+.connexion-texte{font-size:15.5px;color:var(--graphite)}
+.page-hero-sombre .connexion-texte{color:var(--graphite)}
+.connexion-compte .boutons{margin-top:8px}
+.mes-demandes li{grid-template-columns:1fr auto}
+.mes-demandes li span strong{display:block}
+.mes-demandes li span small{display:block;font-size:13.5px;color:var(--graphite)}

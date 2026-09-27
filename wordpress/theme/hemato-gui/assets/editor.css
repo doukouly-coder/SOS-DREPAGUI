@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Corrections propres à l'éditeur de blocs (add_editor_style) — jamais chargée
+   sur le site. Porte 5 de la recette : l'éditeur doit prévisualiser le site.
+   ========================================================================== */
+
+/* Le canevas n'a pas d'en-tête fixe : les héros n'ont pas à lui réserver de place. */
+.editor-styles-wrapper .hero,
+.editor-styles-wrapper .page-hero{padding-top:40px!important}
+
+/* Gutenberg impose position:relative à chaque bloc : on rétablit les couches
+   que la maquette sort du flux (visuels superposés, cartes flottantes). */
+.editor-styles-wrapper .hero-couche,
+.editor-styles-wrapper .verre,
+.editor-styles-wrapper .rdv-globule,
+.editor-styles-wrapper .domaine-visuel,
+.editor-styles-wrapper .pile-livres > figure{position:absolute!important}
+
+/* Toutes les variantes (onglets, résultats d'outils) restent visibles et éditables. */
+.editor-styles-wrapper .variante{display:block!important;opacity:1!important;margin-top:18px;outline:1px dashed var(--trait);outline-offset:6px}
+.editor-styles-wrapper .est-cache{display:block!important}
+
+/* Le lien étiré couvrirait la carte et volerait les clics d'édition. */
+.editor-styles-wrapper .lien-etire a::before{content:none!important}
+
+/* Les shortcodes de l'extension (formulaires, calculateurs) : un cadre lisible. */
+.editor-styles-wrapper .wp-block-shortcode{padding:16px;border-radius:14px;background:var(--gris);font-family:ui-monospace,monospace;font-size:14px}
+
+/* Fond du site derrière les blocs. */
+.editor-styles-wrapper{background:#fff}

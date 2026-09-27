@@ -79,6 +79,9 @@ def attrs_json(d):
              .replace('&', '\\u0026').replace('\\"', '\\u0022'))
 
 
+LIENS = None  # fonction href -> href, posée par Convertisseur pendant une conversion
+
+
 def en_ligne(noeud, chemin):
     """HTML en ligne d'un paragraphe/titre ; refuse toute balise que RichText ne restitue pas."""
     sortie = []
@@ -94,6 +97,8 @@ def en_ligne(noeud, chemin):
         attrs = ''
         for cle, val in e.attrs.items():
             if e.tag == 'a' and cle in ('href', 'target', 'rel'):
+                if cle == 'href' and LIENS:
+                    val = LIENS(val)
                 attrs += f' {cle}="{val}"'
             else:
                 raise ErreurBloc(f'{chemin} : attribut {cle} interdit sur <{e.tag}>')
@@ -117,10 +122,12 @@ def html_brut(noeud):
 
 
 class Convertisseur:
-    def __init__(self, medias=None, maquette=False):
+    def __init__(self, medias=None, maquette=False, liens=None):
         # medias : {chemin source: {"id": n, "url": "…"}} ; maquette=True garde les chemins locaux
+        # liens : fonction de réécriture des href (maquette « page.html » -> permalien WordPress)
         self.medias = medias or {}
         self.maquette = maquette
+        self.liens = liens
 
     def blocs(self, noeud, chemin='page'):
         return ''.join(self.bloc(e, chemin) for e in noeud.enfants if not isinstance(e, str) or e.strip())
@@ -249,6 +256,8 @@ class Convertisseur:
         if cls:
             a['className'] = cls
         href = b.attrs.get('href', '')
+        if self.liens:
+            href = self.liens(href)
         extra = ''
         if b.attrs.get('target'):
             a['linkTarget'] = b.attrs['target']
@@ -261,10 +270,26 @@ class Convertisseur:
                 f'{en_ligne(b, chemin + " > a")}</a></div>\n<!-- /wp:button -->')
 
 
-def convertir(source_html, medias=None, maquette=False):
+def convertir(source_html, medias=None, maquette=False, liens=None):
+    global LIENS
     arbre = Arbre()
     arbre.feed(source_html)
-    return Convertisseur(medias, maquette).blocs(arbre.racine)
+    LIENS = liens
+    try:
+        return Convertisseur(medias, maquette, liens).blocs(arbre.racine)
+    finally:
+        LIENS = None
+
+
+def liens_wordpress(base='/'):
+    """« drepanocytose.html#urgence » -> « {base}drepanocytose/#urgence » ; index.html -> base."""
+    def reecrire(href):
+        m = re.match(r'^([\w-]+)\.html(.*)$', href)
+        if not m:
+            return href
+        nom, suite = m.groups()
+        return (base if nom == 'index' else f'{base}{nom}/') + suite
+    return reecrire
 
 
 def sans_commentaires(blocs):

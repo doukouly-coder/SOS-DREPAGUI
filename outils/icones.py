@@ -27,6 +27,9 @@ fleche = re.search(r'\.ico-fleche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).g
 regles.append(f':root{{--ico-fleche:{fleche}}}')
 loupe = re.search(r'\.ico-recherche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)
 regles.append(f':root{{--ico-loupe:{loupe}}}')
+for nom in ('chevron', 'menu', 'fermer'):
+    motif = re.search(r'\.ico-' + nom + r'\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)
+    regles.append(f':root{{--ico-{nom}:{motif}}}')
 wa = re.search(r'<symbol id="i-whatsapp" viewBox="([^"]+)">(.*?)</symbol>', sprite, re.S)
 svg_blanc = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{wa.group(1)}">{wa.group(2).strip().replace("currentColor", "#fff")}</svg>'
 regles.append(f':root{{--wa-blanc:url("data:image/svg+xml,{quote(svg_blanc, safe=" =:/,.-")}")}}')

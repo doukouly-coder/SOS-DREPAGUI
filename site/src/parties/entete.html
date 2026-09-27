@@ -1,9 +1,10 @@
 <a class="evitement" href="#contenu">Aller au contenu</a>
 
-<header class="entete">
-  <div class="wrap entete-rangee">
+<header class="wp-block-template-part">
+<div class="wp-block-group entete">
+  <div class="wp-block-group wrap entete-rangee">
     <!-- Emplacement du logo officiel HEMATO GUI (fichier à fournir) : ne pas recréer le logo -->
-    <a class="marque" href="index.html" aria-label="HEMATO GUI — accueil"><span class="marque-nom">HEMATO GUI</span></a>
+    <p class="wp-block-site-title marque"><a href="index.html" rel="home">HEMATO GUI</a></p>
 
     <nav class="menu" aria-label="Navigation principale">
       <a href="index.html" data-nav="accueil">Accueil</a>
@@ -26,16 +27,15 @@
       <a href="contact.html" data-nav="contact">Contact</a>
     </nav>
 
-    <div class="entete-actions">
-      <a class="wa-icone" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." aria-label="Écrire à HEMATO GUI sur WhatsApp" target="_blank" rel="noopener">
-        <svg><use href="#i-whatsapp"/></svg>
-      </a>
-      <a class="btn btn-rouge btn-petit" href="rendez-vous.html"><span class="court">Rendez-vous</span><span class="long">Prendre rendez-vous</span></a>
+    <div class="wp-block-group entete-actions">
+      <p class="wa-icone ico-whatsapp"><a href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener">WhatsApp</a></p>
+      <div class="wp-block-buttons entete-rdv"><div class="wp-block-button btn btn-rouge btn-petit b-court"><a class="wp-block-button__link wp-element-button" href="rendez-vous.html">Rendez-vous</a></div><div class="wp-block-button btn btn-rouge btn-petit b-long"><a class="wp-block-button__link wp-element-button" href="rendez-vous.html">Prendre rendez-vous</a></div></div>
       <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="panneau-menu">
         <svg class="ico-ouvrir"><use href="#i-menu"/></svg><svg class="ico-fermer"><use href="#i-fermer"/></svg>
       </button>
     </div>
   </div>
+</div>
 </header>
 
 <div class="panneau-menu" id="panneau-menu">

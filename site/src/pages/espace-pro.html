@@ -21,18 +21,18 @@
         <p class="choix-item">Demander un accès</p>
       </div>
       <form class="variante est-actif formulaire-carte" onsubmit="return false">
-        <div class="champ"><label for="p-mail">E-mail professionnel</label><div class="champ-saisie"><input id="p-mail" type="email" autocomplete="username"></div></div>
-        <div class="champ"><label for="p-mdp">Mot de passe</label><div class="champ-saisie"><input id="p-mdp" type="password" autocomplete="current-password"></div></div>
+        <div class="champ"><label for="p-mail">E-mail professionnel</label><div class="champ-saisie"><input id="p-mail" name="log" type="email" autocomplete="username" required></div></div>
+        <div class="champ"><label for="p-mdp">Mot de passe</label><div class="champ-saisie"><input id="p-mdp" name="pwd" type="password" autocomplete="current-password" required></div></div>
         <button class="btn btn-rouge btn-grand" type="submit">Se connecter</button>
         <p class="connexion-note"><svg><use href="#i-bouclier"/></svg>Double authentification pour les comptes professionnels</p>
       </form>
       <form class="variante formulaire-carte" onsubmit="return false">
-        <div class="champ"><label for="p-prof">Profession</label><div class="champ-saisie"><select id="p-prof"><option>Médecin</option><option>Pharmacien·ne</option><option>Biologiste</option><option>Infirmier·e</option><option>Sage-femme</option><option>Étudiant·e en santé</option></select></div></div>
+        <div class="champ"><label for="p-prof">Profession</label><div class="champ-saisie"><select id="p-prof" name="profession"><option>Médecin</option><option>Pharmacien·ne</option><option>Biologiste</option><option>Infirmier·e</option><option>Sage-femme</option><option>Étudiant·e en santé</option></select></div></div>
         <div class="champs">
-          <div class="champ"><label for="p-ordre">N° d’inscription à l’Ordre</label><div class="champ-saisie"><input id="p-ordre"></div></div>
-          <div class="champ"><label for="p-etab">Établissement</label><div class="champ-saisie"><input id="p-etab"></div></div>
+          <div class="champ"><label for="p-ordre">N° d’inscription à l’Ordre</label><div class="champ-saisie"><input id="p-ordre" name="ordre" required></div></div>
+          <div class="champ"><label for="p-etab">Établissement</label><div class="champ-saisie"><input id="p-etab" name="etablissement" required></div></div>
         </div>
-        <div class="champ"><label for="p-mail2">E-mail professionnel</label><div class="champ-saisie"><input id="p-mail2" type="email"></div></div>
+        <div class="champ"><label for="p-mail2">E-mail professionnel</label><div class="champ-saisie"><input id="p-mail2" name="mail" type="email" autocomplete="email" required></div></div>
         <button class="btn btn-rouge btn-grand" type="submit">Envoyer ma demande</button>
         <p class="connexion-note"><svg><use href="#i-check"/></svg>Chaque demande est vérifiée avant l’ouverture de l’accès</p>
       </form>
