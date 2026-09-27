@@ -46,19 +46,20 @@ Le rouge est **provisoire** : il sera aligné sur la charte officielle dès réc
 - Un motif géométrique inspiré du bogolan : lecture du « design africain contemporain », limitée à la bande Septembre Rouge et au liseré du pied de page.
 - Des données d'exemple (cartes du héros, outil NFS, eBooks, prix, articles), toutes marquées ou à remplacer.
 
-**Question ouverte** : le bouton WhatsApp flottant est en encre (`#1D1D1F`) pour rester dans la palette.
-Faut-il plutôt le vert officiel de WhatsApp, qui ajouterait une seconde couleur ?
+**Décision du client** (validation de l'accueil) : le bouton WhatsApp prend le **vert officiel `#25D366`**,
+réservé aux éléments WhatsApp (bouton flottant, icône d'en-tête, boutons « Écrire sur WhatsApp »).
+Le texte posé sur ce vert est en encre (contraste 9:1) : le blanc n'atteindrait que 2:1.
 
 ## Porte de registre (relevé sur la maquette, styles calculés à 1440 px)
 
 | Invariant | Référence (brief) | Maquette (relevé) | Verdict |
 |---|---|---|---|
 | 1 · Classe typographique | une sans-serif moderne | 1 famille (Inter), 0 italique | conforme |
-| 2 · Système de couleur | un rouge + neutres | 1 seule teinte non neutre : `rgb(200,16,46)` | conforme |
+| 2 · Système de couleur | un rouge + neutres | 1 teinte non neutre `rgb(200,16,46)` + vert WhatsApp `#25D366` sur les seuls éléments WhatsApp | autorisé par le client : « je préfère le vert officiel de WhatsApp » |
 | 3 · Température du fond clair | blanc, gris très clair | `#FFFFFF` / `#F5F5F7` (froid) | conforme |
 | 4 · Découpe de la page | cartes, espace blanc | bandes pleine largeur + cartes arrondies encartées | conforme |
-| 5 · Géométrie | non fixée par le brief | rayons 22 à 40 px, aucune rotation ni diagonale | non fixé — à valider |
-| 6 · Alignement dominant | non fixé par le brief | héros et 2 titres centrés ; sections en deux colonnes alignées à gauche | non fixé — à valider |
+| 5 · Géométrie | non fixée par le brief | rayons 22 à 40 px, aucune rotation ni diagonale | autorisé par le client : « coins bien arrondis, sans éléments inclinés […] ça me convient » |
+| 6 · Alignement dominant | non fixé par le brief | héros et 2 titres centrés ; sections en deux colonnes alignées à gauche | autorisé par le client (même message) |
 | 7 · Densité et échelle | peu de texte, hiérarchie forte | corps 17 px · H1 82 px · H2 60 px ; peu de grands éléments | conforme |
 
 Contrôles de la maquette : aucune image cassée, police appliquée, aucun défilement horizontal à 390 px et à 1440 px.

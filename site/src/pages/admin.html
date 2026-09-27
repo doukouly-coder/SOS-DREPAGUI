@@ -1,0 +1,112 @@
+<!--{"titre":"Tableau de bord — Administration HEMATO GUI","description":"Maquette du tableau de bord administrateur HEMATO GUI.","gabarit":"admin","noindex":true,"body":"corps-admin","scripts":["assets/js/admin.js"]}-->
+<div class="admin">
+  <aside class="admin-menu" aria-label="Menu d’administration">
+    <a class="admin-marque" href="index.html">HEMATO GUI <small>Administration</small></a>
+    <nav>
+      <p class="admin-groupe">Pilotage</p>
+      <a class="est-actif" href="admin.html" aria-current="page"><svg><use href="#i-grille"/></svg>Tableau de bord</a>
+      <a href="#"><svg><use href="#i-tendance"/></svg>Statistiques</a>
+      <p class="admin-groupe">Soins</p>
+      <a href="#"><svg><use href="#i-utilisateurs"/></svg>Patients</a>
+      <a href="#"><svg><use href="#i-calendrier"/></svg>Rendez-vous<span class="badge">6</span></a>
+      <a href="#"><svg><use href="#i-stetho"/></svg>Médecins</a>
+      <p class="admin-groupe">Contenus</p>
+      <a href="#"><svg><use href="#i-fiche"/></svg>Fiches médicales</a>
+      <a href="#"><svg><use href="#i-journal"/></svg>Articles et actualités</a>
+      <a href="#"><svg><use href="#i-urgence"/></svg>Campagnes</a>
+      <a href="#"><svg><use href="#i-coeur"/></svg>Témoignages<span class="badge">2</span></a>
+      <p class="admin-groupe">Boutique</p>
+      <a href="#"><svg><use href="#i-livre"/></svg>eBooks et prix</a>
+      <a href="#"><svg><use href="#i-telecharger"/></svg>Téléchargements</a>
+      <p class="admin-groupe">Système</p>
+      <a href="#"><svg><use href="#i-cloche"/></svg>Notifications</a>
+      <a href="#"><svg><use href="#i-patient"/></svg>Utilisateurs et rôles</a>
+      <a href="#"><svg><use href="#i-historique"/></svg>Journal d’activité</a>
+    </nav>
+  </aside>
+
+  <main class="admin-principal" id="contenu">
+    <header class="admin-barre">
+      <div>
+        <p class="admin-date">Dimanche 27 septembre 2026</p>
+        <h1>Tableau de bord</h1>
+      </div>
+      <div class="admin-barre-droite">
+        <span class="admin-maquette">Données fictives</span>
+        <span class="avatar">AD</span>
+      </div>
+    </header>
+
+    <div class="admin-filtres" data-groupe="periode" aria-label="Période">
+      <span>7 jours</span><span class="est-actif">30 jours</span><span>90 jours</span><span>12 mois</span>
+    </div>
+
+    <section class="kpis" aria-label="Indicateurs clés, 30 derniers jours">
+      <div class="kpi kpi-hero"><p class="kpi-label">Visiteurs</p><p class="kpi-valeur">11 562</p><p class="kpi-delta"><svg><use href="#i-tendance"/></svg>+14 % vs 30 jours précédents</p></div>
+      <div class="kpi"><p class="kpi-label">Consultations réalisées</p><p class="kpi-valeur">186</p><p class="kpi-delta"><svg><use href="#i-tendance"/></svg>+9 %</p></div>
+      <div class="kpi"><p class="kpi-label">Rendez-vous pris</p><p class="kpi-valeur">214</p><p class="kpi-delta"><svg><use href="#i-tendance"/></svg>+11 %</p></div>
+      <div class="kpi"><p class="kpi-label">Téléchargements</p><p class="kpi-valeur">1 342</p><p class="kpi-delta"><svg><use href="#i-tendance"/></svg>+22 %</p></div>
+      <div class="kpi"><p class="kpi-label">Ventes d’eBooks</p><p class="kpi-valeur">1,18 M <small>GNF</small></p><p class="kpi-delta"><svg><use href="#i-tendance"/></svg>17 ventes</p></div>
+      <div class="kpi"><p class="kpi-label">Utilisateurs inscrits</p><p class="kpi-valeur">2 316</p><p class="kpi-delta"><svg><use href="#i-plus"/></svg>173 ce mois</p></div>
+    </section>
+
+    <section class="admin-grille">
+      <article class="admin-carte admin-large">
+        <header class="carte-tete"><div><h2>Visites par jour</h2><p>30 derniers jours · hausse au lancement de Septembre Rouge, le 1er septembre</p></div></header>
+        <div class="graphe" data-graphe="ligne" data-etiquettes="29 août,30 août,31 août,1er sept.,2 sept.,3 sept.,4 sept.,5 sept.,6 sept.,7 sept.,8 sept.,9 sept.,10 sept.,11 sept.,12 sept.,13 sept.,14 sept.,15 sept.,16 sept.,17 sept.,18 sept.,19 sept.,20 sept.,21 sept.,22 sept.,23 sept.,24 sept.,25 sept.,26 sept.,27 sept." data-valeurs="250,259,321,456,440,451,345,276,280,352,382,397,385,420,310,327,421,427,421,420,458,355,355,440,442,436,481,461,397,397" data-unite="visiteurs"></div>
+      </article>
+
+      <article class="admin-carte">
+        <header class="carte-tete"><div><h2>Rendez-vous par type</h2><p>30 derniers jours · 214 au total</p></div></header>
+        <div class="graphe" data-graphe="barres" data-etiquettes="Drépanocytose,Consultation d’hématologie,Hémostase,Hémophilie,Cancer du sang,Avis spécialisé" data-valeurs="78,52,31,24,18,11" data-unite="rendez-vous"></div>
+      </article>
+
+      <article class="admin-carte">
+        <header class="carte-tete"><div><h2>Ventes d’eBooks</h2><p>Par mois, en milliers de GNF · mois en cours en rouge</p></div></header>
+        <div class="graphe" data-graphe="colonnes" data-etiquettes="Avr.,Mai,Juin,Juil.,Août,Sept." data-valeurs="420,560,610,780,1020,1180" data-unite="milliers de GNF"></div>
+      </article>
+
+      <article class="admin-carte admin-large">
+        <header class="carte-tete"><div><h2>Prochains rendez-vous</h2><p>Identités masquées sur le tableau de bord</p></div><a class="lien-fleche" href="#">Tout voir<svg><use href="#i-fleche"/></svg></a></header>
+        <div class="table-defile"><table class="admin-table">
+          <thead><tr><th>Date</th><th>Patient</th><th>Consultation</th><th>Médecin</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr><td>Lun. 28 sept. · 09 h 00</td><td>M. B.</td><td>Hématologie</td><td>Dr S.</td><td><span class="etat etat-ok">Confirmé</span></td></tr>
+            <tr><td>Lun. 28 sept. · 10 h 30</td><td>F. S.</td><td>Drépanocytose</td><td>Dr S.</td><td><span class="etat etat-ok">Confirmé</span></td></tr>
+            <tr><td>Mar. 29 sept. · 14 h 00</td><td>I. K.</td><td>Hémophilie</td><td>Dr T.</td><td><span class="etat">En attente</span></td></tr>
+            <tr><td>Mer. 30 sept. · 08 h 30</td><td>A. D.</td><td>Hémostase</td><td>Dr T.</td><td><span class="etat etat-ok">Confirmé</span></td></tr>
+            <tr><td>Jeu. 1er oct. · 11 h 00</td><td>K. C.</td><td>Cancer du sang</td><td>Dr S.</td><td><span class="etat">En attente</span></td></tr>
+          </tbody>
+        </table></div>
+      </article>
+
+      <article class="admin-carte">
+        <header class="carte-tete"><div><h2>Témoignages à modérer</h2><p>Publiés après validation</p></div></header>
+        <ul class="moderation">
+          <li><p>« Grâce aux conseils sur l’hydratation, mon fils a eu beaucoup moins de crises cette année. »</p><small>Parent · drépanocytose · reçu hier</small><div><button class="btn btn-noir btn-petit" type="button">Publier</button><button class="btn btn-contour btn-petit" type="button">Refuser</button></div></li>
+          <li><p>« Le rendez-vous a été confirmé en quelques minutes sur WhatsApp. »</p><small>Patiente · hémostase · reçu le 24 sept.</small><div><button class="btn btn-noir btn-petit" type="button">Publier</button><button class="btn btn-contour btn-petit" type="button">Refuser</button></div></li>
+        </ul>
+      </article>
+
+      <article class="admin-carte">
+        <header class="carte-tete"><div><h2>Campagne en cours</h2><p>Septembre Rouge 2026</p></div></header>
+        <div class="campagne-suivi">
+          <div><p><strong>12</strong>actions de sensibilisation sur 15 prévues</p><div class="meter"><i style="width:80%"></i></div></div>
+          <div><p><strong>640</strong>dépistages enregistrés, objectif 1 000</p><div class="meter"><i style="width:64%"></i></div></div>
+          <div><p><strong>3</strong>jours restants</p></div>
+        </div>
+      </article>
+
+      <article class="admin-carte admin-large">
+        <header class="carte-tete"><div><h2>Journal d’activité</h2><p>Actions administratives tracées</p></div></header>
+        <ul class="liste-ligne journal">
+          <li><svg><use href="#i-fiche"/></svg><span><strong>Fiche « Drépanocytose » modifiée</strong><small>Rubrique Vaccination · par l’administrateur</small></span><em>Aujourd’hui, 09 h 12</em></li>
+          <li><svg><use href="#i-livre"/></svg><span><strong>Prix mis à jour</strong><small>« Cas cliniques commentés » · 110 000 GNF</small></span><em>Hier, 17 h 40</em></li>
+          <li><svg><use href="#i-patient"/></svg><span><strong>Accès professionnel validé</strong><small>Médecin · vérification du numéro d’Ordre</small></span><em>Hier, 11 h 05</em></li>
+          <li><svg><use href="#i-cadenas"/></svg><span><strong>Connexion administrateur</strong><small>Double authentification réussie</small></span><em>Hier, 08 h 58</em></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</div>
+<div class="infobulle" role="status" aria-live="polite" hidden></div>

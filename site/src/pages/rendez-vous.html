@@ -1,0 +1,132 @@
+<!--{"titre":"Prendre rendez-vous en hématologie à Conakry | HEMATO GUI","description":"Réservez une consultation d’hématologie à Conakry en cinq étapes : drépanocytose, hémophilie, hémostase, cancer du sang ou avis spécialisé. Confirmation immédiate et contact WhatsApp.","nav":"","scripts":["assets/js/rendez-vous.js"]}-->
+<section class="page-hero page-hero-gris page-hero-compact">
+  <div class="wrap">
+    <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-current="page">Prendre rendez-vous</span></nav>
+    <h1 class="titre-page">Prendre rendez-vous</h1>
+    <p class="chapeau" style="max-width:52ch">Cinq étapes, deux minutes. Vous recevez une confirmation à l’écran, puis une notification.</p>
+    <div class="reperes">
+      <span class="repere"><svg><use href="#i-check"/></svg>Confirmation immédiate</span>
+      <span class="repere"><svg><use href="#i-cloche"/></svg>Rappel la veille</span>
+      <span class="repere"><svg><use href="#i-whatsapp"/></svg>Aide sur WhatsApp</span>
+    </div>
+  </div>
+</section>
+
+<section class="reservation">
+  <div class="wrap resa-grille" data-reservation>
+    <div class="resa-principal">
+      <ol class="resa-etapes" aria-label="Étapes de la réservation">
+        <li class="est-actif"><span>1</span>Consultation</li>
+        <li><span>2</span>Date</li>
+        <li><span>3</span>Heure</li>
+        <li><span>4</span>Coordonnées</li>
+        <li><span>5</span>Confirmation</li>
+      </ol>
+      <div class="resa-progression"><i></i></div>
+
+      <!-- Étape 1 -->
+      <div class="etape-resa est-actif">
+        <h2>Quel type de consultation ?</h2>
+        <div class="types-consult" data-groupe="type">
+          <div class="type-consult" data-valeur="Consultation d’hématologie" data-slug="hematologie"><svg><use href="#i-stetho"/></svg><strong>Consultation d’hématologie</strong><small>Anémie, anomalie de la NFS, bilan à interpréter</small></div>
+          <div class="type-consult" data-valeur="Drépanocytose" data-slug="drepanocytose"><svg><use href="#i-goutte"/></svg><strong>Drépanocytose</strong><small>Suivi de l’enfant ou de l’adulte, bilan annuel</small></div>
+          <div class="type-consult" data-valeur="Hémophilie" data-slug="hemophilie"><svg><use href="#i-articulation"/></svg><strong>Hémophilie</strong><small>Suivi, prophylaxie, santé articulaire</small></div>
+          <div class="type-consult" data-valeur="Hémostase" data-slug="hemostase"><svg><use href="#i-coag"/></svg><strong>Hémostase</strong><small>Saignements, thrombose, anticoagulants</small></div>
+          <div class="type-consult" data-valeur="Cancer du sang" data-slug="cancer"><svg><use href="#i-loupe-plus"/></svg><strong>Cancer du sang</strong><small>Leucémie, lymphome, myélome, suivi</small></div>
+          <div class="type-consult" data-valeur="Avis spécialisé" data-slug="avis"><svg><use href="#i-consult"/></svg><strong>Avis spécialisé</strong><small>Pour un médecin ou un second avis</small></div>
+        </div>
+      </div>
+
+      <!-- Étape 2 -->
+      <div class="etape-resa">
+        <h2>Quelle date vous convient ?</h2>
+        <div class="calendrier">
+          <div class="calendrier-tete"><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-retour"/></svg></span><strong>Octobre 2026</strong><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-fleche"/></svg></span></div>
+          <div class="calendrier-jours" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+          <div class="calendrier-grille" data-groupe="date">
+            <span class="vide est-pris"></span><span class="vide est-pris"></span><span class="vide est-pris"></span>
+            <span data-valeur="Jeudi 1er octobre 2026">1</span><span data-valeur="Vendredi 2 octobre 2026">2</span><span class="est-pris">3</span><span class="est-pris">4</span>
+            <span data-valeur="Lundi 5 octobre 2026">5</span><span data-valeur="Mardi 6 octobre 2026">6</span><span class="est-pris complet">7</span><span data-valeur="Jeudi 8 octobre 2026">8</span><span data-valeur="Vendredi 9 octobre 2026">9</span><span class="est-pris">10</span><span class="est-pris">11</span>
+            <span data-valeur="Lundi 12 octobre 2026">12</span><span data-valeur="Mardi 13 octobre 2026">13</span><span data-valeur="Mercredi 14 octobre 2026">14</span><span data-valeur="Jeudi 15 octobre 2026">15</span><span data-valeur="Vendredi 16 octobre 2026">16</span><span class="est-pris">17</span><span class="est-pris">18</span>
+            <span data-valeur="Lundi 19 octobre 2026">19</span><span class="est-pris complet">20</span><span data-valeur="Mercredi 21 octobre 2026">21</span><span data-valeur="Jeudi 22 octobre 2026">22</span><span data-valeur="Vendredi 23 octobre 2026">23</span><span class="est-pris">24</span><span class="est-pris">25</span>
+            <span data-valeur="Lundi 26 octobre 2026">26</span><span data-valeur="Mardi 27 octobre 2026">27</span><span data-valeur="Mercredi 28 octobre 2026">28</span><span data-valeur="Jeudi 29 octobre 2026">29</span><span data-valeur="Vendredi 30 octobre 2026">30</span><span class="est-pris">31</span>
+          </div>
+          <p class="calendrier-legende"><span><i class="leg-dispo"></i>Disponible</span><span><i class="leg-complet"></i>Complet</span><span><i class="leg-ferme"></i>Fermé</span></p>
+        </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="etape-resa">
+        <h2>À quelle heure ?</h2>
+        <p class="creneaux-titre">Matin</p>
+        <div class="creneaux" data-groupe="heure">
+          <span data-valeur="08 h 30">08:30</span><span class="est-pris">09:00</span><span data-valeur="09 h 30">09:30</span><span data-valeur="10 h 30">10:30</span><span data-valeur="11 h 00">11:00</span><span class="est-pris">11:30</span>
+          <span class="creneaux-separateur est-pris">Après-midi</span>
+          <span data-valeur="14 h 00">14:00</span><span data-valeur="14 h 30">14:30</span><span class="est-pris">15:00</span><span data-valeur="15 h 30">15:30</span><span data-valeur="16 h 00">16:00</span>
+        </div>
+      </div>
+
+      <!-- Étape 4 -->
+      <div class="etape-resa">
+        <h2>Vos coordonnées</h2>
+        <form class="formulaire" onsubmit="return false">
+          <div class="champ"><label for="r-prenom">Prénom</label><div class="champ-saisie"><input id="r-prenom" name="prenom" autocomplete="given-name" placeholder="Aïssatou"></div></div>
+          <div class="champ"><label for="r-nom">Nom</label><div class="champ-saisie"><input id="r-nom" name="nom" autocomplete="family-name" placeholder="Camara"></div></div>
+          <div class="champ"><label for="r-tel">Téléphone (WhatsApp)</label><div class="champ-saisie"><span class="prefixe">+224</span><input id="r-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6XX XX XX XX"></div></div>
+          <div class="champ"><label for="r-mail">E-mail <small>facultatif</small></label><div class="champ-saisie"><input id="r-mail" name="mail" type="email" autocomplete="email" placeholder="vous@exemple.com"></div></div>
+          <div class="champ"><label for="r-age">Âge du patient</label><div class="champ-saisie"><input id="r-age" name="age" inputmode="numeric" placeholder="32"><span class="unite">ans</span></div></div>
+          <div class="champ"><span class="label">Première consultation ?</span><div class="segment"><label><input type="radio" name="premiere" value="oui" checked><span>Oui</span></label><label><input type="radio" name="premiere" value="non"><span>Non</span></label></div></div>
+          <div class="champ champ-large"><label for="r-motif">Motif <small>facultatif</small></label><div class="champ-saisie champ-texte"><textarea id="r-motif" name="motif" rows="4" placeholder="Quelques mots sur la raison de votre venue"></textarea></div></div>
+          <label class="consentement champ-large"><input type="checkbox" name="consentement"><span>J’accepte que mes données soient utilisées uniquement pour gérer ce rendez-vous. <a href="a-propos.html#confidentialite">Confidentialité</a></span></label>
+        </form>
+      </div>
+
+      <!-- Étape 5 -->
+      <div class="etape-resa">
+        <div class="resa-verif">
+          <h2>Vérifiez et confirmez</h2>
+          <p class="chapeau">Un dernier coup d’œil avant de confirmer votre rendez-vous.</p>
+          <dl class="recap-liste recap-liste-grande">
+            <div><dt>Consultation</dt><dd data-recap="type">—</dd></div>
+            <div><dt>Date</dt><dd data-recap="date">—</dd></div>
+            <div><dt>Heure</dt><dd data-recap="heure">—</dd></div>
+            <div><dt>Patient</dt><dd data-recap="patient">—</dd></div>
+            <div><dt>Lieu</dt><dd>Conakry, Guinée · adresse précisée dans la confirmation</dd></div>
+          </dl>
+          <p class="resa-apporter"><svg><use href="#i-fiche"/></svg>Pensez à apporter vos derniers résultats d’analyses, vos ordonnances et votre carnet de suivi.</p>
+        </div>
+        <div class="confirmation">
+          <span class="confirmation-ico"><svg><use href="#i-check"/></svg></span>
+          <h2>Rendez-vous confirmé</h2>
+          <p class="confirmation-num">Référence <strong>HG-2026-10-0152</strong></p>
+          <p class="chapeau">Vous allez recevoir une notification de confirmation, puis un rappel la veille du rendez-vous.</p>
+          <div class="boutons">
+            <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Une question ? WhatsApp</a>
+            <a class="btn btn-contour btn-grand" href="espace-patient.html"><svg><use href="#i-compte"/></svg>Mon espace patient</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resa-nav">
+        <button class="btn btn-contour btn-grand resa-retour" type="button"><svg><use href="#i-retour"/></svg>Retour</button>
+        <p class="resa-aide" aria-live="polite"></p>
+        <button class="btn btn-rouge btn-grand resa-suivant" type="button">Continuer<svg><use href="#i-fleche"/></svg></button>
+      </div>
+    </div>
+
+    <aside class="recap" aria-label="Récapitulatif">
+      <p class="recap-titre">Votre rendez-vous</p>
+      <dl class="recap-liste">
+        <div><dt>Consultation</dt><dd data-recap="type">À choisir</dd></div>
+        <div><dt>Date</dt><dd data-recap="date">—</dd></div>
+        <div><dt>Heure</dt><dd data-recap="heure">—</dd></div>
+        <div><dt>Patient</dt><dd data-recap="patient">—</dd></div>
+      </dl>
+      <div class="recap-aide">
+        <p><strong>Besoin d’aide ?</strong> Nous répondons sur WhatsApp.</p>
+        <a class="btn btn-wa btn-petit" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>+224 628 73 31 43</a>
+      </div>
+      <p class="recap-urgence"><svg><use href="#i-urgence"/></svg>En cas d’urgence, ne prenez pas rendez-vous : rendez-vous directement aux urgences.</p>
+    </aside>
+  </div>
+</section>

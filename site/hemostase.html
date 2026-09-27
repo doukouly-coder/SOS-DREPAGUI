@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hémostase et thrombose : comprendre son bilan (TP, INR, TCA, D-dimères) | HEMATO GUI</title>
+<meta name="description" content="Bibliothèque de l’hémostase : NFS, TP/INR, TCA, fibrinogène, D-dimères, facteurs, plaquettes, maladie de Willebrand, thrombophilies, CIVD, anticoagulants et antiagrégants. Outil pédagogique pour comprendre son bilan d’hémostase.">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="preload" href="assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/polices.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-calendrier" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="3.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+    <symbol id="i-fermer" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-patient" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-stetho" viewBox="0 0 24 24"><path d="M5 3v5a4 4 0 0 0 8 0V3"/><path d="M9 12v3a5 5 0 0 0 10 0v-2"/><circle cx="19" cy="11" r="2"/></symbol>
+    <symbol id="i-livre" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></symbol>
+    <symbol id="i-urgence" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+    <symbol id="i-fiche" viewBox="0 0 24 24"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="i-telecharger" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-conseil" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.1V16h5v-.1c0-.8.4-1.6 1.1-2.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-journal" viewBox="0 0 24 24"><path d="M4 5h12v14a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2V5z"/><path d="M16 9h4v10a2 2 0 0 1-2 2M8 9h4M8 13h4M8 17h2"/></symbol>
+    <symbol id="i-consult" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-5 4v-4H6a2 2 0 0 1-2-2V6z"/><path d="M12 7.5v6M9 10.5h6"/></symbol>
+    <symbol id="i-compte" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17a3.5 3.5 0 0 1 7 0M15 10h3M15 13.5h3"/></symbol>
+    <symbol id="i-recherche" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></symbol>
+    <symbol id="i-bouclier" viewBox="0 0 24 24"><path d="M12 3 20 6v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-cadenas" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-nfs" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5L4.8 18.3A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.7L14 9.5V3"/><path d="M7.5 15h9"/></symbol>
+    <symbol id="i-graphe" viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M21 20H3"/></symbol>
+    <symbol id="i-goutte" viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></symbol>
+    <symbol id="i-score" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></symbol>
+    <symbol id="i-coag" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v5.8M12 15.2V21M3 12h5.8M15.2 12H21M5.6 5.6l4.1 4.1M14.3 14.3l4.1 4.1M18.4 5.6l-4.1 4.1M9.7 14.3l-4.1 4.1"/></symbol>
+    <symbol id="i-couches" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="i-lieu" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-telephone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+    <symbol id="i-horloge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></symbol>
+    <symbol id="i-diplome" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13.4 8 21l4-2 4 2-1-7.6"/></symbol>
+    <symbol id="i-quiz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.6 2.6 0 1 1 3.6 2.4c-.7.3-1.1.9-1.1 1.6v.4M12 16.8v.4"/></symbol>
+    <symbol id="i-coeur" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-cloche" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l1.5 2h-15L6 16zM10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-historique" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4M12 7.5V12l3 2"/></symbol>
+    <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0zM12 9v6"/></symbol>
+    <symbol id="i-seringue" viewBox="0 0 24 24"><path d="m18 3 3 3M16 5l3 3M17.5 6.5 9 15H6v-3l8.5-8.5M6 18l-3 3M8 13l3 3"/></symbol>
+    <symbol id="i-bebe" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M10 9h.01M14 9h.01M10.5 11.3a2 2 0 0 0 3 0M8 20.5a4 4 0 0 1 8 0"/></symbol>
+    <symbol id="i-hopital" viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M3 21h18M10 21v-5h4v5M12 7.5v4M10 9.5h4"/></symbol>
+    <symbol id="i-adn" viewBox="0 0 24 24"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6M17 3c0 6-10 6-10 12M8.5 7h7M8.5 17h7"/></symbol>
+    <symbol id="i-oeil" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-panier" viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6M10 21h.01M17 21h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-retour" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+    <symbol id="i-deconnexion" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+    <symbol id="i-grille" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-utilisateurs" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14a6 6 0 0 1 3.5 6"/></symbol>
+    <symbol id="i-tendance" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+    <symbol id="i-poche" viewBox="0 0 24 24"><path d="M7 3h10v11a5 5 0 0 1-10 0V3zM12 19v3M7 7.5h10M10 11.5h4"/></symbol>
+    <symbol id="i-medicament" viewBox="0 0 24 24"><path d="M10.5 3.5a5 5 0 0 1 7 7l-7 7a5 5 0 0 1-7-7l7-7zM7 10l7 7"/></symbol>
+    <symbol id="i-flocon" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M20.7 7 3.3 17M9 4l3 2 3-2M9 20l3-2 3 2"/></symbol>
+    <symbol id="i-articulation" viewBox="0 0 24 24"><path d="M8 3v6a4 4 0 0 0 8 0V3M8 21v-6a4 4 0 0 1 8 0v6"/></symbol>
+    <symbol id="i-bistouri" viewBox="0 0 24 24"><path d="M3 21 14 10l3 3-4.5 4.5A10 10 0 0 1 3 21zM14 10l6.5-6.5a1.4 1.4 0 0 1 2 2L16 12"/></symbol>
+    <symbol id="i-famille" viewBox="0 0 24 24"><circle cx="7" cy="6" r="2.5"/><circle cx="17" cy="6" r="2.5"/><circle cx="12" cy="13" r="2"/><path d="M3 20v-5a4 4 0 0 1 8 0M13 15a4 4 0 0 1 8 0v5M9.5 21a2.5 2.5 0 0 1 5 0"/></symbol>
+    <symbol id="i-loupe-plus" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></symbol>
+    <symbol id="i-carte" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h3"/></symbol>
+  </defs>
+</svg>
+
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="entete">
+  <div class="wrap entete-rangee">
+    <!-- Emplacement du logo officiel HEMATO GUI (fichier à fournir) : ne pas recréer le logo -->
+    <a class="marque" href="index.html" aria-label="HEMATO GUI — accueil"><span class="marque-nom">HEMATO GUI</span></a>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <div class="menu-deroulant">
+        <a href="index.html#domaines" aria-current="page" aria-haspopup="true">Hématologie<svg class="chevron"><use href="#i-chevron"/></svg></a>
+        <div class="sous-menu">
+          <a href="drepanocytose.html"><strong>Drépanocytose</strong><small>Crises, prévention, traitements</small></a>
+          <a href="hemophilie.html"><strong>Hémophilie</strong><small>Et maladies hémorragiques</small></a>
+          <a href="cancers-du-sang.html"><strong>Cancers du sang</strong><small>Leucémies, lymphomes, myélome</small></a>
+          <a href="hemostase.html"><strong>Hémostase et thrombose</strong><small>Comprendre son bilan</small></a>
+          <a href="diagnostic.html"><strong>Diagnostic</strong><small>Vos examens expliqués</small></a>
+          <a href="outils.html"><strong>Outils hématologiques</strong><small>Calculateurs pour les soignants</small></a>
+        </div>
+      </div>
+      <a href="espace-patient.html">Patients</a>
+      <a href="espace-pro.html">Professionnels</a>
+      <a href="ebooks.html">eBooks</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="entete-actions">
+      <a class="wa-icone" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." aria-label="Écrire à HEMATO GUI sur WhatsApp" target="_blank" rel="noopener">
+        <svg><use href="#i-whatsapp"/></svg>
+      </a>
+      <a class="btn btn-rouge btn-petit" href="rendez-vous.html"><span class="court">Rendez-vous</span><span class="long">Prendre rendez-vous</span></a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="panneau-menu">
+        <svg class="ico-ouvrir"><use href="#i-menu"/></svg><svg class="ico-fermer"><use href="#i-fermer"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="panneau-menu" id="panneau-menu">
+  <nav class="wrap panneau-liens" aria-label="Navigation mobile">
+    <a href="index.html">Accueil</a>
+    <a href="index.html#domaines" aria-current="page">Hématologie</a>
+    <div class="panneau-sous">
+      <a href="drepanocytose.html">Drépanocytose</a>
+      <a href="hemophilie.html">Hémophilie</a>
+      <a href="cancers-du-sang.html">Cancers du sang</a>
+      <a href="hemostase.html">Hémostase</a>
+      <a href="diagnostic.html">Diagnostic</a>
+      <a href="outils.html">Outils</a>
+    </div>
+    <a href="espace-patient.html">Patients</a>
+    <a href="espace-pro.html">Professionnels</a>
+    <a href="ebooks.html">eBooks</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="a-propos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="wrap panneau-boutons">
+    <a class="btn btn-rouge btn-grand" href="rendez-vous.html"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a>
+    <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  </div>
+</div>
+
+<main id="contenu">
+<section class="page-hero">
+  <div class="wrap page-hero-grille">
+    <div>
+      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><a href="index.html#domaines">Hématologie</a><span aria-current="page">Hémostase et thrombose</span></nav>
+      <p class="surtitre">Bibliothèque</p>
+      <h1 class="titre-page">Hémostase <em>et thrombose</em></h1>
+      <p class="chapeau">Les examens de la coagulation, les maladies et les traitements, expliqués clairement. Et un outil pour comprendre son bilan.</p>
+      <div class="boutons">
+        <a class="btn btn-rouge btn-grand" href="#outil">Comprendre son bilan</a>
+        <a class="btn btn-contour btn-grand" href="#bibliotheque">Parcourir la bibliothèque</a>
+      </div>
+    </div>
+    <div class="page-hero-visuel"><img src="assets/img/rendus/hemostase.webp" alt="Réseau de fibrine retenant un globule rouge et des plaquettes"></div>
+  </div>
+</section>
+
+<section class="section section-grise">
+  <div class="wrap">
+    <header class="tete-gauche">
+      <p class="surtitre">Comprendre</p>
+      <h2>Arrêter un saignement, en trois temps.</h2>
+      <p class="chapeau">L’hémostase est l’ensemble des mécanismes qui arrêtent un saignement, puis dissolvent le caillot une fois la blessure réparée. Quand elle s’emballe, c’est la thrombose.</p>
+    </header>
+    <ol class="frise">
+      <li><h3>Le vaisseau se resserre</h3><p>La paroi blessée se contracte pour réduire le débit de sang.</p></li>
+      <li><h3>Les plaquettes s’agrègent</h3><p>Elles s’accolent à la brèche et forment un premier bouchon, aidées par le facteur Willebrand.</p></li>
+      <li><h3>La coagulation consolide</h3><p>Les facteurs de coagulation transforment le fibrinogène en un réseau de fibrine qui solidifie le caillot.</p></li>
+      <li><h3>Le caillot se dissout</h3><p>La fibrinolyse l’élimine une fois la blessure réparée ; les D-dimères en sont la trace.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="biblio-section" id="bibliotheque">
+  <div class="wrap">
+    <div class="biblio-tete">
+      <div>
+        <p class="surtitre">13 fiches</p>
+        <h2>La bibliothèque de l’hémostase</h2>
+      </div>
+    </div>
+    <div class="choix biblio-filtres" data-filtres=".biblio-grille">
+      <p class="choix-item est-actif" data-filtre="tous">Tout</p>
+      <p class="choix-item" data-filtre="examen">Examens</p>
+      <p class="choix-item" data-filtre="maladie">Maladies</p>
+      <p class="choix-item" data-filtre="traitement">Traitements</p>
+    </div>
+    <div class="biblio-grille">
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>NFS</h3><p>Compte les globules rouges, les globules blancs et les plaquettes, et mesure l’hémoglobine.</p>
+        <div class="valeur-ref"><small>Plaquettes</small><strong>150 – 400 G/L</strong></div>
+        <dl><dt>Quand ?</dt><dd>Bilan d’un saignement, avant une intervention, suivi d’un traitement.</dd><dt>Si anormal</dt><dd>Des plaquettes basses peuvent expliquer des saignements ; une anémie peut révéler un saignement chronique.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>TP et INR</h3><p>Explore les facteurs II, V, VII et X. L’INR standardise le résultat pour les patients sous antivitamines K (AVK).</p>
+        <div class="valeur-ref"><small>Sans traitement · sous AVK</small><strong>TP 70 – 100 % · INR cible 2 – 3</strong></div>
+        <dl><dt>Quand ?</dt><dd>Surveillance des AVK, bilan avant une intervention, maladie du foie.</dd><dt>Si anormal</dt><dd>TP bas : AVK, carence en vitamine K, insuffisance hépatique, déficit en facteur, CIVD.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>TCA</h3><p>Temps de céphaline activée : explore les facteurs VIII, IX, XI et XII, et la voie commune.</p>
+        <div class="valeur-ref"><small>Rapport patient / témoin</small><strong>Inférieur à 1,2</strong></div>
+        <dl><dt>Quand ?</dt><dd>Bilan d’un saignement, surveillance de l’héparine non fractionnée.</dd><dt>Si allongé</dt><dd>Hémophilie, maladie de Willebrand, héparine, ou anticoagulant circulant de type lupique.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Fibrinogène</h3><p>La protéine transformée en fibrine pour former le caillot.</p>
+        <div class="valeur-ref"><small>Valeurs habituelles</small><strong>2 – 4 g/L</strong></div>
+        <dl><dt>Quand ?</dt><dd>Hémorragie grave, CIVD, maladie du foie, grossesse.</dd><dt>Si anormal</dt><dd>Bas : consommation (CIVD, hémorragie), insuffisance hépatique. Élevé : inflammation, grossesse.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>D-dimères</h3><p>Fragments issus de la dégradation de la fibrine : ils témoignent d’une coagulation activée.</p>
+        <div class="valeur-ref"><small>Seuil habituel</small><strong>Inférieur à 500 µg/L</strong></div>
+        <dl><dt>Quand ?</dt><dd>Suspicion de phlébite ou d’embolie pulmonaire, CIVD. Après 50 ans, le seuil s’ajuste à l’âge.</dd><dt>À savoir</dt><dd>Normaux, ils rendent une thrombose peu probable si le doute clinique est faible. Élevés, ils sont peu spécifiques (infection, grossesse, cancer, chirurgie).</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Facteurs de coagulation</h3><p>Dosage de l’activité d’un facteur précis : VIII, IX, XI, VII, V…</p>
+        <div class="valeur-ref"><small>Activité habituelle</small><strong>50 – 150 %</strong></div>
+        <dl><dt>Quand ?</dt><dd>TP ou TCA anormal sans explication, hémophilie, bilan familial.</dd><dt>Si bas</dt><dd>Déficit héréditaire (hémophilie A ou B…) ou acquis (maladie du foie, auto-anticorps).</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Plaquettes</h3><p>Leur nombre, mais aussi leur fonctionnement, qui peut être altéré.</p>
+        <div class="valeur-ref"><small>Saignement spontané possible</small><strong>En dessous de 20 G/L</strong></div>
+        <dl><dt>Quand ?</dt><dd>Petites taches rouges sur la peau, bleus, saignements des gencives ou du nez.</dd><dt>Si anormal</dt><dd>Thrombopénie : production insuffisante ou destruction. Mauvais fonctionnement : médicaments (aspirine) ou maladie héréditaire.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>Maladie de Willebrand</h3><p>La maladie hémorragique héréditaire la plus fréquente, par déficit ou anomalie du facteur Willebrand.</p>
+        <div class="valeur-ref"><small>Examens</small><strong>Facteur Willebrand (antigène, activité), facteur VIII</strong></div>
+        <dl><dt>Signes</dt><dd>Saignements de nez et des gencives, règles abondantes, saignements après une extraction dentaire ou un accouchement.</dd><dt>Traitement</dt><dd>Desmopressine, concentrés de facteur Willebrand, acide tranexamique.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>Thrombophilies</h3><p>Des tendances à faire des thromboses : héréditaires (facteur V Leiden, mutation de la prothrombine, déficits en antithrombine, protéine C ou S) ou acquises (syndrome des antiphospholipides).</p>
+        <dl><dt>Qui tester ?</dt><dd>Sur avis spécialisé : thrombose jeune, récidivante ou inhabituelle, antécédents familiaux.</dd><dt>Pourquoi ?</dt><dd>Adapter la durée du traitement, la contraception et la prévention dans les situations à risque.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>CIVD</h3><p>Coagulation intravasculaire disséminée : la coagulation s’active partout, consomme plaquettes et facteurs, et provoque à la fois des caillots et des saignements.</p>
+        <div class="valeur-ref"><small>Profil typique</small><strong>Plaquettes ↓ · TP ↓ · fibrinogène ↓ · D-dimères ↑↑</strong></div>
+        <dl><dt>Causes</dt><dd>Infection grave, complications de l’accouchement, traumatisme, cancer, certaines leucémies aiguës.</dd><dt>Prise en charge</dt><dd>Une urgence : traiter la cause, et compenser selon les saignements.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="traitement"><span class="examen-type examen-type-traitement">Traitement</span><h3>Anticoagulants</h3><p>Ils empêchent la formation ou l’extension d’un caillot : héparines, antivitamines K (warfarine, acénocoumarol), anticoagulants oraux directs (apixaban, rivaroxaban, dabigatran).</p>
+        <dl><dt>Surveillance</dt><dd>INR pour les AVK, plaquettes sous héparine, fonction rénale pour les anticoagulants directs.</dd><dt>Règles d’or</dt><dd>Signaler tout saignement, ne jamais arrêter ni doubler une dose sans avis, se méfier des anti-inflammatoires et de certaines plantes.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="traitement"><span class="examen-type examen-type-traitement">Traitement</span><h3>Antiagrégants</h3><p>Ils empêchent les plaquettes de s’agréger : aspirine, clopidogrel, ticagrélor, prasugrel.</p>
+        <dl><dt>Quand ?</dt><dd>Après un infarctus, la pose d’un stent, un AVC ischémique.</dd><dt>Attention</dt><dd>Ne jamais les arrêter sans avis médical ; prévenir avant une chirurgie ou un soin dentaire.</dd></dl></article>
+
+      <article class="fiche-examen" data-type="examen"><span class="examen-type">Guide</span><h3>Interpréter les examens</h3><p>Un bilan d’hémostase se lit toujours avec l’histoire du patient : saignements personnels et familiaux, traitements en cours.</p>
+        <dl><dt>Avant de conclure</dt><dd>Vérifier le prélèvement : tube bien rempli, délai d’acheminement respecté. Un prélèvement difficile peut fausser le résultat.</dd><dt>Pour aller plus loin</dt><dd><a class="lien-fleche" href="#outil">Essayer l’outil TP × TCA<svg><use href="#i-fleche"/></svg></a></dd></dl></article>
+    </div>
+    <p class="note-valeurs"><svg><use href="#i-info"/></svg>Valeurs indicatives : les normes varient selon les laboratoires et les techniques. Référez-vous aux valeurs imprimées sur votre compte rendu.</p>
+  </div>
+</section>
+
+<section class="outil-section" id="outil">
+  <div class="wrap">
+    <header class="tete-gauche">
+      <p class="surtitre">Outil pédagogique</p>
+      <h2>Comprendre son bilan d’hémostase</h2>
+      <p class="chapeau">Indiquez ce que montrent votre TP et votre TCA : l’outil explique ce que cela peut signifier. Il ne remplace pas l’avis de votre médecin.</p>
+    </header>
+    <div class="outil-carte" data-outil-bilan>
+      <div class="outil-entrees">
+        <fieldset data-param="tp"><legend>Votre TP<small>Taux de prothrombine</small></legend>
+          <div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="bas">Bas</p></div>
+        </fieldset>
+        <fieldset data-param="tca"><legend>Votre TCA<small>Temps de céphaline activée</small></legend>
+          <div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="allonge">Allongé</p></div>
+        </fieldset>
+      </div>
+      <div class="outil-resultats">
+        <div class="variante est-actif" data-combo="normal-normal">
+          <p class="resultat-etiquette">TP normal · TCA normal</p>
+          <h3>La coagulation explorée par ces tests est normale.</h3>
+          <p>Si vous saignez anormalement malgré ce bilan normal, d’autres causes sont à rechercher :</p>
+          <ul class="liste-points"><li>un problème de plaquettes (nombre ou fonctionnement)</li><li>une maladie de Willebrand</li><li>plus rarement, un déficit en facteur XIII ou une fragilité des vaisseaux</li></ul>
+        </div>
+        <div class="variante" data-combo="normal-allonge">
+          <p class="resultat-etiquette">TP normal · TCA allongé</p>
+          <h3>Une anomalie de la voie « intrinsèque ».</h3>
+          <p>Ce profil oriente vers :</p>
+          <ul class="liste-points"><li>un déficit en facteur VIII ou IX (hémophilie A ou B) ou en facteur XI</li><li>une maladie de Willebrand</li><li>un traitement par héparine</li><li>un anticoagulant circulant de type lupique, qui expose plutôt aux thromboses</li><li>un déficit en facteur XII, sans risque de saignement</li></ul>
+        </div>
+        <div class="variante" data-combo="bas-normal">
+          <p class="resultat-etiquette">TP bas · TCA normal</p>
+          <h3>Une anomalie de la voie « extrinsèque ».</h3>
+          <p>Ce profil oriente vers :</p>
+          <ul class="liste-points"><li>un traitement par antivitamines K (AVK), au début</li><li>une carence débutante en vitamine K</li><li>une insuffisance hépatique débutante</li><li>un déficit héréditaire en facteur VII, plus rare</li></ul>
+        </div>
+        <div class="variante" data-combo="bas-allonge">
+          <p class="resultat-etiquette">TP bas · TCA allongé</p>
+          <h3>Une anomalie de la voie commune, ou plusieurs facteurs touchés.</h3>
+          <p>Ce profil oriente vers :</p>
+          <ul class="liste-points"><li>une insuffisance hépatique</li><li>une carence importante en vitamine K ou un surdosage en AVK</li><li>une CIVD (avec plaquettes et fibrinogène bas)</li><li>un anticoagulant à forte dose, ou un déficit en facteur X, V, II ou fibrinogène</li></ul>
+        </div>
+        <p class="outil-mention-bas"><svg><use href="#i-info"/></svg>Outil d’aide à la compréhension. Il ne remplace ni l’interprétation de votre médecin ni une consultation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="urgence" style="margin-top:0">
+      <div class="urgence-tete"><span class="urgence-ico"><svg><use href="#i-urgence"/></svg></span><h2>Sous anticoagulant : consultez en urgence si…</h2></div>
+      <ul class="liste-points liste-points-2">
+        <li>Un saignement ne s’arrête pas</li>
+        <li>Du sang dans les urines, des selles noires, un vomissement de sang</li>
+        <li>Des maux de tête violents, ou une chute avec choc à la tête</li>
+        <li>Des bleus étendus sans raison</li>
+        <li>Une jambe qui gonfle et fait mal (phlébite)</li>
+        <li>Un essoufflement brutal ou une douleur dans la poitrine</li>
+      </ul>
+      <div class="boutons boutons-gauche">
+        <a class="btn btn-blanc btn-grand" href="rendez-vous.html?type=hemostase"><svg><use href="#i-calendrier"/></svg>Consultation d’hémostase</a>
+        <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Nous écrire</a>
+      </div>
+    </div>
+    <p class="avertissement"><svg><use href="#i-info"/></svg><span>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</span></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied" id="pied">
+  <div class="wrap">
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <p class="marque-nom">HEMATO GUI</p>
+        <p class="slogan">Informer, former et traiter les maladies hématologiques</p>
+        <p class="devise">Confiance et espoir</p>
+      </div>
+      <div class="pied-contact">
+        <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Écrire sur WhatsApp</a>
+        <p><svg><use href="#i-lieu"/></svg>Conakry, Guinée</p>
+      </div>
+    </div>
+
+    <div class="pied-colonnes">
+      <nav aria-label="Hématologie">
+        <p class="pied-titre">Hématologie</p>
+        <a href="drepanocytose.html">Drépanocytose</a><a href="hemophilie.html">Hémophilie</a><a href="cancers-du-sang.html">Cancers du sang</a><a href="hemostase.html">Hémostase</a><a href="diagnostic.html">Diagnostic</a><a href="outils.html">Outils hématologiques</a>
+      </nav>
+      <nav aria-label="Patients">
+        <p class="pied-titre">Patients</p>
+        <a href="rendez-vous.html">Prendre rendez-vous</a><a href="espace-patient.html">Espace patient</a><a href="espace-patient.html#connexion">Créer un compte</a><a href="diagnostic.html">Vos examens expliqués</a><a href="drepanocytose.html#urgence">Quand consulter en urgence</a>
+      </nav>
+      <nav aria-label="Professionnels">
+        <p class="pied-titre">Professionnels</p>
+        <a href="espace-pro.html">Espace professionnel</a><a href="espace-pro.html#bibliotheque">Hématologie pratique</a><a href="espace-pro.html#formations">Formations</a><a href="outils.html">Outils</a><a href="ebooks.html">eBooks professionnels</a>
+      </nav>
+      <nav aria-label="HEMATO GUI">
+        <p class="pied-titre">HEMATO GUI</p>
+        <a href="a-propos.html">À propos</a><a href="actualites.html">Actualités</a><a href="actualites.html#septembre-rouge">Septembre Rouge</a><a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="pied-bas">
+      <p>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
+      <p class="pied-legal"><span>© 2026 HEMATO GUI</span><a href="a-propos.html#mentions">Mentions légales</a><a href="a-propos.html#confidentialite">Confidentialité</a><a href="a-propos.html#donnees-de-sante">Données de santé</a></p>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-flottant" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener" aria-label="Écrire à HEMATO GUI sur WhatsApp">
+  <svg><use href="#i-whatsapp"/></svg><span class="wa-bulle">Une question ? Écrivez-nous</span>
+</a>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>

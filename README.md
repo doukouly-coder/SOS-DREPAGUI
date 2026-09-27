@@ -13,8 +13,8 @@ sur ce dépôt la charge automatiquement.
 |---|---|---|
 | 0 · Préparation | Dossier de travail | ✅ fait |
 | 1 · Brief | Plan de design validé | ✅ brief reçu — plan dans `docs/plan-de-design.md` |
-| 2 · Maquette | Accueil HTML validé (`site/`) | ⏳ maquette prête, en attente de validation |
-| 3 · Déclinaison | Toutes les pages, CSS partagé | — |
+| 2 · Maquette | Accueil HTML validé (`site/`) | ✅ validée par le client |
+| 3 · Déclinaison | Toutes les pages, CSS partagé | ✅ 15 pages (`site/`), assemblées par `outils/assembler.py` |
 | 4 · Thème bloc | Thème complet (`theme/`) | — |
 | 5 · Déploiement | Site en ligne | — |
 | 6 · Recette | Réception | — |
@@ -40,7 +40,14 @@ P="$(pwd)"; cd /tmp && RACINE="$P/site" node "$P/.claude/skills/claude-to-wordpr
 # puis http://127.0.0.1:4321
 ```
 
-Ou ouvrir directement les captures : `docs/captures/planche-bureau.jpg` et `docs/captures/planche-mobile.jpg` (vues d’ensemble), ou les pleines pages `accueil-bureau.jpg` et `accueil-mobile.jpg`.
+Ou ouvrir directement les captures : `docs/captures/planche-pages.jpg` (vue d’ensemble des 15 pages)
+et `docs/captures/pages/<page>-bureau.jpg` / `<page>-mobile.jpg`.
+
+## Modifier les pages
+
+Les pages se modifient dans `site/src/pages/`, l’en-tête et le pied de page dans `site/src/parties/`,
+puis on régénère : `python3 outils/assembler.py`. Contrôles : `python3 outils/verifier-liens.py`
+et `node outils/captures/interactions.mjs` (21 tests d’interaction).
 
 ## Régénérer les visuels
 
