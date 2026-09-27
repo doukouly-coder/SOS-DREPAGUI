@@ -1,0 +1,19 @@
+/* Généré par outils/wordpress/construire.py — calques de la maquette rétablis dans l'éditeur. */
+.editor-styles-wrapper .calque,
+.editor-styles-wrapper .bulle,
+.editor-styles-wrapper .lentille,
+.editor-styles-wrapper .lentille-echelle,
+.editor-styles-wrapper .verre,
+.editor-styles-wrapper .domaine-visuel,
+.editor-styles-wrapper .patients-globule,
+.editor-styles-wrapper .notification,
+.editor-styles-wrapper .pro-cellule,
+.editor-styles-wrapper .article-visuel img,
+.editor-styles-wrapper .rdv-globule,
+.editor-styles-wrapper .rdv-message,
+.editor-styles-wrapper .niveau-barre i,
+.editor-styles-wrapper .onglet-point,
+.editor-styles-wrapper .segment input,
+.editor-styles-wrapper .pile-livres > figure{position:absolute!important}
+/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu. */
+.editor-styles-wrapper figure.wp-block-image > .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}

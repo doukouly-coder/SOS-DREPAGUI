@@ -1,0 +1,18 @@
+import { session, WP } from './wp-session.mjs';
+const { nav, page } = await session();
+const erreurs = []; page.on('pageerror', e => erreurs.push(e.message));
+const dossier = process.argv[2] || '.';
+await page.goto(WP + '/wp-admin/admin.php?page=hemato-gui');
+console.log('KPI :', (await page.$$eval('.hg-kpi', ks => ks.map(k => k.querySelector('.hg-kpi-titre').textContent + ' = ' + k.querySelector('.hg-kpi-valeur').textContent))).join(' · '));
+await page.screenshot({ path: dossier + '/admin-tableau.png', fullPage: true });
+await page.goto(WP + '/wp-admin/edit.php?post_type=hg_demande');
+const lignes = await page.$$eval('#the-list tr', trs => trs.map(tr => [...tr.querySelectorAll('td,th.column-title')].map(td => td.innerText.replace(/\s+/g, ' ').trim()).join(' | ')));
+console.log('Demandes :\n  ' + lignes.slice(0, 6).join('\n  '));
+await page.screenshot({ path: dossier + '/admin-demandes.png' });
+const lien = await page.$eval('#the-list tr .row-title', a => a.href);
+await page.goto(lien);
+console.log('Fiche :', (await page.$eval('#hg_detail', e => e.innerText.replace(/\s+/g, ' ').slice(0, 300))));
+await page.screenshot({ path: dossier + '/admin-fiche.png' });
+const php = await page.content();
+console.log('Erreurs PHP visibles :', /Fatal error|Warning:|Notice:|Deprecated:/.test(php) ? 'OUI' : 'aucune', '· erreurs JS :', erreurs.length ? erreurs : 'aucune');
+await nav.close();

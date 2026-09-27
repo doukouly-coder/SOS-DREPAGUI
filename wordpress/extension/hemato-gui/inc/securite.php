@@ -30,16 +30,30 @@ remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 
-// Pas d'énumération des comptes : ni ?author=N, ni /wp/v2/users pour les visiteurs.
+// Pas d'énumération des comptes : ni ?author=N (intercepté avant la redirection canonique
+// de WordPress, qui révélerait l'identifiant), ni pages d'auteur, ni plan de site des comptes,
+// ni /wp/v2/users pour les visiteurs.
 add_action(
-	'template_redirect',
+	'init',
 	function () {
-		if ( is_author() || isset( $_GET['author'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if ( ! is_admin() && isset( $_GET['author'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			wp_safe_redirect( home_url( '/' ), 301 );
 			exit;
 		}
-	}
+	},
+	1
 );
+add_action(
+	'template_redirect',
+	function () {
+		if ( is_author() ) {
+			wp_safe_redirect( home_url( '/' ), 301 );
+			exit;
+		}
+	},
+	1
+);
+add_filter( 'wp_sitemaps_add_provider', fn( $fournisseur, $nom ) => 'users' === $nom ? false : $fournisseur, 10, 2 );
 add_filter(
 	'rest_endpoints',
 	function ( $routes ) {

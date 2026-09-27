@@ -31,6 +31,34 @@ def zipper(dossier, archive):
                 z.write(f, Path(dossier.name) / f.relative_to(dossier))
 
 
+EXCLUS_EDITEUR = ('evitement', 'screen-reader-text', '.sr', 'wa-', 'sous-menu', 'menu', 'entete', 'lien-etire', 'jauge', 'acces-titre')
+
+
+def calques_editeur():
+    """Gutenberg impose position:relative à chaque bloc (0,2,0) : les calques que la maquette sort
+    du flux y retombent. On relève dans les feuilles toutes les règles position:absolute visant
+    un élément (pas un pseudo-élément) et on les rétablit dans l'éditeur, avec !important."""
+    import re
+    selecteurs = []
+    for nom in ('styles.css', 'pages.css'):
+        css = (SITE / 'assets/css' / nom).read_text(encoding='utf-8')
+        css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
+        for sel, corps in re.findall(r'([^{}@]+)\{([^{}]*)\}', css):
+            if not re.search(r'(^|;)\s*position\s*:\s*absolute', corps):
+                continue
+            for un in sel.split(','):
+                un = un.strip()
+                if not un or '::' in un or ':' in un.replace(':not(', '') or any(x in un for x in EXCLUS_EDITEUR):
+                    continue
+                if un not in selecteurs:
+                    selecteurs.append(un)
+    regles = ',\n'.join(f'.editor-styles-wrapper {x}' for x in selecteurs)
+    return ('/* Généré par outils/wordpress/construire.py — calques de la maquette rétablis dans l\'éditeur. */\n'
+            f'{regles}{{position:absolute!important}}\n'
+            '/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu. */\n'
+            '.editor-styles-wrapper figure.wp-block-image > .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}\n'), len(selecteurs)
+
+
 def main():
     # Contenu, gabarits de shortcodes et pied de page : régénérés depuis les sources.
     subprocess.run([sys.executable, str(RACINE / 'outils' / 'assembler.py')], check=True, stdout=subprocess.DEVNULL)
@@ -40,6 +68,8 @@ def main():
     for f in (SITE / 'assets/fonts').iterdir():
         copier(f, THEME / 'assets/fonts' / f.name)
     copier(SITE / 'assets/js/app.js', THEME / 'assets/js/app.js')
+    css, n = calques_editeur()
+    (THEME / 'assets/css/editeur-calques.css').write_text(css, encoding='utf-8')
 
     for nom in ('outils.js', 'rendez-vous.js'):
         copier(SITE / 'assets/js' / nom, EXTENSION / 'assets/js' / nom)

@@ -7,13 +7,8 @@
 .editor-styles-wrapper .hero,
 .editor-styles-wrapper .page-hero{padding-top:40px!important}
 
-/* Gutenberg impose position:relative à chaque bloc : on rétablit les couches
-   que la maquette sort du flux (visuels superposés, cartes flottantes). */
-.editor-styles-wrapper .hero-couche,
-.editor-styles-wrapper .verre,
-.editor-styles-wrapper .rdv-globule,
-.editor-styles-wrapper .domaine-visuel,
-.editor-styles-wrapper .pile-livres > figure{position:absolute!important}
+/* Les calques que la maquette sort du flux (visuels 3D, cartes flottantes) sont rétablis
+   dans assets/css/editeur-calques.css, généré depuis les feuilles de la maquette. */
 
 /* Toutes les variantes (onglets, résultats d'outils) restent visibles et éditables. */
 .editor-styles-wrapper .variante{display:block!important;opacity:1!important;margin-top:18px;outline:1px dashed var(--trait);outline-offset:6px}

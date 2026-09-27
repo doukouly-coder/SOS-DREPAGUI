@@ -26,6 +26,7 @@ add_action(
 				'assets/css/styles.css',
 				'assets/css/pages.css',
 				'assets/css/wp.css',
+				'assets/css/editeur-calques.css',
 				'assets/editor.css',
 			)
 		);
@@ -89,3 +90,12 @@ add_action(
 // Pas d'émojis convertis en images : inutile ici, et une requête de moins.
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
+
+// Le site public est entièrement en français, même si l'administration est dans une autre
+// langue ou si le paquet de langue n'est pas installé : lecteurs d'écran et moteurs le savent.
+add_filter(
+	'language_attributes',
+	function ( $attributs ) {
+		return is_admin() ? $attributs : preg_replace( '/lang="[^"]*"/', 'lang="fr-FR"', $attributs );
+	}
+);

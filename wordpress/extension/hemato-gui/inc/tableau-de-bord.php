@@ -16,6 +16,7 @@ add_action(
 	function () {
 		add_menu_page( 'HEMATO GUI', 'HEMATO GUI', 'hg_gerer_demandes', 'hemato-gui', 'hg_page_tableau', 'dashicons-heart', 3 );
 		add_submenu_page( 'hemato-gui', 'Tableau de bord', 'Tableau de bord', 'hg_gerer_demandes', 'hemato-gui', 'hg_page_tableau' );
+		add_submenu_page( 'hemato-gui', 'Demandes', 'Demandes', 'hg_gerer_demandes', 'edit.php?post_type=hg_demande' );
 		add_submenu_page( 'hemato-gui', 'Réglages HEMATO GUI', 'Réglages', 'manage_options', 'hemato-gui-reglages', 'hg_page_reglages' );
 	}
 );
@@ -75,9 +76,9 @@ function hg_page_tableau() {
 	echo '</div><div class="hg-colonnes"><section class="hg-carte"><h2>Rendez-vous demandés par type <small>30 derniers jours</small></h2><table class="hg-barres"><tbody>';
 	foreach ( $par_type as $libelle => $n ) {
 		printf(
-			'<tr><th scope="row">%s</th><td><span class="hg-barre" style="width:%s%%"></span></td><td class="hg-n">%s</td></tr>',
+			'<tr><th scope="row">%s</th><td>%s</td><td class="hg-n">%s</td></tr>',
 			esc_html( $libelle ),
-			esc_attr( round( 100 * $n / $max ) ),
+			$n ? '<span class="hg-barre" style="width:' . esc_attr( round( 100 * $n / $max ) ) . '%"></span>' : '',
 			esc_html( number_format_i18n( $n ) )
 		);
 	}
@@ -95,7 +96,7 @@ function hg_page_tableau() {
 			esc_html( HG_TYPES_DEMANDE[ get_post_meta( $d->ID, '_hg_type', true ) ] ?? '—' ),
 			esc_attr( $statut ),
 			esc_html( HG_STATUTS[ $statut ] ?? $statut ),
-			esc_html( human_time_diff( get_post_time( 'U', true, $d ) ) . ' ' . 'plus tôt' )
+			esc_html( sprintf( 'il y a %s', human_time_diff( get_post_time( 'U', true, $d ) ) ) )
 		);
 	}
 	echo '</tbody></table><p><a class="button" href="' . esc_url( admin_url( 'edit.php?post_type=hg_demande' ) ) . '">Toutes les demandes</a></p></section></div>';
@@ -148,10 +149,26 @@ add_action(
 .hg-colonnes{display:grid;grid-template-columns:1fr;gap:16px}@media(min-width:1100px){.hg-colonnes{grid-template-columns:1fr 1fr}}
 .hg-carte{background:#fff;border:1px solid #E4E4E9;border-radius:14px;padding:18px 20px}.hg-carte h2{margin-top:0}.hg-carte h2 small{font-weight:400;color:#6E6E73}
 .hg-barres{width:100%;border-collapse:collapse}.hg-barres th{text-align:left;font-weight:500;padding:6px 10px 6px 0;width:40%}.hg-barres td{padding:6px 0}
-.hg-barre{display:block;height:12px;min-width:2px;border-radius:0 4px 4px 0;background:#C8102E}.hg-n{width:40px;text-align:right;color:#1D1D1F}
+.hg-barre{display:block;height:12px;min-width:4px;border-radius:0 4px 4px 0;background:#C8102E}.hg-n{width:40px;text-align:right;color:#1D1D1F}
 .hg-statut{display:inline-block;padding:2px 10px;border-radius:999px;background:#F5F5F7;color:#1D1D1F;font-size:12px;font-weight:600}
 .hg-statut-nouvelle{background:rgba(200,16,46,.1);color:#A00C25}.hg-statut-confirmee{background:#1D1D1F;color:#fff}.hg-statut-annulee{color:#6E6E73}
 .hg-note{color:#6E6E73;max-width:80ch}
 </style>';
+	}
+);
+
+// Les écrans des demandes restent rattachés au menu « HEMATO GUI ».
+add_filter(
+	'parent_file',
+	function ( $parent ) {
+		$ecran = get_current_screen();
+		return $ecran && 'hg_demande' === $ecran->post_type ? 'hemato-gui' : $parent;
+	}
+);
+add_filter(
+	'submenu_file',
+	function ( $sous_menu ) {
+		$ecran = get_current_screen();
+		return $ecran && 'hg_demande' === $ecran->post_type ? 'edit.php?post_type=hg_demande' : $sous_menu;
 	}
 );

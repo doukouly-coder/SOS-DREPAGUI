@@ -87,7 +87,8 @@ function hg_calendrier() {
 			'posts_per_page' => -1,
 			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery
 				array( 'key' => '_hg_type', 'value' => 'rendez-vous' ),
-				array( 'key' => '_hg_date', 'value' => array( $debut->format( 'Y-m-d' ), $fin->format( 'Y-m-d' ) ), 'compare' => 'BETWEEN', 'type' => 'DATE' ),
+				// Dates ISO : la comparaison de chaînes suffit, et fonctionne sur toutes les bases (MySQL, SQLite).
+				array( 'key' => '_hg_date', 'value' => array( $debut->format( 'Y-m-d' ), $fin->format( 'Y-m-d' ) ), 'compare' => 'BETWEEN' ),
 			),
 		)
 	);

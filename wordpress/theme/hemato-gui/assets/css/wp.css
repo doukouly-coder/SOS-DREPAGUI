@@ -117,3 +117,6 @@
 .mes-demandes li{grid-template-columns:1fr auto}
 .mes-demandes li span strong{display:block}
 .mes-demandes li span small{display:block;font-size:13.5px;color:var(--graphite)}
+
+/* Calendrier de l'extension : fenêtre glissante de cinq semaines, sans navigation par mois. */
+.calendrier-tete .cal-fleche:empty{visibility:hidden}
