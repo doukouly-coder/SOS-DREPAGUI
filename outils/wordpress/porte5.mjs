@@ -3,8 +3,11 @@
 import { session, editeur, WP } from './wp-session.mjs';
 const [,, dossier = '.', ...slugs] = process.argv;
 const { nav, page } = await session({ width: 1600, height: 1000 });
-await page.goto(WP + '/wp-admin/edit.php?post_type=page');
-const ids = await page.$$eval('#the-list tr', trs => trs.map(tr => ({ id: +tr.id.replace('post-', ''), slug: tr.querySelector('.post_name') ? tr.querySelector('.post_name').textContent : '' })));
+let ids = [];
+for (const type of ['page', 'post']) {
+  await page.goto(WP + '/wp-admin/edit.php?post_type=' + type);
+  ids = ids.concat(await page.$$eval('#the-list tr', trs => trs.map(tr => ({ id: +tr.id.replace('post-', ''), slug: tr.querySelector('.post_name') ? tr.querySelector('.post_name').textContent : '' }))));
+}
 for (const slug of slugs) {
   const id = ids.find(p => p.slug === slug).id;
   await editeur(page, `/wp-admin/post.php?post=${id}&action=edit`);

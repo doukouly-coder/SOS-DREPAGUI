@@ -19,17 +19,19 @@ function hg_seo_externe() {
 add_action(
 	'init',
 	function () {
-		foreach ( array( 'hg_titre_seo', 'hg_description' ) as $cle ) {
-			register_post_meta(
-				'page',
-				$cle,
-				array(
-					'type'          => 'string',
-					'single'        => true,
-					'show_in_rest'  => true,
-					'auth_callback' => fn() => current_user_can( 'edit_pages' ),
-				)
-			);
+		foreach ( array( 'page', 'post' ) as $type ) {
+			foreach ( array( 'hg_titre_seo', 'hg_description' ) as $cle ) {
+				register_post_meta(
+					$type,
+					$cle,
+					array(
+						'type'          => 'string',
+						'single'        => true,
+						'show_in_rest'  => true,
+						'auth_callback' => fn() => current_user_can( 'edit_posts' ),
+					)
+				);
+			}
 		}
 	}
 );
@@ -37,7 +39,7 @@ add_action(
 add_filter(
 	'pre_get_document_title',
 	function ( $titre ) {
-		if ( hg_seo_externe() || ! is_singular( 'page' ) ) {
+		if ( hg_seo_externe() || ! is_singular( array( 'page', 'post' ) ) ) {
 			return $titre;
 		}
 		$seo = get_post_meta( get_queried_object_id(), 'hg_titre_seo', true );
@@ -58,7 +60,10 @@ add_action(
 		}
 		$url = is_singular() ? get_permalink() : home_url( add_query_arg( array() ) );
 		printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
-		printf( '<meta property="og:type" content="website">' . "\n" );
+		printf( '<meta property="og:type" content="%s">' . "\n", is_singular( 'post' ) ? 'article' : 'website' );
+		if ( is_singular() && has_post_thumbnail() ) {
+			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_the_post_thumbnail_url( null, 'full' ) ) );
+		}
 		printf( '<meta property="og:locale" content="fr_FR">' . "\n" );
 		printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
 		printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $titre ) );

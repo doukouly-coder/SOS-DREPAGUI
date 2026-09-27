@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blocs import convertir, sans_commentaires, gabarits, nom_gabarit, liens_wordpress, ErreurBloc
+import articles
 
 RACINE = Path(__file__).resolve().parent.parent / 'site'
 CONTENU_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'contenu'
@@ -62,8 +63,9 @@ def activer_nav(html, nav):
     return re.sub(r' data-nav="[^"]*"', '', html)
 
 
-def assembler(source):
-    brut = source.read_text(encoding='utf-8')
+def assembler(source, brut=None, dossier_wp=CONTENU_WP, meta_wp=None):
+    """source : fichier de page (ou d'article, alors brut = source composée par articles.py)."""
+    brut = brut if brut is not None else source.read_text(encoding='utf-8')
     entete_json = re.match(r'<!--(\{.*?\})-->\n?', brut, re.S)
     meta = json.loads(entete_json.group(1))
     corps = brut[entete_json.end():]
@@ -71,11 +73,11 @@ def assembler(source):
         try:
             blocs = convertir(corps)
             corps = sans_commentaires(convertir(corps, maquette=True))
-            CONTENU_WP.mkdir(parents=True, exist_ok=True)
+            dossier_wp.mkdir(parents=True, exist_ok=True)
             slug = meta.get('slug', source.stem)
-            (CONTENU_WP / f'{slug}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
-            (CONTENU_WP / f'{slug}.json').write_text(json.dumps({'titre': meta.get('wp_titre', meta['titre']), 'slug': slug,
-                'description': meta['description'], 'titre_seo': meta['titre']}, ensure_ascii=False, indent=1), encoding='utf-8')
+            (dossier_wp / f'{slug}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
+            (dossier_wp / f'{slug}.json').write_text(json.dumps({'titre': meta.get('wp_titre', meta['titre']), 'slug': slug,
+                'description': meta['description'], 'titre_seo': meta['titre'], **(meta_wp or {})}, ensure_ascii=False, indent=1), encoding='utf-8')
             for code, rendu in gabarits(brut[entete_json.end():]).items():
                 GABARITS_WP.mkdir(parents=True, exist_ok=True)
                 (GABARITS_WP / f'{nom_gabarit(code)}.html').write_text(espaces_insecables(rendu), encoding='utf-8')
@@ -131,3 +133,8 @@ if __name__ == '__main__':
     PIED_MAQUETTE = construire_pied()
     for src in sorted((SRC / 'pages').glob('*.html')):
         print('assemblé :', assembler(src))
+    liste = articles.tous()
+    for src in sorted(articles.SRC_ARTICLES.glob('*.html')):
+        brut, meta = articles.composer(src, liste)
+        champs = {k: meta[k] for k in ('date', 'categorie', 'image', 'extrait')}
+        print('article  :', assembler(src, brut, CONTENU_WP / 'articles', dict(champs, type='post')))

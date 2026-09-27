@@ -14,7 +14,7 @@ sur ce dépôt la charge automatiquement.
 | 0 · Préparation | Dossier de travail | ✅ fait |
 | 1 · Brief | Plan de design validé | ✅ brief reçu — plan dans `docs/plan-de-design.md` |
 | 2 · Maquette | Accueil HTML validé (`site/`) | ✅ validée par le client |
-| 3 · Déclinaison | Toutes les pages, CSS partagé | ✅ 15 pages (`site/`), assemblées par `outils/assembler.py` |
+| 3 · Déclinaison | Toutes les pages, CSS partagé | ✅ 16 pages et 8 articles d’actualité (`site/`), assemblés par `outils/assembler.py` |
 | 4 · Thème bloc | Thème + extension (`wordpress/`) | ✅ recette locale sur WordPress 6.6 : les 5 portes franchies |
 | 5 · Déploiement | Site en ligne | ⏳ en attente de l’accès à l’hébergement |
 | 6 · Recette | Réception | — |
@@ -48,8 +48,11 @@ et `docs/captures/pages/<page>-bureau.jpg` / `<page>-mobile.jpg`.
 
 ## Modifier les pages
 
-Les pages se modifient dans `site/src/pages/`, l’en-tête et le pied de page dans `site/src/parties/`,
-puis on régénère : `python3 outils/assembler.py`. Contrôles : `python3 outils/verifier-liens.py`
+Les pages se modifient dans `site/src/pages/`, les articles d’actualité dans `site/src/articles/`,
+l’en-tête et le pied de page dans `site/src/parties/`, puis on régénère : `python3 outils/assembler.py`.
+Un article ne contient que ses métadonnées (titre, catégorie, date, image, chapeau) et son texte :
+l’en-tête, l’illustration, l’avertissement médical et la section « À lire aussi » sont composés
+par `outils/articles.py`, identiques pour tous les articles. Contrôles : `python3 outils/verifier-liens.py`
 et `node outils/captures/interactions.mjs` (25 tests d’interaction).
 
 Les sources des pages sont écrites en « HTML en forme de blocs » : `outils/blocs.py` les convertit
@@ -69,6 +72,8 @@ python3 outils/wordpress/construire.py        # dist/hemato-gui-theme.zip et dis
   est la page « Accueil » définie comme page d’accueil. Les formulaires et calculateurs sont
   des blocs « shortcode » de l’extension : `[hg_rendez_vous]`, `[hg_contact]`, `[hg_connexion]`,
   `[hg_acces_pro]`, `[hg_outil type="nfs|formule|clairance|ipssr|mentzer"]`.
+- **Articles** : les actualités sont de vrais articles WordPress (catégorie, date, image mise en
+  avant), à écrire ensuite depuis Articles › Ajouter ; la page « Actualités » présente la sélection.
 - **Menu** : Apparence › Éditeur › Navigation, menu « Menu principal ».
 
 Déploiement complet sur un WordPress local (thème, extension, médias, pages, menu) :
@@ -77,7 +82,7 @@ Déploiement complet sur un WordPress local (thème, extension, médias, pages, 
 outils/wordpress/deployer-local.sh <racine-wordpress> <url-du-site>
 ```
 
-Recette : `porte2.mjs` (éditeur), `porte3.mjs` (rendu et formulaires, déconnecté), `porte5.mjs`
+Recette : `porte1.php` (aucun bloc HTML brut, images liées), `porte2.mjs` (éditeur), `porte3.mjs` (rendu et formulaires, déconnecté), `porte5.mjs`
 (éditeur fidèle au site) et `recette-admin.mjs` (tableau de bord, demandes), dans `outils/wordpress/`.
 
 ### Ce que fait réellement le site
@@ -116,7 +121,10 @@ P="$(pwd)"
 - **Logo officiel HEMATO GUI** (SVG ou PNG haute définition) et, si elle existe, la charte (valeur exacte du rouge).
   L'en-tête affiche pour l'instant le nom en texte : le logo n'est ni recréé ni imité.
 - La liste réelle des eBooks (titres, auteurs, pages, niveaux, prix) : ceux de la maquette sont des exemples.
-- Les contenus d’exemple à remplacer ou à brancher : articles d’actualités (liens `#`), boutons
+- **Relecture médicale** des huit articles d’actualité (dépistage néonatal, anticoagulants,
+  hydroxyurée, thérapie génique, don de sang, hémarthrose, Septembre Rouge, 19 juin) par l’équipe
+  soignante avant la mise en ligne.
+- Les contenus d’exemple à remplacer ou à brancher : l’annonce des Journées d’hématologie, boutons
   « Acheter » et « Aperçu » des eBooks (boutique à choisir : WooCommerce + paiement), formations
   et webinaires de l’espace pro, adresse exacte et mentions légales (éditeur, hébergeur).
 - L’aperçu « tableau de bord patient » (documents, notifications, favoris) est une illustration

@@ -3,7 +3,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const WP = (process.env.WP_LOCAL || 'http://127.0.0.1:8088').replace(/\/$/, '');
-const PAGES = ['', 'drepanocytose', 'hemophilie', 'cancers-du-sang', 'hemostase', 'diagnostic', 'outils', 'ebooks', 'rendez-vous', 'espace-patient', 'espace-pro', 'actualites', 'a-propos', 'contact'];
+const PAGES = ['', 'hematologie', 'depistage-neonatal-drepanocytose', 'anticoagulants-oraux-cinq-regles', 'hydroxyuree-avant-de-commencer', 'septembre-rouge-2026', 'therapie-genique-drepanocytose', 'don-de-sang', 'hemarthrose-enfant', 'journee-mondiale-drepanocytose', 'drepanocytose', 'hemophilie', 'cancers-du-sang', 'hemostase', 'diagnostic', 'outils', 'ebooks', 'rendez-vous', 'espace-patient', 'espace-pro', 'actualites', 'a-propos', 'contact'];
 const nav = await chromium.launch();
 let echecs = 0;
 const ok = (nom, cond, detail = '') => { if (!cond) echecs++; console.log((cond ? 'OK   ' : 'ÉCHEC') + ' ' + nom + (detail ? ' — ' + detail : '')); };
@@ -121,6 +121,18 @@ await page.click('.onglet:has-text("Myélome")');
 ok('onglets maladies', (await page.locator('.panneau-maladie.est-actif h2').innerText()).includes('plasmocytes'));
 await page.goto(WP + '/espace-patient/#documents');
 ok('ancre vers un onglet', (await page.locator('.tableau-contenu .variante.est-actif .tableau-titre').innerText()) === 'Mes documents');
+
+// 6 bis. Actualités : les cartes mènent aux articles, chaque article propose trois lectures
+await page.goto(WP + '/actualites/');
+await page.click('.article-vedette .lien-etire a');
+await page.waitForLoadState('networkidle');
+ok('la une mène à son article', page.url().includes('/depistage-neonatal-drepanocytose/'));
+ok('« À lire aussi » : trois articles', await page.locator('.article-suite .article').count() === 3);
+await page.click('.article-suite .article >> nth=0 >> .lien-etire a');
+await page.waitForLoadState('networkidle');
+ok('« À lire aussi » mène à un autre article', (await page.locator('h1.titre-article').count()) === 1 && !page.url().includes('/depistage-neonatal-drepanocytose/'));
+await page.goto(WP + '/hematologie/');
+ok('page Hématologie : cinq fiches', await page.locator('.bento .carte-domaine').count() === 5);
 
 // 7. Sécurité visible depuis l'extérieur
 const rep = await page.request.get(WP + '/');

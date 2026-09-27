@@ -121,6 +121,44 @@ switch ( $etape ) {
 			update_post_meta( $id, 'hg_description', $meta['description'] );
 			$ids[ $meta['slug'] ] = $id;
 		}
+		// Articles d'actualité : type « post », catégorie, date de publication, image mise en avant.
+		$articles = 0;
+		foreach ( glob( $dossier . '/articles/*.json' ) as $meta_fichier ) {
+			$meta    = json_decode( file_get_contents( $meta_fichier ), true );
+			$contenu = file_get_contents( substr( $meta_fichier, 0, -5 ) . '.html' );
+			$cat     = term_exists( $meta['categorie'], 'category' ) ?: wp_insert_term( $meta['categorie'], 'category' );
+			$existe  = get_page_by_path( $meta['slug'], OBJECT, 'post' );
+			$donnees = array(
+				'post_type'     => 'post',
+				'post_status'   => 'publish',
+				'post_title'    => $meta['titre'],
+				'post_name'     => $meta['slug'],
+				'post_content'  => wp_slash( $contenu ),
+				'post_excerpt'  => $meta['extrait'],
+				'post_date'     => $meta['date'] . ' 09:00:00',
+				'post_category' => array( (int) ( is_array( $cat ) ? $cat['term_id'] : $cat ) ),
+			);
+			if ( $existe ) {
+				$donnees['ID'] = $existe->ID;
+			}
+			$id = wp_insert_post( $donnees, true );
+			if ( is_wp_error( $id ) ) {
+				fwrite( STDERR, $meta['slug'] . ' : ' . $id->get_error_message() . "\n" );
+				continue;
+			}
+			update_post_meta( $id, 'hg_titre_seo', $meta['titre_seo'] );
+			update_post_meta( $id, 'hg_description', $meta['description'] );
+			$image = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'fields' => 'ids', 'meta_key' => '_hg_source', 'meta_value' => $meta['image'] ) );
+			if ( $image ) {
+				set_post_thumbnail( $id, $image[0] );
+			}
+			$articles++;
+		}
+		$non_classe = get_term_by( 'slug', 'uncategorized', 'category' ) ?: get_term_by( 'slug', 'non-classe', 'category' );
+		if ( $non_classe && 0 === (int) $non_classe->count ) {
+			wp_update_term( $non_classe->term_id, 'category', array( 'name' => 'Actualités', 'slug' => 'actualites-hemato-gui' ) );
+		}
+
 		update_option( 'show_on_front', 'page' );
 		update_option( 'page_on_front', $ids['accueil'] );
 
@@ -131,7 +169,7 @@ switch ( $etape ) {
 			wp_json_encode( array_filter( array( 'label' => $libelle, 'type' => 'page', 'id' => $ids[ $slug ], 'url' => get_permalink( $ids[ $slug ] ), 'kind' => 'post-type', 'description' => $desc ) ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES )
 		);
 		$menu  = $lien( 'Accueil', 'accueil' ) . "\n";
-		$menu .= '<!-- wp:navigation-submenu ' . wp_json_encode( array( 'label' => 'Hématologie', 'type' => 'custom', 'url' => home_url( '/#domaines' ), 'kind' => 'custom' ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . " -->\n";
+		$menu .= '<!-- wp:navigation-submenu ' . wp_json_encode( array( 'label' => 'Hématologie', 'type' => 'page', 'id' => $ids['hematologie'], 'url' => get_permalink( $ids['hematologie'] ), 'kind' => 'post-type' ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . " -->\n";
 		foreach ( array(
 			array( 'Drépanocytose', 'drepanocytose', 'Crises, prévention, traitements' ),
 			array( 'Hémophilie', 'hemophilie', 'Et maladies hémorragiques' ),
@@ -172,7 +210,7 @@ switch ( $etape ) {
 			}
 		}
 		flush_rewrite_rules( false );
-		echo count( $ids ), " pages publiées · accueil = page ", $ids['accueil'], " · menu principal à jour\n";
+		echo count( $ids ), " pages et $articles articles publiés · accueil = page ", $ids['accueil'], " · menu principal à jour\n";
 		break;
 }
 

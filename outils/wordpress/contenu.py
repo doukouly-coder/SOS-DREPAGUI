@@ -13,6 +13,7 @@ RACINE = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(RACINE / 'outils'))
 from assembler import espaces_insecables  # noqa: E402
 from blocs import convertir, liens_wordpress  # noqa: E402
+import articles  # noqa: E402
 
 
 def main(medias_json, url, sortie):
@@ -32,7 +33,16 @@ def main(medias_json, url, sortie):
         (sortie / f'{slug}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
         shutil.copy2(RACINE / 'wordpress/contenu' / f'{slug}.json', sortie / f'{slug}.json')
         n += 1
-    print(n, 'pages prêtes pour', base, '->', sortie)
+    (sortie / 'articles').mkdir(exist_ok=True)
+    liste = articles.tous()
+    for source in sorted(articles.SRC_ARTICLES.glob('*.html')):
+        brut, meta = articles.composer(source, liste)
+        corps = brut[re.match(r'<!--(\{.*?\})-->\n?', brut, re.S).end():]
+        blocs = convertir(corps, medias=medias, liens=liens_wordpress(base))
+        (sortie / 'articles' / f'{meta["slug"]}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
+        shutil.copy2(RACINE / 'wordpress/contenu/articles' / f'{meta["slug"]}.json', sortie / 'articles' / f'{meta["slug"]}.json')
+        n += 1
+    print(n, 'pages et articles prêts pour', base, '->', sortie)
 
 
 if __name__ == '__main__':

@@ -1,14 +1,10 @@
 // Porte 2 : chaque page s'ouvre dans l'éditeur sans bloc invalide, images liées à la médiathèque.
 import { session, editeur } from './wp-session.mjs';
 const { nav, page } = await session();
-const ids = await page.evaluate(async () => {
-  const r = await fetch('/wp-json/wp/v2/pages?per_page=50&_fields=id,slug', { headers: { 'X-WP-Nonce': window.wpApiSettings ? wpApiSettings.nonce : '' } });
-  return r.ok ? r.json() : [];
-});
-let pages = ids;
-if (!pages.length) {
-  await page.goto(process.env.WP_LOCAL || 'http://127.0.0.1:8088' + '/wp-admin/edit.php?post_type=page');
-  pages = await page.$$eval('#the-list tr', trs => trs.map(tr => ({ id: +tr.id.replace('post-', ''), slug: tr.querySelector('.row-title').textContent.trim() })));
+let pages = [];
+for (const type of ['page', 'post']) {
+  await page.goto((process.env.WP_LOCAL || 'http://127.0.0.1:8088') + '/wp-admin/edit.php?post_type=' + type + '&post_status=publish');
+  pages = pages.concat(await page.$$eval('#the-list tr', trs => trs.map(tr => ({ id: +tr.id.replace('post-', ''), slug: tr.querySelector('.row-title').textContent.trim() }))));
 }
 let echecs = 0;
 for (const { id, slug } of pages) {

@@ -15,5 +15,23 @@
 .editor-styles-wrapper .onglet-point,
 .editor-styles-wrapper .segment input,
 .editor-styles-wrapper .pile-livres > figure{position:absolute!important}
-/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu. */
-.editor-styles-wrapper figure.wp-block-image > .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}
+/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu.
+   L'éditeur impose width:inherit à l'image : elle hérite donc de la largeur posée sur ce conteneur. */
+.editor-styles-wrapper .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}
+/* Largeurs d'images propres aux composants. */
+@media (min-width:1000px){.editor-styles-wrapper .article:not(.article-une) .article-visuel .components-resizable-box__container{width:120%!important}}
+.editor-styles-wrapper .wp-block-image .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .calque .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .bulle .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .couverture .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .article-visuel .components-resizable-box__container{width:78%!important}
+@media (min-width:1000px){.editor-styles-wrapper .actus-liste .article:not(.article-une) .article-visuel .components-resizable-box__container{width:80%!important}}
+@media (min-width:1000px){.editor-styles-wrapper .article.article-vedette:not(.article-une) .article-visuel .components-resizable-box__container{width:72%!important}}
+.editor-styles-wrapper .page-hero-visuel .components-resizable-box__container{width:min(88%,520px)!important}
+.editor-styles-wrapper .page-hero-visuel .visuel-hero .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .etapes-visuelles .components-resizable-box__container{width:200px!important}
+.editor-styles-wrapper .maladie-tete .components-resizable-box__container{width:260px!important}
+.editor-styles-wrapper .maladie-visuel .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .pile-livres > figure .components-resizable-box__container{width:100%!important}
+.editor-styles-wrapper .apercu-livre .components-resizable-box__container{width:52px!important}
+.editor-styles-wrapper .article-illustration .components-resizable-box__container{width:min(56%,420px)!important}

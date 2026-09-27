@@ -55,8 +55,35 @@ def calques_editeur():
     regles = ',\n'.join(f'.editor-styles-wrapper {x}' for x in selecteurs)
     return ('/* Généré par outils/wordpress/construire.py — calques de la maquette rétablis dans l\'éditeur. */\n'
             f'{regles}{{position:absolute!important}}\n'
-            '/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu. */\n'
-            '.editor-styles-wrapper figure.wp-block-image > .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}\n'), len(selecteurs)
+            '/* Le conteneur de redimensionnement des images ne doit pas devenir le repère des images en absolu.\n'
+            '   L\'éditeur impose width:inherit à l\'image : elle hérite donc de la largeur posée sur ce conteneur. */\n'
+            '.editor-styles-wrapper .components-resizable-box__container{position:static!important;width:100%!important;height:auto!important;display:contents}\n'
+            + largeurs_images_editeur()), len(selecteurs)
+
+
+def largeurs_images_editeur():
+    """Chaque règle « … img{width:…} » de la maquette, reportée sur le conteneur de redimensionnement
+    de l'éditeur (dont l'image hérite), en gardant les requêtes média."""
+    import re
+    sortie = []
+
+    def regles(css, prefixe=''):
+        for sel, corps in re.findall(r'([^{}]+)\{([^{}]*)\}', css):
+            largeur = re.search(r'(?:^|;)\s*width\s*:\s*([^;!]+)', corps)
+            if not largeur:
+                continue
+            cibles = [x.strip()[:-4].strip() for x in sel.split(',') if x.strip().endswith(' img') and '::' not in x]
+            for c in cibles:
+                sortie.append(f'{prefixe}.editor-styles-wrapper {c} .components-resizable-box__container{{width:{largeur.group(1).strip()}!important}}'
+                              + ('}' if prefixe else ''))
+
+    for nom in ('styles.css', 'pages.css'):
+        css = re.sub(r'/\*.*?\*/', '', (SITE / 'assets/css' / nom).read_text(encoding='utf-8'), flags=re.S)
+        # blocs @media (un niveau d'imbrication) puis le reste
+        for media, interieur in re.findall(r'(@media[^{]+)\{((?:[^{}]*\{[^{}]*\})*[^{}]*)\}', css):
+            regles(interieur, media.strip() + '{')
+        regles(re.sub(r'@media[^{]+\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}', '', css))
+    return '/* Largeurs d\'images propres aux composants. */\n' + '\n'.join(sortie) + '\n'
 
 
 def main():
