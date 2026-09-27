@@ -270,3 +270,29 @@ def convertir(source_html, medias=None, maquette=False):
 def sans_commentaires(blocs):
     """Le HTML sauvegardé par les blocs, sans leurs délimiteurs : c'est aussi la maquette."""
     return re.sub(r'<!-- /?wp:[^>]*?-->\n?', '', blocs)
+
+
+def gabarits(source_html):
+    """{shortcode: HTML} : le rendu attendu de chaque shortcode, tel que la maquette l'affiche.
+    L'extension WordPress sert ces fichiers tels quels, d'où l'égalité au pixel."""
+    arbre = Arbre()
+    arbre.feed(source_html)
+    trouves = {}
+
+    def parcourir(noeud):
+        for e in noeud.enfants:
+            if isinstance(e, str):
+                continue
+            if 'data-shortcode' in e.attrs:
+                trouves[e.attrs['data-shortcode']] = html_brut(e).strip() + '\n'
+            else:
+                parcourir(e)
+    parcourir(arbre.racine)
+    return trouves
+
+
+def nom_gabarit(shortcode):
+    """[hg_outil type="nfs"] -> outil-nfs"""
+    m = re.match(r'\[(\w+)(.*?)\]', shortcode)
+    nom = m.group(1).removeprefix('hg_').replace('_', '-')
+    return '-'.join([nom] + re.findall(r'=\s*"([^"]*)"', m.group(2)))

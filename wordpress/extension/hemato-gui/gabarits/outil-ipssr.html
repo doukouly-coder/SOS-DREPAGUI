@@ -1,0 +1,22 @@
+<article class="calc" id="ipssr" data-calc="ipssr">
+      <div class="calc-entrees">
+        <div class="calc-tete"><span><i class="ico ico-score"></i></span><div><h2>Score IPSS-R</h2><p>Syndromes myélodysplasiques, au diagnostic.</p></div></div>
+        <div class="champ champ-large"><label for="i-cyto">Cytogénétique</label><div class="champ-saisie"><select id="i-cyto" name="cyto">
+          <option value="0">Très bon : −Y, del(11q)</option><option value="1" selected>Bon : normal, del(5q), del(12p), del(20q), double avec del(5q)</option>
+          <option value="2">Intermédiaire : del(7q), +8, +19, i(17q), autres</option><option value="3">Mauvais : −7, inv(3)/t(3q)/del(3q), double avec −7/del(7q), complexe à 3 anomalies</option>
+          <option value="4">Très mauvais : complexe à plus de 3 anomalies</option></select></div></div>
+        <div class="champs">
+          <div class="champ"><label for="i-blastes">Blastes médullaires</label><div class="champ-saisie"><input id="i-blastes" name="blastes" inputmode="decimal" value="3"><span class="unite">%</span></div></div>
+          <div class="champ"><label for="i-hb">Hémoglobine</label><div class="champ-saisie"><input id="i-hb" name="hb" inputmode="decimal" value="9,2"><span class="unite">g/dL</span></div></div>
+          <div class="champ"><label for="i-plq">Plaquettes</label><div class="champ-saisie"><input id="i-plq" name="plq" inputmode="decimal" value="85"><span class="unite">G/L</span></div></div>
+          <div class="champ"><label for="i-pnn">Neutrophiles</label><div class="champ-saisie"><input id="i-pnn" name="pnn" inputmode="decimal" value="1,1"><span class="unite">G/L</span></div></div>
+        </div>
+      </div>
+      <div class="calc-sortie" aria-live="polite">
+        <p class="res-etiquette">Score</p>
+        <p class="res-valeur"><span data-sortie="score">3,5</span> <small>points</small></p>
+        <p class="res-pastille" data-sortie="risque">Risque intermédiaire</p>
+        <ul class="res-liste res-echelle"><li>≤ 1,5 : très faible</li><li>&gt; 1,5 à 3 : faible</li><li>&gt; 3 à 4,5 : intermédiaire</li><li>&gt; 4,5 à 6 : élevé</li><li>&gt; 6 : très élevé</li></ul>
+        <p class="res-note">L’IPSS-M, qui intègre les mutations, se calcule sur le <a href="https://mds-risk-model.com" target="_blank" rel="noopener">calculateur officiel</a>.</p>
+      </div>
+    </article>

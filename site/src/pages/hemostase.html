@@ -1,8 +1,8 @@
-<!--{"titre":"Hémostase et thrombose : comprendre son bilan (TP, INR, TCA, D-dimères) | HEMATO GUI","description":"Bibliothèque de l’hémostase : NFS, TP/INR, TCA, fibrinogène, D-dimères, facteurs, plaquettes, maladie de Willebrand, thrombophilies, CIVD, anticoagulants et antiagrégants. Outil pédagogique pour comprendre son bilan d’hémostase.","nav":"hematologie"}-->
+<!--{"titre":"Hémostase et thrombose : comprendre son bilan (TP, INR, TCA, D-dimères) | HEMATO GUI","description":"Bibliothèque de l’hémostase : NFS, TP/INR, TCA, fibrinogène, D-dimères, facteurs, plaquettes, maladie de Willebrand, thrombophilies, CIVD, anticoagulants et antiagrégants. Outil pédagogique pour comprendre son bilan d’hémostase.","nav":"hematologie","wp_titre":"Hémostase et thrombose"}-->
 <section class="page-hero">
   <div class="wrap page-hero-grille">
     <div>
-      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><a href="index.html#domaines">Hématologie</a><span aria-current="page">Hémostase et thrombose</span></nav>
+      <p class="ariane"><a href="index.html">Accueil</a><a href="index.html#domaines">Hématologie</a><strong>Hémostase et thrombose</strong></p>
       <p class="surtitre">Bibliothèque</p>
       <h1 class="titre-page">Hémostase <em>et thrombose</em></h1>
       <p class="chapeau">Les examens de la coagulation, les maladies et les traitements, expliqués clairement. Et un outil pour comprendre son bilan.</p>
@@ -11,7 +11,7 @@
         <a class="btn btn-contour btn-grand" href="#bibliotheque">Parcourir la bibliothèque</a>
       </div>
     </div>
-    <div class="page-hero-visuel"><img src="assets/img/rendus/hemostase.webp" alt="Réseau de fibrine retenant un globule rouge et des plaquettes"></div>
+    <div class="page-hero-visuel"><figure class="visuel-hero"><img src="assets/img/rendus/hemostase.webp" alt="Réseau de fibrine retenant un globule rouge et des plaquettes"></figure></div>
   </div>
 </section>
 
@@ -22,79 +22,79 @@
       <h2>Arrêter un saignement, en trois temps.</h2>
       <p class="chapeau">L’hémostase est l’ensemble des mécanismes qui arrêtent un saignement, puis dissolvent le caillot une fois la blessure réparée. Quand elle s’emballe, c’est la thrombose.</p>
     </header>
-    <ol class="frise">
-      <li><h3>Le vaisseau se resserre</h3><p>La paroi blessée se contracte pour réduire le débit de sang.</p></li>
-      <li><h3>Les plaquettes s’agrègent</h3><p>Elles s’accolent à la brèche et forment un premier bouchon, aidées par le facteur Willebrand.</p></li>
-      <li><h3>La coagulation consolide</h3><p>Les facteurs de coagulation transforment le fibrinogène en un réseau de fibrine qui solidifie le caillot.</p></li>
-      <li><h3>Le caillot se dissout</h3><p>La fibrinolyse l’élimine une fois la blessure réparée ; les D-dimères en sont la trace.</p></li>
-    </ol>
+    <div class="frise">
+      <div class="frise-etape"><h3>Le vaisseau se resserre</h3><p>La paroi blessée se contracte pour réduire le débit de sang.</p></div>
+      <div class="frise-etape"><h3>Les plaquettes s’agrègent</h3><p>Elles s’accolent à la brèche et forment un premier bouchon, aidées par le facteur Willebrand.</p></div>
+      <div class="frise-etape"><h3>La coagulation consolide</h3><p>Les facteurs de coagulation transforment le fibrinogène en un réseau de fibrine qui solidifie le caillot.</p></div>
+      <div class="frise-etape"><h3>Le caillot se dissout</h3><p>La fibrinolyse l’élimine une fois la blessure réparée ; les D-dimères en sont la trace.</p></div>
+    </div>
   </div>
 </section>
 
 <section class="biblio-section" id="bibliotheque">
-  <div class="wrap">
+  <div class="wrap filtrable">
     <div class="biblio-tete">
       <div>
         <p class="surtitre">13 fiches</p>
         <h2>La bibliothèque de l’hémostase</h2>
       </div>
     </div>
-    <div class="choix biblio-filtres" data-filtres=".biblio-grille">
-      <p class="choix-item est-actif" data-filtre="tous">Tout</p>
-      <p class="choix-item" data-filtre="examen">Examens</p>
-      <p class="choix-item" data-filtre="maladie">Maladies</p>
-      <p class="choix-item" data-filtre="traitement">Traitements</p>
+    <div class="choix biblio-filtres">
+      <p class="choix-item f-tous est-actif">Tout</p>
+      <p class="choix-item f-examen">Examens</p>
+      <p class="choix-item f-maladie">Maladies</p>
+      <p class="choix-item f-traitement">Traitements</p>
     </div>
-    <div class="biblio-grille">
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>NFS</h3><p>Compte les globules rouges, les globules blancs et les plaquettes, et mesure l’hémoglobine.</p>
-        <div class="valeur-ref"><small>Plaquettes</small><strong>150 – 400 G/L</strong></div>
-        <dl><dt>Quand ?</dt><dd>Bilan d’un saignement, avant une intervention, suivi d’un traitement.</dd><dt>Si anormal</dt><dd>Des plaquettes basses peuvent expliquer des saignements ; une anémie peut révéler un saignement chronique.</dd></dl></article>
+    <div class="biblio-grille filtres-cible">
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>NFS</h3><p>Compte les globules rouges, les globules blancs et les plaquettes, et mesure l’hémoglobine.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Plaquettes</p><p class="valeur-ref-val">150 – 400 G/L</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Bilan d’un saignement, avant une intervention, suivi d’un traitement.</p><p class="dl-terme">Si anormal</p><p class="dl-def">Des plaquettes basses peuvent expliquer des saignements ; une anémie peut révéler un saignement chronique.</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>TP et INR</h3><p>Explore les facteurs II, V, VII et X. L’INR standardise le résultat pour les patients sous antivitamines K (AVK).</p>
-        <div class="valeur-ref"><small>Sans traitement · sous AVK</small><strong>TP 70 – 100 % · INR cible 2 – 3</strong></div>
-        <dl><dt>Quand ?</dt><dd>Surveillance des AVK, bilan avant une intervention, maladie du foie.</dd><dt>Si anormal</dt><dd>TP bas : AVK, carence en vitamine K, insuffisance hépatique, déficit en facteur, CIVD.</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>TP et INR</h3><p>Explore les facteurs II, V, VII et X. L’INR standardise le résultat pour les patients sous antivitamines K (AVK).</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Sans traitement · sous AVK</p><p class="valeur-ref-val">TP 70 – 100 % · INR cible 2 – 3</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Surveillance des AVK, bilan avant une intervention, maladie du foie.</p><p class="dl-terme">Si anormal</p><p class="dl-def">TP bas : AVK, carence en vitamine K, insuffisance hépatique, déficit en facteur, CIVD.</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>TCA</h3><p>Temps de céphaline activée : explore les facteurs VIII, IX, XI et XII, et la voie commune.</p>
-        <div class="valeur-ref"><small>Rapport patient / témoin</small><strong>Inférieur à 1,2</strong></div>
-        <dl><dt>Quand ?</dt><dd>Bilan d’un saignement, surveillance de l’héparine non fractionnée.</dd><dt>Si allongé</dt><dd>Hémophilie, maladie de Willebrand, héparine, ou anticoagulant circulant de type lupique.</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>TCA</h3><p>Temps de céphaline activée : explore les facteurs VIII, IX, XI et XII, et la voie commune.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Rapport patient / témoin</p><p class="valeur-ref-val">Inférieur à 1,2</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Bilan d’un saignement, surveillance de l’héparine non fractionnée.</p><p class="dl-terme">Si allongé</p><p class="dl-def">Hémophilie, maladie de Willebrand, héparine, ou anticoagulant circulant de type lupique.</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Fibrinogène</h3><p>La protéine transformée en fibrine pour former le caillot.</p>
-        <div class="valeur-ref"><small>Valeurs habituelles</small><strong>2 – 4 g/L</strong></div>
-        <dl><dt>Quand ?</dt><dd>Hémorragie grave, CIVD, maladie du foie, grossesse.</dd><dt>Si anormal</dt><dd>Bas : consommation (CIVD, hémorragie), insuffisance hépatique. Élevé : inflammation, grossesse.</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>Fibrinogène</h3><p>La protéine transformée en fibrine pour former le caillot.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeurs habituelles</p><p class="valeur-ref-val">2 – 4 g/L</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Hémorragie grave, CIVD, maladie du foie, grossesse.</p><p class="dl-terme">Si anormal</p><p class="dl-def">Bas : consommation (CIVD, hémorragie), insuffisance hépatique. Élevé : inflammation, grossesse.</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>D-dimères</h3><p>Fragments issus de la dégradation de la fibrine : ils témoignent d’une coagulation activée.</p>
-        <div class="valeur-ref"><small>Seuil habituel</small><strong>Inférieur à 500 µg/L</strong></div>
-        <dl><dt>Quand ?</dt><dd>Suspicion de phlébite ou d’embolie pulmonaire, CIVD. Après 50 ans, le seuil s’ajuste à l’âge.</dd><dt>À savoir</dt><dd>Normaux, ils rendent une thrombose peu probable si le doute clinique est faible. Élevés, ils sont peu spécifiques (infection, grossesse, cancer, chirurgie).</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>D-dimères</h3><p>Fragments issus de la dégradation de la fibrine : ils témoignent d’une coagulation activée.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Seuil habituel</p><p class="valeur-ref-val">Inférieur à 500 µg/L</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Suspicion de phlébite ou d’embolie pulmonaire, CIVD. Après 50 ans, le seuil s’ajuste à l’âge.</p><p class="dl-terme">À savoir</p><p class="dl-def">Normaux, ils rendent une thrombose peu probable si le doute clinique est faible. Élevés, ils sont peu spécifiques (infection, grossesse, cancer, chirurgie).</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Facteurs de coagulation</h3><p>Dosage de l’activité d’un facteur précis : VIII, IX, XI, VII, V…</p>
-        <div class="valeur-ref"><small>Activité habituelle</small><strong>50 – 150 %</strong></div>
-        <dl><dt>Quand ?</dt><dd>TP ou TCA anormal sans explication, hémophilie, bilan familial.</dd><dt>Si bas</dt><dd>Déficit héréditaire (hémophilie A ou B…) ou acquis (maladie du foie, auto-anticorps).</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>Facteurs de coagulation</h3><p>Dosage de l’activité d’un facteur précis : VIII, IX, XI, VII, V…</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Activité habituelle</p><p class="valeur-ref-val">50 – 150 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">TP ou TCA anormal sans explication, hémophilie, bilan familial.</p><p class="dl-terme">Si bas</p><p class="dl-def">Déficit héréditaire (hémophilie A ou B…) ou acquis (maladie du foie, auto-anticorps).</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Examen</span><h3>Plaquettes</h3><p>Leur nombre, mais aussi leur fonctionnement, qui peut être altéré.</p>
-        <div class="valeur-ref"><small>Saignement spontané possible</small><strong>En dessous de 20 G/L</strong></div>
-        <dl><dt>Quand ?</dt><dd>Petites taches rouges sur la peau, bleus, saignements des gencives ou du nez.</dd><dt>Si anormal</dt><dd>Thrombopénie : production insuffisante ou destruction. Mauvais fonctionnement : médicaments (aspirine) ou maladie héréditaire.</dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Examen</p><h3>Plaquettes</h3><p>Leur nombre, mais aussi leur fonctionnement, qui peut être altéré.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Saignement spontané possible</p><p class="valeur-ref-val">En dessous de 20 G/L</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Petites taches rouges sur la peau, bleus, saignements des gencives ou du nez.</p><p class="dl-terme">Si anormal</p><p class="dl-def">Thrombopénie : production insuffisante ou destruction. Mauvais fonctionnement : médicaments (aspirine) ou maladie héréditaire.</p></div></article>
 
-      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>Maladie de Willebrand</h3><p>La maladie hémorragique héréditaire la plus fréquente, par déficit ou anomalie du facteur Willebrand.</p>
-        <div class="valeur-ref"><small>Examens</small><strong>Facteur Willebrand (antigène, activité), facteur VIII</strong></div>
-        <dl><dt>Signes</dt><dd>Saignements de nez et des gencives, règles abondantes, saignements après une extraction dentaire ou un accouchement.</dd><dt>Traitement</dt><dd>Desmopressine, concentrés de facteur Willebrand, acide tranexamique.</dd></dl></article>
+      <article class="fiche-examen t-maladie"><p class="examen-type examen-type-maladie">Maladie</p><h3>Maladie de Willebrand</h3><p>La maladie hémorragique héréditaire la plus fréquente, par déficit ou anomalie du facteur Willebrand.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Examens</p><p class="valeur-ref-val">Facteur Willebrand (antigène, activité), facteur VIII</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Signes</p><p class="dl-def">Saignements de nez et des gencives, règles abondantes, saignements après une extraction dentaire ou un accouchement.</p><p class="dl-terme">Traitement</p><p class="dl-def">Desmopressine, concentrés de facteur Willebrand, acide tranexamique.</p></div></article>
 
-      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>Thrombophilies</h3><p>Des tendances à faire des thromboses : héréditaires (facteur V Leiden, mutation de la prothrombine, déficits en antithrombine, protéine C ou S) ou acquises (syndrome des antiphospholipides).</p>
-        <dl><dt>Qui tester ?</dt><dd>Sur avis spécialisé : thrombose jeune, récidivante ou inhabituelle, antécédents familiaux.</dd><dt>Pourquoi ?</dt><dd>Adapter la durée du traitement, la contraception et la prévention dans les situations à risque.</dd></dl></article>
+      <article class="fiche-examen t-maladie"><p class="examen-type examen-type-maladie">Maladie</p><h3>Thrombophilies</h3><p>Des tendances à faire des thromboses : héréditaires (facteur V Leiden, mutation de la prothrombine, déficits en antithrombine, protéine C ou S) ou acquises (syndrome des antiphospholipides).</p>
+        <div class="fiche-dl"><p class="dl-terme">Qui tester ?</p><p class="dl-def">Sur avis spécialisé : thrombose jeune, récidivante ou inhabituelle, antécédents familiaux.</p><p class="dl-terme">Pourquoi ?</p><p class="dl-def">Adapter la durée du traitement, la contraception et la prévention dans les situations à risque.</p></div></article>
 
-      <article class="fiche-examen" data-type="maladie"><span class="examen-type examen-type-maladie">Maladie</span><h3>CIVD</h3><p>Coagulation intravasculaire disséminée : la coagulation s’active partout, consomme plaquettes et facteurs, et provoque à la fois des caillots et des saignements.</p>
-        <div class="valeur-ref"><small>Profil typique</small><strong>Plaquettes ↓ · TP ↓ · fibrinogène ↓ · D-dimères ↑↑</strong></div>
-        <dl><dt>Causes</dt><dd>Infection grave, complications de l’accouchement, traumatisme, cancer, certaines leucémies aiguës.</dd><dt>Prise en charge</dt><dd>Une urgence : traiter la cause, et compenser selon les saignements.</dd></dl></article>
+      <article class="fiche-examen t-maladie"><p class="examen-type examen-type-maladie">Maladie</p><h3>CIVD</h3><p>Coagulation intravasculaire disséminée : la coagulation s’active partout, consomme plaquettes et facteurs, et provoque à la fois des caillots et des saignements.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Profil typique</p><p class="valeur-ref-val">Plaquettes ↓ · TP ↓ · fibrinogène ↓ · D-dimères ↑↑</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Causes</p><p class="dl-def">Infection grave, complications de l’accouchement, traumatisme, cancer, certaines leucémies aiguës.</p><p class="dl-terme">Prise en charge</p><p class="dl-def">Une urgence : traiter la cause, et compenser selon les saignements.</p></div></article>
 
-      <article class="fiche-examen" data-type="traitement"><span class="examen-type examen-type-traitement">Traitement</span><h3>Anticoagulants</h3><p>Ils empêchent la formation ou l’extension d’un caillot : héparines, antivitamines K (warfarine, acénocoumarol), anticoagulants oraux directs (apixaban, rivaroxaban, dabigatran).</p>
-        <dl><dt>Surveillance</dt><dd>INR pour les AVK, plaquettes sous héparine, fonction rénale pour les anticoagulants directs.</dd><dt>Règles d’or</dt><dd>Signaler tout saignement, ne jamais arrêter ni doubler une dose sans avis, se méfier des anti-inflammatoires et de certaines plantes.</dd></dl></article>
+      <article class="fiche-examen t-traitement"><p class="examen-type examen-type-traitement">Traitement</p><h3>Anticoagulants</h3><p>Ils empêchent la formation ou l’extension d’un caillot : héparines, antivitamines K (warfarine, acénocoumarol), anticoagulants oraux directs (apixaban, rivaroxaban, dabigatran).</p>
+        <div class="fiche-dl"><p class="dl-terme">Surveillance</p><p class="dl-def">INR pour les AVK, plaquettes sous héparine, fonction rénale pour les anticoagulants directs.</p><p class="dl-terme">Règles d’or</p><p class="dl-def">Signaler tout saignement, ne jamais arrêter ni doubler une dose sans avis, se méfier des anti-inflammatoires et de certaines plantes.</p></div></article>
 
-      <article class="fiche-examen" data-type="traitement"><span class="examen-type examen-type-traitement">Traitement</span><h3>Antiagrégants</h3><p>Ils empêchent les plaquettes de s’agréger : aspirine, clopidogrel, ticagrélor, prasugrel.</p>
-        <dl><dt>Quand ?</dt><dd>Après un infarctus, la pose d’un stent, un AVC ischémique.</dd><dt>Attention</dt><dd>Ne jamais les arrêter sans avis médical ; prévenir avant une chirurgie ou un soin dentaire.</dd></dl></article>
+      <article class="fiche-examen t-traitement"><p class="examen-type examen-type-traitement">Traitement</p><h3>Antiagrégants</h3><p>Ils empêchent les plaquettes de s’agréger : aspirine, clopidogrel, ticagrélor, prasugrel.</p>
+        <div class="fiche-dl"><p class="dl-terme">Quand ?</p><p class="dl-def">Après un infarctus, la pose d’un stent, un AVC ischémique.</p><p class="dl-terme">Attention</p><p class="dl-def">Ne jamais les arrêter sans avis médical ; prévenir avant une chirurgie ou un soin dentaire.</p></div></article>
 
-      <article class="fiche-examen" data-type="examen"><span class="examen-type">Guide</span><h3>Interpréter les examens</h3><p>Un bilan d’hémostase se lit toujours avec l’histoire du patient : saignements personnels et familiaux, traitements en cours.</p>
-        <dl><dt>Avant de conclure</dt><dd>Vérifier le prélèvement : tube bien rempli, délai d’acheminement respecté. Un prélèvement difficile peut fausser le résultat.</dd><dt>Pour aller plus loin</dt><dd><a class="lien-fleche" href="#outil">Essayer l’outil TP × TCA<svg><use href="#i-fleche"/></svg></a></dd></dl></article>
+      <article class="fiche-examen t-examen"><p class="examen-type">Guide</p><h3>Interpréter les examens</h3><p>Un bilan d’hémostase se lit toujours avec l’histoire du patient : saignements personnels et familiaux, traitements en cours.</p>
+        <div class="fiche-dl"><p class="dl-terme">Avant de conclure</p><p class="dl-def">Vérifier le prélèvement : tube bien rempli, délai d’acheminement respecté. Un prélèvement difficile peut fausser le résultat.</p><p class="dl-terme">Pour aller plus loin</p><p class="dl-def lien-fleche"><a href="#outil">Essayer l’outil TP × TCA</a></p></div></article>
     </div>
-    <p class="note-valeurs"><svg><use href="#i-info"/></svg>Valeurs indicatives : les normes varient selon les laboratoires et les techniques. Référez-vous aux valeurs imprimées sur votre compte rendu.</p>
+    <p class="note-valeurs icone-avant ico-info">Valeurs indicatives : les normes varient selon les laboratoires et les techniques. Référez-vous aux valeurs imprimées sur votre compte rendu.</p>
   </div>
 </section>
 
@@ -105,41 +105,41 @@
       <h2>Comprendre son bilan d’hémostase</h2>
       <p class="chapeau">Indiquez ce que montrent votre TP et votre TCA : l’outil explique ce que cela peut signifier. Il ne remplace pas l’avis de votre médecin.</p>
     </header>
-    <div class="outil-carte" data-outil-bilan>
+    <div class="outil-carte outil-2d">
       <div class="outil-entrees">
-        <fieldset data-param="tp"><legend>Votre TP<small>Taux de prothrombine</small></legend>
-          <div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="bas">Bas</p></div>
-        </fieldset>
-        <fieldset data-param="tca"><legend>Votre TCA<small>Temps de céphaline activée</small></legend>
-          <div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="allonge">Allongé</p></div>
-        </fieldset>
+        <div class="param"><p class="param-titre">Votre TP</p><p class="param-sous">Taux de prothrombine</p>
+          <div class="choix"><p class="choix-item v-normal est-actif">Normal</p><p class="choix-item v-bas">Bas</p></div>
+        </div>
+        <div class="param"><p class="param-titre">Votre TCA</p><p class="param-sous">Temps de céphaline activée</p>
+          <div class="choix"><p class="choix-item v-normal est-actif">Normal</p><p class="choix-item v-allonge">Allongé</p></div>
+        </div>
       </div>
       <div class="outil-resultats">
-        <div class="variante est-actif" data-combo="normal-normal">
+        <div class="variante combo-normal-normal est-actif">
           <p class="resultat-etiquette">TP normal · TCA normal</p>
           <h3>La coagulation explorée par ces tests est normale.</h3>
           <p>Si vous saignez anormalement malgré ce bilan normal, d’autres causes sont à rechercher :</p>
           <ul class="liste-points"><li>un problème de plaquettes (nombre ou fonctionnement)</li><li>une maladie de Willebrand</li><li>plus rarement, un déficit en facteur XIII ou une fragilité des vaisseaux</li></ul>
         </div>
-        <div class="variante" data-combo="normal-allonge">
+        <div class="variante combo-normal-allonge">
           <p class="resultat-etiquette">TP normal · TCA allongé</p>
           <h3>Une anomalie de la voie « intrinsèque ».</h3>
           <p>Ce profil oriente vers :</p>
           <ul class="liste-points"><li>un déficit en facteur VIII ou IX (hémophilie A ou B) ou en facteur XI</li><li>une maladie de Willebrand</li><li>un traitement par héparine</li><li>un anticoagulant circulant de type lupique, qui expose plutôt aux thromboses</li><li>un déficit en facteur XII, sans risque de saignement</li></ul>
         </div>
-        <div class="variante" data-combo="bas-normal">
+        <div class="variante combo-bas-normal">
           <p class="resultat-etiquette">TP bas · TCA normal</p>
           <h3>Une anomalie de la voie « extrinsèque ».</h3>
           <p>Ce profil oriente vers :</p>
           <ul class="liste-points"><li>un traitement par antivitamines K (AVK), au début</li><li>une carence débutante en vitamine K</li><li>une insuffisance hépatique débutante</li><li>un déficit héréditaire en facteur VII, plus rare</li></ul>
         </div>
-        <div class="variante" data-combo="bas-allonge">
+        <div class="variante combo-bas-allonge">
           <p class="resultat-etiquette">TP bas · TCA allongé</p>
           <h3>Une anomalie de la voie commune, ou plusieurs facteurs touchés.</h3>
           <p>Ce profil oriente vers :</p>
           <ul class="liste-points"><li>une insuffisance hépatique</li><li>une carence importante en vitamine K ou un surdosage en AVK</li><li>une CIVD (avec plaquettes et fibrinogène bas)</li><li>un anticoagulant à forte dose, ou un déficit en facteur X, V, II ou fibrinogène</li></ul>
         </div>
-        <p class="outil-mention-bas"><svg><use href="#i-info"/></svg>Outil d’aide à la compréhension. Il ne remplace ni l’interprétation de votre médecin ni une consultation.</p>
+        <p class="outil-mention-bas icone-avant ico-info">Outil d’aide à la compréhension. Il ne remplace ni l’interprétation de votre médecin ni une consultation.</p>
       </div>
     </div>
   </div>
@@ -147,8 +147,8 @@
 
 <section class="section">
   <div class="wrap">
-    <div class="urgence" style="margin-top:0">
-      <div class="urgence-tete"><span class="urgence-ico"><svg><use href="#i-urgence"/></svg></span><h2>Sous anticoagulant : consultez en urgence si…</h2></div>
+    <div class="urgence urgence-seule">
+      <div class="urgence-tete ico-urgence"><h2>Sous anticoagulant : consultez en urgence si…</h2></div>
       <ul class="liste-points liste-points-2">
         <li>Un saignement ne s’arrête pas</li>
         <li>Du sang dans les urines, des selles noires, un vomissement de sang</li>
@@ -158,10 +158,10 @@
         <li>Un essoufflement brutal ou une douleur dans la poitrine</li>
       </ul>
       <div class="boutons boutons-gauche">
-        <a class="btn btn-blanc btn-grand" href="rendez-vous.html?type=hemostase"><svg><use href="#i-calendrier"/></svg>Consultation d’hémostase</a>
-        <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Nous écrire</a>
+        <a class="btn btn-blanc btn-grand b-ico ico-calendrier" href="rendez-vous.html?type=hemostase">Consultation d’hémostase</a>
+        <a class="btn btn-wa btn-grand b-ico ico-whatsapp" href="https://wa.me/224628733143" target="_blank" rel="noopener">Nous écrire</a>
       </div>
     </div>
-    <p class="avertissement"><svg><use href="#i-info"/></svg><span>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</span></p>
+    <p class="avertissement icone-avant ico-info">Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
   </div>
 </section>

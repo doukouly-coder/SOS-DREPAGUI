@@ -1,0 +1,23 @@
+<article class="calc" id="nfs" data-calc="nfs">
+      <div class="calc-entrees">
+        <div class="calc-tete"><span><i class="ico ico-nfs"></i></span><div><h2>Interprétation de la NFS</h2><p>Seuils d’anémie de l’OMS selon le profil.</p></div></div>
+        <div class="champ champ-large"><label for="nfs-profil">Profil</label>
+          <div class="champ-saisie"><select id="nfs-profil" name="profil">
+            <option value="homme">Homme adulte</option><option value="femme" selected>Femme adulte</option><option value="enceinte">Femme enceinte</option>
+            <option value="e6">Enfant 6 à 59 mois</option><option value="e5">Enfant 5 à 11 ans</option><option value="e12">Enfant 12 à 14 ans</option>
+          </select></div></div>
+        <div class="champs">
+          <div class="champ"><label for="nfs-hb">Hémoglobine</label><div class="champ-saisie"><input id="nfs-hb" name="hb" inputmode="decimal" value="9,1"><span class="unite">g/dL</span></div></div>
+          <div class="champ"><label for="nfs-vgm">VGM</label><div class="champ-saisie"><input id="nfs-vgm" name="vgm" inputmode="decimal" value="71"><span class="unite">fL</span></div></div>
+          <div class="champ"><label for="nfs-gb">Leucocytes</label><div class="champ-saisie"><input id="nfs-gb" name="gb" inputmode="decimal" value="6,4"><span class="unite">G/L</span></div></div>
+          <div class="champ"><label for="nfs-pnn">Neutrophiles</label><div class="champ-saisie"><input id="nfs-pnn" name="pnn" inputmode="decimal" value="3,2"><span class="unite">G/L</span></div></div>
+          <div class="champ"><label for="nfs-plq">Plaquettes</label><div class="champ-saisie"><input id="nfs-plq" name="plq" inputmode="decimal" value="412"><span class="unite">G/L</span></div></div>
+        </div>
+      </div>
+      <div class="calc-sortie" aria-live="polite">
+        <p class="res-etiquette">Synthèse</p>
+        <p class="res-titre" data-sortie="titre">Anémie modérée microcytaire</p>
+        <ul class="res-liste" data-sortie="liste"><li class="alerte">Hémoglobine 9,1 g/dL : anémie modérée</li></ul>
+        <p class="res-note" data-sortie="note">Explorer : ferritine et bilan martial, puis électrophorèse de l’hémoglobine.</p>
+      </div>
+    </article>

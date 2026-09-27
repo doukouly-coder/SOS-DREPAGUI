@@ -22,7 +22,10 @@ regles.append('''
 .icone-avant::before,.b-ico>.wp-block-button__link::before,.lien-fleche a::after,.icone-apres::after{
   content:"";display:inline-block;flex:none;width:1em;height:1em;background:currentColor;
   -webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
-.lien-fleche a::after{--ico:var(--ico-fleche)}''')
+.lien-fleche a::after{--ico:var(--ico-fleche)}
+/* Icône autonome dans le HTML produit par l'extension (shortcodes) : remplace <svg><use> */
+.ico{display:inline-block;flex:none;width:1em;height:1em;background:currentColor;
+  -webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}''')
 fleche = re.search(r'\.ico-fleche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)
 regles.append(f':root{{--ico-fleche:{fleche}}}')
 loupe = re.search(r'\.ico-recherche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)
@@ -30,5 +33,9 @@ regles.append(f':root{{--ico-loupe:{loupe}}}')
 wa = re.search(r'<symbol id="i-whatsapp" viewBox="([^"]+)">(.*?)</symbol>', sprite, re.S)
 svg_blanc = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{wa.group(1)}">{wa.group(2).strip().replace("currentColor", "#fff")}</svg>'
 regles.append(f':root{{--wa-blanc:url("data:image/svg+xml,{quote(svg_blanc, safe=" =:/,.-")}")}}')
+coche = re.search(r'<symbol id="i-check" viewBox="([^"]+)">(.*?)</symbol>', sprite, re.S)
+svg_coche = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{coche.group(1)}" fill="none" stroke="#fff" stroke-width="2.6" '
+             f'stroke-linecap="round" stroke-linejoin="round">{coche.group(2).strip()}</svg>')
+regles.append(f':root{{--coche-blanche:url("data:image/svg+xml,{quote(svg_coche, safe=" =:/,.-")}")}}')
 (RACINE / 'site/assets/css/icones.css').write_text('\n'.join(regles) + '\n', encoding='utf-8')
 print(len(regles) - 3, 'icônes')

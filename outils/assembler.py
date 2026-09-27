@@ -11,10 +11,11 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from blocs import convertir, sans_commentaires, ErreurBloc
+from blocs import convertir, sans_commentaires, gabarits, nom_gabarit, ErreurBloc
 
 RACINE = Path(__file__).resolve().parent.parent / 'site'
 CONTENU_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'contenu'
+GABARITS_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'extension' / 'hemato-gui' / 'gabarits'
 SRC = RACINE / 'src'
 PARTIES = SRC / 'parties'
 
@@ -79,6 +80,9 @@ def assembler(source):
             (CONTENU_WP / f'{slug}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
             (CONTENU_WP / f'{slug}.json').write_text(json.dumps({'titre': meta.get('wp_titre', meta['titre']), 'slug': slug,
                 'description': meta['description'], 'titre_seo': meta['titre']}, ensure_ascii=False, indent=1), encoding='utf-8')
+            for code, rendu in gabarits(brut[entete_json.end():]).items():
+                GABARITS_WP.mkdir(parents=True, exist_ok=True)
+                (GABARITS_WP / f'{nom_gabarit(code)}.html').write_text(espaces_insecables(rendu), encoding='utf-8')
         except ErreurBloc as err:
             print(f'  ⚠ {source.name} pas encore en blocs : {err}')
     gabarit = meta.get('gabarit', 'public')

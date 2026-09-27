@@ -1,0 +1,21 @@
+<article class="calc" id="clairance" data-calc="clairance">
+      <div class="calc-entrees">
+        <div class="calc-tete"><span><i class="ico ico-goutte"></i></span><div><h2>Clairance de la créatinine</h2><p>Cockcroft-Gault et CKD-EPI 2021.</p></div></div>
+        <div class="champ champ-large"><span class="label">Sexe</span>
+          <div class="segment" role="radiogroup" aria-label="Sexe"><label><input type="radio" name="sexe" value="h" checked><span>Homme</span></label><label><input type="radio" name="sexe" value="f"><span>Femme</span></label></div></div>
+        <div class="champs">
+          <div class="champ"><label for="c-age">Âge</label><div class="champ-saisie"><input id="c-age" name="age" inputmode="decimal" value="54"><span class="unite">ans</span></div></div>
+          <div class="champ"><label for="c-poids">Poids</label><div class="champ-saisie"><input id="c-poids" name="poids" inputmode="decimal" value="70"><span class="unite">kg</span></div></div>
+          <div class="champ"><label for="c-creat">Créatinine</label><div class="champ-saisie"><input id="c-creat" name="creat" inputmode="decimal" value="95"></div></div>
+          <div class="champ"><label for="c-unite">Unité</label><div class="champ-saisie"><select id="c-unite" name="unite"><option value="umol" selected>µmol/L</option><option value="mgl">mg/L</option><option value="mgdl">mg/dL</option></select></div></div>
+        </div>
+      </div>
+      <div class="calc-sortie" aria-live="polite">
+        <p class="res-etiquette">Cockcroft-Gault</p>
+        <p class="res-valeur"><span data-sortie="cg">82</span> <small>mL/min</small></p>
+        <p class="res-etiquette res-espace">CKD-EPI 2021</p>
+        <p class="res-valeur"><span data-sortie="ckd">81</span> <small>mL/min/1,73 m²</small></p>
+        <p class="res-pastille" data-sortie="stade">Stade G2</p>
+        <p class="res-note">Cockcroft-Gault sert à l’adaptation des doses ; CKD-EPI à la classification de la maladie rénale.</p>
+      </div>
+    </article>

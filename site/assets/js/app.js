@@ -104,9 +104,11 @@
       return /(^|\s)f-[\w-]+/.test(b.className) && !cible.contains(b);
     });
     boutons.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.classList.contains('est-actif')));
       commeBouton(b, function () {
-        boutons.forEach(function (x) { x.classList.remove('est-actif'); });
+        boutons.forEach(function (x) { x.classList.remove('est-actif'); x.setAttribute('aria-pressed', 'false'); });
         b.classList.add('est-actif');
+        b.setAttribute('aria-pressed', 'true');
         var f = (b.className.match(/(?:^|\s)f-([\w-]+)/) || [])[1];
         [].forEach.call(cible.children, function (el) {
           el.classList.toggle('est-cache', f !== 'tous' && !el.classList.contains('t-' + f));
@@ -124,9 +126,18 @@
       outil.querySelectorAll('.variante').forEach(function (v) { v.classList.toggle('est-actif', v.classList.contains('combo-' + combo)); });
     }
     groupes.forEach(function (g) {
+      var titre = g.querySelector('.param-titre, .label');
+      g.setAttribute('role', 'group');
+      if (titre) g.setAttribute('aria-label', titre.textContent);
       var items = g.querySelectorAll('.choix-item');
       items.forEach(function (it) {
-        commeBouton(it, function () { items.forEach(function (x) { x.classList.remove('est-actif'); }); it.classList.add('est-actif'); actualiser(); });
+        it.setAttribute('aria-pressed', String(it.classList.contains('est-actif')));
+        commeBouton(it, function () {
+          items.forEach(function (x) { x.classList.remove('est-actif'); x.setAttribute('aria-pressed', 'false'); });
+          it.classList.add('est-actif');
+          it.setAttribute('aria-pressed', 'true');
+          actualiser();
+        });
       });
     });
     actualiser();

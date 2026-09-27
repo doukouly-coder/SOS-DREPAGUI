@@ -145,36 +145,28 @@
 </div>
 
 <main id="contenu">
-<section class="page-hero page-hero-sombre page-hero-compact">
-  <div class="wrap page-hero-grille">
-    <div>
-      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><a href="espace-pro.html">Professionnels</a><span aria-current="page">Outils hématologiques</span></nav>
-      <p class="surtitre">Pour les professionnels de santé</p>
-      <h1 class="titre-page">Outils hématologiques</h1>
-      <p class="chapeau">Des calculateurs rapides pour la pratique quotidienne, pensés pour le téléphone.</p>
-      <div class="reperes">
-        <a class="repere" href="#nfs"><svg><use href="#i-nfs"/></svg>NFS</a>
-        <a class="repere" href="#formule"><svg><use href="#i-graphe"/></svg>Formule leucocytaire</a>
-        <a class="repere" href="#clairance"><svg><use href="#i-goutte"/></svg>Clairance</a>
-        <a class="repere" href="#ipssr"><svg><use href="#i-score"/></svg>IPSS-R</a>
-        <a class="repere" href="#hemostase"><svg><use href="#i-coag"/></svg>Hémostase</a>
-        <a class="repere" href="#orientation"><svg><use href="#i-couches"/></svg>Orientation</a>
-        <a class="repere" href="#calculs"><svg><use href="#i-score"/></svg>Mentzer</a>
-        <a class="repere" href="#protocoles"><svg><use href="#i-fiche"/></svg>Protocoles</a>
-      </div>
-    </div>
-    <div class="page-hero-visuel"><img src="assets/img/rendus/trio.webp" alt="Globules rouges en 3D"></div>
-  </div>
+<section class="wp-block-group page-hero page-hero-sombre page-hero-compact"><div class="wp-block-group wrap page-hero-grille"><div class="wp-block-group"><p class="ariane"><a href="index.html">Accueil</a><a href="espace-pro.html">Professionnels</a><strong>Outils hématologiques</strong></p>
+<p class="surtitre">Pour les professionnels de santé</p>
+<h1 class="wp-block-heading titre-page">Outils hématologiques</h1>
+<p class="chapeau">Des calculateurs rapides pour la pratique quotidienne, pensés pour le téléphone.</p>
+<div class="wp-block-group reperes"><p class="repere ico-nfs"><a href="#nfs">NFS</a></p>
+<p class="repere ico-graphe"><a href="#formule">Formule leucocytaire</a></p>
+<p class="repere ico-goutte"><a href="#clairance">Clairance</a></p>
+<p class="repere ico-score"><a href="#ipssr">IPSS-R</a></p>
+<p class="repere ico-coag"><a href="#hemostase">Hémostase</a></p>
+<p class="repere ico-couches"><a href="#orientation">Orientation</a></p>
+<p class="repere ico-score"><a href="#calculs">Mentzer</a></p>
+<p class="repere ico-fiche"><a href="#protocoles">Protocoles</a></p>
+</div>
+</div>
+<div class="wp-block-group page-hero-visuel"><figure class="wp-block-image size-full visuel-hero"><img src="assets/img/rendus/trio.webp" alt="Globules rouges en 3D"/></figure>
+</div>
+</div>
 </section>
-
-<section class="calc-section">
-  <div class="wrap">
-    <p class="calc-avertissement"><svg><use href="#i-bouclier"/></svg><span><strong>Outils d’aide à la décision.</strong> Ils ne remplacent jamais le jugement clinique ni l’avis d’un spécialiste. Les seuils sont indicatifs et doivent être adaptés au contexte et aux normes du laboratoire.</span></p>
-
-    <!-- NFS -->
-    <article class="calc" id="nfs" data-calc="nfs">
+<section class="wp-block-group calc-section"><div class="wp-block-group wrap"><p class="calc-avertissement icone-avant ico-bouclier"><strong>Outils d’aide à la décision.</strong> Ils ne remplacent jamais le jugement clinique ni l’avis d’un spécialiste. Les seuils sont indicatifs et doivent être adaptés au contexte et aux normes du laboratoire.</p>
+<article class="calc" id="nfs" data-calc="nfs">
       <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-nfs"/></svg></span><div><h2>Interprétation de la NFS</h2><p>Seuils d’anémie de l’OMS selon le profil.</p></div></div>
+        <div class="calc-tete"><span><i class="ico ico-nfs"></i></span><div><h2>Interprétation de la NFS</h2><p>Seuils d’anémie de l’OMS selon le profil.</p></div></div>
         <div class="champ champ-large"><label for="nfs-profil">Profil</label>
           <div class="champ-saisie"><select id="nfs-profil" name="profil">
             <option value="homme">Homme adulte</option><option value="femme" selected>Femme adulte</option><option value="enceinte">Femme enceinte</option>
@@ -195,11 +187,9 @@
         <p class="res-note" data-sortie="note">Explorer : ferritine et bilan martial, puis électrophorèse de l’hémoglobine.</p>
       </div>
     </article>
-
-    <!-- FORMULE -->
-    <article class="calc" id="formule" data-calc="formule">
+<article class="calc" id="formule" data-calc="formule">
       <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-graphe"/></svg></span><div><h2>Formule leucocytaire</h2><p>Valeurs absolues à partir des pourcentages.</p></div></div>
+        <div class="calc-tete"><span><i class="ico ico-graphe"></i></span><div><h2>Formule leucocytaire</h2><p>Valeurs absolues à partir des pourcentages.</p></div></div>
         <div class="champs">
           <div class="champ champ-large"><label for="f-gb">Leucocytes</label><div class="champ-saisie"><input id="f-gb" name="gb" inputmode="decimal" value="7,2"><span class="unite">G/L</span></div></div>
           <div class="champ"><label for="f-pnn">Neutrophiles</label><div class="champ-saisie"><input id="f-pnn" name="pnn" inputmode="decimal" value="58"><span class="unite">%</span></div></div>
@@ -215,11 +205,9 @@
         <p class="res-note" data-sortie="note">Total des pourcentages : 100 %.</p>
       </div>
     </article>
-
-    <!-- CLAIRANCE -->
-    <article class="calc" id="clairance" data-calc="clairance">
+<article class="calc" id="clairance" data-calc="clairance">
       <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-goutte"/></svg></span><div><h2>Clairance de la créatinine</h2><p>Cockcroft-Gault et CKD-EPI 2021.</p></div></div>
+        <div class="calc-tete"><span><i class="ico ico-goutte"></i></span><div><h2>Clairance de la créatinine</h2><p>Cockcroft-Gault et CKD-EPI 2021.</p></div></div>
         <div class="champ champ-large"><span class="label">Sexe</span>
           <div class="segment" role="radiogroup" aria-label="Sexe"><label><input type="radio" name="sexe" value="h" checked><span>Homme</span></label><label><input type="radio" name="sexe" value="f"><span>Femme</span></label></div></div>
         <div class="champs">
@@ -232,17 +220,15 @@
       <div class="calc-sortie" aria-live="polite">
         <p class="res-etiquette">Cockcroft-Gault</p>
         <p class="res-valeur"><span data-sortie="cg">82</span> <small>mL/min</small></p>
-        <p class="res-etiquette" style="margin-top:18px">CKD-EPI 2021</p>
+        <p class="res-etiquette res-espace">CKD-EPI 2021</p>
         <p class="res-valeur"><span data-sortie="ckd">81</span> <small>mL/min/1,73 m²</small></p>
         <p class="res-pastille" data-sortie="stade">Stade G2</p>
         <p class="res-note">Cockcroft-Gault sert à l’adaptation des doses ; CKD-EPI à la classification de la maladie rénale.</p>
       </div>
     </article>
-
-    <!-- IPSS-R -->
-    <article class="calc" id="ipssr" data-calc="ipssr">
+<article class="calc" id="ipssr" data-calc="ipssr">
       <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-score"/></svg></span><div><h2>Score IPSS-R</h2><p>Syndromes myélodysplasiques, au diagnostic.</p></div></div>
+        <div class="calc-tete"><span><i class="ico ico-score"></i></span><div><h2>Score IPSS-R</h2><p>Syndromes myélodysplasiques, au diagnostic.</p></div></div>
         <div class="champ champ-large"><label for="i-cyto">Cytogénétique</label><div class="champ-saisie"><select id="i-cyto" name="cyto">
           <option value="0">Très bon : −Y, del(11q)</option><option value="1" selected>Bon : normal, del(5q), del(12p), del(20q), double avec del(5q)</option>
           <option value="2">Intermédiaire : del(7q), +8, +19, i(17q), autres</option><option value="3">Mauvais : −7, inv(3)/t(3q)/del(3q), double avec −7/del(7q), complexe à 3 anomalies</option>
@@ -262,43 +248,115 @@
         <p class="res-note">L’IPSS-M, qui intègre les mutations, se calcule sur le <a href="https://mds-risk-model.com" target="_blank" rel="noopener">calculateur officiel</a>.</p>
       </div>
     </article>
-
-    <!-- HÉMOSTASE -->
-    <article class="calc" id="hemostase" data-outil-bilan>
+<article id="hemostase" class="wp-block-group calc outil-2d"><div class="wp-block-group calc-entrees"><div class="wp-block-group calc-tete ico-coag"><div class="wp-block-group"><h2 class="wp-block-heading">Bilan d’hémostase</h2>
+<p>Orientation devant un TP et un TCA.</p>
+</div>
+</div>
+<div class="wp-block-group champ champ-large param"><p class="label">TP</p>
+<div class="wp-block-group choix"><p class="choix-item v-normal est-actif">Normal</p>
+<p class="choix-item v-bas">Bas</p>
+</div>
+</div>
+<div class="wp-block-group champ champ-large param"><p class="label">TCA (ratio)</p>
+<div class="wp-block-group choix"><p class="choix-item v-normal est-actif">Normal</p>
+<p class="choix-item v-allonge">Allongé</p>
+</div>
+</div>
+</div>
+<div class="wp-block-group calc-sortie"><div class="wp-block-group variante combo-normal-normal est-actif"><p class="res-etiquette">TP normal · TCA normal</p>
+<p class="res-titre">Pas d’anomalie des voies explorées</p>
+<ul class="wp-block-list res-liste"><li>Syndrome hémorragique : plaquettes (numération, fonction), facteur Willebrand, facteur XIII</li>
+<li>Pathologie vasculaire, fibrinolyse</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-normal-allonge"><p class="res-etiquette">TP normal · TCA allongé</p>
+<p class="res-titre">Voie intrinsèque</p>
+<ul class="wp-block-list res-liste"><li>Test de correction par plasma témoin</li>
+<li>Non corrigé : anticoagulant circulant (lupique, anti-VIII acquis)</li>
+<li>Corrigé : dosage des facteurs VIII, IX, XI, XII et du facteur Willebrand</li>
+<li>Éliminer une héparine</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-bas-normal"><p class="res-etiquette">TP bas · TCA normal</p>
+<p class="res-titre">Voie extrinsèque</p>
+<ul class="wp-block-list res-liste"><li>AVK, carence en vitamine K débutante</li>
+<li>Insuffisance hépatique débutante</li>
+<li>Dosage du facteur VII</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-bas-allonge"><p class="res-etiquette">TP bas · TCA allongé</p>
+<p class="res-titre">Voie commune ou atteinte multiple</p>
+<ul class="wp-block-list res-liste"><li>Dosage des facteurs II, V, VII, X et du fibrinogène</li>
+<li>Facteur V bas : insuffisance hépatique ; facteur V normal : vitamine K</li>
+<li>CIVD : plaquettes, fibrinogène, D-dimères</li>
+<li>Anticoagulant à forte concentration</li>
+</ul>
+</div>
+</div>
+</article>
+<article id="orientation" class="wp-block-group calc outil-2d"><div class="wp-block-group calc-entrees"><div class="wp-block-group calc-tete ico-couches"><div class="wp-block-group"><h2 class="wp-block-heading">Orientation d’une anémie</h2>
+<p>Selon le VGM et les réticulocytes.</p>
+</div>
+</div>
+<div class="wp-block-group champ champ-large param"><p class="label">VGM</p>
+<div class="wp-block-group choix"><p class="choix-item v-micro est-actif">&lt; 80 fL</p>
+<p class="choix-item v-normo">80 – 100 fL</p>
+<p class="choix-item v-macro">&gt; 100 fL</p>
+</div>
+</div>
+<div class="wp-block-group champ champ-large param"><p class="label">Réticulocytes</p>
+<div class="wp-block-group choix"><p class="choix-item v-areg est-actif">&lt; 120 G/L</p>
+<p class="choix-item v-reg">≥ 120 G/L</p>
+</div>
+</div>
+</div>
+<div class="wp-block-group calc-sortie"><div class="wp-block-group variante combo-micro-areg est-actif"><p class="res-etiquette">Microcytaire · arégénérative</p>
+<p class="res-titre">Carence martiale en premier</p>
+<ul class="wp-block-list res-liste"><li>Ferritine basse : carence en fer, chercher la cause (saignement, parasitose, apports)</li>
+<li>Ferritine normale ou haute : inflammation chronique</li>
+<li>Électrophorèse de l’hémoglobine : thalassémie</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-micro-reg"><p class="res-etiquette">Microcytaire · régénérative</p>
+<p class="res-titre">Profil inhabituel</p>
+<ul class="wp-block-list res-liste"><li>Thalassémie avec composante hémolytique</li>
+<li>Saignement avec carence martiale associée</li>
+<li>Électrophorèse de l’hémoglobine, bilan martial</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-normo-areg"><p class="res-etiquette">Normocytaire · arégénérative</p>
+<p class="res-titre">Production insuffisante</p>
+<ul class="wp-block-list res-liste"><li>Insuffisance rénale, inflammation, hypothyroïdie</li>
+<li>Carence mixte (fer + folates)</li>
+<li>Autre cytopénie associée : envahissement ou aplasie médullaire, myélogramme</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-normo-reg"><p class="res-etiquette">Normocytaire · régénérative</p>
+<p class="res-titre">Hémorragie ou hémolyse</p>
+<ul class="wp-block-list res-liste"><li>Hémorragie aiguë</li>
+<li>Hémolyse : LDH, haptoglobine, bilirubine libre, test de Coombs</li>
+<li>Drépanocytose, paludisme, déficit en G6PD</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-macro-areg"><p class="res-etiquette">Macrocytaire · arégénérative</p>
+<p class="res-titre">Carence ou atteinte médullaire</p>
+<ul class="wp-block-list res-liste"><li>Vitamine B12 et folates</li>
+<li>Alcool, hépatopathie, hypothyroïdie</li>
+<li>Médicaments : hydroxyurée, méthotrexate, zidovudine</li>
+<li>Myélodysplasie : myélogramme</li>
+</ul>
+</div>
+<div class="wp-block-group variante combo-macro-reg"><p class="res-etiquette">Macrocytaire · régénérative</p>
+<p class="res-titre">Réticulocytose élevée</p>
+<ul class="wp-block-list res-liste"><li>Les réticulocytes augmentent le VGM</li>
+<li>Rechercher une hémolyse ou une hémorragie récente</li>
+</ul>
+</div>
+</div>
+</article>
+<article class="calc" id="calculs" data-calc="mentzer">
       <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-coag"/></svg></span><div><h2>Bilan d’hémostase</h2><p>Orientation devant un TP et un TCA.</p></div></div>
-        <fieldset class="champ champ-large" data-param="tp"><legend class="label">TP</legend><div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="bas">Bas</p></div></fieldset>
-        <fieldset class="champ champ-large" data-param="tca"><legend class="label">TCA (ratio)</legend><div class="choix"><p class="choix-item est-actif" data-valeur="normal">Normal</p><p class="choix-item" data-valeur="allonge">Allongé</p></div></fieldset>
-      </div>
-      <div class="calc-sortie">
-        <div class="variante est-actif" data-combo="normal-normal"><p class="res-etiquette">TP normal · TCA normal</p><p class="res-titre">Pas d’anomalie des voies explorées</p><ul class="res-liste"><li>Syndrome hémorragique : plaquettes (numération, fonction), facteur Willebrand, facteur XIII</li><li>Pathologie vasculaire, fibrinolyse</li></ul></div>
-        <div class="variante" data-combo="normal-allonge"><p class="res-etiquette">TP normal · TCA allongé</p><p class="res-titre">Voie intrinsèque</p><ul class="res-liste"><li>Test de correction par plasma témoin</li><li>Non corrigé : anticoagulant circulant (lupique, anti-VIII acquis)</li><li>Corrigé : dosage des facteurs VIII, IX, XI, XII et du facteur Willebrand</li><li>Éliminer une héparine</li></ul></div>
-        <div class="variante" data-combo="bas-normal"><p class="res-etiquette">TP bas · TCA normal</p><p class="res-titre">Voie extrinsèque</p><ul class="res-liste"><li>AVK, carence en vitamine K débutante</li><li>Insuffisance hépatique débutante</li><li>Dosage du facteur VII</li></ul></div>
-        <div class="variante" data-combo="bas-allonge"><p class="res-etiquette">TP bas · TCA allongé</p><p class="res-titre">Voie commune ou atteinte multiple</p><ul class="res-liste"><li>Dosage des facteurs II, V, VII, X et du fibrinogène</li><li>Facteur V bas : insuffisance hépatique ; facteur V normal : vitamine K</li><li>CIVD : plaquettes, fibrinogène, D-dimères</li><li>Anticoagulant à forte concentration</li></ul></div>
-      </div>
-    </article>
-
-    <!-- ORIENTATION ANÉMIE -->
-    <article class="calc" id="orientation" data-outil-bilan>
-      <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-couches"/></svg></span><div><h2>Orientation d’une anémie</h2><p>Selon le VGM et les réticulocytes.</p></div></div>
-        <fieldset class="champ champ-large" data-param="vgm"><legend class="label">VGM</legend><div class="choix"><p class="choix-item est-actif" data-valeur="micro">&lt; 80 fL</p><p class="choix-item" data-valeur="normo">80 – 100 fL</p><p class="choix-item" data-valeur="macro">&gt; 100 fL</p></div></fieldset>
-        <fieldset class="champ champ-large" data-param="retic"><legend class="label">Réticulocytes</legend><div class="choix"><p class="choix-item est-actif" data-valeur="areg">&lt; 120 G/L</p><p class="choix-item" data-valeur="reg">≥ 120 G/L</p></div></fieldset>
-      </div>
-      <div class="calc-sortie">
-        <div class="variante est-actif" data-combo="micro-areg"><p class="res-etiquette">Microcytaire · arégénérative</p><p class="res-titre">Carence martiale en premier</p><ul class="res-liste"><li>Ferritine basse : carence en fer, chercher la cause (saignement, parasitose, apports)</li><li>Ferritine normale ou haute : inflammation chronique</li><li>Électrophorèse de l’hémoglobine : thalassémie</li></ul></div>
-        <div class="variante" data-combo="micro-reg"><p class="res-etiquette">Microcytaire · régénérative</p><p class="res-titre">Profil inhabituel</p><ul class="res-liste"><li>Thalassémie avec composante hémolytique</li><li>Saignement avec carence martiale associée</li><li>Électrophorèse de l’hémoglobine, bilan martial</li></ul></div>
-        <div class="variante" data-combo="normo-areg"><p class="res-etiquette">Normocytaire · arégénérative</p><p class="res-titre">Production insuffisante</p><ul class="res-liste"><li>Insuffisance rénale, inflammation, hypothyroïdie</li><li>Carence mixte (fer + folates)</li><li>Autre cytopénie associée : envahissement ou aplasie médullaire, myélogramme</li></ul></div>
-        <div class="variante" data-combo="normo-reg"><p class="res-etiquette">Normocytaire · régénérative</p><p class="res-titre">Hémorragie ou hémolyse</p><ul class="res-liste"><li>Hémorragie aiguë</li><li>Hémolyse : LDH, haptoglobine, bilirubine libre, test de Coombs</li><li>Drépanocytose, paludisme, déficit en G6PD</li></ul></div>
-        <div class="variante" data-combo="macro-areg"><p class="res-etiquette">Macrocytaire · arégénérative</p><p class="res-titre">Carence ou atteinte médullaire</p><ul class="res-liste"><li>Vitamine B12 et folates</li><li>Alcool, hépatopathie, hypothyroïdie</li><li>Médicaments : hydroxyurée, méthotrexate, zidovudine</li><li>Myélodysplasie : myélogramme</li></ul></div>
-        <div class="variante" data-combo="macro-reg"><p class="res-etiquette">Macrocytaire · régénérative</p><p class="res-titre">Réticulocytose élevée</p><ul class="res-liste"><li>Les réticulocytes augmentent le VGM</li><li>Rechercher une hémolyse ou une hémorragie récente</li></ul></div>
-      </div>
-    </article>
-
-    <!-- MENTZER -->
-    <article class="calc" id="calculs" data-calc="mentzer">
-      <div class="calc-entrees">
-        <div class="calc-tete"><span><svg><use href="#i-score"/></svg></span><div><h2>Indice de Mentzer</h2><p>Microcytose : thalassémie ou carence en fer ?</p></div></div>
+        <div class="calc-tete"><span><i class="ico ico-score"></i></span><div><h2>Indice de Mentzer</h2><p>Microcytose : thalassémie ou carence en fer ?</p></div></div>
         <div class="champs">
           <div class="champ"><label for="m-vgm">VGM</label><div class="champ-saisie"><input id="m-vgm" name="vgm" inputmode="decimal" value="64"><span class="unite">fL</span></div></div>
           <div class="champ"><label for="m-gr">Globules rouges</label><div class="champ-saisie"><input id="m-gr" name="gr" inputmode="decimal" value="5,6"><span class="unite">T/L</span></div></div>
@@ -311,28 +369,41 @@
         <p class="res-note">Inférieur à 13 : thalassémie plus probable ; supérieur à 13 : carence martiale plus probable. Confirmer par ferritine et électrophorèse.</p>
       </div>
     </article>
-  </div>
+</div>
 </section>
-
-<section class="section section-sombre" id="protocoles">
-  <div class="wrap">
-    <header class="tete-gauche">
-      <p class="surtitre">Bibliothèque de protocoles</p>
-      <h2>Des protocoles prêts à l’emploi.</h2>
-      <p class="chapeau">Réservés aux professionnels inscrits et vérifiés, dans l’espace professionnel.</p>
-    </header>
-    <ul class="protocoles">
-      <li><svg><use href="#i-cadenas"/></svg><span>Crise vaso-occlusive de l’adulte</span><small>Drépanocytose · urgence</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Fièvre chez l’enfant drépanocytaire</span><small>Pédiatrie · urgence</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Hémarthrose chez le patient hémophile</span><small>Hémophilie · urgence</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Surdosage en antivitamines K</span><small>Hémostase · urgence</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Thrombopénie induite par l’héparine</span><small>Hémostase</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Neutropénie fébrile</span><small>Onco-hématologie · urgence</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Transfusion : règles de sécurité</span><small>Transfusion</small></li>
-      <li><svg><use href="#i-cadenas"/></svg><span>Exploration d’une anémie de l’enfant</span><small>Pédiatrie</small></li>
-    </ul>
-    <div class="boutons boutons-gauche"><a class="btn btn-rouge btn-grand" href="espace-pro.html">Accéder à l’espace pro</a><a class="btn btn-clair btn-grand" href="espace-pro.html#acces">Demander un accès</a></div>
-  </div>
+<section id="protocoles" class="wp-block-group section section-sombre"><div class="wp-block-group wrap"><header class="wp-block-group tete-gauche"><p class="surtitre">Bibliothèque de protocoles</p>
+<h2 class="wp-block-heading">Des protocoles prêts à l’emploi.</h2>
+<p class="chapeau">Réservés aux professionnels inscrits et vérifiés, dans l’espace professionnel.</p>
+</header>
+<div class="wp-block-group protocoles"><div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Crise vaso-occlusive de l’adulte</p>
+<p class="protocole-meta">Drépanocytose · urgence</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Fièvre chez l’enfant drépanocytaire</p>
+<p class="protocole-meta">Pédiatrie · urgence</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Hémarthrose chez le patient hémophile</p>
+<p class="protocole-meta">Hémophilie · urgence</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Surdosage en antivitamines K</p>
+<p class="protocole-meta">Hémostase · urgence</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Thrombopénie induite par l’héparine</p>
+<p class="protocole-meta">Hémostase</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Neutropénie fébrile</p>
+<p class="protocole-meta">Onco-hématologie · urgence</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Transfusion : règles de sécurité</p>
+<p class="protocole-meta">Transfusion</p>
+</div>
+<div class="wp-block-group protocole ico-cadenas"><p class="protocole-nom">Exploration d’une anémie de l’enfant</p>
+<p class="protocole-meta">Pédiatrie</p>
+</div>
+</div>
+<div class="wp-block-buttons boutons boutons-gauche"><div class="wp-block-button btn btn-rouge btn-grand"><a class="wp-block-button__link wp-element-button" href="espace-pro.html">Accéder à l’espace pro</a></div>
+<div class="wp-block-button btn btn-clair btn-grand"><a class="wp-block-button__link wp-element-button" href="espace-pro.html#acces">Demander un accès</a></div>
+</div>
+</div>
 </section>
 
 </main>
