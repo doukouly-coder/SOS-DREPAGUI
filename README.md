@@ -40,7 +40,7 @@ P="$(pwd)"; cd /tmp && RACINE="$P/site" node "$P/.claude/skills/claude-to-wordpr
 # puis http://127.0.0.1:4321
 ```
 
-Ou ouvrir directement les captures : `docs/captures/accueil-bureau.jpg` et `docs/captures/accueil-mobile.jpg`.
+Ou ouvrir directement les captures : `docs/captures/planche-bureau.jpg` et `docs/captures/planche-mobile.jpg` (vues d’ensemble), ou les pleines pages `accueil-bureau.jpg` et `accueil-mobile.jpg`.
 
 ## Régénérer les visuels
 
