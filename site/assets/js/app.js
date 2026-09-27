@@ -17,7 +17,7 @@
   }
   function enfantsDirects(conteneur, selecteur) {
     return [].filter.call(conteneur.querySelectorAll(selecteur), function (el) {
-      return el.closest('.bascule, [data-outil-bilan], [data-groupe], [data-filtres]') === conteneur;
+      return el.closest('.bascule, .outil-2d, .choix-exclusif, .filtrable, [data-outil-bilan], [data-groupe], [data-filtres]') === conteneur;
     });
   }
 
@@ -59,7 +59,7 @@
   });
 
   // Choix exclusifs sans variante (maquette du téléphone, sélecteurs)
-  document.querySelectorAll('[data-groupe]').forEach(function (groupe) {
+  document.querySelectorAll('.choix-exclusif, [data-groupe]').forEach(function (groupe) {
     var options = [].filter.call(groupe.children, function (o) { return !o.classList.contains('est-pris'); });
     options.forEach(function (opt) {
       commeBouton(opt, function () {
@@ -71,8 +71,8 @@
     });
   });
 
-  // Filtres de la bibliothèque pro (accueil) : sélection multiple
-  document.querySelectorAll('.filtres .filtre').forEach(function (f) {
+  // Sélection multiple (filtres de l'accueil)
+  document.querySelectorAll('.choix-multiple > *').forEach(function (f) {
     f.setAttribute('aria-pressed', String(f.classList.contains('est-actif')));
     commeBouton(f, function () {
       f.setAttribute('aria-pressed', String(f.classList.toggle('est-actif')));
@@ -95,6 +95,41 @@
         });
       });
     });
+  });
+
+  // Filtres par classes : dans un .filtrable, un déclencheur « f-x » garde les éléments « t-x »
+  document.querySelectorAll('.filtrable').forEach(function (zone) {
+    var cible = zone.querySelector('.filtres-cible');
+    var boutons = [].filter.call(zone.querySelectorAll('[class*="f-"]'), function (b) {
+      return /(^|\s)f-[\w-]+/.test(b.className) && !cible.contains(b);
+    });
+    boutons.forEach(function (b) {
+      commeBouton(b, function () {
+        boutons.forEach(function (x) { x.classList.remove('est-actif'); });
+        b.classList.add('est-actif');
+        var f = (b.className.match(/(?:^|\s)f-([\w-]+)/) || [])[1];
+        [].forEach.call(cible.children, function (el) {
+          el.classList.toggle('est-cache', f !== 'tous' && !el.classList.contains('t-' + f));
+        });
+      });
+    });
+  });
+
+  // Outil à deux entrées, par classes : .param > .choix-item.v-x ; résultats .variante.combo-x-y
+  document.querySelectorAll('.outil-2d').forEach(function (outil) {
+    var groupes = outil.querySelectorAll('.param');
+    function valeur(el) { return (el.className.match(/(?:^|\s)v-([\w-]+)/) || [])[1] || ''; }
+    function actualiser() {
+      var combo = [].map.call(groupes, function (g) { var a = g.querySelector('.choix-item.est-actif'); return a ? valeur(a) : ''; }).join('-');
+      outil.querySelectorAll('.variante').forEach(function (v) { v.classList.toggle('est-actif', v.classList.contains('combo-' + combo)); });
+    }
+    groupes.forEach(function (g) {
+      var items = g.querySelectorAll('.choix-item');
+      items.forEach(function (it) {
+        commeBouton(it, function () { items.forEach(function (x) { x.classList.remove('est-actif'); }); it.classList.add('est-actif'); actualiser(); });
+      });
+    });
+    actualiser();
   });
 
   // Outil à deux entrées (bilan d'hémostase) : la combinaison choisit la variante

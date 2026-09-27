@@ -7,9 +7,14 @@ L'en-tête, le pied de page et le sprite d'icônes viennent d'une source unique
 """
 import json
 import re
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from blocs import convertir, sans_commentaires, ErreurBloc
+
 RACINE = Path(__file__).resolve().parent.parent / 'site'
+CONTENU_WP = Path(__file__).resolve().parent.parent / 'wordpress' / 'contenu'
 SRC = RACINE / 'src'
 PARTIES = SRC / 'parties'
 
@@ -65,6 +70,17 @@ def assembler(source):
     entete_json = re.match(r'<!--(\{.*?\})-->\n?', brut, re.S)
     meta = json.loads(entete_json.group(1))
     corps = brut[entete_json.end():]
+    if meta.get('gabarit', 'public') != 'admin':
+        try:
+            blocs = convertir(corps)
+            corps = sans_commentaires(convertir(corps, maquette=True))
+            CONTENU_WP.mkdir(parents=True, exist_ok=True)
+            slug = meta.get('slug', source.stem)
+            (CONTENU_WP / f'{slug}.html').write_text(espaces_insecables(blocs), encoding='utf-8')
+            (CONTENU_WP / f'{slug}.json').write_text(json.dumps({'titre': meta.get('wp_titre', meta['titre']), 'slug': slug,
+                'description': meta['description'], 'titre_seo': meta['titre']}, ensure_ascii=False, indent=1), encoding='utf-8')
+        except ErreurBloc as err:
+            print(f'  ⚠ {source.name} pas encore en blocs : {err}')
     gabarit = meta.get('gabarit', 'public')
     sprite = (PARTIES / 'sprite.svg').read_text(encoding='utf-8')
     classe_body = f' class="{meta["body"]}"' if meta.get('body') else ''
@@ -80,6 +96,7 @@ def assembler(source):
 {'<meta name="robots" content="noindex">' if meta.get('noindex') else ''}
 <link rel="preload" href="assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/polices.css">
+<link rel="stylesheet" href="assets/css/icones.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <link rel="stylesheet" href="assets/css/pages.css">
 {JSONLD if meta.get('jsonld') else ''}</head>

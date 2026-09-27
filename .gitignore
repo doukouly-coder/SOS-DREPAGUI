@@ -12,3 +12,4 @@ bundle/
 .DS_Store
 node_modules/
 outils/rendus-3d/png/
+__pycache__/

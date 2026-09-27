@@ -1,27 +1,27 @@
-<!--{"titre":"Hémophilie A et B : symptômes, traitement, prophylaxie et urgences | HEMATO GUI","description":"Hémophilie A et B expliquées simplement : déficit en facteur VIII ou IX, transmission, hémarthroses, diagnostic, inhibiteurs, prophylaxie, chirurgie, conseils aux familles et conduite à tenir devant un saignement.","nav":"hematologie"}-->
+<!--{"titre":"Hémophilie A et B : symptômes, traitement, prophylaxie et urgences | HEMATO GUI","description":"Hémophilie A et B expliquées simplement : déficit en facteur VIII ou IX, transmission, hémarthroses, diagnostic, inhibiteurs, prophylaxie, chirurgie, conseils aux familles et conduite à tenir devant un saignement.","nav":"hematologie","wp_titre":"Hémophilie"}-->
 <section class="page-hero">
   <div class="wrap page-hero-grille">
-    <div>
-      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><a href="index.html#domaines">Hématologie</a><span aria-current="page">Hémophilie</span></nav>
+    <div class="page-hero-texte">
+      <p class="ariane"><a href="index.html">Accueil</a><a href="index.html#domaines">Hématologie</a><strong>Hémophilie</strong></p>
       <p class="surtitre">Fiche maladie</p>
       <h1 class="titre-page">Hémophilie <em>A et B</em></h1>
       <p class="chapeau">Reconnaître un saignement, protéger ses articulations, réagir vite : tout ce qu’il faut savoir, pour les patients et leurs familles.</p>
       <div class="boutons">
-        <a class="btn btn-rouge btn-grand" href="#saignement"><svg><use href="#i-urgence"/></svg>Que faire devant un saignement ?</a>
+        <a class="btn btn-rouge btn-grand b-ico ico-urgence" href="#saignement">Que faire devant un saignement ?</a>
         <a class="btn btn-contour btn-grand" href="rendez-vous.html?type=hemophilie">Prendre rendez-vous</a>
       </div>
       <div class="reperes">
-        <span class="repere"><svg><use href="#i-horloge"/></svg>Lecture : 10 min</span>
-        <span class="repere"><svg><use href="#i-historique"/></svg>Mise à jour : septembre 2026</span>
+        <p class="repere icone-avant ico-horloge">Lecture : 10 min</p>
+        <p class="repere icone-avant ico-historique">Mise à jour : septembre 2026</p>
       </div>
     </div>
-    <div class="page-hero-visuel"><img src="assets/img/rendus/hemophilie.webp" alt="Goutte de sang en 3D"></div>
+    <div class="page-hero-visuel"><figure class="visuel-hero"><img src="assets/img/rendus/hemophilie.webp" alt="Goutte de sang en 3D"></figure></div>
   </div>
 </section>
 
 <div class="fiche">
   <div class="wrap fiche-grille">
-    <nav class="sommaire" aria-label="Sommaire de la fiche">
+    <div class="sommaire">
       <p class="sommaire-titre">Sommaire</p>
       <ol>
         <li><a href="#comprendre">Comprendre</a></li>
@@ -31,12 +31,12 @@
         <li><a href="#saignement">Devant un saignement</a></li>
         <li><a href="#familles">Conseils aux familles</a></li>
       </ol>
-    </nav>
+    </div>
 
     <div class="fiche-contenu">
 
       <section class="chapitre" id="comprendre">
-        <span class="chapitre-num">01 · Comprendre</span>
+        <p class="chapitre-num">01 · Comprendre</p>
         <h2>Un facteur de coagulation qui manque.</h2>
 
         <div class="bloc" id="definition">
@@ -48,9 +48,9 @@
           <h3>Déficit en facteur VIII ou IX</h3>
           <p>L’<strong>hémophilie A</strong>, la plus fréquente (environ 8 cas sur 10), est due à un déficit en facteur VIII. L’<strong>hémophilie B</strong> est due à un déficit en facteur IX. Les deux se manifestent de la même façon ; la gravité dépend du taux de facteur dans le sang.</p>
           <div class="severite">
-            <div class="niveau"><div class="niveau-barre"><i style="width:100%"></i></div><p class="niveau-nom">Sévère</p><p class="niveau-valeur">Facteur inférieur à 1 %</p><p>Saignements spontanés, surtout dans les articulations, dès les premiers pas.</p></div>
-            <div class="niveau"><div class="niveau-barre"><i style="width:62%"></i></div><p class="niveau-nom">Modérée</p><p class="niveau-valeur">Facteur de 1 à 5 %</p><p>Saignements après de petits chocs, parfois spontanés.</p></div>
-            <div class="niveau"><div class="niveau-barre"><i style="width:28%"></i></div><p class="niveau-nom">Mineure</p><p class="niveau-valeur">Facteur de 5 à 40 %</p><p>Saignements après une chirurgie, une extraction dentaire ou un traumatisme ; découverte parfois tardive.</p></div>
+            <div class="niveau n-100"><p class="niveau-nom">Sévère</p><p class="niveau-valeur">Facteur inférieur à 1 %</p><p>Saignements spontanés, surtout dans les articulations, dès les premiers pas.</p></div>
+            <div class="niveau n-62"><p class="niveau-nom">Modérée</p><p class="niveau-valeur">Facteur de 1 à 5 %</p><p>Saignements après de petits chocs, parfois spontanés.</p></div>
+            <div class="niveau n-28"><p class="niveau-nom">Mineure</p><p class="niveau-valeur">Facteur de 5 à 40 %</p><p>Saignements après une chirurgie, une extraction dentaire ou un traumatisme ; découverte parfois tardive.</p></div>
           </div>
         </div>
 
@@ -58,48 +58,48 @@
           <h3>Transmission</h3>
           <p>Le gène est porté par le <strong>chromosome X</strong>. Les garçons sont atteints ; les femmes sont le plus souvent <strong>conductrices</strong> : elles transmettent le gène, et certaines ont elles-mêmes un taux bas et saignent davantage. Dans environ un tiers des cas, il n’y a aucun antécédent dans la famille.</p>
           <div class="infographie bascule">
-            <div class="infographie-titre"><p>Infographie · la transmission</p><span><svg><use href="#i-oeil"/></svg>Choisissez les parents</span></div>
+            <div class="infographie-titre"><p>Infographie · la transmission</p><p class="infographie-aide icone-avant ico-oeil">Choisissez les parents</p></div>
             <div class="choix">
               <p class="choix-item est-actif">Mère conductrice</p>
               <p class="choix-item">Père hémophile</p>
             </div>
             <div class="variante est-actif">
-              <div class="parents"><div class="parent"><span class="geno geno-as"></span><strong>Mère</strong><small>conductrice</small></div><span class="croix">×</span><div class="parent"><span class="geno geno-aa"></span><strong>Père</strong><small>non atteint</small></div></div>
+              <div class="parents"><div class="parent geno-as"><p class="parent-nom">Mère</p><p class="parent-sous">conductrice</p></div><p class="croix">×</p><div class="parent geno-aa"><p class="parent-nom">Père</p><p class="parent-sous">non atteint</p></div></div>
               <div class="enfants">
-                <div class="enfant"><span class="geno geno-aa"></span><strong>Fils · 25 %</strong><small>non atteint</small></div>
-                <div class="enfant"><span class="geno geno-ss"></span><strong>Fils · 25 %</strong><small>hémophile</small></div>
-                <div class="enfant"><span class="geno geno-aa"></span><strong>Fille · 25 %</strong><small>non conductrice</small></div>
-                <div class="enfant"><span class="geno geno-as"></span><strong>Fille · 25 %</strong><small>conductrice</small></div>
+                <div class="enfant geno-aa"><p class="enfant-nom">Fils · 25 %</p><p class="enfant-sous">non atteint</p></div>
+                <div class="enfant geno-ss"><p class="enfant-nom">Fils · 25 %</p><p class="enfant-sous">hémophile</p></div>
+                <div class="enfant geno-aa"><p class="enfant-nom">Fille · 25 %</p><p class="enfant-sous">non conductrice</p></div>
+                <div class="enfant geno-as"><p class="enfant-nom">Fille · 25 %</p><p class="enfant-sous">conductrice</p></div>
               </div>
               <p class="bilan-infographie">Chaque <strong>fils</strong> a 1 risque sur 2 d’être hémophile ; chaque <strong>fille</strong> a 1 risque sur 2 d’être conductrice.</p>
             </div>
             <div class="variante">
-              <div class="parents"><div class="parent"><span class="geno geno-aa"></span><strong>Mère</strong><small>non conductrice</small></div><span class="croix">×</span><div class="parent"><span class="geno geno-ss"></span><strong>Père</strong><small>hémophile</small></div></div>
+              <div class="parents"><div class="parent geno-aa"><p class="parent-nom">Mère</p><p class="parent-sous">non conductrice</p></div><p class="croix">×</p><div class="parent geno-ss"><p class="parent-nom">Père</p><p class="parent-sous">hémophile</p></div></div>
               <div class="enfants">
-                <div class="enfant"><span class="geno geno-aa"></span><strong>Fils · 25 %</strong><small>non atteint</small></div>
-                <div class="enfant"><span class="geno geno-aa"></span><strong>Fils · 25 %</strong><small>non atteint</small></div>
-                <div class="enfant"><span class="geno geno-as"></span><strong>Fille · 25 %</strong><small>conductrice</small></div>
-                <div class="enfant"><span class="geno geno-as"></span><strong>Fille · 25 %</strong><small>conductrice</small></div>
+                <div class="enfant geno-aa"><p class="enfant-nom">Fils · 25 %</p><p class="enfant-sous">non atteint</p></div>
+                <div class="enfant geno-aa"><p class="enfant-nom">Fils · 25 %</p><p class="enfant-sous">non atteint</p></div>
+                <div class="enfant geno-as"><p class="enfant-nom">Fille · 25 %</p><p class="enfant-sous">conductrice</p></div>
+                <div class="enfant geno-as"><p class="enfant-nom">Fille · 25 %</p><p class="enfant-sous">conductrice</p></div>
               </div>
               <p class="bilan-infographie">Les <strong>fils</strong> ne sont pas atteints ; <strong>toutes les filles</strong> sont conductrices.</p>
             </div>
-            <div class="legende-geno"><span><i class="geno geno-aa"></i>Non atteint</span><span><i class="geno geno-as"></i>Conductrice</span><span><i class="geno geno-ss"></i>Hémophile</span></div>
+            <ul class="legende-geno"><li class="geno-aa">Non atteint</li><li class="geno-as">Conductrice</li><li class="geno-ss">Hémophile</li></ul>
           </div>
         </div>
       </section>
 
       <section class="chapitre" id="reconnaitre">
-        <span class="chapitre-num">02 · Reconnaître</span>
+        <p class="chapitre-num">02 · Reconnaître</p>
         <h2>Des saignements qui durent, souvent à l’intérieur.</h2>
 
         <div class="bloc" id="symptomes">
           <h3>Symptômes</h3>
           <p>Les premiers signes apparaissent souvent quand l’enfant commence à ramper et à marcher. Une <strong>circoncision</strong> ou une extraction dentaire qui saigne anormalement longtemps peut aussi révéler la maladie.</p>
           <div class="cartes-mini">
-            <div class="carte-mini"><svg><use href="#i-articulation"/></svg><h4>Hémarthroses</h4><p>Saignement dans une articulation.</p></div>
-            <div class="carte-mini"><svg><use href="#i-goutte"/></svg><h4>Hématomes</h4><p>Bleus étendus, saignements dans les muscles.</p></div>
-            <div class="carte-mini"><svg><use href="#i-horloge"/></svg><h4>Saignements prolongés</h4><p>Après une coupure, une dent, une chirurgie.</p></div>
-            <div class="carte-mini"><svg><use href="#i-urgence"/></svg><h4>Saignements graves</h4><p>Tête, cou, ventre : urgence absolue.</p></div>
+            <div class="carte-mini ico-articulation"><h4>Hémarthroses</h4><p>Saignement dans une articulation.</p></div>
+            <div class="carte-mini ico-goutte"><h4>Hématomes</h4><p>Bleus étendus, saignements dans les muscles.</p></div>
+            <div class="carte-mini ico-horloge"><h4>Saignements prolongés</h4><p>Après une coupure, une dent, une chirurgie.</p></div>
+            <div class="carte-mini ico-urgence"><h4>Saignements graves</h4><p>Tête, cou, ventre : urgence absolue.</p></div>
           </div>
         </div>
 
@@ -124,7 +124,7 @@
       </section>
 
       <section class="chapitre" id="diagnostiquer">
-        <span class="chapitre-num">03 · Diagnostiquer</span>
+        <p class="chapitre-num">03 · Diagnostiquer</p>
         <h2>Un bilan de coagulation, puis le dosage du facteur.</h2>
 
         <div class="bloc" id="diagnostic">
@@ -144,17 +144,17 @@
       </section>
 
       <section class="chapitre" id="traiter">
-        <span class="chapitre-num">04 · Traiter</span>
+        <p class="chapitre-num">04 · Traiter</p>
         <h2>Remplacer le facteur manquant, et prévenir.</h2>
 
         <div class="bloc" id="traitement">
           <h3>Le traitement</h3>
           <p>Le traitement principal consiste à injecter dans une veine le <strong>facteur manquant</strong> (VIII ou IX), d’origine plasmatique ou recombinante, à la demande (en cas de saignement) ou en prophylaxie.</p>
           <div class="cartes-mini">
-            <div class="carte-mini carte-mini-blanche"><svg><use href="#i-seringue"/></svg><h4>Concentrés de facteur</h4><p>VIII pour l’hémophilie A, IX pour l’hémophilie B, par voie intraveineuse.</p></div>
-            <div class="carte-mini carte-mini-blanche"><svg><use href="#i-medicament"/></svg><h4>Émicizumab</h4><p>Pour l’hémophilie A, en injection sous la peau, espacée d’une semaine à un mois.</p></div>
-            <div class="carte-mini carte-mini-blanche"><svg><use href="#i-goutte"/></svg><h4>Desmopressine</h4><p>Dans certaines hémophilies A mineures : elle libère le facteur VIII de réserve.</p></div>
-            <div class="carte-mini carte-mini-blanche"><svg><use href="#i-bouclier"/></svg><h4>Acide tranexamique</h4><p>Pour les saignements de la bouche, du nez ou les règles abondantes.</p></div>
+            <div class="carte-mini carte-mini-blanche ico-seringue"><h4>Concentrés de facteur</h4><p>VIII pour l’hémophilie A, IX pour l’hémophilie B, par voie intraveineuse.</p></div>
+            <div class="carte-mini carte-mini-blanche ico-medicament"><h4>Émicizumab</h4><p>Pour l’hémophilie A, en injection sous la peau, espacée d’une semaine à un mois.</p></div>
+            <div class="carte-mini carte-mini-blanche ico-goutte"><h4>Desmopressine</h4><p>Dans certaines hémophilies A mineures : elle libère le facteur VIII de réserve.</p></div>
+            <div class="carte-mini carte-mini-blanche ico-bouclier"><h4>Acide tranexamique</h4><p>Pour les saignements de la bouche, du nez ou les règles abondantes.</p></div>
           </div>
           <p>En Afrique, des programmes d’aide comme celui de la Fédération mondiale de l’hémophilie fournissent des concentrés de facteur aux centres de traitement. Parlez-en à votre hématologue.</p>
         </div>
@@ -182,19 +182,19 @@
       </section>
 
       <section class="chapitre" id="saignement">
-        <span class="chapitre-num">05 · Devant un saignement</span>
+        <p class="chapitre-num">05 · Devant un saignement</p>
         <h2>Que faire devant un saignement ?</h2>
         <p class="chapeau">Agir vite limite les dégâts. Gardez votre plan de traitement et votre carte d’hémophile à portée de main.</p>
-        <ol class="conduite">
-          <li><h4>Traiter tôt</h4><p>Au moindre doute, faites l’injection prévue par votre plan, <strong>le plus tôt possible</strong>, idéalement dans les deux heures.</p></li>
-          <li><h4>Mettre au repos</h4><p>Immobilisez l’articulation ou le membre, sans prendre appui dessus.</p></li>
-          <li><h4>Appliquer du froid</h4><p>De la glace enveloppée dans un linge, 15 à 20 minutes, à renouveler si besoin.</p></li>
-          <li><h4>Comprimer et surélever</h4><p>Un bandage léger, et le membre surélevé au-dessus du cœur.</p></li>
-          <li><h4>Coupure ou saignement de nez</h4><p>Comprimez fermement 10 minutes. Pour le nez : tête penchée en avant, pincez les narines.</p></li>
-          <li><h4>Jamais</h4><p>Pas d’aspirine ni d’anti-inflammatoires (ibuprofène…), pas d’injection dans le muscle. Contre la douleur : paracétamol.</p></li>
-        </ol>
+        <div class="conduite">
+          <div class="conduite-item"><h4>Traiter tôt</h4><p>Au moindre doute, faites l’injection prévue par votre plan, <strong>le plus tôt possible</strong>, idéalement dans les deux heures.</p></div>
+          <div class="conduite-item"><h4>Mettre au repos</h4><p>Immobilisez l’articulation ou le membre, sans prendre appui dessus.</p></div>
+          <div class="conduite-item"><h4>Appliquer du froid</h4><p>De la glace enveloppée dans un linge, 15 à 20 minutes, à renouveler si besoin.</p></div>
+          <div class="conduite-item"><h4>Comprimer et surélever</h4><p>Un bandage léger, et le membre surélevé au-dessus du cœur.</p></div>
+          <div class="conduite-item"><h4>Coupure ou saignement de nez</h4><p>Comprimez fermement 10 minutes. Pour le nez : tête penchée en avant, pincez les narines.</p></div>
+          <div class="conduite-item"><h4>Jamais</h4><p>Pas d’aspirine ni d’anti-inflammatoires (ibuprofène…), pas d’injection dans le muscle. Contre la douleur : paracétamol.</p></div>
+        </div>
         <div class="urgence" id="urgence">
-          <div class="urgence-tete"><span class="urgence-ico"><svg><use href="#i-urgence"/></svg></span><h3>Urgence : injectez le facteur et allez à l’hôpital si :</h3></div>
+          <div class="urgence-tete ico-urgence"><h3>Urgence : injectez le facteur et allez à l’hôpital si :</h3></div>
           <ul class="liste-points liste-points-2">
             <li>Choc à la tête, même s’il paraît léger</li>
             <li>Maux de tête, vomissements, somnolence, trouble de la vue</li>
@@ -205,24 +205,24 @@
           </ul>
           <p class="urgence-note">À l’hôpital, présentez votre carte d’hémophile : en cas de choc à la tête, le facteur doit être injecté <strong>avant</strong> les examens.</p>
           <div class="boutons boutons-gauche">
-            <a class="btn btn-blanc btn-grand" href="rendez-vous.html?type=hemophilie"><svg><use href="#i-calendrier"/></svg>Consultation de suivi</a>
-            <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Nous écrire</a>
+            <a class="btn btn-blanc btn-grand b-ico ico-calendrier" href="rendez-vous.html?type=hemophilie">Consultation de suivi</a>
+            <a class="btn btn-wa btn-grand b-ico ico-whatsapp" href="https://wa.me/224628733143" target="_blank" rel="noopener">Nous écrire</a>
           </div>
         </div>
       </section>
 
       <section class="chapitre" id="familles">
-        <span class="chapitre-num">06 · Conseils aux familles</span>
+        <p class="chapitre-num">06 · Conseils aux familles</p>
         <h2>Protéger, sans surprotéger.</h2>
         <div class="cartes-mini">
-          <div class="carte-mini"><svg><use href="#i-carte"/></svg><h4>Carte d’hémophile</h4><p>Toujours sur soi, avec le type, la sévérité et le traitement.</p></div>
-          <div class="carte-mini"><svg><use href="#i-hopital"/></svg><h4>Trousse prête</h4><p>Traitement, poche de froid, bandes, numéro du centre.</p></div>
-          <div class="carte-mini"><svg><use href="#i-livre"/></svg><h4>Informer l’école</h4><p>Les enseignants savent reconnaître un saignement et qui appeler.</p></div>
-          <div class="carte-mini"><svg><use href="#i-seringue"/></svg><h4>Apprendre l’injection</h4><p>Les parents d’abord, puis l’adolescent devient autonome.</p></div>
-          <div class="carte-mini"><svg><use href="#i-famille"/></svg><h4>Dépister la famille</h4><p>Mères, sœurs, filles : savoir qui est conductrice.</p></div>
-          <div class="carte-mini"><svg><use href="#i-coeur"/></svg><h4>Vivre pleinement</h4><p>Sport adapté, scolarité, projets : la prophylaxie les rend possibles.</p></div>
+          <div class="carte-mini ico-carte"><h4>Carte d’hémophile</h4><p>Toujours sur soi, avec le type, la sévérité et le traitement.</p></div>
+          <div class="carte-mini ico-hopital"><h4>Trousse prête</h4><p>Traitement, poche de froid, bandes, numéro du centre.</p></div>
+          <div class="carte-mini ico-livre"><h4>Informer l’école</h4><p>Les enseignants savent reconnaître un saignement et qui appeler.</p></div>
+          <div class="carte-mini ico-seringue"><h4>Apprendre l’injection</h4><p>Les parents d’abord, puis l’adolescent devient autonome.</p></div>
+          <div class="carte-mini ico-famille"><h4>Dépister la famille</h4><p>Mères, sœurs, filles : savoir qui est conductrice.</p></div>
+          <div class="carte-mini ico-coeur"><h4>Vivre pleinement</h4><p>Sport adapté, scolarité, projets : la prophylaxie les rend possibles.</p></div>
         </div>
-        <p class="avertissement"><svg><use href="#i-info"/></svg><span>Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</span></p>
+        <p class="avertissement icone-avant ico-info">Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
       </section>
 
     </div>
