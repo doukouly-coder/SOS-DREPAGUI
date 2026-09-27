@@ -1,20 +1,4 @@
-<!--{"titre":"Prendre rendez-vous en hématologie à Conakry | HEMATO GUI","description":"Réservez une consultation d’hématologie à Conakry en cinq étapes : drépanocytose, hémophilie, hémostase, cancer du sang ou avis spécialisé. Réponse rapide et contact WhatsApp.","nav":"","wp_titre":"Prendre rendez-vous","scripts":["assets/js/rendez-vous.js"]}-->
-<section class="page-hero page-hero-gris page-hero-compact">
-  <div class="wrap">
-    <p class="ariane"><a href="index.html">Accueil</a><strong>Prendre rendez-vous</strong></p>
-    <h1 class="titre-page">Prendre rendez-vous</h1>
-    <p class="chapeau chapeau-court">Cinq étapes, deux minutes. Nous confirmons ensuite votre rendez-vous par WhatsApp ou SMS.</p>
-    <div class="reperes">
-      <p class="repere icone-avant ico-check">Réponse rapide</p>
-      <p class="repere icone-avant ico-cloche">Confirmation par WhatsApp ou SMS</p>
-      <p class="repere icone-avant ico-whatsapp">Aide sur WhatsApp</p>
-    </div>
-  </div>
-</section>
-
-<section class="reservation">
-  <div data-shortcode='[hg_rendez_vous]'>
-  <div class="wrap resa-grille" data-reservation>
+<div class="wrap resa-grille" data-reservation>
     <div class="resa-principal">
       <ol class="resa-etapes" aria-label="Étapes de la réservation">
         <li class="est-actif"><span>1</span>Consultation</li>
@@ -26,21 +10,21 @@
       <div class="resa-progression"><i></i></div>
 
       <div class="etape-resa est-actif">
-        <h2>Quel type de consultation ?</h2>
+        <h2>Quel type de consultation ?</h2>
         <div class="types-consult" data-groupe="type">
-          <div class="type-consult" data-valeur="Consultation d’hématologie" data-slug="hematologie"><svg><use href="#i-stetho"/></svg><strong>Consultation d’hématologie</strong><small>Anémie, anomalie de la NFS, bilan à interpréter</small></div>
-          <div class="type-consult" data-valeur="Drépanocytose" data-slug="drepanocytose"><svg><use href="#i-goutte"/></svg><strong>Drépanocytose</strong><small>Suivi de l’enfant ou de l’adulte, bilan annuel</small></div>
-          <div class="type-consult" data-valeur="Hémophilie" data-slug="hemophilie"><svg><use href="#i-articulation"/></svg><strong>Hémophilie</strong><small>Suivi, prophylaxie, santé articulaire</small></div>
-          <div class="type-consult" data-valeur="Hémostase" data-slug="hemostase"><svg><use href="#i-coag"/></svg><strong>Hémostase</strong><small>Saignements, thrombose, anticoagulants</small></div>
-          <div class="type-consult" data-valeur="Cancer du sang" data-slug="cancer"><svg><use href="#i-loupe-plus"/></svg><strong>Cancer du sang</strong><small>Leucémie, lymphome, myélome, suivi</small></div>
-          <div class="type-consult" data-valeur="Avis spécialisé" data-slug="avis"><svg><use href="#i-consult"/></svg><strong>Avis spécialisé</strong><small>Pour un médecin ou un second avis</small></div>
+          <div class="type-consult" data-valeur="Consultation d’hématologie" data-slug="hematologie"><svg><use href="#i-stetho"></use></svg><strong>Consultation d’hématologie</strong><small>Anémie, anomalie de la NFS, bilan à interpréter</small></div>
+          <div class="type-consult" data-valeur="Drépanocytose" data-slug="drepanocytose"><svg><use href="#i-goutte"></use></svg><strong>Drépanocytose</strong><small>Suivi de l’enfant ou de l’adulte, bilan annuel</small></div>
+          <div class="type-consult" data-valeur="Hémophilie" data-slug="hemophilie"><svg><use href="#i-articulation"></use></svg><strong>Hémophilie</strong><small>Suivi, prophylaxie, santé articulaire</small></div>
+          <div class="type-consult" data-valeur="Hémostase" data-slug="hemostase"><svg><use href="#i-coag"></use></svg><strong>Hémostase</strong><small>Saignements, thrombose, anticoagulants</small></div>
+          <div class="type-consult" data-valeur="Cancer du sang" data-slug="cancer"><svg><use href="#i-loupe-plus"></use></svg><strong>Cancer du sang</strong><small>Leucémie, lymphome, myélome, suivi</small></div>
+          <div class="type-consult" data-valeur="Avis spécialisé" data-slug="avis"><svg><use href="#i-consult"></use></svg><strong>Avis spécialisé</strong><small>Pour un médecin ou un second avis</small></div>
         </div>
       </div>
 
       <div class="etape-resa">
-        <h2>Quelle date vous convient ?</h2>
+        <h2>Quelle date vous convient ?</h2>
         <div class="calendrier">
-          <div class="calendrier-tete"><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-retour"/></svg></span><strong>Octobre 2026</strong><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-fleche"/></svg></span></div>
+          <div class="calendrier-tete"><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-retour"></use></svg></span><strong>Octobre 2026</strong><span class="cal-fleche" aria-hidden="true"><svg><use href="#i-fleche"></use></svg></span></div>
           <div class="calendrier-jours" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
           <div class="calendrier-grille" data-groupe="date">
             <span class="vide est-pris"></span><span class="vide est-pris"></span><span class="vide est-pris"></span>
@@ -55,7 +39,7 @@
       </div>
 
       <div class="etape-resa">
-        <h2>À quelle heure ?</h2>
+        <h2>À quelle heure ?</h2>
         <p class="creneaux-titre">Matin</p>
         <div class="creneaux" data-groupe="heure">
           <span data-valeur="08 h 30">08:30</span><span class="est-pris">09:00</span><span data-valeur="09 h 30">09:30</span><span data-valeur="10 h 30">10:30</span><span data-valeur="11 h 00">11:00</span><span class="est-pris">11:30</span>
@@ -72,7 +56,7 @@
           <div class="champ"><label for="r-tel">Téléphone (WhatsApp)</label><div class="champ-saisie"><span class="prefixe">+224</span><input id="r-tel" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="6XX XX XX XX"></div></div>
           <div class="champ"><label for="r-mail">E-mail <small>facultatif</small></label><div class="champ-saisie"><input id="r-mail" name="mail" type="email" autocomplete="email" placeholder="vous@exemple.com"></div></div>
           <div class="champ"><label for="r-age">Âge du patient</label><div class="champ-saisie"><input id="r-age" name="age" inputmode="numeric" placeholder="32"><span class="unite">ans</span></div></div>
-          <div class="champ"><span class="label">Première consultation ?</span><div class="segment"><label><input type="radio" name="premiere" value="oui" checked><span>Oui</span></label><label><input type="radio" name="premiere" value="non"><span>Non</span></label></div></div>
+          <div class="champ"><span class="label">Première consultation ?</span><div class="segment"><label><input type="radio" name="premiere" value="oui" checked><span>Oui</span></label><label><input type="radio" name="premiere" value="non"><span>Non</span></label></div></div>
           <div class="champ champ-large"><label for="r-motif">Motif <small>facultatif</small></label><div class="champ-saisie champ-texte"><textarea id="r-motif" name="motif" rows="4" placeholder="Quelques mots sur la raison de votre venue"></textarea></div></div>
           <label class="consentement champ-large"><input type="checkbox" name="consentement"><span>J’accepte que mes données soient utilisées uniquement pour gérer ce rendez-vous. <a href="a-propos.html#confidentialite">Confidentialité</a></span></label>
         </form>
@@ -89,24 +73,24 @@
             <div><dt>Patient</dt><dd data-recap="patient">—</dd></div>
             <div><dt>Lieu</dt><dd>Conakry, Guinée · adresse précisée dans la confirmation</dd></div>
           </dl>
-          <p class="resa-apporter"><svg><use href="#i-fiche"/></svg>Pensez à apporter vos derniers résultats d’analyses, vos ordonnances et votre carnet de suivi.</p>
+          <p class="resa-apporter"><svg><use href="#i-fiche"></use></svg>Pensez à apporter vos derniers résultats d’analyses, vos ordonnances et votre carnet de suivi.</p>
         </div>
         <div class="confirmation">
-          <span class="confirmation-ico"><svg><use href="#i-check"/></svg></span>
+          <span class="confirmation-ico"><svg><use href="#i-check"></use></svg></span>
           <h2>Demande envoyée</h2>
           <p class="confirmation-num">Référence <strong>HG-2026-10-0152</strong></p>
           <p class="chapeau">Nous vous recontactons par WhatsApp ou par SMS pour confirmer le rendez-vous. Gardez cette référence.</p>
           <div class="boutons">
-            <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Une question ? WhatsApp</a>
-            <a class="btn btn-contour btn-grand" href="espace-patient.html"><svg><use href="#i-compte"/></svg>Mon espace patient</a>
+            <a class="btn btn-wa btn-grand" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20je%20souhaite%20obtenir%20des%20informations%20concernant%20une%20consultation%20d%E2%80%99h%C3%A9matologie." target="_blank" rel="noopener"><svg><use href="#i-whatsapp"></use></svg>Une question ? WhatsApp</a>
+            <a class="btn btn-contour btn-grand" href="espace-patient.html"><svg><use href="#i-compte"></use></svg>Mon espace patient</a>
           </div>
         </div>
       </div>
 
       <div class="resa-nav">
-        <button class="btn btn-contour btn-grand resa-retour" type="button"><svg><use href="#i-retour"/></svg>Retour</button>
+        <button class="btn btn-contour btn-grand resa-retour" type="button"><svg><use href="#i-retour"></use></svg>Retour</button>
         <p class="resa-aide" aria-live="polite"></p>
-        <button class="btn btn-rouge btn-grand resa-suivant" type="button">Continuer<svg><use href="#i-fleche"/></svg></button>
+        <button class="btn btn-rouge btn-grand resa-suivant" type="button">Continuer<svg><use href="#i-fleche"></use></svg></button>
       </div>
     </div>
 
@@ -119,11 +103,9 @@
         <div><dt>Patient</dt><dd data-recap="patient">—</dd></div>
       </dl>
       <div class="recap-aide">
-        <p><strong>Besoin d’aide ?</strong> Nous répondons sur WhatsApp.</p>
-        <a class="btn btn-wa btn-petit" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>+224 628 73 31 43</a>
+        <p><strong>Besoin d’aide ?</strong> Nous répondons sur WhatsApp.</p>
+        <a class="btn btn-wa btn-petit" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"></use></svg>+224 628 73 31 43</a>
       </div>
-      <p class="recap-urgence"><svg><use href="#i-urgence"/></svg>En cas d’urgence, ne prenez pas rendez-vous : rendez-vous directement aux urgences.</p>
+      <p class="recap-urgence"><svg><use href="#i-urgence"></use></svg>En cas d’urgence, ne prenez pas rendez-vous : rendez-vous directement aux urgences.</p>
     </aside>
   </div>
-  </div>
-</section>

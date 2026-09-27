@@ -1,19 +1,20 @@
-<!--{"titre":"Espace professionnel : protocoles, formations et outils en hématologie | HEMATO GUI","description":"Espace sécurisé pour les professionnels de santé : bibliothèque Hématologie pratique, protocoles, référentiels, cas cliniques, webinaires, formations, quiz, certificats et eBooks professionnels.","nav":"pro"}-->
+<!--{"titre":"Espace professionnel : protocoles, formations et outils en hématologie | HEMATO GUI","description":"Espace sécurisé pour les professionnels de santé : bibliothèque Hématologie pratique, protocoles, référentiels, cas cliniques, webinaires, formations, quiz, certificats et eBooks professionnels.","nav":"pro","wp_titre":"Espace professionnel"}-->
 <section class="page-hero page-hero-sombre">
   <div class="wrap page-hero-grille">
     <div>
-      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-current="page">Espace professionnel</span></nav>
+      <p class="ariane"><a href="index.html">Accueil</a><strong>Espace professionnel</strong></p>
       <p class="surtitre">Réservé aux professionnels de santé</p>
       <h1 class="titre-page">Espace <em>professionnel</em></h1>
       <p class="chapeau">Protocoles, référentiels, cas cliniques, webinaires, formations certifiantes et outils d’aide à la décision, dans un espace sécurisé.</p>
       <div class="reperes">
-        <a class="repere" href="#bibliotheque"><svg><use href="#i-livre"/></svg>Hématologie pratique</a>
-        <a class="repere" href="#formations"><svg><use href="#i-diplome"/></svg>Formations</a>
-        <a class="repere" href="#webinaires"><svg><use href="#i-play"/></svg>Webinaires</a>
-        <a class="repere" href="outils.html"><svg><use href="#i-score"/></svg>Outils</a>
+        <p class="repere ico-livre"><a href="#bibliotheque">Hématologie pratique</a></p>
+        <p class="repere ico-diplome"><a href="#formations">Formations</a></p>
+        <p class="repere ico-play"><a href="#webinaires">Webinaires</a></p>
+        <p class="repere ico-score"><a href="outils.html">Outils</a></p>
       </div>
     </div>
 
+    <div data-shortcode='[hg_acces_pro]'>
     <div class="connexion-carte bascule" id="acces">
       <div class="onglets-mini">
         <p class="choix-item est-actif">Connexion</p>
@@ -36,11 +37,12 @@
         <p class="connexion-note"><svg><use href="#i-check"/></svg>Chaque demande est vérifiée avant l’ouverture de l’accès</p>
       </form>
     </div>
+    </div>
   </div>
 </section>
 
 <section class="section" id="bibliotheque">
-  <div class="wrap">
+  <div class="wrap filtrable">
     <header class="biblio-tete">
       <div>
         <p class="surtitre">Bibliothèque</p>
@@ -48,36 +50,33 @@
         <p class="chapeau">Protocoles, référentiels, cas cliniques, algorithmes diagnostiques et documents PDF, classés pour être trouvés vite.</p>
       </div>
     </header>
-    <form class="recherche recherche-claire" role="search" onsubmit="return false">
-      <svg><use href="#i-recherche"/></svg>
-      <label class="sr" for="rp">Rechercher dans Hématologie pratique</label>
-      <input id="rp" type="search" placeholder="Rechercher une maladie, un examen, un traitement…">
-      <button type="submit" aria-label="Rechercher"><svg><use href="#i-fleche"/></svg></button>
-    </form>
-    <div class="facettes" data-filtres=".ressources">
-      <p class="facette-titre">Filtrer par</p>
-      <p class="categorie est-actif" data-filtre="tous">Tout</p>
-      <p class="categorie" data-filtre="maladie">Maladie</p>
-      <p class="categorie" data-filtre="examen">Examen</p>
-      <p class="categorie" data-filtre="traitement">Traitement</p>
-      <p class="categorie" data-filtre="enfant">Âge : enfant</p>
-      <p class="categorie" data-filtre="adulte">Âge : adulte</p>
-      <p class="categorie" data-filtre="urgence">Urgence</p>
-      <p class="categorie" data-filtre="pediatrie">Pédiatrie</p>
-      <p class="categorie" data-filtre="obstetrique">Obstétrique</p>
+    <div data-bloc="search" data-label="Rechercher dans Hématologie pratique" data-placeholder="Rechercher une maladie, un examen, un traitement…" class="recherche recherche-claire">
+      <form role="search" method="get" action="espace-pro.html" class="wp-block-search__button-inside wp-block-search__icon-button wp-block-search recherche recherche-claire"><label class="wp-block-search__label screen-reader-text" for="recherche-pro">Rechercher dans Hématologie pratique</label><div class="wp-block-search__inside-wrapper"><input class="wp-block-search__input" id="recherche-pro" placeholder="Rechercher une maladie, un examen, un traitement…" value="" type="search" name="s" required><button aria-label="Rechercher" class="wp-block-search__button has-icon wp-element-button" type="submit"><svg class="search-icon" viewBox="0 0 24 24" width="24" height="24"><path d="M13 5c-3.3 0-6 2.7-6 6 0 1.4.5 2.7 1.3 3.7l-3.8 3.8 1.1 1.1 3.8-3.8c1 .8 2.3 1.3 3.7 1.3 3.3 0 6-2.7 6-6S16.3 5 13 5zm0 10.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5z"></path></svg></button></div></form>
     </div>
-    <ul class="ressources">
-      <li class="ressource" data-type="maladie adulte urgence traitement"><span class="ressource-type">Protocole</span><div><h3>Crise vaso-occlusive de l’adulte</h3><p>Antalgie par paliers, hydratation, surveillance, critères d’hospitalisation.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>6 pages</span></li>
-      <li class="ressource" data-type="maladie enfant urgence pediatrie"><span class="ressource-type">Protocole</span><div><h3>Fièvre chez l’enfant drépanocytaire</h3><p>Examen, bilan, antibiothérapie probabiliste, signes de gravité.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>4 pages</span></li>
-      <li class="ressource" data-type="maladie urgence traitement"><span class="ressource-type">Protocole</span><div><h3>Hémarthrose chez le patient hémophile</h3><p>Doses de facteur, mesures associées, rééducation.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>5 pages</span></li>
-      <li class="ressource" data-type="examen adulte"><span class="ressource-type ressource-algo">Algorithme</span><div><h3>Conduite devant une thrombopénie</h3><p>Fausse thrombopénie, causes centrales et périphériques, urgences.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>1 page</span></li>
-      <li class="ressource" data-type="examen enfant pediatrie"><span class="ressource-type ressource-algo">Algorithme</span><div><h3>Anémie de l’enfant : démarche diagnostique</h3><p>VGM, réticulocytes, bilan martial, électrophorèse.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>1 page</span></li>
-      <li class="ressource" data-type="traitement adulte urgence"><span class="ressource-type">Protocole</span><div><h3>Surdosage en antivitamines K</h3><p>Selon l’INR et la présence d’un saignement : vitamine K, concentrés.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>3 pages</span></li>
-      <li class="ressource" data-type="maladie adulte obstetrique"><span class="ressource-type ressource-ref">Référentiel</span><div><h3>Drépanocytose et grossesse</h3><p>Suivi conjoint, traitements à arrêter, transfusion, accouchement.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>12 pages</span></li>
-      <li class="ressource" data-type="traitement adulte"><span class="ressource-type ressource-ref">Référentiel</span><div><h3>Hydroxyurée : mise en route et surveillance</h3><p>Indications, posologie, NFS de contrôle, contraception.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>8 pages</span></li>
-      <li class="ressource" data-type="maladie examen adulte"><span class="ressource-type ressource-cas">Cas clinique</span><div><h3>Pancytopénie fébrile chez un homme de 45 ans</h3><p>Du frottis au myélogramme : raisonnement commenté.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>15 min</span></li>
-      <li class="ressource" data-type="maladie enfant pediatrie"><span class="ressource-type ressource-cas">Cas clinique</span><div><h3>Saignement après circoncision</h3><p>Bilan d’hémostase, dosage des facteurs, prise en charge.</p></div><span class="ressource-meta"><svg><use href="#i-cadenas"/></svg>10 min</span></li>
-    </ul>
+    <div class="facettes">
+      <p class="facette-titre">Filtrer par</p>
+      <p class="categorie f-tous est-actif">Tout</p>
+      <p class="categorie f-maladie">Maladie</p>
+      <p class="categorie f-examen">Examen</p>
+      <p class="categorie f-traitement">Traitement</p>
+      <p class="categorie f-enfant">Âge : enfant</p>
+      <p class="categorie f-adulte">Âge : adulte</p>
+      <p class="categorie f-urgence">Urgence</p>
+      <p class="categorie f-pediatrie">Pédiatrie</p>
+      <p class="categorie f-obstetrique">Obstétrique</p>
+    </div>
+    <div class="ressources filtres-cible">
+      <div class="ressource t-maladie t-adulte t-urgence t-traitement"><p class="ressource-type">Protocole</p><div><h3>Crise vaso-occlusive de l’adulte</h3><p>Antalgie par paliers, hydratation, surveillance, critères d’hospitalisation.</p></div><p class="ressource-meta icone-avant ico-cadenas">6 pages</p></div>
+      <div class="ressource t-maladie t-enfant t-urgence t-pediatrie"><p class="ressource-type">Protocole</p><div><h3>Fièvre chez l’enfant drépanocytaire</h3><p>Examen, bilan, antibiothérapie probabiliste, signes de gravité.</p></div><p class="ressource-meta icone-avant ico-cadenas">4 pages</p></div>
+      <div class="ressource t-maladie t-urgence t-traitement"><p class="ressource-type">Protocole</p><div><h3>Hémarthrose chez le patient hémophile</h3><p>Doses de facteur, mesures associées, rééducation.</p></div><p class="ressource-meta icone-avant ico-cadenas">5 pages</p></div>
+      <div class="ressource t-examen t-adulte"><p class="ressource-type ressource-algo">Algorithme</p><div><h3>Conduite devant une thrombopénie</h3><p>Fausse thrombopénie, causes centrales et périphériques, urgences.</p></div><p class="ressource-meta icone-avant ico-cadenas">1 page</p></div>
+      <div class="ressource t-examen t-enfant t-pediatrie"><p class="ressource-type ressource-algo">Algorithme</p><div><h3>Anémie de l’enfant : démarche diagnostique</h3><p>VGM, réticulocytes, bilan martial, électrophorèse.</p></div><p class="ressource-meta icone-avant ico-cadenas">1 page</p></div>
+      <div class="ressource t-traitement t-adulte t-urgence"><p class="ressource-type">Protocole</p><div><h3>Surdosage en antivitamines K</h3><p>Selon l’INR et la présence d’un saignement : vitamine K, concentrés.</p></div><p class="ressource-meta icone-avant ico-cadenas">3 pages</p></div>
+      <div class="ressource t-maladie t-adulte t-obstetrique"><p class="ressource-type ressource-ref">Référentiel</p><div><h3>Drépanocytose et grossesse</h3><p>Suivi conjoint, traitements à arrêter, transfusion, accouchement.</p></div><p class="ressource-meta icone-avant ico-cadenas">12 pages</p></div>
+      <div class="ressource t-traitement t-adulte"><p class="ressource-type ressource-ref">Référentiel</p><div><h3>Hydroxyurée : mise en route et surveillance</h3><p>Indications, posologie, NFS de contrôle, contraception.</p></div><p class="ressource-meta icone-avant ico-cadenas">8 pages</p></div>
+      <div class="ressource t-maladie t-examen t-adulte"><p class="ressource-type ressource-cas">Cas clinique</p><div><h3>Pancytopénie fébrile chez un homme de 45 ans</h3><p>Du frottis au myélogramme : raisonnement commenté.</p></div><p class="ressource-meta icone-avant ico-cadenas">15 min</p></div>
+      <div class="ressource t-maladie t-enfant t-pediatrie"><p class="ressource-type ressource-cas">Cas clinique</p><div><h3>Saignement après circoncision</h3><p>Bilan d’hémostase, dosage des facteurs, prise en charge.</p></div><p class="ressource-meta icone-avant ico-cadenas">10 min</p></div>
+    </div>
   </div>
 </section>
 
@@ -88,9 +87,9 @@
       <h2>Se former, à son rythme, avec certificat.</h2>
     </header>
     <div class="formations">
-      <article class="formation"><span class="formation-num">01</span><h3>L’hémogramme sans erreur</h3><p>Lire, interpréter et orienter une NFS en pratique courante.</p><p class="livre-meta"><span>6 modules</span><span>3 h</span><span>Intermédiaire</span></p><div class="formation-progression"><i style="width:65%"></i></div><p class="formation-etat">65 % terminé</p><a class="btn btn-noir btn-petit" href="#">Continuer</a></article>
-      <article class="formation"><span class="formation-num">02</span><h3>Drépanocytose : prise en charge globale</h3><p>De l’enfant à l’adulte : prévention, urgences, traitements de fond.</p><p class="livre-meta"><span>8 modules</span><span>4 h 30</span><span>Tous niveaux</span></p><div class="formation-progression"><i style="width:0"></i></div><p class="formation-etat">Certificat à la clé</p><a class="btn btn-rouge btn-petit" href="#">Commencer</a></article>
-      <article class="formation"><span class="formation-num">03</span><h3>Hémostase et anticoagulants</h3><p>Bilans, maladies hémorragiques, thromboses et gestion des traitements.</p><p class="livre-meta"><span>7 modules</span><span>4 h</span><span>Avancé</span></p><div class="formation-progression"><i style="width:0"></i></div><p class="formation-etat">Certificat à la clé</p><a class="btn btn-rouge btn-petit" href="#">Commencer</a></article>
+      <article class="formation"><p class="formation-num">01</p><h3>L’hémogramme sans erreur</h3><p>Lire, interpréter et orienter une NFS en pratique courante.</p><ul class="livre-meta"><li>6 modules</li><li>3 h</li><li>Intermédiaire</li></ul><p class="formation-etat p-65">65 % terminé</p><div class="boutons"><a class="btn btn-noir btn-petit" href="#">Continuer</a></div></article>
+      <article class="formation"><p class="formation-num">02</p><h3>Drépanocytose : prise en charge globale</h3><p>De l’enfant à l’adulte : prévention, urgences, traitements de fond.</p><ul class="livre-meta"><li>8 modules</li><li>4 h 30</li><li>Tous niveaux</li></ul><p class="formation-etat p-0">Certificat à la clé</p><div class="boutons"><a class="btn btn-rouge btn-petit" href="#">Commencer</a></div></article>
+      <article class="formation"><p class="formation-num">03</p><h3>Hémostase et anticoagulants</h3><p>Bilans, maladies hémorragiques, thromboses et gestion des traitements.</p><ul class="livre-meta"><li>7 modules</li><li>4 h</li><li>Avancé</li></ul><p class="formation-etat p-0">Certificat à la clé</p><div class="boutons"><a class="btn btn-rouge btn-petit" href="#">Commencer</a></div></article>
     </div>
   </div>
 </section>
@@ -101,15 +100,15 @@
       <p class="surtitre">Conférences et webinaires</p>
       <h2>Les prochains rendez-vous.</h2>
       <p class="chapeau">Dates d’exemple : le programme réel sera publié ici.</p>
-      <ul class="webinaires">
-        <li><p class="webinaire-date"><strong>15</strong>oct.</p><div><h3>Hydroxyurée chez l’enfant : en pratique</h3><small>Webinaire · 18 h 00 · 1 h</small></div><a class="btn btn-contour btn-petit" href="#">S’inscrire</a></li>
-        <li><p class="webinaire-date"><strong>05</strong>nov.</p><div><h3>Lire un bilan d’hémostase en 10 minutes</h3><small>Webinaire · 18 h 00 · 45 min</small></div><a class="btn btn-contour btn-petit" href="#">S’inscrire</a></li>
-        <li><p class="webinaire-date"><strong>26</strong>nov.</p><div><h3>Journées d’hématologie de Conakry</h3><small>Conférence · présentiel et en ligne</small></div><a class="btn btn-contour btn-petit" href="#">En savoir plus</a></li>
-      </ul>
+      <div class="webinaires">
+        <div class="webinaire"><p class="webinaire-date"><strong>15</strong>oct.</p><div><h3>Hydroxyurée chez l’enfant : en pratique</h3><p class="webinaire-info">Webinaire · 18 h 00 · 1 h</p></div><div class="boutons"><a class="btn btn-contour btn-petit" href="#">S’inscrire</a></div></div>
+        <div class="webinaire"><p class="webinaire-date"><strong>05</strong>nov.</p><div><h3>Lire un bilan d’hémostase en 10 minutes</h3><p class="webinaire-info">Webinaire · 18 h 00 · 45 min</p></div><div class="boutons"><a class="btn btn-contour btn-petit" href="#">S’inscrire</a></div></div>
+        <div class="webinaire"><p class="webinaire-date"><strong>26</strong>nov.</p><div><h3>Journées d’hématologie de Conakry</h3><p class="webinaire-info">Conférence · présentiel et en ligne</p></div><div class="boutons"><a class="btn btn-contour btn-petit" href="#">En savoir plus</a></div></div>
+      </div>
     </div>
 
     <div class="quiz bascule">
-      <p class="quiz-etiquette"><svg><use href="#i-quiz"/></svg>Quiz du jour</p>
+      <p class="quiz-etiquette icone-avant ico-quiz">Quiz du jour</p>
       <h3>Chez l’enfant drépanocytaire SS, quel examen annuel permet de prévenir l’AVC ?</h3>
       <div class="quiz-options">
         <p class="choix-item">Scanner cérébral</p>
@@ -132,12 +131,12 @@
       <h2>Vos formations, attestées.</h2>
       <p class="chapeau">Chaque formation terminée donne un certificat téléchargeable, à présenter à votre employeur ou à votre ordre professionnel.</p>
     </div>
-    <div class="certificat" aria-hidden="true">
+    <div class="certificat">
       <p class="certificat-marque">HEMATO GUI</p>
       <p class="certificat-titre">Certificat de formation</p>
       <p class="certificat-nom">Dr Mamadou Diallo</p>
       <p class="certificat-texte">a suivi avec succès la formation<br><strong>L’hémogramme sans erreur</strong></p>
-      <p class="certificat-pied"><span>Conakry, octobre 2026</span><span>Exemple</span></p>
+      <div class="certificat-pied"><p>Conakry, octobre 2026</p><p>Exemple</p></div>
     </div>
   </div>
 </section>

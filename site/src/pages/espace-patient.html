@@ -1,19 +1,20 @@
-<!--{"titre":"Espace patient : rendez-vous, documents et suivi | HEMATO GUI","description":"Créez votre compte patient HEMATO GUI : prise de rendez-vous, documents médicaux sécurisés, eBooks, notifications, favoris et historique de votre parcours en hématologie.","nav":"patients"}-->
+<!--{"titre":"Espace patient : rendez-vous, documents et suivi | HEMATO GUI","description":"Créez votre compte patient HEMATO GUI : prise de rendez-vous, documents médicaux sécurisés, eBooks, notifications, favoris et historique de votre parcours en hématologie.","nav":"patients","wp_titre":"Espace patient"}-->
 <section class="page-hero">
   <div class="wrap page-hero-grille">
     <div>
-      <nav class="ariane" aria-label="Fil d’Ariane"><a href="index.html">Accueil</a><span aria-current="page">Espace patient</span></nav>
+      <p class="ariane"><a href="index.html">Accueil</a><strong>Espace patient</strong></p>
       <p class="surtitre">Je suis patient</p>
       <h1 class="titre-page">Votre suivi, <em>au même endroit.</em></h1>
       <p class="chapeau">Rendez-vous, documents, conseils et eBooks réunis dans un espace personnel et sécurisé, pensé d’abord pour le téléphone.</p>
       <div class="reperes">
-        <span class="repere"><svg><use href="#i-calendrier"/></svg>Rendez-vous</span>
-        <span class="repere"><svg><use href="#i-fiche"/></svg>Documents</span>
-        <span class="repere"><svg><use href="#i-livre"/></svg>eBooks</span>
-        <span class="repere"><svg><use href="#i-cloche"/></svg>Notifications</span>
+        <p class="repere icone-avant ico-calendrier">Rendez-vous</p>
+        <p class="repere icone-avant ico-fiche">Documents</p>
+        <p class="repere icone-avant ico-livre">eBooks</p>
+        <p class="repere icone-avant ico-cloche">Notifications</p>
       </div>
     </div>
 
+    <div data-shortcode='[hg_connexion]'>
     <div class="connexion-carte bascule" id="connexion">
       <div class="onglets-mini">
         <p class="choix-item est-actif">Se connecter</p>
@@ -38,6 +39,7 @@
         <button class="btn btn-rouge btn-grand" type="submit">Créer mon compte</button>
       </form>
     </div>
+    </div>
   </div>
 </section>
 
@@ -46,23 +48,23 @@
     <div>
       <p class="surtitre">Votre parcours</p>
       <h2>Simple, du premier symptôme au suivi.</h2>
-      <ol class="parcours">
-        <li><h3>Je choisis mon problème</h3><p>Drépanocytose, saignements, anémie, résultats d’analyse…</p></li>
-        <li><h3>Je découvre les informations essentielles</h3><p>Des fiches claires, relues par des spécialistes.</p></li>
-        <li><h3>Je prends rendez-vous</h3><p>En ligne en quelques clics, ou directement sur WhatsApp.</p></li>
-        <li><h3>Je reçois une confirmation</h3><p>À l’écran, puis par notification.</p></li>
-        <li><h3>Je suis mon parcours médical</h3><p>Rendez-vous, documents et conseils réunis dans mon compte.</p></li>
-      </ol>
+      <div class="parcours">
+        <div class="etape-parcours"><h3>Je choisis mon problème</h3><p>Drépanocytose, saignements, anémie, résultats d’analyse…</p></div>
+        <div class="etape-parcours"><h3>Je découvre les informations essentielles</h3><p>Des fiches claires, relues par des spécialistes.</p></div>
+        <div class="etape-parcours"><h3>Je prends rendez-vous</h3><p>En ligne en quelques clics, ou directement sur WhatsApp.</p></div>
+        <div class="etape-parcours"><h3>Je reçois une confirmation</h3><p>Par WhatsApp ou SMS, une fois le créneau validé.</p></div>
+        <div class="etape-parcours"><h3>Je suis mon parcours médical</h3><p>Rendez-vous, documents et conseils réunis dans mon compte.</p></div>
+      </div>
     </div>
-    <ul class="services services-colonne" aria-label="Services pour les patients">
-      <li><a href="rendez-vous.html"><svg><use href="#i-calendrier"/></svg>Prendre rendez-vous</a></li>
-      <li><a href="rendez-vous.html?type=avis"><svg><use href="#i-consult"/></svg>Demander une consultation</a></li>
-      <li><a href="drepanocytose.html"><svg><use href="#i-fiche"/></svg>Consulter les fiches médicales</a></li>
-      <li><a href="#documents"><svg><use href="#i-telecharger"/></svg>Télécharger mes documents</a></li>
-      <li><a href="hemophilie.html#saignement"><svg><use href="#i-conseil"/></svg>Conseils éducatifs</a></li>
-      <li><a class="service-wa" href="https://wa.me/224628733143" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg>Contacter sur WhatsApp</a></li>
-      <li><a href="actualites.html"><svg><use href="#i-journal"/></svg>Consulter les actualités</a></li>
-      <li><a href="ebooks.html"><svg><use href="#i-livre"/></svg>Accéder aux eBooks</a></li>
+    <ul class="services services-colonne">
+      <li class="ico-calendrier"><a href="rendez-vous.html">Prendre rendez-vous</a></li>
+      <li class="ico-consult"><a href="rendez-vous.html?type=avis">Demander une consultation</a></li>
+      <li class="ico-fiche"><a href="drepanocytose.html">Consulter les fiches médicales</a></li>
+      <li class="ico-telecharger"><a href="#documents">Télécharger mes documents</a></li>
+      <li class="ico-conseil"><a href="hemophilie.html#saignement">Conseils éducatifs</a></li>
+      <li class="ico-whatsapp service-wa"><a href="https://wa.me/224628733143" target="_blank" rel="noopener">Contacter sur WhatsApp</a></li>
+      <li class="ico-journal"><a href="actualites.html">Consulter les actualités</a></li>
+      <li class="ico-livre"><a href="ebooks.html">Accéder aux eBooks</a></li>
     </ul>
   </div>
 </section>
@@ -75,102 +77,101 @@
       <p class="chapeau">Données fictives, pour illustrer l’espace une fois connecté.</p>
     </header>
     <div class="tableau bascule">
-      <nav class="tableau-menu" aria-label="Menu de l’espace patient">
-        <p class="tableau-profil"><span class="avatar">AC</span><span><strong>Aïssatou Camara</strong><small>Patiente</small></span></p>
-        <p class="choix-item est-actif"><svg><use href="#i-grille"/></svg>Tableau de bord</p>
-        <p class="choix-item"><svg><use href="#i-calendrier"/></svg>Mes rendez-vous</p>
-        <p class="choix-item" id="documents"><svg><use href="#i-fiche"/></svg>Mes documents</p>
-        <p class="choix-item"><svg><use href="#i-livre"/></svg>Mes eBooks</p>
-        <p class="choix-item"><svg><use href="#i-cloche"/></svg>Notifications<span class="badge">2</span></p>
-        <p class="choix-item"><svg><use href="#i-coeur"/></svg>Favoris</p>
-        <p class="choix-item"><svg><use href="#i-historique"/></svg>Historique</p>
-        <p class="choix-item"><svg><use href="#i-patient"/></svg>Profil</p>
-      </nav>
+      <div class="tableau-menu">
+        <div class="tableau-profil"><p class="avatar">AC</p><div><p class="profil-nom">Aïssatou Camara</p><p class="profil-role">Patiente</p></div></div>
+        <p class="choix-item ico-grille est-actif">Tableau de bord</p>
+        <p class="choix-item ico-calendrier">Mes rendez-vous</p>
+        <p class="choix-item ico-fiche" id="documents">Mes documents</p>
+        <p class="choix-item ico-livre">Mes eBooks</p>
+        <p class="choix-item ico-cloche">Notifications<strong>2</strong></p>
+        <p class="choix-item ico-coeur">Favoris</p>
+        <p class="choix-item ico-historique">Historique</p>
+        <p class="choix-item ico-patient">Profil</p>
+      </div>
 
       <div class="tableau-contenu">
         <div class="variante est-actif">
           <p class="tableau-titre">Bonjour Aïssatou</p>
-          <div class="prochain-rdv">
-            <span class="verre-ico"><svg><use href="#i-calendrier"/></svg></span>
-            <div><small>Prochain rendez-vous</small><strong>Consultation drépanocytose</strong><p>Mercredi 14 octobre 2026 · 10 h 30 · Conakry</p></div>
-            <a class="btn btn-contour btn-petit" href="rendez-vous.html">Modifier</a>
+          <div class="prochain-rdv ico-calendrier">
+            <div><p class="prochain-label">Prochain rendez-vous</p><p class="prochain-titre">Consultation drépanocytose</p><p>Mercredi 14 octobre 2026 · 10 h 30 · Conakry</p></div>
+            <div class="boutons"><a class="btn btn-contour btn-petit" href="rendez-vous.html">Modifier</a></div>
           </div>
           <div class="stats-mini">
-            <div><strong>1</strong><small>rendez-vous à venir</small></div>
-            <div><strong>4</strong><small>documents</small></div>
-            <div><strong>2</strong><small>eBooks</small></div>
+            <div><p class="stat-val">1</p><p class="stat-leg">rendez-vous à venir</p></div>
+            <div><p class="stat-val">4</p><p class="stat-leg">documents</p></div>
+            <div><p class="stat-val">2</p><p class="stat-leg">eBooks</p></div>
           </div>
           <p class="tableau-sous">Dernières notifications</p>
-          <ul class="liste-ligne">
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Nouveau document</strong><small>Résultats NFS du 22 septembre, déposés par votre médecin</small></span><em>Hier</em></li>
-            <li><svg><use href="#i-cloche"/></svg><span><strong>Rappel</strong><small>Pensez à votre Doppler transcrânien annuel</small></span><em>20 sept.</em></li>
-          </ul>
+          <div class="liste-ligne">
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Nouveau document</p><p class="ligne-texte">Résultats NFS du 22 septembre, déposés par votre médecin</p></div><p class="ligne-date">Hier</p></div>
+            <div class="ligne ico-cloche"><div><p class="ligne-titre">Rappel</p><p class="ligne-texte">Pensez à votre Doppler transcrânien annuel</p></div><p class="ligne-date">20 sept.</p></div>
+          </div>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Mes rendez-vous</p>
-          <ul class="liste-ligne">
-            <li><svg><use href="#i-calendrier"/></svg><span><strong>Consultation drépanocytose</strong><small>Mer. 14 octobre 2026 · 10 h 30</small></span><em class="etat etat-ok">Confirmé</em></li>
-            <li><svg><use href="#i-calendrier"/></svg><span><strong>Consultation d’hématologie</strong><small>Lun. 6 juillet 2026 · 09 h 30</small></span><em class="etat">Passé</em></li>
-            <li><svg><use href="#i-calendrier"/></svg><span><strong>Bilan annuel</strong><small>Mar. 17 mars 2026 · 14 h 00</small></span><em class="etat">Passé</em></li>
-          </ul>
-          <a class="btn btn-rouge btn-petit" href="rendez-vous.html" style="margin-top:18px">Nouveau rendez-vous</a>
+          <div class="liste-ligne">
+            <div class="ligne ico-calendrier"><div><p class="ligne-titre">Consultation drépanocytose</p><p class="ligne-texte">Mer. 14 octobre 2026 · 10 h 30</p></div><p class="ligne-date etat etat-ok">Confirmé</p></div>
+            <div class="ligne ico-calendrier"><div><p class="ligne-titre">Consultation d’hématologie</p><p class="ligne-texte">Lun. 6 juillet 2026 · 09 h 30</p></div><p class="ligne-date etat">Passé</p></div>
+            <div class="ligne ico-calendrier"><div><p class="ligne-titre">Bilan annuel</p><p class="ligne-texte">Mar. 17 mars 2026 · 14 h 00</p></div><p class="ligne-date etat">Passé</p></div>
+          </div>
+          <div class="boutons boutons-gauche tableau-action"><a class="btn btn-rouge btn-petit" href="rendez-vous.html">Nouveau rendez-vous</a></div>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Mes documents</p>
-          <ul class="liste-ligne">
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Résultats NFS</strong><small>22 septembre 2026 · PDF · déposé par votre médecin</small></span><em class="dl"><svg><use href="#i-telecharger"/></svg></em></li>
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Ordonnance</strong><small>6 juillet 2026 · PDF</small></span><em class="dl"><svg><use href="#i-telecharger"/></svg></em></li>
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Compte rendu de consultation</strong><small>6 juillet 2026 · PDF</small></span><em class="dl"><svg><use href="#i-telecharger"/></svg></em></li>
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Électrophorèse de l’hémoglobine</strong><small>17 mars 2026 · PDF</small></span><em class="dl"><svg><use href="#i-telecharger"/></svg></em></li>
-          </ul>
-          <p class="tableau-note"><svg><use href="#i-cadenas"/></svg>Vos documents sont stockés de façon sécurisée et visibles uniquement par vous et votre équipe soignante.</p>
+          <div class="liste-ligne">
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Résultats NFS</p><p class="ligne-texte">22 septembre 2026 · PDF · déposé par votre médecin</p></div><p class="dl ico-telecharger">Télécharger</p></div>
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Ordonnance</p><p class="ligne-texte">6 juillet 2026 · PDF</p></div><p class="dl ico-telecharger">Télécharger</p></div>
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Compte rendu de consultation</p><p class="ligne-texte">6 juillet 2026 · PDF</p></div><p class="dl ico-telecharger">Télécharger</p></div>
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Électrophorèse de l’hémoglobine</p><p class="ligne-texte">17 mars 2026 · PDF</p></div><p class="dl ico-telecharger">Télécharger</p></div>
+          </div>
+          <p class="tableau-note icone-avant ico-cadenas">Vos documents sont stockés de façon sécurisée et visibles uniquement par vous et votre équipe soignante.</p>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Mes eBooks</p>
-          <div class="apercu-livre"><img src="assets/img/ebooks/drepanocytose-guide-familles.jpg" alt=""><div><strong>Le guide des familles</strong><small>Gratuit · téléchargé le 3 sept. 2026</small><i style="--p:100%"></i></div><span class="apercu-dl"><svg><use href="#i-telecharger"/></svg></span></div>
-          <div class="apercu-livre" style="margin-top:10px"><img src="assets/img/ebooks/urgences-hematologiques.jpg" alt=""><div><strong>Urgences hématologiques</strong><small>Acheté le 28 août 2026 · 55 000 GNF</small><i style="--p:22%"></i></div><span class="apercu-dl"><svg><use href="#i-telecharger"/></svg></span></div>
+          <div class="apercu-livre ico-telecharger"><figure class="apercu-couv"><img src="assets/img/ebooks/drepanocytose-guide-familles.jpg" alt=""></figure><div class="apercu-texte p-100"><p class="apercu-nom">Le guide des familles</p><p class="apercu-date">Gratuit · téléchargé le 3 sept. 2026</p></div></div>
+          <div class="apercu-livre ico-telecharger"><figure class="apercu-couv"><img src="assets/img/ebooks/urgences-hematologiques.jpg" alt=""></figure><div class="apercu-texte p-22"><p class="apercu-nom">Urgences hématologiques</p><p class="apercu-date">Acheté le 28 août 2026 · 55 000 GNF</p></div></div>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Notifications</p>
-          <ul class="liste-ligne">
-            <li><svg><use href="#i-fiche"/></svg><span><strong>Nouveau document disponible</strong><small>Résultats NFS du 22 septembre</small></span><em>Hier</em></li>
-            <li><svg><use href="#i-cloche"/></svg><span><strong>Rappel de suivi</strong><small>Doppler transcrânien annuel à programmer</small></span><em>20 sept.</em></li>
-            <li><svg><use href="#i-check"/></svg><span><strong>Rendez-vous confirmé</strong><small>Mer. 14 octobre à 10 h 30</small></span><em>18 sept.</em></li>
-          </ul>
+          <div class="liste-ligne">
+            <div class="ligne ico-fiche"><div><p class="ligne-titre">Nouveau document disponible</p><p class="ligne-texte">Résultats NFS du 22 septembre</p></div><p class="ligne-date">Hier</p></div>
+            <div class="ligne ico-cloche"><div><p class="ligne-titre">Rappel de suivi</p><p class="ligne-texte">Doppler transcrânien annuel à programmer</p></div><p class="ligne-date">20 sept.</p></div>
+            <div class="ligne ico-check"><div><p class="ligne-titre">Rendez-vous confirmé</p><p class="ligne-texte">Mer. 14 octobre à 10 h 30</p></div><p class="ligne-date">18 sept.</p></div>
+          </div>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Favoris</p>
-          <ul class="liste-ligne">
-            <li><svg><use href="#i-coeur"/></svg><span><strong>Drépanocytose · Hydratation</strong><small>Fiche maladie</small></span><a class="lien-fleche" href="drepanocytose.html#hydratation">Lire<svg><use href="#i-fleche"/></svg></a></li>
-            <li><svg><use href="#i-coeur"/></svg><span><strong>Quand consulter en urgence ?</strong><small>Drépanocytose</small></span><a class="lien-fleche" href="drepanocytose.html#urgence">Lire<svg><use href="#i-fleche"/></svg></a></li>
-            <li><svg><use href="#i-coeur"/></svg><span><strong>Dépistage néonatal</strong><small>Actualités</small></span><a class="lien-fleche" href="actualites.html">Lire<svg><use href="#i-fleche"/></svg></a></li>
-          </ul>
+          <div class="liste-ligne">
+            <div class="ligne ico-coeur"><div><p class="ligne-titre">Drépanocytose · Hydratation</p><p class="ligne-texte">Fiche maladie</p></div><p class="lien-fleche"><a href="drepanocytose.html#hydratation">Lire</a></p></div>
+            <div class="ligne ico-coeur"><div><p class="ligne-titre">Quand consulter en urgence ?</p><p class="ligne-texte">Drépanocytose</p></div><p class="lien-fleche"><a href="drepanocytose.html#urgence">Lire</a></p></div>
+            <div class="ligne ico-coeur"><div><p class="ligne-titre">Dépistage néonatal</p><p class="ligne-texte">Actualités</p></div><p class="lien-fleche"><a href="actualites.html">Lire</a></p></div>
+          </div>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Historique</p>
           <ol class="frise-verticale">
-            <li><small>22 sept. 2026</small><strong>Prise de sang (NFS)</strong></li>
-            <li><small>3 sept. 2026</small><strong>eBook téléchargé : Le guide des familles</strong></li>
-            <li><small>28 août 2026</small><strong>Achat : Urgences hématologiques</strong></li>
-            <li><small>6 juil. 2026</small><strong>Consultation d’hématologie</strong></li>
-            <li><small>17 mars 2026</small><strong>Bilan annuel et électrophorèse</strong></li>
+            <li><em>22 sept. 2026</em><strong>Prise de sang (NFS)</strong></li>
+            <li><em>3 sept. 2026</em><strong>eBook téléchargé : Le guide des familles</strong></li>
+            <li><em>28 août 2026</em><strong>Achat : Urgences hématologiques</strong></li>
+            <li><em>6 juil. 2026</em><strong>Consultation d’hématologie</strong></li>
+            <li><em>17 mars 2026</em><strong>Bilan annuel et électrophorèse</strong></li>
           </ol>
         </div>
 
         <div class="variante">
           <p class="tableau-titre">Profil</p>
-          <dl class="recap-liste">
-            <div><dt>Nom</dt><dd>Aïssatou Camara</dd></div>
-            <div><dt>Téléphone</dt><dd>+224 6•• •• •• 12</dd></div>
-            <div><dt>Notifications</dt><dd>WhatsApp et e-mail</dd></div>
-            <div><dt>Sécurité</dt><dd>Double authentification activée</dd></div>
-          </dl>
+          <div class="recap-liste">
+            <div><p class="recap-cle">Nom</p><p class="recap-val">Aïssatou Camara</p></div>
+            <div><p class="recap-cle">Téléphone</p><p class="recap-val">+224 6•• •• •• 12</p></div>
+            <div><p class="recap-cle">Notifications</p><p class="recap-val">WhatsApp et e-mail</p></div>
+            <div><p class="recap-cle">Sécurité</p><p class="recap-val">Double authentification activée</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -183,11 +184,11 @@
       <p class="surtitre">Confidentialité</p>
       <h2>Vos données de santé, protégées.</h2>
     </header>
-    <ul class="outils outils-3" style="margin-top:40px">
-      <li><svg><use href="#i-cadenas"/></svg><h3>Connexion sécurisée</h3><p>Chiffrement de bout en bout et double authentification possible.</p></li>
-      <li><svg><use href="#i-bouclier"/></svg><h3>Accès limité</h3><p>Seuls vous et votre équipe soignante voyez vos documents.</p></li>
-      <li><svg><use href="#i-oeil"/></svg><h3>Jamais public</h3><p>Aucune information médicale personnelle n’est affichée sur le site.</p></li>
-    </ul>
-    <p class="pro-aussi" style="text-align:left">Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
+    <div class="outils outils-3 outils-serres">
+      <div class="outil-item ico-cadenas"><h3>Connexion sécurisée</h3><p>Connexion chiffrée (HTTPS) et double authentification possible.</p></div>
+      <div class="outil-item ico-bouclier"><h3>Accès limité</h3><p>Seuls vous et votre équipe soignante voyez vos documents.</p></div>
+      <div class="outil-item ico-oeil"><h3>Jamais public</h3><p>Aucune information médicale personnelle n’est affichée sur le site.</p></div>
+    </div>
+    <p class="pro-aussi pro-aussi-gauche">Les informations présentes sur ce site sont destinées à l’éducation et à la sensibilisation. Elles ne remplacent pas une consultation médicale.</p>
   </div>
 </section>

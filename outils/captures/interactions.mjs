@@ -31,7 +31,7 @@ await page.screenshot({ path: OUT + '/test-rdv-confirmation.png' });
 
 // 2. eBooks : filtre Gratuits
 await page.goto(B + 'ebooks.html');
-await page.click('.boutique-filtres [data-filtre=gratuit]');
+await page.click('.boutique-filtres .f-gratuit');
 ok('filtre eBooks gratuits = 3', await page.locator('.livres-boutique .livre:not(.est-cache)').count() === 3);
 
 // 3. Cancers : onglet Myélome
@@ -41,10 +41,11 @@ ok('onglet myélome', await page.locator('.panneau-maladie.est-actif h2').innerT
 
 // 4. Hémostase : TP bas × TCA allongé
 await page.goto(B + 'hemostase.html');
-await page.click('[data-param=tp] [data-valeur=bas]');
-await page.click('[data-param=tca] [data-valeur=allonge]');
-ok('outil bilan bas-allongé', await page.locator('[data-combo="bas-allonge"]').isVisible());
-await page.click('.biblio-filtres [data-filtre=traitement]');
+await page.click('.outil-carte .param:nth-of-type(1) .v-bas');
+await page.click('.outil-carte .param:nth-of-type(2) .v-allonge');
+ok('outil bilan bas-allongé', await page.locator('.outil-carte .combo-bas-allonge').isVisible());
+ok('bouton pressé annoncé (aria-pressed)', (await page.locator('.outil-carte .v-bas').getAttribute('aria-pressed')) === 'true');
+await page.click('.biblio-filtres .f-traitement');
 ok('bibliothèque : 2 traitements', await page.locator('.biblio-grille .fiche-examen:not(.est-cache)').count() === 2);
 
 // 5. Outils : calculs
@@ -56,8 +57,8 @@ await page.fill('#i-blastes', '12');
 ok('IPSS-R recalculé (5,5 → élevé)', (await page.locator('[data-sortie=risque]').innerText()) === 'Risque élevé');
 await page.fill('#nfs-plq', '40'); await page.fill('#nfs-pnn', '0,4');
 ok('NFS pancytopénie', (await page.locator('[data-sortie=titre]').innerText()) === 'Pancytopénie');
-await page.click('#orientation [data-param=vgm] [data-valeur=macro]');
-ok('orientation macro arégénérative', await page.locator('#orientation [data-combo="macro-areg"]').isVisible());
+await page.click('#orientation .v-macro');
+ok('orientation macro arégénérative', await page.locator('#orientation .combo-macro-areg').isVisible());
 
 // 6. Espace patient : ancre #documents ouvre l'onglet
 await page.goto(B + 'espace-patient.html#documents');
@@ -67,13 +68,20 @@ ok('onglet documents via ancre', await page.locator('.tableau-contenu .variante.
 await page.goto(B + 'espace-pro.html');
 await page.click('.quiz-options .choix-item:has-text("Doppler")');
 ok('quiz bonne réponse', await page.locator('.quiz-juste').isVisible());
-await page.click('.facettes [data-filtre=urgence]');
+await page.click('.facettes .f-urgence');
 ok('ressources urgence = 4', await page.locator('.ressource:not(.est-cache)').count() === 4);
 
 // 8. Drépanocytose : transmission AA × SS
 await page.goto(B + 'drepanocytose.html');
 await page.click('.choix-item:text-is("AA × SS")');
 ok('transmission AA×SS', (await page.locator('.variante.est-actif .bilan-infographie').last().innerText()).includes('tous les enfants seront porteurs'));
+
+// 8 bis. Actualités : filtre Campagnes ; accueil : recherche
+await page.goto(B + 'actualites.html');
+await page.click('.actus-filtres .f-campagnes');
+ok('actualités campagnes = 3', await page.locator('.actus-liste .article:not(.est-cache)').count() === 3);
+await page.goto(B + 'index.html');
+ok('recherche de l’accueil = bloc core/search', await page.locator('form.wp-block-search input[name=s]').count() === 1);
 
 // 9. Menu mobile
 await page.setViewportSize({ width: 390, height: 844 });

@@ -1,0 +1,12 @@
+<form class="contact-formulaire" onsubmit="return false">
+      <h2>Écrivez-nous</h2>
+      <div class="formulaire">
+        <div class="champ"><label for="ct-nom">Nom et prénom</label><div class="champ-saisie"><input id="ct-nom" autocomplete="name"></div></div>
+        <div class="champ"><label for="ct-tel">Téléphone</label><div class="champ-saisie"><span class="prefixe">+224</span><input id="ct-tel" type="tel" autocomplete="tel-national"></div></div>
+        <div class="champ"><label for="ct-mail">E-mail</label><div class="champ-saisie"><input id="ct-mail" type="email" autocomplete="email"></div></div>
+        <div class="champ"><label for="ct-objet">Objet</label><div class="champ-saisie"><select id="ct-objet"><option>Consultation</option><option>eBooks</option><option>Espace professionnel</option><option>Partenariat</option><option>Presse</option><option>Autre</option></select></div></div>
+        <div class="champ champ-large"><label for="ct-msg">Message</label><div class="champ-saisie champ-texte"><textarea id="ct-msg" rows="6"></textarea></div></div>
+        <label class="consentement champ-large"><input type="checkbox"><span>J’accepte que mes données soient utilisées pour répondre à ma demande. N’indiquez pas d’informations médicales détaillées dans ce formulaire.</span></label>
+      </div>
+      <button class="btn btn-rouge btn-grand" type="submit">Envoyer le message<svg><use href="#i-fleche"></use></svg></button>
+    </form>

@@ -1,0 +1,24 @@
+<div class="connexion-carte bascule" id="connexion">
+      <div class="onglets-mini">
+        <p class="choix-item est-actif">Se connecter</p>
+        <p class="choix-item">Créer un compte</p>
+      </div>
+      <form class="variante est-actif formulaire-carte" onsubmit="return false">
+        <div class="champ"><label for="c-id">Téléphone ou e-mail</label><div class="champ-saisie"><input id="c-id" autocomplete="username" placeholder="6XX XX XX XX"></div></div>
+        <div class="champ"><label for="c-mdp">Mot de passe</label><div class="champ-saisie"><input id="c-mdp" type="password" autocomplete="current-password" placeholder="••••••••"></div></div>
+        <a class="lien-discret" href="#">Mot de passe oublié ?</a>
+        <button class="btn btn-rouge btn-grand" type="submit">Se connecter</button>
+        <p class="connexion-note"><svg><use href="#i-cadenas"></use></svg>Connexion chiffrée · vos données ne sont jamais partagées</p>
+      </form>
+      <form class="variante formulaire-carte" onsubmit="return false">
+        <div class="champs">
+          <div class="champ"><label for="i-prenom">Prénom</label><div class="champ-saisie"><input id="i-prenom" autocomplete="given-name"></div></div>
+          <div class="champ"><label for="i-nom">Nom</label><div class="champ-saisie"><input id="i-nom" autocomplete="family-name"></div></div>
+        </div>
+        <div class="champ"><label for="i-tel">Téléphone (WhatsApp)</label><div class="champ-saisie"><span class="prefixe">+224</span><input id="i-tel" type="tel" autocomplete="tel-national"></div></div>
+        <div class="champ"><label for="i-mail">E-mail <small>facultatif</small></label><div class="champ-saisie"><input id="i-mail" type="email" autocomplete="email"></div></div>
+        <div class="champ"><label for="i-mdp">Mot de passe</label><div class="champ-saisie"><input id="i-mdp" type="password" autocomplete="new-password"></div></div>
+        <label class="consentement"><input type="checkbox"><span>J’accepte les conditions d’utilisation et la <a href="a-propos.html#confidentialite">politique de confidentialité</a>.</span></label>
+        <button class="btn btn-rouge btn-grand" type="submit">Créer mon compte</button>
+      </form>
+    </div>

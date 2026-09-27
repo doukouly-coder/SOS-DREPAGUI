@@ -40,7 +40,7 @@
     pastilles.forEach(function (p, k) { p.classList.toggle('est-actif', k === i); p.classList.toggle('est-fait', k < i); });
     barre.style.width = ((i + 1) / etapes.length * 100) + '%';
     retour.hidden = i === 0 || confirme;
-    suivant.firstChild.textContent = i === etapes.length - 1 ? 'Confirmer le rendez-vous' : 'Continuer';
+    suivant.firstChild.textContent = i === etapes.length - 1 ? 'Envoyer la demande' : 'Continuer';
     suivant.style.display = confirme ? 'none' : '';
     aide.textContent = '';
     recap();

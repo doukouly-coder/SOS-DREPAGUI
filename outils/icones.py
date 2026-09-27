@@ -22,10 +22,7 @@ regles.append('''
 .icone-avant::before,.b-ico>.wp-block-button__link::before,.lien-fleche a::after,.icone-apres::after{
   content:"";display:inline-block;flex:none;width:1em;height:1em;background:currentColor;
   -webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}
-.lien-fleche a::after{--ico:var(--ico-fleche)}
-/* Icône autonome dans le HTML produit par l'extension (shortcodes) : remplace <svg><use> */
-.ico{display:inline-block;flex:none;width:1em;height:1em;background:currentColor;
-  -webkit-mask:var(--ico) center/contain no-repeat;mask:var(--ico) center/contain no-repeat}''')
+.lien-fleche a::after{--ico:var(--ico-fleche)}''')
 fleche = re.search(r'\.ico-fleche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)
 regles.append(f':root{{--ico-fleche:{fleche}}}')
 loupe = re.search(r'\.ico-recherche\{--ico:(url\([^)]*\))\}', '\n'.join(regles)).group(1)

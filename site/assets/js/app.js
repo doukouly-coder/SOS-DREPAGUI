@@ -17,7 +17,7 @@
   }
   function enfantsDirects(conteneur, selecteur) {
     return [].filter.call(conteneur.querySelectorAll(selecteur), function (el) {
-      return el.closest('.bascule, .outil-2d, .choix-exclusif, .filtrable, [data-outil-bilan], [data-groupe], [data-filtres]') === conteneur;
+      return el.closest('.bascule, .outil-2d, .choix-exclusif, .filtrable, [data-groupe]') === conteneur;
     });
   }
 
@@ -79,24 +79,6 @@
     });
   });
 
-  // Filtres d'une grille : data-filtre sur les boutons, data-type sur les éléments
-  document.querySelectorAll('[data-filtres]').forEach(function (zone) {
-    var cible = document.querySelector(zone.getAttribute('data-filtres'));
-    if (!cible) return;
-    var boutons = enfantsDirects(zone, '[data-filtre]');
-    boutons.forEach(function (b) {
-      commeBouton(b, function () {
-        boutons.forEach(function (x) { x.classList.remove('est-actif'); });
-        b.classList.add('est-actif');
-        var f = b.getAttribute('data-filtre');
-        cible.querySelectorAll('[data-type]').forEach(function (el) {
-          var types = el.getAttribute('data-type').split(' ');
-          el.classList.toggle('est-cache', f !== 'tous' && types.indexOf(f) === -1);
-        });
-      });
-    });
-  });
-
   // Filtres par classes : dans un .filtrable, un déclencheur « f-x » garde les éléments « t-x »
   document.querySelectorAll('.filtrable').forEach(function (zone) {
     var cible = zone.querySelector('.filtres-cible');
@@ -136,31 +118,6 @@
           items.forEach(function (x) { x.classList.remove('est-actif'); x.setAttribute('aria-pressed', 'false'); });
           it.classList.add('est-actif');
           it.setAttribute('aria-pressed', 'true');
-          actualiser();
-        });
-      });
-    });
-    actualiser();
-  });
-
-  // Outil à deux entrées (bilan d'hémostase) : la combinaison choisit la variante
-  document.querySelectorAll('[data-outil-bilan]').forEach(function (outil) {
-    var groupes = outil.querySelectorAll('[data-param]');
-    function actualiser() {
-      var combo = [].map.call(groupes, function (g) {
-        var actif = g.querySelector('.choix-item.est-actif');
-        return actif ? actif.getAttribute('data-valeur') : '';
-      }).join('-');
-      outil.querySelectorAll('[data-combo]').forEach(function (v) {
-        v.classList.toggle('est-actif', v.getAttribute('data-combo') === combo);
-      });
-    }
-    groupes.forEach(function (g) {
-      var items = g.querySelectorAll('.choix-item');
-      items.forEach(function (it) {
-        commeBouton(it, function () {
-          items.forEach(function (x) { x.classList.remove('est-actif'); });
-          it.classList.add('est-actif');
           actualiser();
         });
       });
