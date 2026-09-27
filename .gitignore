@@ -1,0 +1,13 @@
+# Accès WordPress (phase 5) : ne jamais committer d'identifiants
+*.mcpb
+bundle/
+.mcp-sid
+.env
+.env.*
+
+# Archives de déploiement générées
+*.zip
+
+# Système
+.DS_Store
+node_modules/

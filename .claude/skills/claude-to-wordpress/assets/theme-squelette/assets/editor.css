@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Corrections propres à l'éditeur de blocs — chargée par add_editor_style().
+   Ne touche jamais au rendu du site : uniquement le canevas de Gutenberg.
+
+   Pourquoi ce fichier existe : Gutenberg impose « position: relative » à
+   chaque bloc pour y ancrer ses barres d'outils. Toute couche que la
+   maquette sort du flux (photo de héros en fond, marqueur flottant) y
+   retombe, vole la place au contenu, et les colonnes s'effondrent jusqu'au
+   bouton rendu en texte vertical. La porte 5 de la recette vérifie ce
+   fichier.
+   ========================================================================== */
+
+/* 1 · Rétablir les couches sorties du flux — adapter les classes au projet. */
+/*
+.hero-photo,
+.hero-marqueur { position: absolute !important; }
+*/
+
+/* 2 · Pas d'en-tête fixe dans le canevas : réduire la réserve de place des
+      héros, sinon une hauteur d'écran entière se perd en défilement. */
+/*
+.hero { min-height: 62vh !important; padding-block: 72px 52px !important; }
+*/
+
+/* 3 · Le fond du site, sinon le canevas reste blanc hors des blocs. */
+/*
+.editor-styles-wrapper { background: #0A1124; }
+*/

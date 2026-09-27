@@ -1,0 +1,948 @@
+<title>Maquette d'abord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --papier:#FAFAF8;
+  --surface:#FFFFFF;
+  --surface-2:#F2F3F0;
+  --encre:#17191C;
+  --encre-2:#41464A;
+  --encre-3:#6E7478;
+  --trait:#DEE1DC;
+  --trait-fort:#C3C8C1;
+  --petrole:#0B6B63;
+  --petrole-clair:#E4F0EE;
+  --rouille:#A8442A;
+  --rouille-clair:#F7EAE5;
+  --ok:#3E6B33;
+  --ok-clair:#EAF1E6;
+  --ombre:0 1px 2px rgba(20,28,26,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papier:#121416;
+    --surface:#1A1D1F;
+    --surface-2:#222628;
+    --encre:#E9EBE7;
+    --encre-2:#B6BBB6;
+    --encre-3:#878D8A;
+    --trait:#2C3134;
+    --trait-fort:#3D4347;
+    --petrole:#54B3A8;
+    --petrole-clair:#152F2C;
+    --rouille:#E08B6D;
+    --rouille-clair:#31201A;
+    --ok:#8FBE7C;
+    --ok-clair:#1E2A19;
+    --ombre:0 1px 2px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --papier:#121416;
+  --surface:#1A1D1F;
+  --surface-2:#222628;
+  --encre:#E9EBE7;
+  --encre-2:#B6BBB6;
+  --encre-3:#878D8A;
+  --trait:#2C3134;
+  --trait-fort:#3D4347;
+  --petrole:#54B3A8;
+  --petrole-clair:#152F2C;
+  --rouille:#E08B6D;
+  --rouille-clair:#31201A;
+  --ok:#8FBE7C;
+  --ok-clair:#1E2A19;
+  --ombre:0 1px 2px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--papier);color:var(--encre);
+  font-family:'Source Serif 4',Georgia,serif;
+  font-size:17px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+  padding-inline:20px;padding-block:0;
+}
+h1,h2,h3,h4,.ui{font-family:'Instrument Sans',system-ui,sans-serif}
+h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.021em;text-wrap:balance;font-weight:700}
+p{margin:0}
+code,kbd,pre{font-family:'JetBrains Mono',ui-monospace,monospace}
+a{color:var(--petrole)}
+:where(a,button,summary):focus-visible{outline:2px solid var(--petrole);outline-offset:3px;border-radius:4px}
+
+.page{max-width:1080px;margin-inline:auto}
+.col{max-width:68ch}
+.stack{display:flex;flex-direction:column}
+
+/* ---------- en-tête ---------- */
+header.hd{padding-block:64px 40px;border-bottom:1px solid var(--trait)}
+.kicker{font-family:'Instrument Sans',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--petrole)}
+h1{font-size:clamp(38px,6vw,62px);letter-spacing:-.035em;margin-top:14px}
+.chapo{font-size:20px;line-height:1.55;color:var(--encre-2);max-width:62ch;margin-top:20px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--trait);
+  border:1px solid var(--trait);margin-top:36px;border-radius:6px;overflow:hidden}
+.meta div{background:var(--surface);padding:16px 18px}
+.meta dt{font-family:'Instrument Sans',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--encre-3);margin:0}
+.meta dd{margin:6px 0 0;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:600;line-height:1.35}
+
+/* ---------- mise en page ---------- */
+.body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:56px;padding-block:52px 96px;align-items:start}
+nav.toc{position:sticky;top:28px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;line-height:1.45}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+nav.toc a{display:block;padding:6px 10px;border-radius:5px;color:var(--encre-2);text-decoration:none;
+  border-left:2px solid transparent}
+nav.toc a:hover{background:var(--surface-2);color:var(--encre)}
+nav.toc .grp{margin-top:16px;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--encre-3);padding:0 10px 4px}
+
+main{min-width:0;display:flex;flex-direction:column;gap:64px}
+section{scroll-margin-top:24px}
+.sec-h{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--encre);padding-bottom:12px}
+.sec-n{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--petrole);
+  font-variant-numeric:tabular-nums;flex:none}
+.sec-h h2{font-size:clamp(23px,3vw,30px)}
+section > p, section > .col > p{margin-top:18px}
+h3{font-size:19px;margin-top:34px}
+h4{font-size:15.5px;margin-top:24px;font-weight:600}
+section p + p{margin-top:14px}
+
+/* ---------- composants ---------- */
+.lede{font-size:18.5px;line-height:1.6;color:var(--encre-2)}
+strong{font-weight:600}
+em.t{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:.88em;background:var(--surface-2);
+  padding:2px 6px;border-radius:4px;color:var(--encre)}
+
+pre{background:var(--surface);border:1px solid var(--trait);border-left:3px solid var(--petrole);
+  border-radius:6px;padding:16px 18px;overflow-x:auto;font-size:13px;line-height:1.62;margin:20px 0 0;
+  color:var(--encre)}
+pre .c{color:var(--encre-3)}
+pre .k{color:var(--petrole);font-weight:500}
+
+ul.li,ol.li{margin:18px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.li li{position:relative;padding-left:22px}
+ul.li li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;
+  background:var(--trait-fort)}
+ol.li{counter-reset:s}
+ol.li li{position:relative;padding-left:32px;counter-increment:s}
+ol.li li::before{content:counter(s);position:absolute;left:0;top:1px;font-family:'JetBrains Mono',monospace;
+  font-size:12px;font-weight:700;color:var(--petrole);font-variant-numeric:tabular-nums}
+
+.regles{display:flex;flex-direction:column;gap:1px;background:var(--trait);border:1px solid var(--trait);
+  border-radius:8px;overflow:hidden;margin-top:26px}
+.regle{background:var(--surface);padding:18px 22px;display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start}
+.regle .r{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--petrole);
+  background:var(--petrole-clair);border-radius:4px;text-align:center;padding:4px 0;font-variant-numeric:tabular-nums}
+.regle b{font-family:'Instrument Sans',sans-serif;font-size:15.5px;font-weight:600;display:block;line-height:1.35}
+.regle span{display:block;margin-top:6px;font-size:15px;color:var(--encre-2);line-height:1.55}
+
+.enc{border-radius:8px;padding:18px 22px;margin-top:24px;font-size:15.5px;line-height:1.6}
+.enc b{font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;display:block;margin-bottom:8px}
+.enc.att{background:var(--rouille-clair);color:var(--encre);border:1px solid color-mix(in srgb,var(--rouille) 28%,transparent)}
+.enc.att b{color:var(--rouille)}
+.enc.ok{background:var(--ok-clair);color:var(--encre);border:1px solid color-mix(in srgb,var(--ok) 30%,transparent)}
+.enc.ok b{color:var(--ok)}
+.enc.info{background:var(--petrole-clair);color:var(--encre);border:1px solid color-mix(in srgb,var(--petrole) 26%,transparent)}
+.enc.info b{color:var(--petrole)}
+
+.tw{overflow-x:auto;margin-top:24px;border:1px solid var(--trait);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-family:'Instrument Sans',sans-serif;min-width:520px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--trait);vertical-align:top;line-height:1.5}
+th{background:var(--surface-2);font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--encre-3);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+
+.piege{border:1px solid var(--trait);border-radius:8px;overflow:hidden;margin-top:20px;background:var(--surface)}
+.piege > div{padding:14px 20px;border-bottom:1px solid var(--trait)}
+.piege > div:last-child{border-bottom:0}
+.piege .ti{background:var(--surface-2);font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:15.5px}
+.piege dt{font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--encre-3);margin:0 0 5px}
+.piege dd{margin:0;font-size:15px;line-height:1.55;color:var(--encre-2)}
+.piege dd code{font-size:13px;background:var(--surface-2);padding:1px 5px;border-radius:3px;color:var(--encre)}
+
+.phase-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:600;padding:5px 11px;border-radius:99px;
+  background:var(--surface-2);color:var(--encre-2);border:1px solid var(--trait)}
+.tag.acc{background:var(--petrole-clair);color:var(--petrole);border-color:transparent}
+
+.arbo{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.75;background:var(--surface);
+  border:1px solid var(--trait);border-radius:6px;padding:18px 20px;overflow-x:auto;margin-top:22px;
+  white-space:pre;color:var(--encre-2)}
+.arbo b{color:var(--encre);font-weight:700}
+.arbo i{color:var(--encre-3);font-style:normal}
+
+footer{border-top:1px solid var(--trait);padding-block:32px 72px;font-size:14px;color:var(--encre-3);
+  font-family:'Instrument Sans',sans-serif}
+
+@media (max-width:900px){
+  .body{grid-template-columns:1fr;gap:0;padding-block:36px 72px}
+  nav.toc{position:static;border:1px solid var(--trait);border-radius:8px;padding:14px;margin-bottom:44px;
+    background:var(--surface)}
+  nav.toc ol{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px}
+  main{gap:52px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<div class="page">
+
+<header class="hd">
+  <p class="kicker">Mode opératoire</p>
+  <h1>Maquette d'abord</h1>
+  <p class="chapo">Construire un site WordPress sur mesure avec un agent IA, sans passer par un page builder et sans produire du contenu que le client ne pourra plus modifier. Le design se fait en HTML local, WordPress n'intervient qu'à la fin.</p>
+  <dl class="meta">
+    <div><dt>Produit</dt><dd>Thème bloc sur mesure</dd></div>
+    <div><dt>Durée</dt><dd>3 à 5 h pour 6 pages</dd></div>
+    <div><dt>Éditable</dt><dd>100 % blocs natifs</dd></div>
+    <div><dt>Dépendances</dt><dd>Aucun page builder</dd></div>
+  </dl>
+</header>
+
+<div class="body">
+
+<nav class="toc" aria-label="Sommaire">
+  <ol>
+    <li><a href="#principe">Le principe</a></li>
+    <li><a href="#regles">Les 10 règles</a></li>
+    <li class="grp">Phases</li>
+    <li><a href="#p0">0 · Préparation</a></li>
+    <li><a href="#p1">1 · Brief</a></li>
+    <li><a href="#p2">2 · Maquette</a></li>
+    <li><a href="#p3">3 · Déclinaison</a></li>
+    <li><a href="#p4">4 · Thème bloc</a></li>
+    <li><a href="#p5">5 · Déploiement</a></li>
+    <li><a href="#p6">6 · Recette</a></li>
+    <li class="grp">Références</li>
+    <li><a href="#pieges">Pièges recensés</a></li>
+    <li><a href="#annexe">Annexes</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<!-- ============================================ -->
+<section id="principe">
+  <div class="sec-h"><span class="sec-n">§</span><h2>Le principe</h2></div>
+  <div class="col">
+    <p class="lede">Un agent IA produit un design médiocre quand sa boucle de retour est lente. Toute la méthode consiste à déplacer le travail de conception là où la boucle est rapide, et à ne toucher à WordPress qu'une fois le résultat validé.</p>
+
+    <p>Écrire la mise en page directement dans WordPress, que ce soit par un page builder ou par l'API de blocs, impose une boucle de trois à cinq minutes par itération : composer, envoyer, sérialiser, purger le cache, recharger, regarder. En HTML local avec un serveur de développement, la même boucle prend cinq secondes. Le nombre d'itérations possibles est multiplié par cinquante, et la qualité d'un design est à peu près proportionnelle au nombre d'itérations.</p>
+
+    <p>La seconde moitié du principe est une contrainte de livraison : le site doit rester modifiable par quelqu'un qui n'écrit pas de code. Cela interdit deux raccourcis tentants, détaillés en règles 4 et 5.</p>
+
+    <div class="enc info">
+      <b>Résumé en une ligne</b>
+      Le design vit dans des fichiers, pas dans le contenu des pages. WordPress reçoit un thème fini, pas des instructions de mise en page.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="regles">
+  <div class="sec-h"><span class="sec-n">§</span><h2>La règle 0, puis les dix autres</h2></div>
+  <div class="col"><p>Non négociables. Chacune vient d'une erreur réellement commise et de son coût.</p></div>
+
+  <div class="col">
+    <div class="enc">
+      <b>Règle 0 · Dessiner la phase 2 comme si la phase 4 n'existait pas</b>
+      Elle passe avant les dix autres parce qu'elle est la seule dont l'infraction ne se voit nulle part : ni dans le code, ni dans la recette, ni dans l'éditeur. Elle ne produit pas une panne, elle produit un site fade — et un site fade passe toutes les portes.<br><br>
+      Aucune contrainte de conversion n'entre dans la maquette. « Pas de bloc HTML brut », « blocs natifs », « éditable par le client » sont des problèmes de phase 4. Les anticiper pendant le dessin fait disparaître, une par une et sans qu'on s'en aperçoive, la profondeur, les superpositions, les débordements, le mouvement, l'objet central. Le résultat se convertit parfaitement et ne plaît à personne.<br><br>
+      La méthode dessine en HTML local <strong>parce que</strong> c'est gratuit à cet endroit. S'auto-censurer là, c'est payer le prix de WordPress sans jamais en toucher le bénéfice. Si un composant s'avère trop riche à convertir, c'est un arbitrage de phase 4, pris devant un design fini — jamais un renoncement de phase 2.
+    </div>
+  </div>
+
+  <div class="regles">
+    <div class="regle"><span class="r">1</span><div><b>Exiger une référence visuelle</b><span>Sans direction imposée, un modèle échantillonne le centre statistique de ses données d'entraînement : police neutre, dégradé violet, fond blanc. C'est la définition du générique. Une capture d'écran ou une URL suffit à faire basculer le résultat en une passe.</span></div></div>
+    <div class="regle"><span class="r">2</span><div><b>Jamais de maquette sans photos réelles</b><span>Un aplat gris à la place d'une photo ressemble à une image cassée. Aucun travail de composition ne le rattrape. Les visuels sont réglés avant la première capture, jamais après.</span></div></div>
+    <div class="regle"><span class="r">3</span><div><b>Rien ne part sur WordPress avant validation</b><span>La phase 2 est la seule où l'itération est bon marché. Tant que la maquette n'est pas validée, le CMS reste hors de la boucle.</span></div></div>
+    <div class="regle"><span class="r">4</span><div><b>La page d'accueil est une page, jamais un template</b><span>Un contenu rendu par <em class="t">front-page.html</em> via <em class="t">wp:pattern</em> n'est pas modifiable depuis l'éditeur de page. Créer une vraie page et la déclarer en page d'accueil statique.</span></div></div>
+    <div class="regle"><span class="r">5</span><div><b>Zéro bloc <em class="t">core/html</em></b><span>Un bloc HTML brut n'est pas éditable visuellement. Tout composant, même dense, se compose en groupes, paragraphes, titres et images.</span></div></div>
+    <div class="regle"><span class="r">6</span><div><b>Images en médiathèque, avec identifiant</b><span>Une image référencée par URL de fichier de thème n'est pas remplaçable en un clic. Téléverser dans la médiathèque et poser l'attribut <em class="t">id</em> sur le bloc.</span></div></div>
+    <div class="regle"><span class="r">7</span><div><b>Les variantes interactives vivent dans la page</b><span>Onglets, sélecteurs, accordéons : toutes les variantes sont présentes dans le contenu, le script se contente de basculer une classe. Rien n'est injecté par JavaScript, donc tout reste éditable.</span></div></div>
+    <div class="regle"><span class="r">8</span><div><b>Pas de thème tiers sous le design</b><span>Astra, Kadence ou GeneratePress imposent leur CSS dynamique et leurs options typées. La moitié de la feuille de style finit en surcharges de spécificité. Un thème sur mesure remplace le tout.</span></div></div>
+    <div class="regle"><span class="r">9</span><div><b>Recette dans l'éditeur, pas en façade</b><span>Une page peut s'afficher parfaitement et être inutilisable dans Gutenberg. Le contrôle se fait en interrogeant le store de l'éditeur, phase 6.</span></div></div>
+    <div class="regle"><span class="r">10</span><div><b>Le pixel perfect se mesure, il ne se regarde pas</b><span>La recette compare un relevé de styles calculés et de géométrie entre la maquette et le site, sélecteur par sélecteur. « Ça a l'air pareil » a laissé passer 307 px d'écart de rythme vertical : une seule règle de neutralisation avait mis quatorze marges à zéro sans que l'œil le voie.</span></div></div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p0">
+  <div class="sec-h"><span class="sec-n">00</span><h2>Préparation</h2></div>
+  <div class="phase-meta"><span class="tag acc">Une seule fois</span><span class="tag">10 min</span><span class="tag">Agent</span></div>
+
+  <div class="col">
+    <h3>Aucun outillage à installer</h3>
+    <p>Rien à installer, aucun plugin à vérifier. Le parti pris esthétique est porté par la phase 2 de cette méthode, et par elle seule.</p>
+
+    <h3>Espace de travail</h3>
+    <p><strong>Créer le projet dans le dossier auquel l'utilisateur a donné accès</strong> — le répertoire de travail de la session. C'est là qu'il ira chercher ses fichiers. Un projet posé ailleurs « par précaution » se solde par un dossier vide qu'il faudra lui expliquer.</p>
+    <p>Sur macOS, <em class="t">~/Documents</em> et <em class="t">~/Desktop</em> sont protégés par TCC — mais <strong>cette protection ne joue que si l'autorisation n'a pas été accordée</strong>, et elle l'est presque toujours pour l'outil qui vient d'ouvrir ce dossier. Ça se teste en trois secondes, et ça ne se suppose jamais :</p>
+<pre>mkdir -p "$PWD/.essai-tcc" \
+  &amp;&amp; node -e "process.chdir('$PWD/.essai-tcc'); require('fs').writeFileSync('t','x'); console.log('acces ok')" \
+  ; rm -rf "$PWD/.essai-tcc"</pre>
+    <p>« acces ok » : créer le projet dans le dossier de travail, point final. <em class="t">EPERM: uv_cwd</em> : alors seulement le créer ailleurs, <strong>le dire à l'utilisateur</strong>, et poser un lien symbolique depuis son dossier pour qu'il retrouve son travail.</p>
+    <p>Rien à préparer côté WordPress ici : les phases 1 à 4 sont entièrement locales. L'accès au site (plugin et bundle) n'intervient qu'au début du déploiement — il est décrit en tête de phase 5, au moment où on en a besoin.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p1">
+  <div class="sec-h"><span class="sec-n">01</span><h2>Brief</h2></div>
+  <div class="phase-meta"><span class="tag acc">Client</span><span class="tag">10 min</span><span class="tag">Un seul message</span></div>
+
+  <div class="col">
+    <p>Le brief tient en un message. Plus il est long, moins il est utile ; ce qui compte est la référence visuelle, pas la prose.</p>
+
+    <h4>Gabarit à copier</h4>
+  </div>
+<pre>Détail du site :
+[Nom]
+[Activité]
+[Description]
+[Contact]
+
+Pages du site :
+Accueil
+[...]
+
+Référence :
+Image en pièce jointe</pre>
+
+  <div class="col">
+    <p>Tout ce que le gabarit ne dit pas est un défaut de la méthode, jamais une question posée au client : le contenu est inventé à partir de l'activité et de la description (le nom et les coordonnées fournis sont repris tels quels), les photos viennent d'Unsplash sauf si le client donne les siennes, rien ne part sur WordPress avant validation de la maquette, et les cinq portes de la recette sont passées d'office.</p>
+
+    <h4>Ce que l'agent produit en retour, avant de coder</h4>
+    <ol class="li">
+      <li>Le <strong>sujet concret</strong> : entreprise, audience, mission unique de la page.</li>
+      <li>La <strong>palette</strong>, 4 à 6 valeurs hexadécimales nommées.</li>
+      <li>Les <strong>typographies</strong> et leurs rôles.</li>
+      <li>Deux ou trois <strong>écarts volontaires</strong> avec la référence, justifiés.</li>
+    </ol>
+
+    <div class="enc info">
+      <b>Point de contrôle</b>
+      Si le plan de design ressemble à ce qu'on produirait pour n'importe quel autre site du même secteur, le faire refaire avant d'écrire une ligne de code.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p2">
+  <div class="sec-h"><span class="sec-n">02</span><h2>Maquette</h2></div>
+  <div class="phase-meta"><span class="tag acc">Phase critique</span><span class="tag">30 à 60 min</span><span class="tag">Itératif</span></div>
+
+  <div class="col">
+    <p class="lede">Une seule page, l'accueil, en HTML et CSS, en local. C'est ici que se joue 90 % de la qualité finale.</p>
+
+    <div class="enc att">
+      <b>La porte d'entrée · Règle 0</b>
+      Avant d'ouvrir un fichier : rien de la phase 4 n'entre ici. Le test se pose à chaque décision de composition — <em>est-ce que j'écarte cette idée parce qu'elle est mauvaise, ou parce que je me demande comment elle passera en blocs ?</em> Si c'est la seconde réponse, l'idée reste.
+    </div>
+
+    <h3>Le parti pris se décide, il ne se déduit pas</h3>
+    <p>Aucun outil tiers ne porte l'esthétique. Une liste d'interdits ne fabrique pas un design — éviter les dégradés, les ombres molles, les capitales et les flèches ne donne pas une belle page, ça donne une page poncée. Les exigences sont donc formulées en positif, et chacune se constate sur la capture.</p>
+    <ul class="li">
+      <li><strong>Un élément domine.</strong> Une image qui déborde, un champ de couleur qui prend la moitié de l'écran, un titre hors d'échelle. Sans dominante, dix sections propres font un document, pas un site.</li>
+      <li><strong>La couleur forte occupe du terrain.</strong> Ne retenir qu'une seule couleur saturée est une bonne discipline ; ne lui accorder que deux bandeaux sur dix sections en est la caricature.</li>
+      <li><strong>Les sections n'ont pas toutes le même poids.</strong> Même marge, même largeur, même alignement, titre-paragraphe-grille à chaque fois : c'est le symptôme le plus fiable d'une page sans intention.</li>
+      <li><strong>Il y a de la profondeur.</strong> Au moins un élément sort de son conteneur. Le plat n'est pas le raffiné.</li>
+      <li><strong>La typographie de caractère travaille.</strong> Une seconde famille choisie pour son caractère porte du contenu réel, pas une figuration de quatre chiffres.</li>
+      <li><strong>Le concept est visible sans légende.</strong> S'il faut l'expliquer pour qu'il existe, il n'est pas dans le design.</li>
+    </ul>
+    <p>Reprendre une référence, c'est reprendre ce qui lui donne son énergie — profondeur, superpositions, objet central, champ de couleur — pas seulement l'ordre de ses sections. Sans ces dispositifs, on en produit le wireframe.</p>
+
+    <h3>Serveur de développement</h3>
+    <p>Indispensable : sans lui, les interactions ne fonctionnent pas et l'agent ne peut pas vérifier son travail.</p>
+  </div>
+<pre><span class="c">// scripts/serve.js — serveur statique sans dépendance, fourni avec le skill.
+// L'essentiel de son contrat (le fichier complet fait une soixantaine de lignes) :</span>
+<span class="k">const</span> RACINE_ABS = path.resolve(process.env.RACINE || path.join(__dirname, '..', 'site'));
+<span class="k">const</span> PORT = Number(process.env.PORT || 4321);
+
+<span class="c">// - décodage d'URL sous try/catch : un %zz répond 400 au lieu de tuer le serveur ;
+// - garde de racine : rien n'est servi hors de RACINE_ABS (préfixe + séparateur) ;
+// - Cache-Control: no-store sur tout ;
+// - port occupé -&gt; essai automatique du suivant, et le port RÉEL est affiché :</span>
+serveur.on('listening', () =&gt; {
+  console.log('Maquette servie sur http://127.0.0.1:' + serveur.address().port
+            + '  (racine : ' + RACINE_ABS + ')');
+});</pre>
+
+  <div class="col">
+    <p>Le lancer depuis <em class="t">/tmp</em> — c'est le répertoire courant du processus qui doit être accessible, jamais <em class="t">RACINE</em>, qui peut pointer n'importe où, y compris dans le dossier de travail de l'utilisateur :</p>
+  </div>
+<pre>cd /tmp &amp;&amp; RACINE=/chemin/projet/site nohup node /chemin/projet/scripts/serve.js &gt; /tmp/serve.log 2&gt;&amp;1 &amp;
+sleep 1 &amp;&amp; tail -1 /tmp/serve.log   <span class="c"># le serveur affiche le port réellement utilisé</span></pre>
+
+  <div class="col">
+    <h3>Les visuels avant la première capture</h3>
+    <p>Règle 2. Trois sources possibles, à trancher avant de composer :</p>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Source</th><th>Coût</th><th>Cohérence</th><th>Quand</th></tr></thead>
+        <tbody>
+          <tr><td>Photos du client</td><td>Nulle</td><td>Maximale</td><td>Dès qu'elles existent</td></tr>
+          <tr><td>Unsplash</td><td>Nulle</td><td>Moyenne</td><td>Démo, secteur générique</td></tr>
+          <tr><td>Génération</td><td>Crédits</td><td>Élevée</td><td>Direction très typée</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Pour Unsplash, récupérer les identifiants de photo depuis la page de résultats plutôt que de deviner des URL :</p>
+  </div>
+<pre><span class="c">// dans la console du navigateur, sur une page de recherche Unsplash</span>
+[...document.querySelectorAll('figure img[src*="images.unsplash.com/photo-"]')]
+  .slice(0,16).map(i =&gt; ({
+    id: (i.src.match(/photo-[\w-]+/)||[''])[0],
+    alt: (i.alt||'').slice(0,70)
+  }));</pre>
+
+  <div class="col">
+    <p>Format de téléchargement : <em class="t">https://images.unsplash.com/{id}?w=1200&amp;q=80&amp;fm=jpg&amp;fit=crop</em>. La licence Unsplash autorise l'usage commercial sans attribution obligatoire.</p>
+
+    <h3>Protocole d'itération</h3>
+    <ol class="li">
+      <li>L'agent écrit la page complète, avec du contenu réel, jamais de lorem.</li>
+      <li>Il prend <strong>une</strong> capture et corrige ce qu'elle montre.</li>
+      <li><strong>Un tour de design avant de vous montrer quoi que ce soit</strong> : l'agent reprend la capture et pousse la page, au lieu de la réparer. Un plan validé en prose ne remplace pas ce tour-là.</li>
+      <li>Le client regarde et nomme précisément ce qui cloche.</li>
+      <li>Deux à trois tours. Au-delà, c'est le brief qui est en cause, pas l'exécution.</li>
+    </ol>
+    <p>Un tour qui remonte la taille d'une icône ou corrige un prénom est un <em>tour de justesse</em> : nécessaire, et sans le moindre effet sur la qualité du design. Il ne compte pas comme le tour de design.</p>
+
+    <div class="enc att">
+      <b>Piège d'affichage</b>
+      Les captures prises moins de cinq secondes après le chargement montrent souvent des images absentes : les JPEG ne sont pas encore décodés. Vérifier avec <em class="t">img.complete &amp;&amp; img.naturalWidth &gt; 0</em> avant de conclure à un bug.
+    </div>
+
+    <h4>Points de contrôle avant de valider</h4>
+    <ul class="li">
+      <li>Aucune décision de composition n'a été prise en pensant à la conversion (règle 0).</li>
+      <li>Un élément domine la page, et on peut le nommer en un mot.</li>
+      <li>La couleur forte couvre une surface réelle.</li>
+      <li>Deux sections voisines ne partagent pas exactement le même gabarit.</li>
+      <li>Au moins un élément sort de son conteneur.</li>
+      <li>Le titre principal tient sur deux lignes au plus, sans césure au milieu d'un mot. Poser <em class="t">hyphens: none</em> et <em class="t">text-wrap: balance</em>.</li>
+      <li>Aucun rectangle vide ni aplat de remplacement.</li>
+      <li>Les composants d'un même type partagent leurs marges intérieures et leurs lignes de base.</li>
+      <li>Le rendu à 390 px de large ne provoque aucun défilement horizontal.</li>
+      <li>Chaque élément qui se répète occupe la même place d'une carte à l'autre.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p3">
+  <div class="sec-h"><span class="sec-n">03</span><h2>Déclinaison</h2></div>
+  <div class="phase-meta"><span class="tag">20 à 30 min</span><span class="tag">Agent seul</span></div>
+
+  <div class="col">
+    <p>L'accueil validé, le système de design l'est aussi. Les pages internes ne rouvrent aucun débat esthétique.</p>
+
+    <h3>Refactorisation préalable</h3>
+    <p>Extraire le CSS et le JS de la page unique vers des fichiers partagés, puis générer les pages internes depuis une ossature commune. Ce n'est pas cosmétique : c'est déjà la structure du thème.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Maquette</th><th>Devient en phase 4</th></tr></thead>
+        <tbody>
+          <tr><td>Fonction <em class="t">nav()</em></td><td><em class="t">parts/header.html</em></td></tr>
+          <tr><td>Constante <em class="t">FOOTER</em></td><td><em class="t">parts/footer.html</em></td></tr>
+          <tr><td>Chaque section</td><td>Un fichier dans <em class="t">patterns/</em></td></tr>
+          <tr><td><em class="t">styles.css</em></td><td><em class="t">theme.json</em> + <em class="t">style.css</em></td></tr>
+          <tr><td><em class="t">app.js</em></td><td><em class="t">assets/app.js</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Générer les pages par script plutôt qu'à la main garantit que l'en-tête et le pied de page sont strictement identiques partout, et rend la conversion mécanique.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p4">
+  <div class="sec-h"><span class="sec-n">04</span><h2>Thème bloc</h2></div>
+  <div class="phase-meta"><span class="tag">45 à 60 min</span><span class="tag">Agent seul</span><span class="tag acc">Le cœur technique</span></div>
+
+  <div class="col">
+    <h3>Arborescence cible</h3>
+  </div>
+  <div class="arbo"><b>mon-theme/</b>
+├── <b>style.css</b>          <i>en-tête de thème + tout le CSS</i>
+├── <b>theme.json</b>         <i>jetons : couleurs, typo, espacements</i>
+├── <b>functions.php</b>      <i>polices, styles, script, catégorie de patterns</i>
+├── parts/
+│   ├── header.html      <i>site-title + navigation + bouton</i>
+│   └── footer.html
+├── templates/
+│   ├── front-page.html  <i>header + post-content + footer</i>
+│   ├── page.html        <i>identique</i>
+│   ├── index.html       <i>boucle de requête</i>
+│   └── 404.html
+├── patterns/            <i>un fichier .php par section réutilisable</i>
+└── assets/
+    ├── app.js
+    └── img/             <i>copie des visuels, embarquée dans le zip</i></div>
+
+  <div class="col">
+    <h3>theme.json</h3>
+    <p>Il porte les jetons, pas la mise en page. Ce qui compte : désactiver les palettes par défaut, sinon l'éditeur propose les couleurs de WordPress à côté des vôtres.</p>
+  </div>
+<pre>{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": { "contentSize": "1200px", "wideSize": "1400px" },
+    "color": {
+      <span class="k">"defaultPalette": false</span>, "defaultGradients": false, "defaultDuotone": false,
+      "palette": [ { "slug": "encre", "color": "#0A1124", "name": "Encre" } ]
+    },
+    "typography": {
+      "fluid": true, <span class="k">"defaultFontSizes": false</span>,
+      "fontFamilies": [ { "slug": "principale", "name": "…",
+        "fontFamily": "'…', system-ui, sans-serif" } ]
+    }
+  },
+  "styles": {
+    "color": { "background": "var(--wp--preset--color--blanc)" },
+    "elements": { "button": { "border": { "radius": "999px" } } }
+  },
+  "templateParts": [
+    { "name": "header", "title": "En-tête", "area": "header" },
+    { "name": "footer", "title": "Pied de page", "area": "footer" }
+  ]
+}</pre>
+
+  <div class="col">
+    <h3>Composer en blocs natifs</h3>
+    <p>Chaque composant de la maquette se traduit en groupes porteurs des classes CSS d'origine. La feuille de style est adaptée au DOM de Gutenberg, pas l'inverse.</p>
+
+    <div class="tw">
+      <table>
+        <thead><tr><th>Élément HTML</th><th>Bloc natif</th><th>Sortie</th></tr></thead>
+        <tbody>
+          <tr><td>Conteneur</td><td><em class="t">core/group</em></td><td><em class="t">div.wp-block-group.ma-classe</em></td></tr>
+          <tr><td>Titre</td><td><em class="t">core/heading</em></td><td><em class="t">h2.wp-block-heading</em></td></tr>
+          <tr><td>Texte</td><td><em class="t">core/paragraph</em></td><td><em class="t">p.ma-classe</em></td></tr>
+          <tr><td>Image</td><td><em class="t">core/image</em></td><td><em class="t">figure.wp-block-image</em></td></tr>
+          <tr><td>Bouton</td><td><em class="t">core/buttons</em></td><td><em class="t">a.wp-block-button__link</em></td></tr>
+          <tr><td>Liste</td><td><em class="t">core/list</em></td><td><em class="t">ul.wp-block-list</em></td></tr>
+          <tr><td>Citation</td><td><em class="t">core/quote</em></td><td><em class="t">blockquote.wp-block-quote</em></td></tr>
+          <tr><td>Formulaire</td><td><em class="t">core/shortcode</em></td><td>Contact Form 7</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Cinq substitutions à connaître</h4>
+    <ul class="li">
+      <li><strong>Icônes SVG inline</strong> → masques CSS (<em class="t">mask-image</em> en data URI) ; une simple flèche de bouton reste un pseudo-élément : <em class="t">.btn-arrow a::after{content:"→"}</em>.</li>
+      <li><strong>Graphiques décoratifs</strong> → CSS pur. Une barre de plage se dessine avec <em class="t">::before</em> pour la bande et <em class="t">::after</em> portant deux <em class="t">radial-gradient</em> pour les poignées.</li>
+      <li><strong>Boutons d'onglet</strong> → paragraphes éditables, auxquels le script ajoute <em class="t">role="button"</em>, <em class="t">tabindex</em> et la gestion clavier.</li>
+      <li><strong>Accent typographique</strong> → <em class="t">&lt;em&gt;</em> nu, stylé par son contexte (<em class="t">.titre-hero em { … }</em>) : un <em class="t">&lt;em class="…"&gt;</em> est invalidé par l'éditeur.</li>
+      <li><strong>Couches décoratives</strong> (voiles, lueurs, sigles) → <em class="t">::before</em>/<em class="t">::after</em> du parent, jamais de groupe vide — un bloc vide dans l'éditeur finit supprimé par le client.</li>
+    </ul>
+
+    <h3>Interactions sans injection</h3>
+    <p>Règle 7. Toutes les variantes sont dans la page ; le script ne fait que basculer une classe.</p>
+  </div>
+<pre><span class="c">// Toutes les variantes sont présentes dans le contenu.
+// Le script ne crée rien : il bascule "est-actif".</span>
+<span class="k">function</span> brancher(selecteurDeclencheur, ciblesParSelecteur) {
+  <span class="k">const</span> items = [...document.querySelectorAll(selecteurDeclencheur)];
+  items.forEach((el, i) =&gt; {
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    <span class="k">const</span> activer = () =&gt; {
+      items.forEach(x =&gt; x.classList.remove('est-actif'));
+      el.classList.add('est-actif');
+      Object.entries(ciblesParSelecteur).forEach(([sel, prefixe]) =&gt; {
+        document.querySelectorAll(sel).forEach(c =&gt;
+          c.classList.toggle('est-actif', c.classList.contains(prefixe + (i + 1))));
+      });
+    };
+    el.addEventListener('click', activer);
+    el.addEventListener('keydown', e =&gt; {
+      <span class="k">if</span> (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activer(); }
+    });
+  });
+}
+brancher('.opt', { '.cap': 'cap-', '.w-deal': 'w-deal-' });</pre>
+
+  <div class="col">
+    <p>Le CSS masque les variantes inactives avec <em class="t">display:none</em>, et les révèle sur <em class="t">.est-actif</em>. Conséquence : les quatre variantes d'un sélecteur sont toutes éditables dans Gutenberg, y compris celles qui ne sont pas affichées.</p>
+
+    <h3>Neutraliser l'espacement automatique — sans détruire le vôtre</h3>
+    <p>Surtout pas <em class="t">.wp-block-group &gt; * { margin-block: 0 }</em> : cette règle, à spécificité (0,1,0) en fin de feuille, écrase toutes les marges déclarées par les composants — quatorze marges à zéro et 307 px de rythme vertical perdus en conditions réelles. La coupure se fait à la source dans <em class="t">theme.json</em>, et le filet de sécurité CSS s'écrit à spécificité nulle.</p>
+  </div>
+<pre><span class="c">/* theme.json */</span>
+"settings": { "spacing": { "blockGap": true } },
+"styles":   { "spacing": { "blockGap": "0px" } }
+
+<span class="c">/* style.css — filet de sécurité, spécificité nulle */</span>
+:where(.wp-block-group) &gt; :where(*), :where(.wp-block-buttons) { margin-block: 0 }
+figure.wp-block-image { margin: 0 }</pre>
+
+  <div class="col">
+    <div class="enc att">
+      <b>Contrainte côté serveur</b>
+      L'écriture de fichiers <em class="t">.php</em> y est verrouillée hors d'un bac à sable (le détail est en phase 5). Les patterns étant des fichiers PHP, ils ne peuvent pas être écrits un par un : ils partent dans l'archive du thème. C'est de toute façon plus rapide qu'une trentaine d'écritures.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p5">
+  <div class="sec-h"><span class="sec-n">05</span><h2>Déploiement</h2></div>
+  <div class="phase-meta"><span class="tag">15 min</span><span class="tag">Agent seul</span><span class="tag">Reproductible</span></div>
+
+  <div class="col">
+    <h3>Prérequis · L'accès au site</h3>
+    <p>C'est seulement maintenant que WordPress entre en scène — les phases 0 à 4 n'ont eu besoin d'aucun accès au site. Prérequis : le plugin <strong>Novamira</strong> actif sur le site cible et son bundle <em class="t">.mcpb</em> téléchargé (leur mise en place est montrée dans la formation à ce moment précis). Il expose quatre capacités indispensables : exécution PHP (<em class="t">novamira/execute-php</em>), écriture de fichiers non-PHP, lien de téléversement temporaire, et session wp-admin sans mot de passe pour la recette. Extraire les identifiants du bundle :</p>
+  </div>
+<pre><span class="c"># le .mcpb est une archive zip</span>
+unzip -o site.mcpb -d bundle
+python3 -c "import json;print(json.load(open('bundle/manifest.json'))['server']['mcp_config']['env'])"</pre>
+
+  <div class="col">
+    <p>Deux voies d'accès, au choix :</p>
+    <ol class="li">
+      <li><strong>Serveur MCP</strong> — <em class="t">claude mcp add … -- npx -y @automattic/mcp-wordpress-remote@latest</em>. Nécessite un redémarrage de session.</li>
+      <li><strong>HTTP direct</strong> — appeler l'endpoint JSON-RPC en curl. Aucun redémarrage, utilisable immédiatement. Script fourni en annexe.</li>
+    </ol>
+
+    <div class="enc att">
+      <b>Sécurité</b>
+      Le bundle contient un mot de passe applicatif en clair. Ne jamais le committer. Le stocker au niveau utilisateur, pas dans le dossier du projet. S'il a transité par un canal non fiable, le révoquer depuis <em class="t">wp-admin → Utilisateurs → Mots de passe d'application</em>.
+    </div>
+  </div>
+
+  <div class="col">
+    <p>Huit opérations, numérotées de 0 à 7, dans cet ordre. L'ordre n'est pas décoratif : les visuels s'importent depuis le dossier du thème côté serveur, donc après son téléversement.</p>
+
+    <h4>0 · Sauvegarder l'existant</h4>
+    <p>Le site cible n'est jamais supposé vide. Sérialiser pages, articles et réglages (thème actif, page d'accueil, titre du site) dans <em class="t">wp-content/uploads/sauvegarde-avant-theme.json</em>, et signaler les collisions de slug : une page « accueil » ou « contact » déjà en place sera écrasée, son contenu d'origine ne survivra que dans la sauvegarde. L'ancien thème reste installé — le retour en arrière tient en un <em class="t">switch_theme()</em> plus ce fichier. Le code exact est dans <em class="t">references/phases.md</em>.</p>
+
+    <h4>1 · Empaqueter et téléverser le thème</h4>
+  </div>
+<pre>zip -rq mon-theme.zip mon-theme -x '*.DS_Store'
+
+<span class="c"># créer un point de dépôt temporaire côté WordPress</span>
+novamira/create-upload-link { "path": "wp-content/uploads/theme.zip", "overwrite": true }
+
+<span class="c"># puis déposer le fichier</span>
+curl -X PUT -H "X-Novamira-Upload-Token: $TOKEN" \
+     --data-binary @mon-theme.zip "$UPLOAD_URL"</pre>
+
+  <div class="col">
+    <p>L'archive contient un dossier portant <strong>exactement le slug du thème</strong> : c'est lui que <em class="t">switch_theme()</em> attend. La réponse de <em class="t">create-upload-link</em> fournit <em class="t">upload_url</em> et <em class="t">upload_token</em> — ce sont eux qui remplissent les variables du <em class="t">curl</em>.</p>
+
+    <h4>2 · Décompresser et activer</h4>
+  </div>
+<pre>require_once ABSPATH . 'wp-admin/includes/file.php';
+WP_Filesystem();
+
+<span class="c">// vider les dossiers versionnés avant de réécrire,
+// sinon d'anciens patterns survivent au déploiement</span>
+foreach (['patterns','templates','parts'] as $d) {
+  foreach (glob(get_theme_root() . "/mon-theme/$d/*") as $f) @unlink($f);
+}
+
+unzip_file(ABSPATH . 'wp-content/uploads/theme.zip', get_theme_root());
+wp_clean_themes_cache();
+switch_theme('mon-theme');</pre>
+
+  <div class="col">
+    <h4>3 · Importer les visuels dans la médiathèque</h4>
+    <p>Règle 6 — et seulement maintenant : avant le téléversement du thème, il n'y a rien à copier côté serveur. Conserver la table <em class="t">slug → identifiant</em>, elle alimente l'attribut <em class="t">id</em> de chaque bloc image.</p>
+  </div>
+<pre>require_once ABSPATH . 'wp-admin/includes/file.php';
+require_once ABSPATH . 'wp-admin/includes/media.php';
+require_once ABSPATH . 'wp-admin/includes/image.php';
+
+$tmp = wp_tempnam($slug);
+copy(get_theme_root() . "/mon-theme/assets/img/$slug.jpg", $tmp);
+$id = media_handle_sideload(['name' =&gt; "$slug.jpg", 'tmp_name' =&gt; $tmp], 0, $alt);
+wp_update_post(['ID' =&gt; $id, 'post_name' =&gt; $slug]);
+update_post_meta($id, '_wp_attachment_image_alt', $alt);</pre>
+
+  <div class="col">
+    <h4>4 · Créer le formulaire Contact Form 7</h4>
+    <p>Avant les pages, puisque leur contenu référence son shortcode. Vérifier <em class="t">class_exists('WPCF7_ContactForm')</em> — rien dans la méthode ne l'installe implicitement ; au besoin, installer et activer l'extension <em class="t">contact-form-7</em> d'abord. Gabarit avec les classes de la maquette, textarea limité (<em class="t">40x6</em> : CF7 en met 10 par défaut, une centaine de pixels de trop), <em class="t">Reply-To</em> sur le courriel du visiteur.</p>
+
+    <h4>5 · Créer les pages</h4>
+    <p>Passer le contenu par un fichier JSON téléversé plutôt qu'en ligne : un contenu de page fait facilement 90 Ko.</p>
+  </div>
+<pre>$pages = json_decode(file_get_contents(ABSPATH . 'wp-content/uploads/content.json'), true);
+
+foreach ($pages as $pg) {
+  $existe = get_page_by_path($pg['slug']);
+  $data = [
+    'post_type'    =&gt; 'page',
+    'post_title'   =&gt; $pg['title'],
+    'post_name'    =&gt; $pg['slug'],
+    'post_status'  =&gt; 'publish',
+    'post_content' =&gt; $pg['content'],
+  ];
+  <span class="k">if</span> ($existe) { $data['ID'] = $existe-&gt;ID; wp_update_post($data); }
+  <span class="k">else</span> { wp_insert_post($data); }
+}</pre>
+
+  <div class="col">
+    <h4>6 · Déclarer la page d'accueil statique</h4>
+    <p>Règle 4. L'étape la plus facile à oublier, et celle qui rend le site inutilisable si on la saute.</p>
+  </div>
+<pre>$accueil = get_page_by_path('accueil');
+update_option('show_on_front', 'page');
+update_option('page_on_front', $accueil-&gt;ID);
+
+<span class="c">// permaliens propres, tant qu'on y est</span>
+global $wp_rewrite;
+$wp_rewrite-&gt;set_permalink_structure('/%postname%/');
+$wp_rewrite-&gt;flush_rules();</pre>
+
+  <div class="col">
+    <h4>7 · Purger, versionner, vérifier ce qui est réellement servi</h4>
+    <p>Trois caches se superposent : la page (LiteSpeed), le navigateur (le HTML est servi avec <em class="t">max-age=604800</em> — sept jours — chez Hostinger) et les en-têtes de thème qui figent le <em class="t">?ver=</em> des assets. Après chaque modification de <em class="t">style.css</em> : incrémenter <em class="t">Version:</em>, purger, comparer par <em class="t">curl</em> le fichier servi au fichier local à l'octet près, et contrôler avec <em class="t">?frais=n</em> — jamais <em class="t">?m=</em> ni un autre paramètre réservé. Supprimer ensuite <em class="t">theme.zip</em> et <em class="t">content.json</em> : ils sont servis publiquement depuis <em class="t">uploads/</em>.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="p6">
+  <div class="sec-h"><span class="sec-n">06</span><h2>Recette</h2></div>
+  <div class="phase-meta"><span class="tag acc">Obligatoire</span><span class="tag">15 min</span><span class="tag">Cinq portes</span></div>
+
+  <div class="col">
+    <p class="lede">Une page peut s'afficher parfaitement et rester inutilisable dans l'éditeur — ou fidèle à l'œil et fausse au pixel. Les cinq contrôles se font dans cet ordre, d'office, sans que le client les demande ; aucun ne remplace les autres.</p>
+
+    <h3>Porte 1 · Intégrité des blocs, côté serveur</h3>
+    <p>Confirme que le contenu se parse et ne contient ni HTML brut ni bloc tiers.</p>
+  </div>
+<pre><span class="k">function</span> compter($blocs, &amp;$n) {
+  <span class="k">foreach</span> ($blocs <span class="k">as</span> $b) {
+    <span class="k">if</span> (empty($b['blockName'])) <span class="k">continue</span>;
+    $n[$b['blockName']] = ($n[$b['blockName']] ?? 0) + 1;
+    <span class="k">if</span> (!empty($b['innerBlocks'])) compter($b['innerBlocks'], $n);
+  }
+}
+$n = []; compter(parse_blocks(get_page_by_path('accueil')-&gt;post_content), $n);
+<span class="k">return</span> [
+  'total'     =&gt; array_sum($n),
+  'html_brut' =&gt; $n['core/html'] ?? 0,          <span class="c">// doit valoir 0</span>
+  'hors_core' =&gt; count(array_filter(array_keys($n),
+                   fn($k) =&gt; strpos($k, 'core/') !== 0)),  <span class="c">// doit valoir 0</span>
+];</pre>
+
+  <div class="col">
+    <h3>Porte 2 · Validation dans l'éditeur</h3>
+    <p>Le seul contrôle qui détecte les blocs marqués « contenu inattendu ou invalide ». Ouvrir la page en édition, puis interroger le store.</p>
+  </div>
+<pre><span class="c">// dans la console, sur post.php?post=ID&amp;action=edit</span>
+<span class="k">const</span> aplatir = bs =&gt; bs.reduce((a, b) =&gt; a.concat([b], aplatir(b.innerBlocks || [])), []);
+<span class="k">const</span> tous = aplatir(wp.data.select('core/block-editor').getBlocks());
+<span class="k">const</span> invalides = tous.filter(b =&gt; b.isValid === false);
+
+({
+  total: tous.length,
+  invalides: invalides.length,              <span class="c">// doit valoir 0</span>
+  noms: invalides.map(b =&gt; b.name),
+  images_total: tous.filter(b =&gt; b.name === 'core/image').length,
+  images_liees: tous.filter(b =&gt; b.name === 'core/image' &amp;&amp; b.attributes.id).length
+});   <span class="c">// une expression, pas un return : un return de premier niveau est une SyntaxError en console</span></pre>
+
+  <div class="col">
+    <div class="enc ok">
+      <b>Critère de réception</b>
+      <em class="t">invalides === 0</em> et <em class="t">images_liees === images_total</em>. Tant que ce n'est pas le cas, le client ne peut pas travailler.
+    </div>
+
+    <h3>Porte 3 · Rendu et responsive</h3>
+    <ul class="li">
+      <li>Toutes les images servies en HTTP 200, taille non nulle.</li>
+      <li>Polices réellement appliquées : contrôler <em class="t">getComputedStyle(document.body).fontFamily</em>.</li>
+      <li>Interactions fonctionnelles après déconnexion, pas seulement en session administrateur.</li>
+      <li>Rendu à 390 px sans défilement horizontal.</li>
+      <li>La barre d'administration ne recouvre pas l'en-tête en position absolue.</li>
+    </ul>
+
+    <div class="enc att">
+      <b>Toujours vérifier déconnecté</b>
+      Une session administrateur ajoute la barre d'outils et, chez certains hébergeurs, un panneau qui recouvre tout l'écran mobile (le chatbot Hostinger, par exemple). Le rendu réel se constate déconnecté, avec un paramètre d'URL neutre pour contourner le cache — <em class="t">?frais=1</em>, jamais <em class="t">?m=</em> ni un autre paramètre réservé de WordPress.
+    </div>
+
+    <h3>Porte 4 · Fidélité au pixel</h3>
+    <p>Le seul contrôle qui attrape ce que l'œil rate : marges écrasées, <em class="t">blockGap</em> résiduel, champ de formulaire trop haut. Relever la géométrie et les styles calculés des mêmes sélecteurs sur la maquette locale puis sur le site, et différer les deux relevés. Réception : hauteur de page identique à ±2 px, aucun composant au-delà de 2 px d'écart. Le script de relevé est dans <em class="t">references/phases.md</em>.</p>
+
+    <h3>Porte 5 · Fidélité de l'éditeur</h3>
+    <p>Dans le canevas de Gutenberg (l'iframe <em class="t">editor-canvas</em>), mesurer que les couches sorties du flux le sont restées (<em class="t">position: absolute</em>), que l'enveloppe occupe toute la largeur du canevas et qu'aucun bouton ne s'affiche en texte vertical. Si ça échoue, c'est <em class="t">assets/editor.css</em> qui manque : Gutenberg force <em class="t">position: relative</em> sur chaque bloc, et sans cette feuille l'aperçu s'effondre.</p>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="pieges">
+  <div class="sec-h"><span class="sec-n">§</span><h2>Pièges recensés</h2></div>
+  <div class="col"><p>Rencontrés en conditions réelles, avec leur symptôme exact et leur correctif.</p></div>
+
+  <div class="piege">
+    <div class="ti">Page blanche après écriture d'une option de thème</div>
+    <div><dt>Symptôme</dt><dd>« Il y a eu une erreur critique sur ce site ». Le journal d'erreurs ne contient rien d'utile.</dd></div>
+    <div><dt>Cause</dt><dd>Une option typée a reçu un tableau responsive là où le thème attendait une chaîne. Exemple vécu : <code>hb-primary-footer-height</code> dont le défaut est une chaîne vide.</dd></div>
+    <div><dt>Diagnostic</dt><dd>Reproduire le rendu en PHP : <code>ob_start(); try { wp_head(); } catch (\Throwable $e) { … }</code>. La trace donne le fichier et la ligne exacts.</dd></div>
+    <div><dt>Correctif</dt><dd>Lire le défaut avant d'écrire, et respecter son type. Plus généralement : ne pas empiler un thème tiers sous un design sur mesure, règle 8.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Toutes les images cassées après déploiement</div>
+    <div><dt>Symptôme</dt><dd>Le texte alternatif s'affiche à la place de chaque image. Les URL se terminent sans extension.</dd></div>
+    <div><dt>Cause</dt><dd>Extension oubliée dans le générateur de patterns : <code>get_theme_file_uri('assets/img/nom')</code> au lieu de <code>'assets/img/nom.jpg'</code>.</dd></div>
+    <div><dt>Correctif</dt><dd>Corriger, régénérer, et ne renvoyer qu'une archive des patterns : 11 Ko au lieu de 2,3 Mo.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Page d'accueil impossible à modifier</div>
+    <div><dt>Symptôme</dt><dd>Aucune page « Accueil » dans la liste des pages. Le contenu n'apparaît que dans l'éditeur de site.</dd></div>
+    <div><dt>Cause</dt><dd><code>front-page.html</code> appelle directement des <code>wp:pattern</code>. Le contenu appartient au template, pas à une page.</dd></div>
+    <div><dt>Correctif</dt><dd>Créer une page réelle, y placer le contenu, réduire <code>front-page.html</code> à <code>header + post-content + footer</code>, puis <code>show_on_front = page</code>. Règle 4.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Le serveur de développement refuse de démarrer</div>
+    <div><dt>Symptôme</dt><dd><code>Error: EPERM: operation not permitted, uv_cwd</code> pour Node, <code>PermissionError</code> pour Python.</dd></div>
+    <div><dt>Cause</dt><dd>Le processus est lancé avec un <strong>répertoire courant</strong> protégé par macOS sans que l'autorisation ait été accordée. C'est le <code>cwd</code> qui est en cause, pas l'emplacement des fichiers servis.</dd></div>
+    <div><dt>Correctif</dt><dd>Lancer depuis <code>/tmp</code> en passant <code>RACINE</code> en chemin absolu : le serveur lit sans difficulté un dossier que son <code>cwd</code> ne pourrait pas occuper. Ce n'est qu'en cas d'échec de <strong>lecture</strong> qu'il faut déplacer le projet.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">« Pourquoi mon dossier est vide ? »</div>
+    <div><dt>Symptôme</dt><dd>Le site est en ligne, tout fonctionne, et l'utilisateur ne trouve aucun fichier là où il les attendait.</dd></div>
+    <div><dt>Cause</dt><dd>Le projet a été créé hors du dossier de travail « par précaution TCC », sans vérifier que la protection s'appliquait, et sans le redire ensuite.</dd></div>
+    <div><dt>Correctif</dt><dd>Tester l'accès en phase 0, et ne sortir du dossier de travail que sur un échec réel. Une consigne de prudence appliquée sans vérification ne casse rien, donc rien ne la signale — seul l'utilisateur finit par buter dessus.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Composants sans style après passage en blocs natifs</div>
+    <div><dt>Symptôme</dt><dd>Les grilles s'empilent, les cartes perdent leurs marges intérieures.</dd></div>
+    <div><dt>Cause</dt><dd>Le DOM a changé : une image est devenue <code>figure.wp-block-image</code>, un conteneur <code>div.wp-block-group</code>. Les sélecteurs écrits pour du HTML brut ne matchent plus.</dd></div>
+    <div><dt>Correctif</dt><dd>Poser les classes du composant directement sur le bloc via <code>className</code>. La classe <code>shot</code> sur un <code>core/image</code> produit <code>figure.wp-block-image.shot</code> : le sélecteur d'origine fonctionne tel quel.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Une itération de mise en page coûte quatre minutes</div>
+    <div><dt>Symptôme</dt><dd>Chaque retouche exige de composer, mettre en file, sérialiser dans un onglet d'administration ouvert, purger le cache, recharger.</dd></div>
+    <div><dt>Cause</dt><dd>Le design est poussé dans le <code>post_content</code> par l'API de blocs au lieu d'être écrit en fichiers.</dd></div>
+    <div><dt>Correctif</dt><dd>C'est le principe même de la méthode. La file de blocs sert au contenu, jamais à la mise en forme.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Le rythme vertical disparaît après le passage en blocs</div>
+    <div><dt>Symptôme</dt><dd>Rien ne semble cassé, mais la page est ~300 px plus courte que la maquette : titres collés aux paragraphes, décalages volontaires remis à plat. L'œil ne le voit pas ; la porte 4 le mesure.</dd></div>
+    <div><dt>Cause</dt><dd>La neutralisation naïve de l'espacement : <code>.wp-block-group &gt; * { margin-block: 0 }</code> écrase toutes les marges déclarées par les composants.</dd></div>
+    <div><dt>Correctif</dt><dd><code>blockGap: "0px"</code> dans <code>theme.json</code> + filet de sécurité à spécificité nulle (<code>:where()</code>). Voir la phase 4 et <code>blocs-gutenberg.md</code>.</dd></div>
+  </div>
+
+  <div class="piege">
+    <div class="ti">Un correctif CSS ne « prend » pas</div>
+    <div><dt>Symptôme</dt><dd>Le fichier est corrigé sur le serveur — <code>curl</code> le prouve — mais le navigateur affiche l'ancien rendu, purge après purge.</dd></div>
+    <div><dt>Cause</dt><dd>Trois caches superposés : la page LiteSpeed, le navigateur (HTML servi avec <code>max-age=604800</code>, sept jours chez Hostinger), et le cache objet des en-têtes de thème qui fige le <code>?ver=</code> des assets.</dd></div>
+    <div><dt>Correctif</dt><dd>Incrémenter <code>Version:</code> dans <code>style.css</code>, purger, comparer par <code>curl</code> le fichier servi au fichier local à l'octet près, contrôler avec <code>?frais=n</code>. Phase 5, étape 7.</dd></div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<section id="annexe">
+  <div class="sec-h"><span class="sec-n">§</span><h2>Annexes</h2></div>
+
+  <div class="col">
+    <h3>Appeler Novamira en HTTP direct</h3>
+    <p>Évite d'installer le serveur MCP et de redémarrer la session. Le protocole exige une session : ouvrir, mémoriser l'identifiant, le réutiliser.</p>
+  </div>
+<pre>#!/bin/bash
+<span class="c"># wp.sh &lt;nom-de-l-ability&gt; '&lt;json des parametres&gt;'</span>
+A="https://SITE/wp-json/mcp/novamira"
+U="…"; P="…"
+SID_FILE="$(dirname "$0")/.mcp-sid"
+
+ouvrir() {
+  H=$(curl -s -D - -o /dev/null -u "$U:$P" -X POST "$A" \
+    -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+    -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{
+         "protocolVersion":"2024-11-05","capabilities":{},
+         "clientInfo":{"name":"cc","version":"1"}}}')
+  SID=$(printf '%s' "$H" | grep -i '^mcp-session-id:' | tr -d '\r' | awk '{print $2}')
+  printf '%s' "$SID" &gt; "$SID_FILE"
+  curl -s -o /dev/null -u "$U:$P" -X POST "$A" \
+    -H 'Content-Type: application/json' -H "Mcp-Session-Id: $SID" \
+    -d '{"jsonrpc":"2.0","method":"notifications/initialized"}'
+  echo "$SID"
+}
+
+[ -s "$SID_FILE" ] &amp;&amp; SID=$(cat "$SID_FILE") || SID=$(ouvrir)
+
+curl -s -u "$U:$P" -X POST "$A" \
+  -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' \
+  -H "Mcp-Session-Id: $SID" \
+  -d "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\",\"params\":{
+       \"name\":\"mcp-adapter-execute-ability\",
+       \"arguments\":{\"ability_name\":\"$1\",\"parameters\":$2}}}"</pre>
+
+  <div class="col">
+    <p>La réponse peut arriver en <em class="t">text/event-stream</em> : lire la ligne préfixée <em class="t">data:</em> avant de parser le JSON.</p>
+
+    <h3>Ouvrir wp-admin sans mot de passe</h3>
+    <p>Pour la porte 2 de la recette, un agent a besoin d'une session d'administration dans un navigateur. Novamira fournit un échange à usage unique.</p>
+  </div>
+<pre><span class="c"># 1. demander un jeton</span>
+novamira/create-admin-access-link {
+  "expires_in": 180,
+  "admin_path": "post.php?post=38&amp;action=edit"
+}
+
+<span class="c"># 2. l'echanger contre une URL de connexion (valable 60 s)</span>
+curl -s -X POST \
+  -H "X-Novamira-Admin-Access-Token: $TOKEN" \
+  -H "X-Novamira-Admin-Access-Nonce: $NONCE" \
+  "$EXCHANGE_URL"
+
+<span class="c"># 3. ouvrir immediatement l'URL renvoyee dans le navigateur</span></pre>
+
+  <div class="col">
+    <h3>Ordre de dépendance des phases</h3>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Phase</th><th>Bloque sur</th><th>Livre</th></tr></thead>
+        <tbody>
+          <tr><td>0 · Préparation</td><td>Rien</td><td>Outils, dossier de travail</td></tr>
+          <tr><td>1 · Brief</td><td>Référence visuelle</td><td>Plan de design validé</td></tr>
+          <tr><td>2 · Maquette</td><td>Photos réelles</td><td>Accueil HTML validé</td></tr>
+          <tr><td>3 · Déclinaison</td><td>Phase 2 validée</td><td>Toutes les pages + CSS partagé</td></tr>
+          <tr><td>4 · Thème bloc</td><td>Phase 3</td><td>Thème complet, hors ligne</td></tr>
+          <tr><td>5 · Déploiement</td><td>Accès WordPress</td><td>Site en ligne</td></tr>
+          <tr><td>6 · Recette</td><td>Phase 5</td><td>Réception, ou retour en 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Ce que la méthode ne couvre pas</h3>
+    <ul class="li">
+      <li><strong>Formulaires</strong> — aucun bloc natif n'existe. Contact Form 7 ou équivalent, posé par <em class="t">core/shortcode</em>. Les champs se règlent dans l'interface du plugin, pas dans Gutenberg.</li>
+      <li><strong>Commerce</strong> — WooCommerce impose ses propres templates et sort du cadre.</li>
+      <li><strong>Multilingue</strong> — à traiter avant la phase 4, le choix de l'extension conditionne la structure des templates.</li>
+      <li><strong>Performance</strong> — les visuels sont livrés en JPEG pleine taille. Prévoir une passe de compression et de formats modernes avant mise en production réelle.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer>
+  <div class="col">Mode opératoire issu d'une construction réelle : cabinet de conseil financier, six pages, thème bloc sur mesure, 215 blocs natifs sur la page d'accueil, zéro bloc invalide.</div>
+</footer>
+
+</div>

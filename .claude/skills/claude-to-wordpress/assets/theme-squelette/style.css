@@ -1,0 +1,61 @@
+/*
+Theme Name: Mon Thème
+Theme URI: https://example.com
+Author: —
+Description: Thème bloc sur mesure. Remplacer les jetons ci-dessous et coller le CSS de la maquette.
+Version: 1.0.0
+Requires at least: 6.6
+Requires PHP: 8.0
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mon-theme
+Tags: block-theme, full-site-editing, business, one-column
+*/
+
+:root{
+  /* Remplacer par la palette du plan de design, phase 1. */
+  --encre:#0A1124;
+  --accent:#1F4BFF;
+  --gris:#F5F6F9;
+  --graphite:#616A7D;
+  --trait:#E5E7EE;
+  --blanc:#fff;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--blanc);color:var(--encre);
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;position:relative}
+img{max-width:100%;height:auto;display:block} /* height:auto obligatoire : sinon l'attribut height des blocs image l'emporte sur aspect-ratio */
+h1,h2,h3{margin:0;font-weight:700;text-wrap:balance}
+p{margin:0}
+
+/* Gutenberg applique margin-block-start entre frères. La neutralisation
+   se fait d'abord dans theme.json (blockGap: "0px") et, en filet de
+   sécurité, ICI À SPÉCIFICITÉ NULLE — jamais en .wp-block-group > * :
+   cette version-là écraserait toutes les marges de vos composants
+   (vécu : 14 marges à zéro, 307 px de rythme vertical perdus). */
+:where(.wp-block-group)>:where(*),:where(.wp-block-buttons){margin-block:0}
+figure.wp-block-image{margin:0}
+
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:24px}
+
+/* L'en-tête flotte au-dessus de la première section. Les héros doivent
+   donc lui réserver la place en padding-top. Le CSS fait le flex :
+   les groupes des parts sont tous en layout "default" (voir blocs-gutenberg.md). */
+.entete{position:fixed;inset:0 0 auto 0;z-index:30;padding-block:18px}
+.entete-rangee{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.menu .wp-block-navigation-item__content{text-decoration:none}
+/* Le panneau mobile de core/navigation s'ouvre blanc sur blanc sans ceci
+   (le CSS du bloc est imprimé APRÈS cette feuille) : */
+.wp-block-navigation.menu .wp-block-navigation__responsive-container.is-menu-open{
+  background-color:var(--encre)!important;color:var(--blanc)!important}
+.pied-haut{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-block:40px}
+
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Variantes affichées par bascule de classe, jamais par injection JS. */
+.est-cachee{display:none}
+.est-cachee.est-actif{display:block}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
