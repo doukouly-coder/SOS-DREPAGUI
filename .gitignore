@@ -4,6 +4,8 @@ bundle/
 .mcp-sid
 .env
 .env.*
+# Sauvegardes et comptes rendus de mise en ligne (contenu du site client)
+deploiement/
 
 # Archives de déploiement générées
 *.zip

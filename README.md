@@ -16,7 +16,7 @@ sur ce dépôt la charge automatiquement.
 | 2 · Maquette | Accueil HTML validé (`site/`) | ✅ validée par le client |
 | 3 · Déclinaison | Toutes les pages, CSS partagé | ✅ 16 pages et 8 articles d’actualité (`site/`), assemblés par `outils/assembler.py` |
 | 4 · Thème bloc | Thème + extension (`wordpress/`) | ✅ recette locale sur WordPress 6.6 : les 5 portes franchies |
-| 5 · Déploiement | Site en ligne | ⏳ en attente de l’accès à l’hébergement |
+| 5 · Déploiement | Site en ligne | ⏳ chaîne prête et répétée sur un WordPress vierge (portes 1 à 3 franchies, 0 pixel d’écart) — en attente de l’accès au site |
 | 6 · Recette | Réception | — |
 
 ## Arborescence
@@ -26,7 +26,8 @@ site/                  maquette HTML (phases 2-3) ; sources des pages dans site/
 wordpress/theme/       thème bloc WordPress « hemato-gui » (phase 4)
 wordpress/extension/   extension « hemato-gui » : formulaires, demandes, rôles, SEO, sécurité (phase 4)
 wordpress/contenu/     contenu des pages en blocs Gutenberg natifs, généré depuis site/src/pages/
-outils/wordpress/      construction des archives, déploiement, recette (portes 1 à 5)
+outils/wordpress/      construction des archives, déploiement local et en ligne, recette (portes 1 à 5)
+deploiement/           (non versionné) sauvegardes et comptes rendus des mises en ligne
 docs/                  plan de design, architecture, captures de la maquette
 outils/rendus-3d/      scènes 3D des cellules sanguines (three.js) → site/assets/img/rendus/
 outils/couvertures/    gabarit des couvertures d'eBooks → site/assets/img/ebooks/
@@ -85,6 +86,33 @@ outils/wordpress/deployer-local.sh <racine-wordpress> <url-du-site>
 Recette : `porte1.php` (aucun bloc HTML brut, images liées), `porte2.mjs` (éditeur), `porte3.mjs` (rendu et formulaires, déconnecté), `porte5.mjs`
 (éditeur fidèle au site) et `recette-admin.mjs` (tableau de bord, demandes), dans `outils/wordpress/`.
 
+### Mise en ligne (phase 5)
+
+Prérequis : l’extension **Novamira** active sur le WordPress en ligne (6.6 ou plus, PHP 8.0 ou plus),
+son bundle de connexion `.mcpb`, et l’adresse du site autorisée dans l’accès réseau de l’environnement
+Claude Code (sinon : « injoignable … 403 »).
+
+```bash
+python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> diagnostic   # lecture seule : versions, droits, contenu existant
+python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> deployer     # sauvegarde, thème, extension, visuels, pages, menu, purge, vérification
+python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> verifier     # ce que le site sert réellement
+python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> retour       # retour à l’état d’avant le premier déploiement
+```
+
+- Les étapes côté serveur sont celles de `outils/wordpress/deploiement.php`, **les mêmes** que pour le
+  WordPress local : ce qui a passé la recette en local est exactement ce qui part en ligne.
+- **Rien n’est perdu** : avant toute écriture, le contenu existant est sauvegardé en base (option privée
+  `hg_sauvegarde_avant_theme`, la première sauvegarde n’est jamais écrasée) et dans `deploiement/<hôte>/`.
+  Une page existante qui porte le même slug qu’une page du site (ex. « contact ») est signalée, puis réécrite ;
+  son ancien contenu reste aussi dans ses révisions. L’ancien thème reste installé.
+- `retour` rétablit l’ancien thème, les réglages de lecture, le titre du site et les pages réécrites, désactive
+  l’extension et passe les pages et articles HEMATO GUI en brouillon (rien n’est supprimé).
+- Relancer `deployer` met le site à jour sans rien dupliquer (visuels, pages, articles et menu sont retrouvés).
+- Les archives de transfert ne restent sur le serveur que le temps d’une étape et sont supprimées même en cas
+  d’échec ; la vérification finale contrôle qu’elles ne sont plus servies.
+- Vérification finale : accueil en français, les 23 contenus en HTTP 200, feuilles de style, police et scripts
+  servis identiques à l’octet près aux fichiers du dépôt, aucun identifiant exposé (`?author=1`, API des comptes).
+
 ### Ce que fait réellement le site
 
 - **Rendez-vous** : le parcours en cinq étapes enregistre une **demande** (calendrier réel des
@@ -118,6 +146,8 @@ P="$(pwd)"
 
 ## À fournir
 
+- **Accès au site en ligne** : extension Novamira activée et son bundle `.mcpb`, déposé dans la session
+  (jamais dans le dépôt) ; et l’adresse du site ajoutée aux domaines autorisés de l’environnement.
 - **Logo officiel HEMATO GUI** (SVG ou PNG haute définition) et, si elle existe, la charte (valeur exacte du rouge).
   L'en-tête affiche pour l'instant le nom en texte : le logo n'est ni recréé ni imité.
 - La liste réelle des eBooks (titres, auteurs, pages, niveaux, prix) : ceux de la maquette sont des exemples.
@@ -134,3 +164,7 @@ P="$(pwd)"
 
 Le bundle de connexion `.mcpb` du plugin Novamira (phase 5) contient un mot de
 passe applicatif en clair : il ne doit jamais être commité (voir `.gitignore`).
+`deployer-distant.py` le lit en mémoire, sans le décompresser ni afficher le mot de passe.
+Après la mise en ligne, révoquer ce mot de passe dans *wp-admin → Utilisateurs → Profil →
+Mots de passe d’application* s’il a transité par un canal non fiable, et en créer un nouveau
+pour les mises à jour suivantes.
