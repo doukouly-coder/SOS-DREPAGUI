@@ -111,6 +111,30 @@ function hg_dep_diagnostic() {
 }
 
 /**
+ * Contenus du site existant (pas ceux d'un déploiement précédent) qui portent un slug
+ * que le déploiement va écrire : ils seront réécrits. Lecture seule.
+ *
+ * @param string[] $slugs Slugs des pages et articles du site HEMATO GUI.
+ * @return array[]
+ */
+function hg_dep_collisions( $slugs ) {
+	$collisions = array();
+	foreach ( get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => array( 'publish', 'draft', 'pending', 'private', 'future' ), 'post_name__in' => $slugs, 'numberposts' => -1 ) ) as $c ) {
+		if ( ! get_post_meta( $c->ID, '_hg_deploye', true ) ) {
+			$collisions[] = array(
+				'id'     => $c->ID,
+				'type'   => $c->post_type,
+				'slug'   => $c->post_name,
+				'titre'  => $c->post_title,
+				'statut' => $c->post_status,
+				'taille' => strlen( $c->post_content ),
+			);
+		}
+	}
+	return $collisions;
+}
+
+/**
  * Étape 0 : sauvegarde de l'existant, avant toute écriture.
  *
  * La première sauvegarde est gardée en base (option non chargée automatiquement, jamais exposée
@@ -128,19 +152,7 @@ function hg_dep_sauvegarde( $slugs ) {
 		 AND post_status NOT IN ('auto-draft','revision','trash')",
 		ARRAY_A
 	);
-	$collisions = array();
-	foreach ( $contenus as $c ) {
-		if ( in_array( $c['post_type'], array( 'page', 'post' ), true ) && in_array( $c['post_name'], $slugs, true ) && ! get_post_meta( $c['ID'], '_hg_deploye', true ) ) {
-			$collisions[] = array(
-				'id'     => (int) $c['ID'],
-				'type'   => $c['post_type'],
-				'slug'   => $c['post_name'],
-				'titre'  => $c['post_title'],
-				'statut' => $c['post_status'],
-				'taille' => strlen( $c['post_content'] ),
-			);
-		}
-	}
+	$collisions = hg_dep_collisions( $slugs );
 	$sauvegarde = array(
 		'date'           => current_time( 'mysql' ),
 		'site'           => home_url( '/' ),
@@ -304,16 +316,18 @@ function hg_dep_liberer_slug( $slug ) {
 /**
  * Étapes 5-6 : pages, articles, page d'accueil statique, menu principal, contenu d'exemple retiré.
  *
- * @param string $dossier Dossier produit par contenu.py (<slug>.html + <slug>.json, et articles/).
+ * @param string        $dossier     Dossier produit par contenu.py (<slug>.html + <slug>.json, et articles/).
+ * @param callable|null $transformer Appliqué à chaque contenu avant écriture (contenu modèle à remplir).
  * @return array
  */
-function hg_dep_pages( $dossier ) {
+function hg_dep_pages( $dossier, $transformer = null ) {
 	$dossier = rtrim( $dossier, '/' );
 	$ids     = array();
 	$erreurs = array();
-	foreach ( glob( $dossier . '/*.json' ) as $meta_fichier ) {
+	foreach ( array_filter( (array) glob( $dossier . '/*.json' ), fn( $f ) => 'modele.json' !== basename( $f ) ) as $meta_fichier ) {
 		$meta    = json_decode( file_get_contents( $meta_fichier ), true );
 		$contenu = file_get_contents( substr( $meta_fichier, 0, -5 ) . '.html' );
+		$contenu = $transformer ? $transformer( $contenu ) : $contenu;
 		$existe  = hg_dep_existant( $meta['slug'], 'page' );
 		hg_dep_liberer_slug( $meta['slug'] );
 		$donnees = array(
@@ -345,6 +359,7 @@ function hg_dep_pages( $dossier ) {
 	foreach ( glob( $dossier . '/articles/*.json' ) as $meta_fichier ) {
 		$meta    = json_decode( file_get_contents( $meta_fichier ), true );
 		$contenu = file_get_contents( substr( $meta_fichier, 0, -5 ) . '.html' );
+		$contenu = $transformer ? $transformer( $contenu ) : $contenu;
 		$cat     = term_exists( $meta['categorie'], 'category' ) ?: wp_insert_term( $meta['categorie'], 'category' );
 		$existe  = hg_dep_existant( $meta['slug'], 'post' );
 		$donnees = array(
@@ -416,8 +431,9 @@ function hg_dep_pages( $dossier ) {
 		. '<!-- wp:button {"className":"btn btn-wa btn-grand b-ico ico-whatsapp","linkTarget":"_blank","rel":"noopener"} -->' . "\n"
 		. '<div class="wp-block-button btn btn-wa btn-grand b-ico ico-whatsapp"><a class="wp-block-button__link wp-element-button" href="' . esc_url( $wa ) . '" target="_blank" rel="noopener">WhatsApp</a></div>' . "\n<!-- /wp:button -->"
 		. "</div>\n<!-- /wp:buttons -->";
-	$nav_existante = get_posts( array( 'post_type' => 'wp_navigation', 'post_status' => 'publish', 'title' => 'Menu principal', 'fields' => 'ids' ) );
-	wp_insert_post(
+	// Retrouvé même en brouillon (après un retour arrière) : jamais de second menu.
+	$nav_existante = get_posts( array( 'post_type' => 'wp_navigation', 'post_status' => array( 'publish', 'draft' ), 'title' => 'Menu principal', 'fields' => 'ids' ) );
+	$nav           = wp_insert_post(
 		array(
 			'ID'           => $nav_existante[0] ?? 0,
 			'post_type'    => 'wp_navigation',
@@ -426,6 +442,7 @@ function hg_dep_pages( $dossier ) {
 			'post_content' => wp_slash( $menu ),
 		)
 	);
+	update_post_meta( $nav, '_hg_deploye', 1 );
 
 	// Contenu d'exemple de l'installation : retiré (seulement s'il n'a pas été modifié).
 	$retires = array();
@@ -490,3 +507,126 @@ function hg_dep_purger() {
 	}
 	return $faits;
 }
+
+/**
+ * Remplit un contenu « modèle » (contenu.py --modele) : identifiants et adresses des visuels,
+ * adresse du site. Le résultat est identique à ce que contenu.py produit pour ce site.
+ *
+ * @param string $contenu Contenu modèle.
+ * @param array  $modele  { "assets/img/…": jeton numérique } (modele.json).
+ * @param array  $carte   { "assets/img/…": { id, url } } (hg_dep_medias).
+ * @return string
+ */
+function hg_dep_remplir( $contenu, $modele, $carte ) {
+	$ids = array();
+	foreach ( $modele as $relatif => $jeton ) {
+		$ids[ (string) $jeton ] = $carte[ $relatif ]['id'] ?? $jeton;
+	}
+	$contenu = preg_replace_callback( '#https://hg-modele\.invalid/hg-media/([\w./-]+)#', fn( $m ) => $carte[ $m[1] ]['url'] ?? $m[0], $contenu );
+	$contenu = preg_replace_callback( '/("id":|wp-image-)(98765\d{4})\b/', fn( $m ) => $m[1] . ( $ids[ $m[2] ] ?? $m[2] ), $contenu );
+	return str_replace( 'https://hg-modele.invalid/', home_url( '/' ), $contenu );
+}
+
+/**
+ * Retour à l'état d'avant le premier déploiement : thème, réglages de lecture, titre du site,
+ * contenus réécrits restaurés ; les pages et articles HEMATO GUI passent en brouillon
+ * (rien n'est supprimé), l'extension est désactivée.
+ *
+ * @return array
+ */
+function hg_dep_retour() {
+	$s = get_option( 'hg_sauvegarde_avant_theme' );
+	if ( ! $s ) {
+		return array( 'erreur' => 'aucune sauvegarde en base (hg_sauvegarde_avant_theme)' );
+	}
+	switch_theme( $s['theme_avant'] );
+	$options = array( 'show_on_front' => 'show_on_front', 'page_on_front' => 'page_on_front', 'page_for_posts' => 'page_for_posts', 'permalink_structure' => 'permaliens', 'blogname' => 'titre_site', 'blogdescription' => 'slogan', 'WPLANG' => 'langue', 'timezone_string' => 'fuseau' );
+	foreach ( $options as $option => $cle ) {
+		update_option( $option, $s[ $cle ] );
+	}
+	$anciens = array();
+	foreach ( $s['contenus'] as $c ) {
+		$anciens[ (int) $c['ID'] ] = $c;
+	}
+	$restaures = 0;
+	foreach ( $s['collisions'] as $c ) {
+		$a = $anciens[ $c['id'] ];
+		wp_update_post( wp_slash( array( 'ID' => $c['id'], 'post_title' => $a['post_title'], 'post_content' => $a['post_content'], 'post_status' => $a['post_status'] ) ) );
+		delete_post_meta( $c['id'], '_hg_deploye' );
+		$restaures++;
+	}
+	$brouillons = 0;
+	foreach ( get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'numberposts' => -1, 'meta_key' => '_hg_deploye', 'meta_value' => '1' ) ) as $p ) {
+		wp_update_post( array( 'ID' => $p->ID, 'post_status' => 'draft' ) );
+		$brouillons++;
+	}
+	// Le menu HEMATO GUI aussi : sinon le bloc de navigation de l'ancien thème le reprendrait par défaut.
+	foreach ( get_posts( array( 'post_type' => 'wp_navigation', 'post_status' => 'publish', 'numberposts' => -1, 'meta_key' => '_hg_deploye', 'meta_value' => '1' ) ) as $p ) {
+		wp_update_post( array( 'ID' => $p->ID, 'post_status' => 'draft' ) );
+	}
+	deactivate_plugins( 'hemato-gui/hemato-gui.php' );
+	flush_rewrite_rules( false );
+	hg_dep_purger();
+	return array( 'theme' => get_stylesheet(), 'restaures' => $restaures, 'brouillons' => $brouillons );
+}
+
+/**
+ * Blocs à plat (blocs imbriqués compris).
+ *
+ * @param array $blocs Résultat de parse_blocks().
+ * @return array
+ */
+function hg_dep_aplatir( $blocs ) {
+	$r = array();
+	foreach ( $blocs as $b ) {
+		if ( $b['blockName'] ) {
+			$r[] = $b;
+			$r   = array_merge( $r, hg_dep_aplatir( $b['innerBlocks'] ) );
+		}
+	}
+	return $r;
+}
+
+/**
+ * Porte 1 de la recette, côté serveur : aucun bloc core/html, aucun bloc hors cœur,
+ * toutes les images liées à la médiathèque (pages, articles, en-tête et pied de page).
+ *
+ * @return array { ok, contenus, html, hors, images, liees, jetons, detail[] }
+ */
+function hg_dep_porte1() {
+	$t = array( 'html' => 0, 'hors' => 0, 'images' => 0, 'liees' => 0, 'detail' => array() );
+	$contenus = get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'type title', 'order' => 'ASC' ) );
+	$compter  = function ( $tous ) {
+		$img = array_filter( $tous, fn( $b ) => 'core/image' === $b['blockName'] );
+		return array(
+			'blocs'  => count( $tous ),
+			'html'   => count( array_filter( $tous, fn( $b ) => 'core/html' === $b['blockName'] ) ),
+			'hors'   => count( array_filter( $tous, fn( $b ) => ! str_starts_with( $b['blockName'], 'core/' ) ) ),
+			'images' => count( $img ),
+			'liees'  => count( array_filter( $img, fn( $b ) => ! empty( $b['attrs']['id'] ) && 'attachment' === get_post_type( $b['attrs']['id'] ) ) ),
+		);
+	};
+	$sources = array();
+	foreach ( $contenus as $p ) {
+		$sources[] = array( $p->post_type, $p->post_name, $p->post_content );
+	}
+	foreach ( array( 'header', 'footer' ) as $partie ) {
+		$gabarit = get_block_template( get_stylesheet() . '//' . $partie, 'wp_template_part' );
+		if ( $gabarit ) {
+			$sources[] = array( 'partie', $partie, $gabarit->content );
+		}
+	}
+	foreach ( $sources as list( $type, $nom, $contenu ) ) {
+		$c = $compter( hg_dep_aplatir( parse_blocks( $contenu ) ) );
+		$t['detail'][] = array( 'type' => $type, 'nom' => $nom ) + $c;
+		foreach ( array( 'html', 'hors', 'images', 'liees' ) as $cle ) {
+			$t[ $cle ] += $c[ $cle ];
+		}
+	}
+	// Contenu modèle mal rempli : un jeton restant serait un lien ou une image cassés.
+	$t['jetons']   = count( array_filter( $contenus, fn( $p ) => str_contains( $p->post_content, 'hg-modele.invalid' ) || preg_match( '/("id":|wp-image-)98765\d{4}\b/', $p->post_content ) ) );
+	$t['contenus'] = count( $contenus );
+	$t['ok']       = 0 === $t['html'] && 0 === $t['hors'] && $t['images'] === $t['liees'] && 0 === $t['jetons'];
+	return $t;
+}
+

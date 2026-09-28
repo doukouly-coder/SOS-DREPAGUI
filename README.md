@@ -16,7 +16,7 @@ sur ce dépôt la charge automatiquement.
 | 2 · Maquette | Accueil HTML validé (`site/`) | ✅ validée par le client |
 | 3 · Déclinaison | Toutes les pages, CSS partagé | ✅ 16 pages et 8 articles d’actualité (`site/`), assemblés par `outils/assembler.py` |
 | 4 · Thème bloc | Thème + extension (`wordpress/`) | ✅ recette locale sur WordPress 6.6 : les 5 portes franchies |
-| 5 · Déploiement | Site en ligne | ⏳ chaîne prête et répétée sur un WordPress vierge (portes 1 à 3 franchies, 0 pixel d’écart) — en attente de l’accès au site |
+| 5 · Déploiement | Site en ligne | ✅ prêt : installation en un clic (`dist/hemato-gui-installation.zip`, guide `docs/installation.md`) ou par Novamira, répétées sur un WordPress vierge (portes 1 à 3 franchies, 0 pixel d’écart) — reste à lancer sur le site réel |
 | 6 · Recette | Réception | — |
 
 ## Arborescence
@@ -25,6 +25,7 @@ sur ce dépôt la charge automatiquement.
 site/                  maquette HTML (phases 2-3) ; sources des pages dans site/src/, en « HTML en forme de blocs »
 wordpress/theme/       thème bloc WordPress « hemato-gui » (phase 4)
 wordpress/extension/   extension « hemato-gui » : formulaires, demandes, rôles, SEO, sécurité (phase 4)
+wordpress/installation/ extension d’installation en un clic (le paquet est ajouté par construire.py)
 wordpress/contenu/     contenu des pages en blocs Gutenberg natifs, généré depuis site/src/pages/
 outils/wordpress/      construction des archives, déploiement local et en ligne, recette (portes 1 à 5)
 deploiement/           (non versionné) sauvegardes et comptes rendus des mises en ligne
@@ -63,8 +64,13 @@ détails). Une balise hors de ce dialecte arrête la conversion : aucun bloc `co
 ## WordPress
 
 ```bash
-python3 outils/wordpress/construire.py        # dist/hemato-gui-theme.zip et dist/hemato-gui-extension.zip
+python3 outils/wordpress/construire.py        # dist/hemato-gui-installation.zip, dist/hemato-gui-theme.zip, dist/hemato-gui-extension.zip
 ```
+
+**Mise en ligne : `dist/hemato-gui-installation.zip`**, à téléverser dans *Extensions › Ajouter* puis
+*Outils › Installer HEMATO GUI* › **Installer le site** : sauvegarde de l’existant, thème, extension,
+visuels, pages, articles, menu, contrôle, et retour arrière possible. Pas à pas : [`docs/installation.md`](docs/installation.md).
+Les deux autres archives servent aux mises à jour.
 
 - **Thème** : à installer tel quel (Apparence › Thèmes › Ajouter › Téléverser). Aucun thème parent.
 - **Extension** : Extensions › Ajouter › Téléverser, puis activer. Elle crée les rôles Patient,
@@ -86,9 +92,9 @@ outils/wordpress/deployer-local.sh <racine-wordpress> <url-du-site>
 Recette : `porte1.php` (aucun bloc HTML brut, images liées), `porte2.mjs` (éditeur), `porte3.mjs` (rendu et formulaires, déconnecté), `porte5.mjs`
 (éditeur fidèle au site) et `recette-admin.mjs` (tableau de bord, demandes), dans `outils/wordpress/`.
 
-### Mise en ligne (phase 5)
+### Mise en ligne par Novamira (sans passer par l’administration)
 
-Prérequis : l’extension **Novamira** active sur le WordPress en ligne (6.6 ou plus, PHP 8.0 ou plus),
+Mêmes étapes, pilotées depuis Claude Code. Prérequis : l’extension **Novamira** active sur le WordPress en ligne (6.6 ou plus, PHP 8.0 ou plus),
 son bundle de connexion `.mcpb`, et l’adresse du site autorisée dans l’accès réseau de l’environnement
 Claude Code (sinon : « injoignable … 403 »).
 
@@ -99,8 +105,8 @@ python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> verifier     #
 python3 outils/wordpress/deployer-distant.py --bundle <site.mcpb> retour       # retour à l’état d’avant le premier déploiement
 ```
 
-- Les étapes côté serveur sont celles de `outils/wordpress/deploiement.php`, **les mêmes** que pour le
-  WordPress local : ce qui a passé la recette en local est exactement ce qui part en ligne.
+- Les étapes côté serveur sont celles de `outils/wordpress/deploiement.php`, **les mêmes** pour le WordPress
+  local, l’installation en un clic et Novamira : ce qui a passé la recette en local est exactement ce qui part en ligne.
 - **Rien n’est perdu** : avant toute écriture, le contenu existant est sauvegardé en base (option privée
   `hg_sauvegarde_avant_theme`, la première sauvegarde n’est jamais écrasée) et dans `deploiement/<hôte>/`.
   Une page existante qui porte le même slug qu’une page du site (ex. « contact ») est signalée, puis réécrite ;
@@ -146,8 +152,9 @@ P="$(pwd)"
 
 ## À fournir
 
-- **Accès au site en ligne** : extension Novamira activée et son bundle `.mcpb`, déposé dans la session
-  (jamais dans le dépôt) ; et l’adresse du site ajoutée aux domaines autorisés de l’environnement.
+- **La mise en ligne elle-même** : téléverser `hemato-gui-installation.zip` dans le WordPress réel
+  ([guide](docs/installation.md)) ; ou, pour la confier à Claude Code, activer Novamira, déposer son bundle `.mcpb`
+  dans la session (jamais dans le dépôt) et ajouter l’adresse du site aux domaines autorisés de l’environnement.
 - **Logo officiel HEMATO GUI** (SVG ou PNG haute définition) et, si elle existe, la charte (valeur exacte du rouge).
   L'en-tête affiche pour l'instant le nom en texte : le logo n'est ni recréé ni imité.
 - La liste réelle des eBooks (titres, auteurs, pages, niveaux, prix) : ceux de la maquette sont des exemples.

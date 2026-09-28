@@ -4,11 +4,16 @@ La maquette (site/) reste la seule source : styles, polices, scripts et sprite
 sont copiés dans wordpress/theme/hemato-gui et wordpress/extension/hemato-gui,
 puis les deux dossiers sont zippés dans dist/ (non versionné) pour l'installation.
 
+dist/hemato-gui-installation.zip est l'installation en un clic : une extension qui
+embarque thème, extension, visuels et contenu modèle, et les installe depuis
+l'administration (Outils › Installer HEMATO GUI), avec sauvegarde et retour arrière.
+
     python3 outils/wordpress/construire.py
 """
 import shutil
 import subprocess
 import sys
+import tempfile
 import zipfile
 from pathlib import Path
 
@@ -16,6 +21,7 @@ RACINE = Path(__file__).resolve().parents[2]
 SITE = RACINE / 'site'
 THEME = RACINE / 'wordpress' / 'theme' / 'hemato-gui'
 EXTENSION = RACINE / 'wordpress' / 'extension' / 'hemato-gui'
+INSTALLATION = RACINE / 'wordpress' / 'installation'
 DIST = RACINE / 'dist'
 
 
@@ -86,6 +92,22 @@ def largeurs_images_editeur():
     return '/* Largeurs d\'images propres aux composants. */\n' + '\n'.join(sortie) + '\n'
 
 
+def installation(archive):
+    """Extension d'installation en un clic : son fichier principal, deploiement.php, et le paquet."""
+    with tempfile.TemporaryDirectory() as t:
+        racine = Path(t) / 'hemato-gui-installation'
+        copier(INSTALLATION / 'hemato-gui-installation.php', racine / 'hemato-gui-installation.php')
+        copier(RACINE / 'outils/wordpress/deploiement.php', racine / 'deploiement.php')
+        shutil.copytree(THEME, racine / 'paquet/theme/hemato-gui', ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
+        shutil.copytree(EXTENSION, racine / 'paquet/extension/hemato-gui', ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
+        for f in (SITE / 'assets/img').glob('*/*'):
+            if f.suffix.lower() in ('.webp', '.jpg', '.jpeg', '.png'):
+                copier(f, racine / 'paquet/img' / f.parent.name / f.name)
+        subprocess.run([sys.executable, str(RACINE / 'outils/wordpress/contenu.py'), '--modele', str(racine / 'paquet/contenu')],
+                       check=True, stdout=subprocess.DEVNULL)
+        zipper(racine, archive)
+
+
 def main():
     # Contenu, gabarits de shortcodes et pied de page : régénérés depuis les sources.
     subprocess.run([sys.executable, str(RACINE / 'outils' / 'assembler.py')], check=True, stdout=subprocess.DEVNULL)
@@ -106,8 +128,11 @@ def main():
     DIST.mkdir(exist_ok=True)
     zipper(THEME, DIST / 'hemato-gui-theme.zip')
     zipper(EXTENSION, DIST / 'hemato-gui-extension.zip')
+    installation(DIST / 'hemato-gui-installation.zip')
     print('thème      :', THEME.relative_to(RACINE), '->', (DIST / 'hemato-gui-theme.zip').relative_to(RACINE))
     print('extension  :', EXTENSION.relative_to(RACINE), '->', (DIST / 'hemato-gui-extension.zip').relative_to(RACINE))
+    print('installation en un clic ->', (DIST / 'hemato-gui-installation.zip').relative_to(RACINE),
+          f'({(DIST / "hemato-gui-installation.zip").stat().st_size // 1024} Ko)')
 
 
 if __name__ == '__main__':

@@ -263,6 +263,9 @@ def verifier(nm, site=None, uploads_rel=None, jeton=None):
             erreurs.append(f'{lien} ({s})')
         actifs.update(motif.findall(corps.decode('utf-8', 'replace')))
     ok(f'{len(liens)} pages et articles en HTTP 200', not erreurs, ', '.join(erreurs[:5]))
+    p1 = php(nm, 'return hg_dep_porte1();')
+    ok('porte 1 : aucun bloc HTML brut ni hors cœur, images liées à la médiathèque', p1['ok'],
+       f'{p1["contenus"]} contenus · core/html {p1["html"]} · hors cœur {p1["hors"]} · images liées {p1["liees"]}/{p1["images"]}')
 
     # Chaque feuille, police et script du thème et de l'extension : identique à l'octet près au fichier local.
     locaux = {'themes/hemato-gui/': DEPOT / 'wordpress/theme/hemato-gui', 'plugins/hemato-gui/': DEPOT / 'wordpress/extension/hemato-gui'}
@@ -294,31 +297,7 @@ def verifier(nm, site=None, uploads_rel=None, jeton=None):
 def retour(nm):
     """Retour à l'état sauvegardé : thème, réglages de lecture, titres, contenus réécrits ;
     les pages et articles créés par le déploiement passent en brouillon (rien n'est supprimé)."""
-    r = php(nm, '''
-        $s = get_option('hg_sauvegarde_avant_theme');
-        if (!$s) { return array('erreur' => 'aucune sauvegarde en base (hg_sauvegarde_avant_theme)'); }
-        switch_theme($s['theme_avant']);
-        foreach (array('show_on_front', 'page_on_front', 'page_for_posts', 'permalink_structure' => 'permaliens', 'blogname' => 'titre_site', 'blogdescription' => 'slogan', 'WPLANG' => 'langue', 'timezone_string' => 'fuseau') as $option => $cle) {
-            if (is_int($option)) { $option = $cle; }
-            update_option($option, $s[$cle]);
-        }
-        $anciens = array();
-        foreach ($s['contenus'] as $c) { $anciens[(int) $c['ID']] = $c; }
-        $restaures = 0;
-        foreach ($s['collisions'] as $c) {
-            $a = $anciens[$c['id']];
-            wp_update_post(wp_slash(array('ID' => $c['id'], 'post_title' => $a['post_title'], 'post_content' => $a['post_content'], 'post_status' => $a['post_status'])));
-            $restaures++;
-        }
-        $brouillons = 0;
-        foreach (get_posts(array('post_type' => array('page', 'post'), 'post_status' => 'publish', 'numberposts' => -1, 'post__not_in' => array_keys($anciens))) as $p) {
-            wp_update_post(array('ID' => $p->ID, 'post_status' => 'draft'));
-            $brouillons++;
-        }
-        deactivate_plugins('hemato-gui/hemato-gui.php');
-        flush_rewrite_rules(false);
-        hg_dep_purger();
-        return array('theme' => get_stylesheet(), 'restaures' => $restaures, 'brouillons' => $brouillons);''')
+    r = php(nm, 'return hg_dep_retour();')
     print(f'  thème {r["theme"]} rétabli · {r["restaures"]} contenus restaurés · {r["brouillons"]} pages et articles HEMATO GUI en brouillon')
     return r
 
