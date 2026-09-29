@@ -29,6 +29,8 @@ p.ariane a::after{margin:0 8px}
 .repere a{display:inline-flex;align-items:center;gap:8px}
 .repere:has(a){position:relative}
 .repere a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.page-hero-texte{position:relative;z-index:2}
+.sous-titre{font-size:clamp(18px,2vw,24px);font-weight:600;letter-spacing:.04em;opacity:.85;margin-top:8px}
 .page-hero-visuel{position:relative;display:grid;place-items:center;min-height:240px}
 .page-hero-visuel img,.page-hero-visuel .visuel-hero{width:min(88%,520px);animation:flotte 14s ease-in-out infinite;filter:drop-shadow(0 30px 40px rgba(29,29,31,.12))}
 .page-hero-visuel .visuel-hero img{width:100%;animation:none;filter:none}
@@ -693,7 +695,7 @@ p.onglet-nom{line-height:max(1.2em,26.4px)}
 .formation > .boutons > .btn{flex:0 0 auto}
 .formation > .formation-etat[class*="p-"]{position:relative;align-self:stretch;margin-top:36px}
 .formation > .formation-etat[class*="p-"]::before{content:"";position:absolute;left:0;right:0;top:-14px;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--rouge) var(--p),var(--gris) var(--p))}
-.p-0{--p:0%}.p-65{--p:65%}
+.p-0{--p:0%}.p-40{--p:40%}.p-65{--p:65%}
 .pro-duo{display:grid;gap:48px;align-items:center}
 .pro-duo > *{min-width:0}
 @media (min-width:1000px){.pro-duo{grid-template-columns:1fr 1fr;gap:64px}}

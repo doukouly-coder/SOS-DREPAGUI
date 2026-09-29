@@ -1,0 +1,165 @@
+<!--{"titre":"Assistant d'interprétation du myélogramme | HEMATO GUI","description":"Outil d'aide à l'interprétation du myélogramme : renseignez les paramètres cytologiques et obtenez une synthèse structurée. Réservé aux professionnels de santé.","nav":"pro","wp_titre":"Myélogramme"}-->
+<section class="page-hero page-hero-sombre">
+  <div class="wrap page-hero-grille">
+    <div>
+      <p class="ariane"><a href="index.html">Accueil</a><a href="espace-pro.html">Professionnels</a><strong>Myélogramme</strong></p>
+      <p class="surtitre">Outil professionnel</p>
+      <h1 class="titre-page">Assistant d'interprétation du <em>myélogramme</em></h1>
+      <p class="chapeau">Renseignez les paramètres cytologiques du myélogramme et obtenez une synthèse structurée pour orienter votre interprétation. Outil d'aide à l'analyse, réservé aux professionnels de santé.</p>
+      <div class="reperes">
+        <p class="repere ico-bouclier">Réservé aux professionnels</p>
+        <p class="repere ico-score">Aide à l'analyse</p>
+      </div>
+    </div>
+    <div class="page-hero-visuel"><figure class="visuel-hero"><img src="assets/img/rendus/diagnostic.webp" alt="Cellules médullaires au microscope"></figure></div>
+  </div>
+</section>
+
+<section class="calc-section">
+  <div class="wrap">
+    <p class="avertissement icone-avant ico-bouclier">Cet outil est une aide à l'analyse destinée aux professionnels de santé. Il ne constitue pas un système de diagnostic autonome. L'interprétation finale relève du biologiste ou du clinicien.</p>
+
+    <article class="calc" id="myelogramme" data-calc="myelogramme">
+      <div class="calc-entrees">
+        <div class="calc-tete"><span><svg><use href="#i-score"/></svg></span><div><h2>Paramètres du myélogramme</h2><p>Saisissez les résultats cytologiques pour obtenir une synthèse indicative.</p></div></div>
+
+        <div class="champ champ-large"><label for="myelo-cellularite">Cellularité</label>
+          <div class="champ-saisie"><select id="myelo-cellularite" name="cellularite">
+            <option value="">— Choisir —</option>
+            <option value="riche">Riche</option>
+            <option value="normale" selected>Normale</option>
+            <option value="pauvre">Pauvre</option>
+            <option value="desertique">Désertique</option>
+          </select></div>
+        </div>
+
+        <div class="champs">
+          <div class="champ"><label for="myelo-blastes">Blastes</label><div class="champ-saisie"><input id="myelo-blastes" name="blastes" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="2"><span class="unite">%</span></div></div>
+          <div class="champ"><label for="myelo-erythroide">Lignée érythroïde</label><div class="champ-saisie"><input id="myelo-erythroide" name="erythroide" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="25"><span class="unite">%</span></div></div>
+          <div class="champ"><label for="myelo-granulo">Lignée granulocytaire</label><div class="champ-saisie"><input id="myelo-granulo" name="granulo" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="60"><span class="unite">%</span></div></div>
+        </div>
+
+        <div class="champ champ-large"><label for="myelo-megacaryo">Lignée mégacaryocytaire</label>
+          <div class="champ-saisie"><select id="myelo-megacaryo" name="megacaryocytes">
+            <option value="">— Choisir —</option>
+            <option value="presents" selected>Présents</option>
+            <option value="rares">Rares</option>
+            <option value="absents">Absents</option>
+            <option value="augmentes">Augmentés</option>
+          </select></div>
+        </div>
+
+        <div class="champs">
+          <div class="champ"><label for="myelo-lympho">Lymphocytes</label><div class="champ-saisie"><input id="myelo-lympho" name="lymphocytes" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="10"><span class="unite">%</span></div></div>
+          <div class="champ"><label for="myelo-plasmo">Plasmocytes</label><div class="champ-saisie"><input id="myelo-plasmo" name="plasmocytes" type="number" inputmode="decimal" min="0" max="100" step="0.1" value="2"><span class="unite">%</span></div></div>
+        </div>
+
+        <div class="champ champ-large"><label for="myelo-anomalies">Anomalies morphologiques</label>
+          <div class="champ-saisie"><select id="myelo-anomalies" name="anomalies">
+            <option value="aucune" selected>Aucune</option>
+            <option value="dyserythropoiese">Dysérythropoïèse</option>
+            <option value="dysgranulopoiese">Dysgranulopoïèse</option>
+            <option value="dysmegacaryopoiese">Dysmégacaryopoïèse</option>
+            <option value="multiples">Multiples</option>
+          </select></div>
+        </div>
+      </div>
+
+      <div class="calc-sortie" aria-live="polite">
+        <p class="res-etiquette">Synthèse indicative</p>
+        <p class="res-titre" data-sortie="titre">Résultat de l'analyse</p>
+        <ul class="res-liste" data-sortie="liste">
+          <li><strong>Cellularité :</strong> Normale — richesse médullaire dans les limites habituelles.</li>
+          <li><strong>Blastes :</strong> 2 % — dans les limites normales (N&nbsp;&lt;&nbsp;5 %).</li>
+          <li><strong>Équilibre des lignées :</strong> rapport granulo-érythroïde normal (G/E ≈ 2,4).</li>
+          <li><strong>Mégacaryocytes :</strong> présents — lignée mégacaryocytaire normale.</li>
+          <li><strong>Lymphocytes :</strong> 10 % — dans les limites normales.</li>
+          <li><strong>Plasmocytes :</strong> 2 % — dans les limites normales (N&nbsp;&lt;&nbsp;5 %).</li>
+          <li><strong>Morphologie :</strong> aucune anomalie morphologique signalée.</li>
+        </ul>
+        <p class="res-note" data-sortie="note">Cette synthèse est indicative. L'interprétation définitive nécessite la corrélation avec les données cliniques, biologiques (NFS, frottis) et, le cas échéant, immunophénotypiques, cytogénétiques et moléculaires.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section section-grise" id="references">
+  <div class="wrap">
+    <header class="tete-gauche">
+      <p class="surtitre">Référentiel</p>
+      <h2>Valeurs de référence du myélogramme</h2>
+    </header>
+    <div class="biblio-grille">
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Blastes</h3><p>Cellules immatures indifférenciées. Leur excès est un critère majeur de leucémie aiguë.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">&lt; 5 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Seuil d'alerte</p><p class="dl-def">≥ 20 % : définition OMS de la leucémie aiguë. Entre 5 et 19 % : myélodysplasie ou autre hémopathie.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Lignée érythroïde</h3><p>Précurseurs des globules rouges (proérythroblastes aux réticulocytes médullaires).</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">15 – 30 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Augmentée : hyperplasie érythroïde (hémolyse, carence martiale compensée). Diminuée : érythroblastopénie.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Lignée granulocytaire</h3><p>Des myéloblastes aux polynucléaires : représente la plus grande proportion médullaire.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">50 – 70 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Augmentée : infection, syndrome myéloprolifératif. Diminuée : agranulocytose, envahissement.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Mégacaryocytes</h3><p>Précurseurs des plaquettes. Évaluation semi-quantitative sur le frottis médullaire.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">Présents (5 – 10 par frottis)</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Absents ou rares : amégacaryocytose, aplasie. Augmentés : thrombocytémie, SMP, destruction périphérique.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Lymphocytes</h3><p>Population lymphoïde résidente dans la moelle, normalement minoritaire chez l'adulte.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">5 – 20 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Augmentés : lymphome, LLC, moelle pauvre avec dilution. Prédominance chez l'enfant physiologique.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Plasmocytes</h3><p>Lymphocytes B matures sécrétant les immunoglobulines.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">&lt; 5 %</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">≥ 10 % : myélome multiple (critère diagnostique). 5 – 10 % : plasmocytose réactionnelle ou gammapathie à surveiller.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Rapport G/E</h3><p>Rapport entre la lignée granulocytaire et la lignée érythroïde. Reflète l'équilibre de la myélopoïèse.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">2/1 à 4/1</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Augmenté : hyperplasie granulocytaire. Diminué (inversé) : hyperplasie érythroïde ou hypoplasie granulocytaire.</p></div></article>
+
+      <article class="fiche-examen"><p class="examen-type">Paramètre</p><h3>Cellularité</h3><p>Richesse globale de la moelle, évaluée sur le frottis et confirmée par la biopsie ostéo-médullaire.</p>
+        <div class="valeur-ref"><p class="valeur-ref-leg">Valeur normale</p><p class="valeur-ref-val">Normale (variable avec l'âge)</p></div>
+        <div class="fiche-dl"><p class="dl-terme">Interprétation</p><p class="dl-def">Riche : prolifération (SMP, LAM). Pauvre ou désertique : aplasie médullaire, fibrose, dilution.</p></div></article>
+    </div>
+    <p class="note-valeurs icone-avant ico-info">Valeurs indicatives : les normes varient selon les laboratoires, les techniques de coloration et l'âge du patient. Référez-vous aux valeurs de votre laboratoire.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <header class="tete-gauche">
+      <p class="surtitre">Mode d'emploi</p>
+      <h2>Comment utiliser cet outil ?</h2>
+    </header>
+    <div class="frise">
+      <div class="frise-etape"><h3>Renseigner les paramètres</h3><p>Saisissez les résultats cytologiques du myélogramme dans le formulaire : cellularité, pourcentages des lignées, mégacaryocytes et anomalies morphologiques.</p></div>
+      <div class="frise-etape"><h3>Analyser la synthèse</h3><p>L'outil génère une synthèse structurée avec l'interprétation de chaque paramètre et les seuils d'alerte à retenir.</p></div>
+      <div class="frise-etape"><h3>Corréler au contexte clinique</h3><p>Confrontez la synthèse aux données cliniques, à la NFS, au frottis sanguin et aux examens complémentaires (cytogénétique, biologie moléculaire).</p></div>
+      <div class="frise-etape"><h3>Confirmer avec le biologiste</h3><p>L'interprétation finale du myélogramme relève du biologiste spécialisé. Cet outil ne remplace pas l'expertise humaine.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-grise">
+  <div class="wrap">
+    <header class="tete-gauche">
+      <p class="surtitre">Outils complémentaires</p>
+      <h2>Poursuivez votre analyse.</h2>
+    </header>
+    <div class="cartes-mini cartes-mini-large">
+      <a class="carte-mini ico-nfs" href="outils.html#nfs"><h4>Interprétation de la NFS</h4><p>Hémoglobine, VGM, leucocytes, plaquettes : interprétation selon le profil du patient et les seuils de l'OMS.</p></a>
+      <a class="carte-mini ico-coag" href="outils.html#hemostase"><h4>Bilan d'hémostase</h4><p>Orientation diagnostique à partir du TP et du TCA : voie intrinsèque, extrinsèque ou commune.</p></a>
+      <a class="carte-mini ico-couches" href="diagnostic.html"><h4>Examens hématologiques</h4><p>NFS, frottis, électrophorèse, myélogramme, biopsie, cytométrie : à quoi sert chaque examen et comment il se passe.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="bande-wa">
+      <div><h3>Une question sur un résultat de myélogramme ?</h3><p>Échangez avec un hématologue pour interpréter vos résultats et orienter la prise en charge.</p></div>
+      <div class="boutons"><a class="btn btn-wa btn-grand b-ico ico-whatsapp" href="https://wa.me/224628733143?text=Bonjour%20HEMATO%20GUI%2C%20j%27ai%20une%20question%20concernant%20un%20my%C3%A9logramme." target="_blank" rel="noopener">Contacter un hématologue</a></div>
+    </div>
+  </div>
+</section>
