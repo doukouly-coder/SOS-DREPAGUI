@@ -356,6 +356,7 @@ function hg_dep_pages( $dossier, $transformer = null ) {
 	}
 	// Articles d'actualité : type « post », catégorie, date de publication, image mise en avant.
 	$articles = 0;
+	$art_ids  = array();
 	foreach ( glob( $dossier . '/articles/*.json' ) as $meta_fichier ) {
 		$meta    = json_decode( file_get_contents( $meta_fichier ), true );
 		$contenu = file_get_contents( substr( $meta_fichier, 0, -5 ) . '.html' );
@@ -387,7 +388,23 @@ function hg_dep_pages( $dossier, $transformer = null ) {
 		if ( $image ) {
 			set_post_thumbnail( $id, $image[0] );
 		}
+		$art_ids[ $meta['slug'] ] = $id;
 		$articles++;
+	}
+	// Le contenu lie les articles en /<slug>/. Si l'hébergeur a gardé une autre structure de
+	// permaliens (adresses datées, par exemple), ces liens sont réécrits vers la vraie adresse.
+	if ( '/%postname%/' !== get_option( 'permalink_structure' ) ) {
+		$vers = array();
+		foreach ( $art_ids as $slug => $id ) {
+			$vers[ home_url( '/' . $slug . '/' ) ] = get_permalink( $id );
+		}
+		foreach ( array_merge( array_values( $ids ), array_values( $art_ids ) ) as $id ) {
+			$avant = get_post_field( 'post_content', $id );
+			$apres = strtr( $avant, $vers );
+			if ( $apres !== $avant ) {
+				wp_update_post( array( 'ID' => $id, 'post_content' => wp_slash( $apres ) ) );
+			}
+		}
 	}
 	foreach ( array( 'accueil', 'hematologie', 'rendez-vous' ) as $requise ) {
 		if ( empty( $ids[ $requise ] ) ) {
@@ -401,6 +418,9 @@ function hg_dep_pages( $dossier, $transformer = null ) {
 
 	update_option( 'show_on_front', 'page' );
 	update_option( 'page_on_front', $ids['accueil'] );
+	// Aucune page ne sert de liste d'articles : la page « Actualités » a son propre contenu.
+	// (Un réglage resté d'un ancien site ferait afficher les articles à la place d'une page.)
+	update_option( 'page_for_posts', 0 );
 
 	// Menu principal (wp_navigation) : les liens pointent vers les pages par identifiant,
 	// d'où l'état « page courante » ; le bloc de l'en-tête le reprend par défaut.

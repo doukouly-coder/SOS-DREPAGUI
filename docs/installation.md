@@ -13,6 +13,22 @@ toute modification, et un bouton permet de revenir en arrière.
 - Un compte **administrateur**.
 - Par précaution, une sauvegarde complète chez votre hébergeur (la plupart la proposent en un clic).
 
+## Sur WordPress.com (hematogui.com)
+
+- L'offre **Premium** du site permet de téléverser des extensions et des thèmes : rien d'autre à acheter.
+- Au premier téléversement d'une extension, WordPress.com active les fonctionnalités d'hébergement
+  avancées du site. Cela prend quelques minutes, une seule fois.
+- L'extension tient compte de cet hébergement : XML-RPC reste actif (Jetpack en a besoin pour relier
+  le site à WordPress.com), et les aperçus de wordpress.com peuvent afficher le site.
+- Si la structure des adresses reste datée (`/2026/09/22/…`), les liens vers les articles suivent
+  automatiquement leur vraie adresse.
+- Contenus existants que l'installation **remplacera** (état au 29 septembre 2026) : « Contact »
+  (modèle de 2020 : « 10 Street Road », myemail@example.com), « Drepanocytose » et « Hemophilie »
+  (pages vides). Ils restent dans la sauvegarde. La page « DREPANOCYTOSE » rédigée
+  (`/drepanocytose-2/`), les anciens articles et le thème Hever ne sont pas touchés.
+- La page « Hémopathies Malignes » était déclarée comme page des articles : ce réglage est remis à
+  zéro, sinon elle afficherait la liste des articles au lieu de son contenu (le retour arrière le rétablit).
+
 ## 1. Téléverser l'extension d'installation
 
 1. *Extensions › Ajouter une extension › Téléverser une extension*.

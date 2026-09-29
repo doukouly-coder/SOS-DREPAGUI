@@ -11,6 +11,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Site relié à WordPress.com (hébergement WordPress.com ou Jetpack) : la connexion passe par
+ * XML-RPC et par des requêtes REST signées, et wordpress.com affiche le site en aperçu dans un cadre.
+ * Évalué à l'usage, une fois toutes les extensions chargées (Jetpack se charge après celle-ci).
+ *
+ * @return bool
+ */
+function hg_relie_wordpress_com() {
+	return defined( 'IS_ATOMIC' ) || defined( 'WPCOMSH_VERSION' ) || defined( 'IS_WPCOM' ) || defined( 'JETPACK__VERSION' ) || class_exists( 'Automattic\Jetpack\Connection\Manager' );
+}
+
 // En-têtes de sécurité (le HSTS se règle chez l'hébergeur, une fois le HTTPS en place).
 add_action(
 	'send_headers',
@@ -19,13 +30,18 @@ add_action(
 			return;
 		}
 		header( 'X-Content-Type-Options: nosniff' );
-		header( 'X-Frame-Options: SAMEORIGIN' );
+		if ( hg_relie_wordpress_com() ) {
+			header( "Content-Security-Policy: frame-ancestors 'self' https://wordpress.com https://*.wordpress.com" );
+		} else {
+			header( 'X-Frame-Options: SAMEORIGIN' );
+		}
 		header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 		header( 'Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()' );
 	}
 );
 
-add_filter( 'xmlrpc_enabled', '__return_false' );
+// XML-RPC coupé, sauf si le site est relié à WordPress.com : Jetpack en a besoin.
+add_filter( 'xmlrpc_enabled', fn( $actif ) => hg_relie_wordpress_com() ? $actif : false );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
@@ -57,7 +73,10 @@ add_filter( 'wp_sitemaps_add_provider', fn( $fournisseur, $nom ) => 'users' === 
 add_filter(
 	'rest_endpoints',
 	function ( $routes ) {
-		if ( ! is_user_logged_in() ) {
+		// Une requête signée par le site lui-même, vérifiée par Jetpack, garde l'accès : WordPress.com gère les comptes par là.
+		$jetpack = 'Automattic\\Jetpack\\Connection\\Rest_Authentication';
+		$signee  = class_exists( $jetpack ) && method_exists( $jetpack, 'is_signed_with_blog_token' ) && $jetpack::is_signed_with_blog_token();
+		if ( ! is_user_logged_in() && ! $signee ) {
 			unset( $routes['/wp/v2/users'], $routes['/wp/v2/users/(?P<id>[\d]+)'] );
 		}
 		return $routes;

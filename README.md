@@ -70,7 +70,8 @@ python3 outils/wordpress/construire.py        # dist/hemato-gui-installation.zip
 **Mise en ligne : `dist/hemato-gui-installation.zip`**, à téléverser dans *Extensions › Ajouter* puis
 *Outils › Installer HEMATO GUI* › **Installer le site** : sauvegarde de l’existant, thème, extension,
 visuels, pages, articles, menu, contrôle, et retour arrière possible. Pas à pas : [`docs/installation.md`](docs/installation.md).
-Les deux autres archives servent aux mises à jour.
+Les deux autres archives servent aux mises à jour. Le site réel, **hematogui.com**, est sur WordPress.com
+(offre Premium : téléversement d’extensions possible) ; l’extension en tient compte (Jetpack, adresses datées).
 
 - **Thème** : à installer tel quel (Apparence › Thèmes › Ajouter › Téléverser). Aucun thème parent.
 - **Extension** : Extensions › Ajouter › Téléverser, puis activer. Elle crée les rôles Patient,
