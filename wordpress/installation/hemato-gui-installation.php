@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       HEMATO GUI — installation du site
  * Description:       Installe en une fois le site HEMATO GUI (thème, extension, visuels en médiathèque, pages, articles et menu), après sauvegarde du site existant, avec retour arrière. Outils › Installer HEMATO GUI. À supprimer une fois le site vérifié.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.6
  * Requires PHP:      8.0
  * Author:            HEMATO GUI
@@ -104,7 +104,7 @@ function hgi_page() {
 		<?php if ( $fait ) : ?>
 			<div class="notice notice-success inline"><p>
 				<strong>Site installé le <?php echo esc_html( mysql2date( 'j F Y à H:i', $fait['date'] ) ); ?>.</strong>
-				<?php echo esc_html( sprintf( '%d contenus éditables, aucun bloc HTML brut, %d/%d images liées à la médiathèque.', $fait['porte1']['contenus'], $fait['porte1']['liees'], $fait['porte1']['images'] ) ); ?>
+				<?php echo esc_html( sprintf( '%d contenus HEMATO GUI éditables, aucun bloc HTML brut, %d/%d images liées à la médiathèque.', $fait['porte1']['contenus'], $fait['porte1']['liees'], $fait['porte1']['images'] ) ); ?>
 			</p><p>
 				<a class="button button-primary" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener">Voir le site</a>
 				<a class="button" href="<?php echo esc_url( (string) get_edit_post_link( (int) get_option( 'page_on_front' ), 'url' ) ); ?>">Modifier la page d’accueil</a>
@@ -325,7 +325,7 @@ function hgi_executer( $etape ) {
 			}
 			unset( $p1['detail'] );
 			update_option( 'hgi_installation', array( 'date' => current_time( 'mysql' ), 'porte1' => $p1 ), false );
-			return array( 'message' => sprintf( '%d contenus éditables, aucun bloc HTML brut, %d/%d images liées ; caches vidés (%s)', $p1['contenus'], $p1['liees'], $p1['images'], implode( ', ', $caches ) ) );
+			return array( 'message' => sprintf( '%d contenus HEMATO GUI éditables, aucun bloc HTML brut, %d/%d images liées ; caches vidés (%s)', $p1['contenus'], $p1['liees'], $p1['images'], implode( ', ', $caches ) ) . ( $p1['autres'] ? sprintf( ' ; %d contenus déjà présents sur le site laissés tels quels', $p1['autres'] ) : '' ) );
 
 		case 'retour':
 			$r = hg_dep_retour();

@@ -17,5 +17,5 @@ $r = hg_dep_porte1();
 foreach ( $r['detail'] as $d ) {
 	printf( "%-6s %-36s blocs %4d | core/html %d | hors cœur %d | images liées %d/%d\n", $d['type'], $d['nom'], $d['blocs'], $d['html'], $d['hors'], $d['liees'], $d['images'] );
 }
-printf( "PORTE 1 : %s — %d contenus · core/html %d · hors cœur %d · images liées %d/%d\n", $r['ok'] ? 'franchie' : 'ÉCHEC', $r['contenus'], $r['html'], $r['hors'], $r['liees'], $r['images'] );
+printf( "PORTE 1 : %s — %d contenus · core/html %d · hors cœur %d · images liées %d/%d%s\n", $r["ok"] ? "franchie" : "ÉCHEC", $r["contenus"], $r["html"], $r["hors"], $r["liees"], $r["images"], $r["autres"] ? " · " . $r["autres"] . " contenus préexistants non contrôlés" : "" );
 exit( $r['ok'] ? 0 : 1 );

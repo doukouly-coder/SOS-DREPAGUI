@@ -72,6 +72,7 @@ du site. Le thème et l'extension « HEMATO GUI — fonctions du site » restent
 |---|---|
 | « Arrêt : réponse inattendue du serveur… délai d'exécution dépassé ? » | Recliquer sur **Installer le site** : tout ce qui est déjà fait est retrouvé, rien n'est dupliqué. |
 | « copie incomplète » ou ligne rouge « Écriture… » | PHP ne peut pas écrire dans `wp-content` : à corriger par l'hébergeur. Autre voie : installer le thème (`hemato-gui-theme.zip`, *Apparence › Thèmes › Ajouter › Téléverser*) et l'extension (`hemato-gui-extension.zip`) à la main, puis relancer. |
+| « contrôle échoué : … blocs hors cœur, … images liées » (version 1.0.0) | Le contrôle comptait aussi les contenus déjà présents sur le site (blocs Jetpack d'un ancien thème). Le site est bien installé. Téléverser la version 1.0.1 (**Remplacer la version installée**), puis relancer **Installer le site** pour obtenir la confirmation. |
 | Le site ne vous convient pas | **Revenir au site d'avant**. L'ancien thème, la page d'accueil, le titre et les pages remplacées sont rétablis ; les pages HEMATO GUI passent en brouillon, rien n'est supprimé. |
 
 **Réinstaller** remet les pages et articles HEMATO GUI dans leur version d'origine : les modifications

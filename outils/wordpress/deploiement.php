@@ -610,12 +610,15 @@ function hg_dep_aplatir( $blocs ) {
 /**
  * Porte 1 de la recette, côté serveur : aucun bloc core/html, aucun bloc hors cœur,
  * toutes les images liées à la médiathèque (pages, articles, en-tête et pied de page).
+ * Seuls les contenus écrits par le déploiement sont contrôlés : ceux que le site avait déjà
+ * (blocs Jetpack d'un ancien thème, par exemple) ne sont pas notre livrable et restent tels quels.
  *
- * @return array { ok, contenus, html, hors, images, liees, jetons, detail[] }
+ * @return array { ok, contenus, autres, html, hors, images, liees, jetons, detail[] }
  */
 function hg_dep_porte1() {
 	$t = array( 'html' => 0, 'hors' => 0, 'images' => 0, 'liees' => 0, 'detail' => array() );
-	$contenus = get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'type title', 'order' => 'ASC' ) );
+	$contenus = get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'type title', 'order' => 'ASC', 'meta_key' => '_hg_deploye', 'meta_value' => '1' ) );
+	$t['autres'] = count( get_posts( array( 'post_type' => array( 'page', 'post' ), 'post_status' => 'publish', 'posts_per_page' => -1, 'fields' => 'ids' ) ) ) - count( $contenus );
 	$compter  = function ( $tous ) {
 		$img = array_filter( $tous, fn( $b ) => 'core/image' === $b['blockName'] );
 		return array(
@@ -646,7 +649,7 @@ function hg_dep_porte1() {
 	// Contenu modèle mal rempli : un jeton restant serait un lien ou une image cassés.
 	$t['jetons']   = count( array_filter( $contenus, fn( $p ) => str_contains( $p->post_content, 'hg-modele.invalid' ) || preg_match( '/("id":|wp-image-)98765\d{4}\b/', $p->post_content ) ) );
 	$t['contenus'] = count( $contenus );
-	$t['ok']       = 0 === $t['html'] && 0 === $t['hors'] && $t['images'] === $t['liees'] && 0 === $t['jetons'];
+	$t['ok']       = $t['contenus'] > 0 && 0 === $t['html'] && 0 === $t['hors'] && $t['images'] === $t['liees'] && 0 === $t['jetons'];
 	return $t;
 }
 
